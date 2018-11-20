@@ -30,8 +30,8 @@ instruct the module loading system to run another program (such as
 search for such lines in all files in \"/etc/modprobe.d\" and the deprecated
 \"/etc/modprobe.conf\":
 
-$ grep -r usb-storage /etc/modprobe.conf /etc/modprobe.d | grep -i “/bin/true”
-| grep -v “#”
+$ grep -r usb-storage /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\"
+| grep -v \"#\"
 
 If no line is returned, this is a finding."
   tag "fix": "To prevent USB storage devices from being used, configure the

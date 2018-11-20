@@ -23,8 +23,7 @@ destroyed."
   tag "check": "Run the following command to check the mode of the system audit
 directories:
 
-grep \"^log_file\" /etc/audit/auditd.conf|sed 's/^[^/]*//; s/[^/]*$//'|xargs
-stat -c %a:%n
+grep \"^log_file\" /etc/audit/auditd.conf|sed 's/^[^/]*//; s/[^/]*$//'|xargs stat -c %a:%n
 
 Audit directories must be mode 0755 or less permissive.
 If any are more permissive, this is a finding."
@@ -33,8 +32,11 @@ command:
 
 # chmod go-w [audit_directory]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  log_file = command("grep \"^log_file\" /etc/audit/auditd.conf|sed 's/^[^/]*//; s/[^/]*$//'").stdout.strip
+  describe file(log_file) do
+    it { should exist }
+    it { should_not be_writable.by('group') }
+    it { should_not be_writable.by('others') }
   end
 end
 

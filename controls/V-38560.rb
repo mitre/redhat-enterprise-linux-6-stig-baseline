@@ -41,8 +41,9 @@ commands:
 # chkconfig iptables on
 # service iptables start"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe service('iptables') do
+    it { should be_enabled }
+    it { should be_running }
   end
 end
 

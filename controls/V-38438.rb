@@ -29,11 +29,11 @@ auditing is enabled at boot time.
 If auditing is not enabled at boot time, this is a finding.
 
 If the system uses UEFI inspect the kernel boot arguments (which follow the
-word \"kernel\") in “/boot/efi/EFI/redhat/grub.conf”. If they include
+word \"kernel\") in \"/boot/efi/EFI/redhat/grub.conf\". If they include
 \"audit=1\", then auditing is enabled at boot time."
   tag "fix": "To ensure all processes can be audited, even those which start
 prior to the audit daemon, add the argument \"audit=1\" to the kernel line in
-\"/boot/grub/grub.conf\" or “/boot/efi/EFI/redhat/grub.conf”, in the manner
+\"/boot/grub/grub.conf\" or \"/boot/efi/EFI/redhat/grub.conf\", in the manner
 below:
 
 kernel /vmlinuz-version ro vga=ext root=/dev/VolGroup00/LogVol00 rhgb quiet

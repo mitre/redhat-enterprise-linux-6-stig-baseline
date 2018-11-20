@@ -54,8 +54,11 @@ world-writable, correct its permission with the following command:
 
 # chmod go-w [FILE]"
 
-  describe "SCAP oval resource file_test could not be loaded: Don't understand SCAP::OVAL::States: file_state/type" do
-    skip "SCAP oval resource file_test could not be loaded: Don't understand SCAP::OVAL::States: file_state/type"
+  dirs = ["/bin", "/usr/bin", "/usr/local/bin", "/sbin", "/usr/sbin", "/usr/local/sbin"]
+  dirs.each do |d|
+    describe command("find -L #{d} -perm /022 -type f") do
+      its('stdout.strip') { should be_empty }
+    end
   end
 end
 

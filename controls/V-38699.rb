@@ -36,8 +36,10 @@ directories are not owned by a system account, this should be investigated.
 Following this, the files should be deleted or assigned to an appropriate
 group."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  dirs = command(%(find / -xautofs -noleaf -wholename '/proc' -prune -o -wholename '/sys' -prune -o -wholename '/dev' -prune -o -wholename '/selinux' -prune -o -type d -perm -0002 -uid +499 -print))
+  describe "World-writable directories not owned by system account" do
+    subject { dirs.stdout.strip.split("\n") }
+    it { should be_empty }
   end
 end
 

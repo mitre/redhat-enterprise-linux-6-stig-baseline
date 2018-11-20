@@ -39,8 +39,15 @@ GNOME desktop to a blank screen:
 --type string \\
 --set /apps/gnome-screensaver/mode blank-only"
 
-  describe "SCAP oval resource xmlfilecontent_test is not yet supported." do
-    skip "SCAP oval resource xmlfilecontent_test is not yet supported."
+  if package('GConf2').installed?
+    describe command("gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome-screensaver/mode") do
+      its('stdout.strip') { should eq 'blank-only' }
+    end
+  else
+    impact 0.0
+    describe "Package GConf2 not installed" do
+      skip "Package GConf2 not installed, this control Not Applicable"
+    end
   end
 end
 

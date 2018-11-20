@@ -38,8 +38,8 @@ Any accounts with empty passwords should be disabled immediately, and PAM
 configuration should prevent users from being able to assign themselves empty
 passwords."
 
-  describe "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379" do
-    skip "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379"
+  describe sshd_config do
+    its('PermitEmptyPasswords') { should (eq 'no').or be_nil }
   end
 end
 

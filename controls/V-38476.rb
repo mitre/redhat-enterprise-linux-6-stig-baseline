@@ -45,8 +45,12 @@ use the following command as the root user to import them into the keyring:
 
 # rpm --import /media/cdrom/RPM-GPG-KEY"
 
-  describe "SCAP oval resource rpminfo_test could not be loaded: Don't understand SCAP::OVAL::States: rpminfo_state/release" do
-    skip "SCAP oval resource rpminfo_test could not be loaded: Don't understand SCAP::OVAL::States: rpminfo_state/release"
+  keys = attribute('package_signing_keys')
+
+  describe command('rpm -q gpg-pubkey') do
+    keys.each do |key|
+      its('stdout.strip') { should match key }
+    end
   end
 end
 

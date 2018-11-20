@@ -45,8 +45,8 @@ OR
 
 yum reinstall [affected_package]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("rpm -V audit | awk '$1 ~ /..5/ && $2 != \"c\"'") do
+    its('stdout.strip') { should be_empty }
   end
 end
 

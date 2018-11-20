@@ -48,8 +48,10 @@ command:
 
 # chmod +t [DIR]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  dirs = command(%(find / -xautofs -noleaf -wholename '/proc' -prune -o -wholename '/sys' -prune -o -wholename '/dev' -prune -o -wholename '/selinux' -prune -o -type d -perm -002 \\! -perm -1000 -print))
+  describe "World-writable directories lacking sticky bit" do
+    subject { dirs.stdout.strip.split("\n") }
+    it { should be_empty }
   end
 end
 

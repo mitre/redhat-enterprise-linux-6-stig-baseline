@@ -39,8 +39,9 @@ commands:
 # chkconfig iptables on
 # service iptables start"
 
-  describe "SCAP oval resource file_test could not be loaded: Attribute operation is not yet supported for SCAP::OVAL::Objects: file_object/filepath" do
-    skip "SCAP oval resource file_test could not be loaded: Attribute operation is not yet supported for SCAP::OVAL::Objects: file_object/filepath"
+  describe service('iptables') do
+    it { should be_enabled }
+    it { should be_running }
   end
 end
 

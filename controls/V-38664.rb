@@ -36,8 +36,8 @@ audit files with ownership different from what is expected by the RPM database:
 
 # rpm --setugids audit"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("rpm -V audit | grep '^.....U'") do
+    its('stdout.strip') { should be_empty }
   end
 end
 

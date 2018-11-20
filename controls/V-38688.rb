@@ -43,8 +43,15 @@ Manager's login screen, run the following command:
 To display a banner, this setting must be enabled and then banner text must
 also be set."
 
-  describe "SCAP oval resource xmlfilecontent_test is not yet supported." do
-    skip "SCAP oval resource xmlfilecontent_test is not yet supported."
+  if package('GConf2').installed?
+    describe command("gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_enable") do
+      its('stdout.strip') { should eq 'true' }
+    end
+  else
+    impact 0.0
+    describe "Package GConf2 not installed" do
+      skip "Package GConf2 not installed, this control Not Applicable"
+    end
   end
 end
 

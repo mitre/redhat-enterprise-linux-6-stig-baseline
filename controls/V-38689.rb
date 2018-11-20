@@ -103,8 +103,17 @@ end the string with \"\"\". This command writes directly to the file
 \"/etc/gconf/gconf.xml.mandatory/apps/gdm/simple-greeter/%gconf.xml\", and this
 file can later be edited directly if necessary."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  if package('GConf2').installed?
+    banner_text = command("gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_text").stdout.strip.gsub(%r{[\r\n\s]}, '')
+    describe "gconf2 banner text" do
+      subject { banner_text }
+      it { should eq attribute('banner_text').gsub(%r{[\r\n\s]}, '') }
+    end
+  else
+    impact 0.0
+    describe "Package GConf2 not installed" do
+      skip "Package GConf2 not installed, this control Not Applicable"
+    end
   end
 end
 

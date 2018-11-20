@@ -45,8 +45,8 @@ If a shorter timeout has already been set for the login shell, that value will
 preempt any SSH setting made here. Keep in mind that some processes may stop
 SSH from correctly detecting that the user is idle."
 
-  describe "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379" do
-    skip "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379"
+  describe sshd_config do
+    its('ClientAliveInterval') { should_not be_nil }
   end
 end
 

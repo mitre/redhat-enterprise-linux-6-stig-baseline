@@ -57,8 +57,11 @@ world-writable, correct its permission with the following command:
 
 # chmod go-w [FILE]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  libs = ["/lib", "/lib64", "/usr/lib", "/usr/lib64"]
+  libs.each do |l|
+    describe command("find -L #{l} -perm /022 -type f") do
+      its('stdout.strip') { should be_empty }
+    end
   end
 end
 

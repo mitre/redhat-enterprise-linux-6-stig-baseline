@@ -30,8 +30,8 @@ If there is output, this is a finding."
   tag "fix": "Add a group to the system for each GID referenced without a
 corresponding group."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("pwck -r | grep 'no group'") do
+    its('stdout.strip') { should be_empty }
   end
 end
 

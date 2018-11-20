@@ -33,8 +33,9 @@ it is not installed and operating properly, by running the following command:
 
 # yum reinstall logrotate"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  # TODO is this too specific?
+  describe bash("grep logrotate /var/log/cron*") do
+    its('stdout.strip') { should match %r{cron\.daily} }
   end
 end
 

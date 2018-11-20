@@ -43,8 +43,9 @@ commands:
 # chkconfig ip6tables on
 # service ip6tables start"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe service('ip6tables') do
+    it { should be_enabled }
+    it { should be_running }
   end
 end
 

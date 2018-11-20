@@ -36,12 +36,19 @@ functionality should be disabled.
 
 Run the following command to disable the user list:
 
-$ sudo gconftool-2 --direct \\
---config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory \\
+$ sudo gconftool-2 --direct \
+--config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory \
 --type bool --set /apps/gdm/simple-greeter/disable_user_list true"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  if package('GConf2').installed?
+    describe command("gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/disable_user_list") do
+      its('stdout.strip') { should eq 'true' }
+    end
+  else
+    impact 0.0
+    describe "Package GConf2 not installed" do
+      skip "Package GConf2 not installed, this control Not Applicable"
+    end
   end
 end
 

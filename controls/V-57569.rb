@@ -32,9 +32,16 @@ finding."
   tag "fix": "The \"noexec\" mount option can be used to prevent binaries from
 being executed out of \"/tmp\". Add the \"noexec\" option to the fourth column
 of \"/etc/fstab\" for the line which controls mounting of \"/tmp\"."
-
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  
+  # TODO should we check the /dev/shm directory also?
+  if mount('/tmp').mounted?
+    describe mount('/tmp') do
+      its('options') { should include 'noexec' }
+    end
+  else
+    describe "/tmp partition not found" do
+      skip "/tmp partition not found, this control must be reviewed manually"
+    end
   end
 end
 

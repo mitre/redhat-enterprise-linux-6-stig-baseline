@@ -1,7 +1,7 @@
 control "V-72817" do
   title "Wireless network adapters must be disabled."
   desc  "The use of wireless networking can introduce many different attack
-vectors into the organization’s network. Common attack vectors such as
+vectors into the organization's network. Common attack vectors such as
 malicious association and ad hoc networks will allow an attacker to spoof a
 wireless access point (AP), allowing validated systems to connect to the
 malicious AP and enabling the attacker to monitor and record network traffic.
@@ -61,8 +61,19 @@ this is a finding.
 "
   tag "fix": "Configure the system to disable all wireless network interfaces."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  wlans = command('ls /sys/class/net').stdout.split.select { |e| e.start_with? 'wlan' }
+
+  if wlans.empty?
+    describe "No wlan interfaces exist" do
+      subject { true }
+      it { should eq true }
+    end
+  else
+    wlans.each do |e|
+      describe interface(e) do
+        it { should_not be_up }
+      end
+    end
   end
 end
 

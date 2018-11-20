@@ -57,8 +57,9 @@ disabled with the following commands:
 # chkconfig rhnsd off
 # service rhnsd stop"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe service("rhnsd") do
+    it { should_not be_running }
+    it { should_not be_enabled }
   end
 end
 

@@ -38,8 +38,15 @@ address:
 # echo \"root: <system.administrator>@mail.mil\" >> /etc/aliases
 # newaliases"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  alias_maps = parse_config(command("postconf alias_maps").stdout.strip).params['alias_maps']
+
+  describe "postconf alias_maps" do
+    subject { alias_maps }
+    it { should_not be_empty }
+  end
+
+  describe command("postmap -q root #{alias_maps}") do
+    its('stdout.strip') { should_not be_empty }
   end
 end
 

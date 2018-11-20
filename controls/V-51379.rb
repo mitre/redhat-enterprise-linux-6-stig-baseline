@@ -33,8 +33,8 @@ system resources, should be labeled with proper SELinux types. If any device
 files carry the SELinux type \"unlabeled_t\", investigate the cause and correct
 the file's context. "
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("ls -RZ /dev | grep unlabeled_t") do
+    its('stdout.strip') { should be_empty }
   end
 end
 

@@ -36,8 +36,8 @@ If it is not, this is a finding."
 
 ClientAliveCountMax 0"
 
-  describe "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379" do
-    skip "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379"
+  describe sshd_config do
+    its('ClientAliveCountMax') { should cmp 0 }
   end
 end
 

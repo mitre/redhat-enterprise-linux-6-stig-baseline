@@ -30,7 +30,7 @@ Note: The \"ocredit\" parameter (as a negative number) will indicate how many
 special characters are required. The DoD requires at least one special
 character in a password. This would appear as \"ocredit=-1\".
 
-If “ocredit” is not found or not set to the required value, this is a finding."
+If \"ocredit\" is not found or not set to the required value, this is a finding."
   tag "fix": "The pam_cracklib module's \"ocredit=\" parameter controls
 requirements for usage of special (or \"other\") characters in a password. When
 set to a negative number, any password will be required to contain that many

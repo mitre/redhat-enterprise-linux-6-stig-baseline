@@ -35,8 +35,8 @@ following line in \"/etc/ssh/sshd_config\":
 
 PermitRootLogin no"
 
-  describe "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379" do
-    skip "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379"
+  describe sshd_config do
+    its('PermitRootLogin') { should eq 'no' }
   end
 end
 

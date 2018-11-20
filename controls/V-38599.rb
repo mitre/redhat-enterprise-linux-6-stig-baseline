@@ -43,8 +43,18 @@ Restart the vsftpd daemon.
 
 # service vsftpd restart"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  if package('vsftpd').installed?
+    describe file('/etc/vsftpd/vsftpd.conf') do
+      it { should exist }
+    end
+    describe parse_config_file('/etc/vsftpd/vsftpd.conf') do
+      its('banner_file') { should eq '/etc/issue' }
+    end
+  else
+    impact 0.0
+    describe "Package vsftpd not installed" do
+      skip "Package vsftpd not installed, this control Not Applicable"
+    end
   end
 end
 

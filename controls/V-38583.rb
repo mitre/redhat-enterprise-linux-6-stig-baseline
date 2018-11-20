@@ -27,7 +27,7 @@ command:
 $ sudo ls -lL /boot/grub/grub.conf
 
 If the system uses UEFI check the permissions of
-“/boot/efi/EFI/redhat/grub.conf” file:
+\"/boot/efi/EFI/redhat/grub.conf\" file:
 
 $ sudo ls –lL /boot/efi/EFI/redhat/grub.conf
 
@@ -36,13 +36,13 @@ If properly configured, the output should indicate the following permissions:
 
 If it does not, this is a finding."
   tag "fix": "File permissions for \"/boot/grub/grub.conf\" and
-“/boot/efi/EFI/redhat/grub.conf” should be set to 600, which is the default.
+\"/boot/efi/EFI/redhat/grub.conf\" should be set to 600, which is the default.
 
 To properly set the permissions of \"/boot/grub/grub.conf\", run the command:
 
 $ chmod 600 /boot/grub/grub.conf
 
-To properly set the permissions of “/boot/efi/EFI/redhat/grub.conf”, run the
+To properly set the permissions of \"/boot/efi/EFI/redhat/grub.conf\", run the
 command:
 
 $ chmod 600 /boot/efi/EFI/redhat/grub.conf

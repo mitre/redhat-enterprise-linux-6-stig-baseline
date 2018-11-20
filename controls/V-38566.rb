@@ -47,8 +47,12 @@ for your system:
 -a always,exit -F arch=ARCH -S creat -S open -S openat -S truncate \\
 -S ftruncate -F exit=-EPERM -F auid=0 -k access"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("grep EACCES /etc/audit/audit.rules") do
+    its('stdout.strip') { should_not eq '' }
+  end
+
+  describe command("grep EPERM /etc/audit/audit.rules") do
+    its('stdout.strip') { should_not eq '' }
   end
 end
 

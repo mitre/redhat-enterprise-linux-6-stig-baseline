@@ -42,8 +42,8 @@ Restart the IPv6 firewall:
 
 # service ip6tables restart"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("ip6tables -nvL | grep -i input") do
+    its('stdout.strip') { should match %r{Chain INPUT \(policy DROP} }
   end
 end
 

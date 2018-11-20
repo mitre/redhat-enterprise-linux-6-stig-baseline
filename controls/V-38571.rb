@@ -30,7 +30,7 @@ Note: The \"lcredit\" parameter (as a negative number) will indicate how many
 lower-case characters are required. The DoD requires at least one lower-case
 character in a password. This would appear as \"lcredit=-1\".
 
-If “lcredit” is not found or not set to the required value, this is a finding."
+If \"lcredit\" is not found or not set to the required value, this is a finding."
   tag "fix": "The pam_cracklib module's \"lcredit=\" parameter controls
 requirements for usage of lower-case letters in a password. When set to a
 negative number, any password will be required to contain that many lower-case

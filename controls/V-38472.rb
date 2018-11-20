@@ -54,8 +54,11 @@ than root, correct its ownership with the following command:
 
 # chown root [FILE]"
 
-  describe "SCAP oval resource file_test could not be loaded: Cannot check for file state user_id with operation \"not equal\"." do
-    skip "SCAP oval resource file_test could not be loaded: Cannot check for file state user_id with operation \"not equal\"."
+  dirs = ["/bin", "/usr/bin", "/usr/local/bin", "/sbin", "/usr/sbin", "/usr/local/sbin"]
+  dirs.each do |d|
+    describe command("find -L #{d} \\! -user root") do
+      its('stdout.strip') { should be_empty }
+    end
   end
 end
 

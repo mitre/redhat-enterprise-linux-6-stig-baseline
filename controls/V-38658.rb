@@ -28,7 +28,7 @@ following command:
 
 If the line is commented out, the line does not contain \"password required
 pam_pwhistory.so\" or \"password requisite pam_pwhistory.so\", or the value for
-\"remember\" is less than “5”, this is a finding."
+\"remember\" is less than \"5\", this is a finding."
   tag "fix": "Do not allow users to reuse recent passwords. This can be
 accomplished by using the \"remember\" option for the \"pam_pwhistory\" PAM
 module. In the file \"/etc/pam.d/system-auth\" and /etc/pam.d/password-auth,

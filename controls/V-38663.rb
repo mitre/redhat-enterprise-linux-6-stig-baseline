@@ -44,8 +44,8 @@ RPM database:
 
 # rpm --setperms audit"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command('rpm -V audit | grep \'^.M\'') do
+    its('stdout.strip') { should be_empty }
   end
 end
 

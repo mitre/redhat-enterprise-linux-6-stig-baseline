@@ -32,7 +32,7 @@ Note: The \"difok\" parameter will indicate how many characters must differ.
 The DoD requires eight characters differ during a password change. This would
 appear as \"difok=8\".
 
-If “difok” is not found or is set to a value less than “8”, this is a finding."
+If \"difok\" is not found or is set to a value less than \"8\", this is a finding."
   tag "fix": "The pam_cracklib module's \"difok\" parameter controls
 requirements for usage of different characters during a password change.
 

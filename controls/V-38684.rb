@@ -43,8 +43,8 @@ user add the following line in \"/etc/security/limits.conf\":
 
 A documented site-defined number may be substituted for 10 in the above."
 
-  describe "SCAP oval resource textfilecontent54_test could not be loaded: Don't understand SCAP::OVAL::Objects: textfilecontent54_object/set" do
-    skip "SCAP oval resource textfilecontent54_test could not be loaded: Don't understand SCAP::OVAL::Objects: textfilecontent54_object/set"
+  describe limits_conf do
+    its('*') { should include ['hard', 'maxlogins', attribute('maxlogins').to_s] }
   end
 end
 

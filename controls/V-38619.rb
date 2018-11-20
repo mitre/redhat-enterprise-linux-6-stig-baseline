@@ -33,8 +33,8 @@ contain unencrypted passwords to remote FTP servers making them susceptible to
 access by unauthorized users and should not be used. Any \".netrc\" files
 should be removed."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command('find /root /home -xdev -name .netrc') do
+    its('stdout') { should be_empty }
   end
 end
 

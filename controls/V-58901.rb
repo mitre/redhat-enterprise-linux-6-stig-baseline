@@ -45,8 +45,12 @@ options.
 # visudo
 # visudo -f [other sudo configuration file]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("grep -ie '^[^#]*NOPASSWD' /etc/sudoers /etc/sudoers.d/*") do
+    its('stdout') { should be_empty }
+  end
+
+  describe command("grep -ie '^[^#]*!authenticate' /etc/sudoers /etc/sudoers.d/*") do
+    its('stdout') { should be_empty }
   end
 end
 

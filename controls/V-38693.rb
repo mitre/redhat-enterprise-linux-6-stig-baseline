@@ -28,7 +28,7 @@ $ grep pam_cracklib /etc/pam.d/system-auth /etc/pam.d/password-auth
 
 Look for the value of the \"maxrepeat\" parameter.
 
-If \"maxrepeat\" is not found or is set to a value less than “3”, this is a
+If \"maxrepeat\" is not found or is set to a value less than \"3\", this is a
 finding."
   tag "fix": "The pam_cracklib module's \"maxrepeat\" parameter controls
 requirements for consecutive repeating characters. When set to a positive
@@ -40,8 +40,19 @@ after pam_cracklib.so to prevent a run of (3 + 1) or more identical characters.
 
 password required pam_cracklib.so maxrepeat=3 "
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  pam_files = ["/etc/pam.d/system-auth", "/etc/pam.d/password-auth"]
+  pam_files.each do |pam_file|
+    lines = command("grep pam_cracklib #{pam_file}").stdout.strip.split("\n")
+    describe "pam_cracklib lines in #{pam_file}" do
+      subject { lines }
+      it { should_not be_empty }
+    end
+
+    lines.each do |l|
+      describe l do
+        it { should match %r{\bmaxrepeat=([3-9]|[1-9][0-9]+)\b} }
+      end
+    end
   end
 end
 

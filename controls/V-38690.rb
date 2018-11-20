@@ -39,8 +39,18 @@ substituting \"[USER]\" and \"[YYYY-MM-DD]\" appropriately:
 
 \"[YYYY-MM-DD]\" indicates the documented expiration date for the account."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  emergency_accounts = attribute('emergency_accounts')
+
+  if emergency_accounts.empty?
+    describe "Emergency accounts" do
+      it { should_be empty }
+    end
+  else
+    emergency_accounts.each do |acct|
+      describe command("chage -l #{acct} | grep 'Account expires'") do
+        its('stdout.strip') { should_not match %r{:\s*never} }
+      end
+    end
   end
 end
 

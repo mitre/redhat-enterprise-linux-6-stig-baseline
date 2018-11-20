@@ -31,8 +31,8 @@ If the setting does not show, this is a finding."
   tag "fix": "Add the \"nodev\" option to the fourth column of \"/etc/fstab\"
 for the line which controls mounting of any NFS mounts."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command('mount | grep \"nfs \"') do
+    its('stdout.strip.lines') { should all include 'nodev' }
   end
 end
 

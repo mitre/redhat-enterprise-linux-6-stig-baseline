@@ -38,8 +38,8 @@ Banner /etc/issue
 Another section contains information on how to create an appropriate
 system-wide warning banner."
 
-  describe "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379" do
-    skip "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379"
+  describe sshd_config do
+    its('Banner') { should eq '/etc/issue' }
   end
 end
 

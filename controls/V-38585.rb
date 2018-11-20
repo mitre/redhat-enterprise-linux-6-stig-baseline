@@ -43,7 +43,7 @@ hash from it by running the following command:
 # grub-crypt --sha-512
 
 When prompted to enter a password, insert the following line into
-\"/boot/grub/grub.conf\" or “/boot/efi/EFI/redhat/grub.conf” immediately after
+\"/boot/grub/grub.conf\" or \"/boot/efi/EFI/redhat/grub.conf\" immediately after
 the header comments. (Use the output from \"grub-crypt\" as the value of
 [password-hash]):
 

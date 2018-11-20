@@ -38,8 +38,8 @@ To disable host-based authentication, add or correct the following line in
 
 HostbasedAuthentication no"
 
-  describe "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379" do
-    skip "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379"
+  describe sshd_config do
+    its('HostbasedAuthentication') { should (eq 'no').or be_nil }
   end
 end
 

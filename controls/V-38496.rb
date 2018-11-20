@@ -38,8 +38,19 @@ Disable logon access to these accounts with the command:
 
 # passwd -l [SYSACCT]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  passwd_users = command('awk -F: \'$1 !~ /^root$/ && $2 !~ /^[!*]/ {print $1}\' /etc/shadow').stdout.strip.split("\n")
+
+  if passwd_users.empty?
+    describe "Users with assigned password" do
+      subject { passwd_users }
+      it { should be_empty }
+    end
+  else
+    passwd_users.each do |u|
+      describe user(u) do
+        its('uid') { should be >= 500 }
+      end
+    end
   end
 end
 

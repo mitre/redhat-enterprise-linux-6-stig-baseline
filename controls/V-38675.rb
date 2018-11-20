@@ -36,8 +36,8 @@ If it is not, this is a finding. "
 
 * hard core 0"
 
-  describe "SCAP oval resource textfilecontent54_test could not be loaded: Don't understand SCAP::OVAL::Objects: textfilecontent54_object/set" do
-    skip "SCAP oval resource textfilecontent54_test could not be loaded: Don't understand SCAP::OVAL::Objects: textfilecontent54_object/set"
+  describe limits_conf do
+    its('*') { should include ['hard', 'core', '0'] }
   end
 end
 

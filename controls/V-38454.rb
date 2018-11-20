@@ -41,8 +41,8 @@ directories with ownership different from what is expected by the RPM database:
 # rpm -qf [file or directory name]
 # rpm --setugids [package]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("rpm -Va | grep '^.....U'") do
+    its('stdout.strip') { should be_empty }
   end
 end
 

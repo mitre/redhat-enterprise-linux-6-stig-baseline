@@ -64,8 +64,11 @@ limitations, the following text can be used:
 
 \"I've read & consent to terms in IS user agreem't.\""
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  banner_text = file('/etc/issue').content.gsub(%r{[\r\n\s]}, '')
+
+  describe "Banner text" do
+    subject { banner_text }
+    it { should eq attribute('banner_text').gsub(%r{[\r\n\s]}, '') }
   end
 end
 

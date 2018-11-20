@@ -36,11 +36,11 @@ The DoD requirement is \"15\".
 
 If it is not set to the required value, this is a finding.
 
-$ grep –E ‘pam_cracklib.so.*minlen’ /etc/pam.d/*
+$ grep –E 'pam_cracklib.so.*minlen' /etc/pam.d/*
 
 If no results are returned, this is not a finding.
 
-If any results are returned and are not set to “15” or greater, this is a
+If any results are returned and are not set to \"15\" or greater, this is a
 finding.
 "
   tag "fix": "To specify password length requirements for new accounts, edit

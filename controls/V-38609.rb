@@ -40,8 +40,9 @@ be disabled with the following command:
 
 # chkconfig tftp off"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe service('tftp') do
+    it { should_not be_enabled }
+    it { should_not be_running }
   end
 end
 

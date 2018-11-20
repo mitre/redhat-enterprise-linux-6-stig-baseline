@@ -24,8 +24,8 @@ more difficult."
   tag "check": "Inspect the \"password\" section of \"/etc/pam.d/system-auth\",
 \"/etc/pam.d/system-auth-ac\", \"/etc/pam.d/password-auth\",
 \"/etc/pam.d/password-auth-ac\" and other files in \"/etc/pam.d\" to identify
-the number of occurrences where the “pam_unix.so” module is used in the
-“password” section.
+the number of occurrences where the \"pam_unix.so\" module is used in the
+\"password\" section.
 
 $ grep -E -c 'password.*pam_unix.so' /etc/pam.d/*
 
@@ -45,15 +45,15 @@ $ grep -E -c 'password.*pam_unix.so' /etc/pam.d/*
 /etc/pam.d/vlock:0
 
 Note: The number adjacent to the file name indicates how many occurrences of
-the “pam_unix.so” module are found in the password section.
+the \"pam_unix.so\" module are found in the password section.
 
-If the “pam_unix.so” module is not defined in the “password” section of
-“/etc/pam.d/system-auth”, “/etc/pam.d/system-auth-ac”,
-“/etc/pam.d/password-auth”, and “/etc/pam.d/password-auth-ac” at a minimum,
+If the \"pam_unix.so\" module is not defined in the \"password\" section of
+\"/etc/pam.d/system-auth\", \"/etc/pam.d/system-auth-ac\",
+\"/etc/pam.d/password-auth\", and \"/etc/pam.d/password-auth-ac\" at a minimum,
 this is a finding.
 
-Verify that the “sha512” variable is used with each instance of the
-“pam_unix.so” module in the “password” section:
+Verify that the \"sha512\" variable is used with each instance of the
+\"pam_unix.so\" module in the \"password\" section:
 
 $ grep password /etc/pam.d/* | grep pam_unix.so | grep sha512
 
@@ -69,11 +69,11 @@ arguments…]
 If this list of files does not coincide with the previous command, this is a
 finding.
 
-If any of the identified “pam_unix.so” modules do not use the “sha512”
+If any of the identified \"pam_unix.so\" modules do not use the \"sha512\"
 variable, this is a finding.
 "
-  tag "fix": "In \"/etc/pam.d/system-auth”, \"/etc/pam.d/system-auth-ac\",
-“/etc/pam.d/password-auth”, and “/etc/pam.d/password-auth-ac”, among
+  tag "fix": "In \"/etc/pam.d/system-auth\", \"/etc/pam.d/system-auth-ac\",
+\"/etc/pam.d/password-auth\", and \"/etc/pam.d/password-auth-ac\", among
 potentially other files, the \"password\" section of the files controls which
 PAM modules execute during a password change. Set the \"pam_unix.so\" module in
 the \"password\" section to include the argument \"sha512\", as shown below:
@@ -88,8 +88,16 @@ Note: Any updates made to \"/etc/pam.d/system-auth\" will be overwritten by the
 \"authconfig\" program. The \"authconfig\" program should not be used.
 "
 
-  describe "SCAP oval resource textfilecontent54_test could not be loaded: Don't understand SCAP::OVAL::Objects: textfilecontent54_object/filter" do
-    skip "SCAP oval resource textfilecontent54_test could not be loaded: Don't understand SCAP::OVAL::Objects: textfilecontent54_object/filter"
+  describe command("grep 'password.*pam_unix.so' /etc/pam.d/password-auth") do
+    its('stdout.strip') { should_not be_empty }
+  end
+
+  describe command("grep 'password.*pam_unix.so' /etc/pam.d/system-auth") do
+    its('stdout.strip') { should_not be_empty }
+  end
+
+  describe command("grep password /etc/pam.d/* | grep pam_unix.so") do
+    its('stdout.strip.lines') { should all match %r{\bsha512\b} }
   end
 end
 

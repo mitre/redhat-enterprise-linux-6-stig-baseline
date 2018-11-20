@@ -27,8 +27,8 @@ If there are no duplicate names, no line will be returned.
 If a line is returned, this is a finding."
   tag "fix": "Change usernames, or delete accounts, so each has a unique name."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("pwck -rq") do
+    its('stdout.strip') { should be_empty }
   end
 end
 

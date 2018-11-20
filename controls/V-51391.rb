@@ -51,8 +51,38 @@ To initiate a manual check, run the following command:
 
 If this check produces any unexpected output, investigate. "
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  database = parse_config_file('/etc/aide.conf').params['database']
+
+  if database.nil?
+    describe "aide.conf database variable" do
+      subject { nil }
+      it { should_not be_nil }
+    end
+  else
+    # find the constants which are used by the database variable
+    defines = database.match('@@{([A-Z,a-z]+)}')
+    if defines.nil?
+      defines = []
+    else
+      defines = defines.captures
+    end
+
+    # lookup the values of the constants used by the database variable
+    aide_conf_file = file('/etc/aide.conf')
+    defines_map = defines.map do |d|
+      define_match = aide_conf_file.content.match("^\\s*@@define\\s*#{d}\\s*(\\S*)\\s*$")
+      define_value = if define_match.nil? then nil else define_match.captures[0] end
+      [d, define_value]
+    end.to_h.reject { |k,v| v.nil? }
+
+    # substitute the constants names in the database variable with their values
+    defines_map.each { |k,v| database.gsub!("@@{#{k}}", v) }
+    database.gsub!(%r{^file:}, '')
+
+    describe file(database) do
+      it { should exist }
+      it { should be_file }
+    end
   end
 end
 

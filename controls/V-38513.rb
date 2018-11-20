@@ -38,8 +38,8 @@ following line in \"/etc/sysconfig/iptables\":
 
 :INPUT DROP [0:0]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("iptables -nvL | grep -i input") do
+    its('stdout.strip') { should match %r{Chain INPUT \(policy DROP} }
   end
 end
 

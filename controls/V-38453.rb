@@ -42,8 +42,9 @@ database:
 # rpm -qf [file or directory name]
 # rpm --setugids [package]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  # TODO check against an exception list attribute
+  describe command("rpm -Va | grep '^......G'") do
+    its('stdout.strip') { should eq '' }
   end
 end
 

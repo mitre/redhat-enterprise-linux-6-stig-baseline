@@ -43,8 +43,8 @@ While it is acceptable to remove the keyword entirely since the default action
 for the SSH daemon is to print the last logon date and time, it is preferred to
 have the value explicitly documented."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
-  end
+  describe sshd_config do
+    its('PrintLastLog') { should be_nil.or eq 'yes' }
+  end 
 end
 

@@ -34,8 +34,10 @@ to a file when it is discovered. However, check with documentation for specific
 applications before making changes. Also, monitor for recurring world-writable
 files, as these may be symptoms of a misconfigured application or user account."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  files = command(%(find / -xautofs -noleaf -wholename '/proc' -prune -o -wholename '/sys' -prune -o -wholename '/dev' -prune -o -wholename '/selinux' -prune -o -type f -perm -002 -print))
+  describe "World-writable files" do
+    subject { files.stdout.strip.split("\n") }
+    it { should be_empty }
   end
 end
 

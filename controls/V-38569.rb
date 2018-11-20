@@ -30,7 +30,7 @@ Note: The \"ucredit\" parameter (as a negative number) will indicate how many
 uppercase characters are required. The DoD requires at least one uppercase
 character in a password. This would appear as \"ucredit=-1\".
 
-If “ucredit” is not found or not set to the required value, this is a finding."
+If \"ucredit\" is not found or not set to the required value, this is a finding."
   tag "fix": "The pam_cracklib module's \"ucredit=\" parameter controls
 requirements for usage of uppercase letters in a password. When set to a
 negative number, any password will be required to contain that many uppercase

@@ -39,8 +39,8 @@ If there is output, this is a finding."
 
 # service nfs restart"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("grep all_squash /etc/exports") do
+    its('stdout.strip') { should be_empty }
   end
 end
 

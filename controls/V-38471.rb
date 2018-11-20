@@ -32,8 +32,8 @@ to \"yes\".  Restart the auditd process.
 
 # service auditd restart"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe parse_config_file('/etc/audisp/plugins.d/syslog.conf') do
+    its('active') { should eq 'yes' }
   end
 end
 

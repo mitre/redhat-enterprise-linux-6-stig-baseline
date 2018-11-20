@@ -49,8 +49,19 @@ full path to each setuid / setgid program in the list:
 -a always,exit -F path=[SETUID_PROG_PATH] -F perm=x -F auid>=500 -F
 auid!=4294967295 -k privileged"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  files = command(%(find / -xautofs -noleaf -wholename '/proc' -prune -o -wholename '/sys' -prune -o -wholename '/dev' -prune -o -wholename '/selinux' -prune -o -type f -perm /6000 -print)).stdout.strip.split("\n")
+  
+  if files.empty?
+    describe "setuid and setgid files" do
+      subject { files }
+      it { should be_empty }
+    end
+  else
+    files.each do |f|
+      describe auditd do
+        its('lines') { should include match "path=#{f}" }
+      end
+    end
   end
 end
 

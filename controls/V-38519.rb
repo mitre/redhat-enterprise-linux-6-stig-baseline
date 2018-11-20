@@ -44,8 +44,30 @@ If the owner is not \"root\", run the following command to correct this:
 
 # chgrp root [LOGFILE]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  # strip comments, empty lines, and lines which start with $ in order to get rules
+  rules = file('/etc/rsyslog.conf').content.lines.map do |l|
+    pound_index = l.index('#')
+    l = l.slice(0, pound_index) if !pound_index.nil?
+    l.strip
+  end.reject { |l| l.empty? or l.start_with? '$' }
+
+  paths = rules.map do |r|
+    filter, action = r.split(%r{\s+})
+    next if !(action.start_with? '-/' or action.start_with? '/')
+    action.sub(%r{^-/}, '/')
+  end.reject { |path| path.nil? }
+
+  if paths.empty?
+    describe "rsyslog log files" do
+      subject { paths }
+      it { should be_empty }
+    end
+  else
+    paths.each do |path|
+      describe file(path) do 
+        its('group') { should eq 'root' }
+      end
+    end
   end
 end
 

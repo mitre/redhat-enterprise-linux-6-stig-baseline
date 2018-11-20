@@ -37,8 +37,8 @@ ensuring that the following line appears:
 
 Protocol 2"
 
-  describe "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379" do
-    skip "SCAP oval - Nested OR logic is not supported - see https://github.com/inspec/inspec/issues/3379"
+  describe sshd_config do
+    its('Protocol') { should cmp 2 }
   end
 end
 

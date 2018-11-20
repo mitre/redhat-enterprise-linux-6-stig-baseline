@@ -47,8 +47,8 @@ expected by the RPM database:
 
 # rpm --setperms [package]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("rpm -Va  | grep '^.M'") do
+    its('stdout.strip') { should be_empty }
   end
 end
 

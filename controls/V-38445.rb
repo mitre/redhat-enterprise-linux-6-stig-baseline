@@ -32,8 +32,8 @@ command:
 
 # chgrp root [audit_file]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("grep \"^log_file\" /etc/audit/auditd.conf|sed s/^[^\\/]*//|xargs stat -c %G:%n") do
+    its('stdout.lines') { should all match %{^root:} }
   end
 end
 

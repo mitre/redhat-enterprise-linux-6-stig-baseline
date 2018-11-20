@@ -50,8 +50,9 @@ OR
 yum reinstall [affected_package]
 "
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  # TODO check against an exception list attribute
+  describe command("rpm -Va | awk '$1 ~ /..5/ && $2 != \"c\"'") do
+    its('stdout.strip') { should be_empty }
   end
 end
 

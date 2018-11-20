@@ -29,8 +29,8 @@ instruct the module loading system to run another program (such as
 search for such lines in all files in \"/etc/modprobe.d\" and the deprecated
 \"/etc/modprobe.conf\":
 
-$ grep -r bluetooth /etc/modprobe.conf /etc/modprobe.d | grep -i “/bin/true”|
-grep -v “#”
+$ grep -r bluetooth /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\"|
+grep -v \"#\"
 
 If no line is returned, this is a finding.
 
@@ -41,8 +41,8 @@ system to run another program (such as \"/bin/true\") upon a module \"install\"
 event. Run the following command to search for such lines in all files in
 \"/etc/modprobe.d\" and the deprecated \"/etc/modprobe.conf\":
 
-$ grep -r net-pf-31 /etc/modprobe.conf /etc/modprobe.d | grep -i “/bin/true” |
-grep -v “#”
+$ grep -r net-pf-31 /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\" |
+grep -v \"#\"
 
 If no line is returned, this is a finding."
   tag "fix": "The kernel's module loading system can be configured to prevent
@@ -53,8 +53,12 @@ module:
 install net-pf-31 /bin/true
 install bluetooth /bin/true"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("grep -r bluetooth /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\" | grep -v \"#\"") do
+    its('stdout.strip') { should_not be_empty }
+  end
+
+  describe command("grep -r net-pf-31 /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\" | grep -v \"#\"") do
+    its('stdout.strip') { should_not be_empty }
   end
 end
 

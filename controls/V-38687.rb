@@ -31,7 +31,7 @@ installed:
 # rpm -q libreswan
 
 If the package is not installed, this is a finding."
-  tag "fix": "The “libreswan” package provides an implementation of IPsec and
+  tag "fix": "The \"libreswan\" package provides an implementation of IPsec and
 IKE, which permits the creation of secure tunnels over untrusted networks. The
 \"libreswan\" package can be installed with the following command:
 

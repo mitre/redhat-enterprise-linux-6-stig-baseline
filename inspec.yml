@@ -6,3 +6,16 @@ copyright_email: you@example.com
 license: Apache-2.0
 summary: "The Red Hat Enterprise Linux 6 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil."
 version: 0.1.0
+attributes:
+  - name: auditd_space_left
+    default: SET_ME
+  - name: banner_text
+    default: SET_ME
+  - name: max_logins
+    default: 10
+  - name: emergency_accounts
+    default: []
+  - name: temporary_accounts
+    default: []
+  - name: package_signing_keys
+    default: ['gpg-pubkey-fd431d51-4ae0493b', 'gpg-pubkey-2fa658e0-45700c69']

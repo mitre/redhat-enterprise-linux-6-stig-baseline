@@ -36,8 +36,46 @@ of worms or malicious code. Add the \"noexec\" option to the fourth column of
 \"/etc/fstab\" for the line which controls mounting of any removable media
 partitions."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  mounts = command('mount').stdout.strip.split("\n").
+    map do |d|
+      split_mounts = d.split(%r{\s+})
+      options = split_mounts[-1].match(%r{\((.*)\)$}).captures.first.split(',')
+      dev_file = file(split_mounts[0])
+      dev_link = dev_file.symlink? ? dev_file.link_path : dev_file.path
+      {'dev'=>split_mounts[0], 'link'=>dev_link, 'mount'=>split_mounts[2], 'options'=>options}
+    end
+
+  dev_mounts = mounts.
+    select { |mnt| mnt['dev'].start_with? '/' and !mnt['dev'].start_with? '//' }.
+    map do |mnt|
+      # https://unix.stackexchange.com/a/308724
+      partition = ['/sys/class/block', mnt['link'].sub(%r{^/dev/}, ''), 'partition'].join('/')
+      if file(partition).exist?
+        root_dev = command('basename "$(readlink -f "/sys/class/block/sda1/..")"').stdout.strip
+        mnt['root_dev'] = '/dev/' + root_dev
+      else
+        mnt['root_dev'] = mnt['link']
+      end
+      mnt
+    end
+
+  removable_mounts = dev_mounts.select do |mnt|    
+    removable = ['/sys/block', mnt['root_dev'].sub(%r{^/dev/}, ''), 'removable'].join('/')
+    file(removable).content.strip == '1'
+  end
+
+  if removable_mounts.empty?
+    describe "Removable mounted devices" do
+      subject { removable_mounts }
+      it { should be_empty }
+    end
+  else
+    removable_mounts.each do |mnt|
+      describe "Mount #{mnt['mount']} options" do
+        subject { mnt['options'] }
+        it { should include 'noexec' }
+      end
+    end
   end
 end
 

@@ -45,8 +45,18 @@ If this is not the system's default value, add the following line to
 
 kernel.randomize_va_space = 2"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command('sysctl -n kernel.randomize_va_space') do
+    its('stdout.strip') { should be_in ['1', '2'] }
+  end
+
+  describe.one do
+    describe parse_config_file('/etc/sysctl.conf') do
+      its('params') { should be >= { 'kernel.randomize_va_space' => '1' } }
+    end
+
+    describe parse_config_file('/etc/sysctl.conf') do
+      its('params') { should be >= { 'kernel.randomize_va_space' => '2' } }
+    end
   end
 end
 

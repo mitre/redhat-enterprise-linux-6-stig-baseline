@@ -38,8 +38,29 @@ used.
 See the \"mount.cifs(8)\" man page for more information. A Samba client should
 only communicate with servers who can support SMB packet signing."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  mounts = command('mount').stdout.strip.split("\n").
+    map do |d|
+      split_mounts = d.split(%r{\s+})
+      options = split_mounts[-1].match(%r{\((.*)\)$}).captures.first.split(',')
+      dev_file = file(split_mounts[0])
+      dev_link = dev_file.symlink? ? dev_file.link_path : dev_file.path
+      {'dev'=>split_mounts[0], 'link'=>dev_link, 'mount'=>split_mounts[2], 'options'=>options, 'type'=> split_mounts[-2]}
+    end
+
+  cifs_mounts = mounts.select { |mnt| mnt['type'] == 'cifs' }
+
+  if cifs_mounts.empty?
+    impact 0.0
+    describe "Samba shares not in use" do
+      skip "Samba shares not in use, this control Not Applicable"
+    end
+  else
+    cifs_mounts.each do |mnt|
+      describe "Mount #{mnt['mount']} options" do
+        subject { mnt['options'] }
+        it { should (include 'sec=krb5i').or include 'sec=ntlmv2i' }
+      end
+    end
   end
 end
 

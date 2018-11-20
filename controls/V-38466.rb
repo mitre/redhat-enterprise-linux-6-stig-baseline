@@ -59,7 +59,7 @@ by default:
 /usr/local/lib64
 
 If any file in these directories is found to be owned by a user other than
-“root” and does not match what is expected by the RPM, correct its ownership by
+\"root\" and does not match what is expected by the RPM, correct its ownership by
 running one of the following commands:
 
 
@@ -69,8 +69,20 @@ Or
 
 # chown root [FILE]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  libs = ["/lib", "/lib64", "/usr/lib", "/usr/lib64", "/usr/local/lib", "/usr/local/lib64"]
+  libs.each do |l|
+    files = command("find -L #{l} \\! -user root").stdout.strip.split("\n")
+    if files.empty?
+      describe "`find -L #{l} \\! -user root`" do
+        subject { files }
+        it { should be_empty }
+      end
+    end
+    files.each do |f|
+      describe command("rpm -V -f #{f} | grep '^.....U'") do
+        its('stdout.strip') { should be_empty }
+      end
+    end
   end
 end
 

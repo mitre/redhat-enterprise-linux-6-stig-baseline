@@ -42,8 +42,15 @@ locking the screen:
 Another keyboard sequence may be substituted for \"<Control><Alt>l\", which is
 the default for the Gnome desktop."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  if package('GConf2').installed?
+    describe command("gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome-screensaver/mode") do
+      its('stdout.strip') { should_not eq '' }
+    end
+  else
+    impact 0.0
+    describe "Package GConf2 not installed" do
+      skip "Package GConf2 not installed, this control Not Applicable"
+    end
   end
 end
 

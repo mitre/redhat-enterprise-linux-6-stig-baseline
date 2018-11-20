@@ -45,8 +45,11 @@ If this is not the system's default value, add the following line to
 
 net.ipv6.conf.default.accept_redirects = 0"
 
-  describe "SCAP oval - nested criteria contained no translated tests" do
-    skip "SCAP oval - nested criteria contained no translated tests"
+  describe kernel_parameter("net.ipv6.conf.default.accept_redirects") do
+    its("value") { should eq 0 }
+  end
+  describe file("/etc/sysctl.conf") do
+    its("content") { should match(/^[\s]*net.ipv6.conf.default.accept_redirects[\s]*=[\s]*0[\s]*$/) }
   end
 end
 

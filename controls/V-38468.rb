@@ -50,8 +50,9 @@ These include:
 
 Set this to \"syslog\", \"exec\", \"single\", or \"halt\"."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe parse_config_file('/etc/audit/auditd.conf') do
+    its('disk_full_action') { should_not be_nil }
+    its('disk_full_action.downcase') { should_not be_in ['suspend', 'ignore'] }
   end
 end
 

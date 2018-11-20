@@ -64,8 +64,42 @@ audit_network_modifications
 -w /etc/hosts -p wa -k audit_network_modifications
 -w /etc/sysconfig/network -p wa -k audit_network_modifications"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  both_archs = command("ausyscall i386 sethostname").stdout.strip != command("ausyscall x86_64 sethostname").stdout.strip
+
+  if os.arch == 'x86_64' or both_archs
+    describe command("egrep -w '^[^\#]*sethostname' /etc/audit/audit.rules | grep 'arch=b64'") do
+      its('stdout.strip') { should_not be_empty }
+    end
+
+    describe command("egrep -w '^[^\#]*setdomainname' /etc/audit/audit.rules | grep 'arch=b64'") do
+      its('stdout.strip') { should_not be_empty }
+    end
+  end
+
+  if os.arch != 'x86_64' or both_archs
+    describe command("egrep -w '^[^\#]*sethostname' /etc/audit/audit.rules | grep 'arch=b32'") do
+      its('stdout.strip') { should_not be_empty }
+    end
+
+    describe command("egrep -w '^[^\#]*setdomainname' /etc/audit/audit.rules | grep 'arch=b32'") do
+      its('stdout.strip') { should_not be_empty }
+    end
+  end
+
+  describe command("egrep '^\\s*\\-w /etc/issue \\-p wa' /etc/audit/audit.rules") do
+    its('stdout.strip') { should_not be_empty }
+  end
+
+  describe command("egrep '^\\s*\\-w /etc/issue.net \\-p wa' /etc/audit/audit.rules") do
+    its('stdout.strip') { should_not be_empty }
+  end
+
+  describe command("egrep '^\\s*\\-w /etc/hosts \\-p wa' /etc/audit/audit.rules") do
+    its('stdout.strip') { should_not be_empty }
+  end
+
+  describe command("egrep '^\\s*\\-w /etc/sysconfig/network \\-p wa' /etc/audit/audit.rules") do
+    its('stdout.strip') { should_not be_empty }
   end
 end
 

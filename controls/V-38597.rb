@@ -45,8 +45,12 @@ If this is not the system's default value, add the following line to
 
 kernel.exec-shield = 1"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command('sysctl -n kernel.exec-shield') do
+    its('stdout.strip') { should eq '1' }
+  end
+
+  describe parse_config_file('/etc/sysctl.conf') do
+    its('params') { should be >= { 'kernel.exec-shield' => '1' } }
   end
 end
 

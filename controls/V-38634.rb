@@ -56,8 +56,8 @@ These include:
 Set the \"[ACTION]\" to \"rotate\" to ensure log rotation occurs. This is the
 default. The setting is case-insensitive."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe parse_config_file('/etc/audit/auditd.conf') do
+    its('max_log_file_action.downcase') { should be_in ['rotate', 'keep_logs'] }
   end
 end
 

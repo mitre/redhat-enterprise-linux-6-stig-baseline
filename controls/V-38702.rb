@@ -50,8 +50,8 @@ xferlog_enable=YES
 xferlog_std_format=NO
 log_ftp_protocol=YES"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe parse_config_file('/etc/vsftpd/vsftpd.conf') do
+    its('xferlog_enable') { should eq 'YES' }
   end
 end
 

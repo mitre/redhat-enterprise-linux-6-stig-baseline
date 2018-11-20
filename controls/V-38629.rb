@@ -41,8 +41,15 @@ inactivity in the GNOME desktop to 15 minutes:
 --type int \\
 --set /apps/gnome-screensaver/idle_delay 15"
 
-  describe "SCAP oval resource xmlfilecontent_test is not yet supported." do
-    skip "SCAP oval resource xmlfilecontent_test is not yet supported."
+  if package('GConf2').installed?
+    describe command("gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome-screensaver/idle_delay") do
+      its('stdout.strip') { should cmp <= 15 }
+    end
+  else
+    impact 0.0
+    describe "Package GConf2 not installed" do
+      skip "Package GConf2 not installed, this control Not Applicable"
+    end
   end
 end
 

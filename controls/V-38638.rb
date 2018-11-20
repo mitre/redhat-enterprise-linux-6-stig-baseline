@@ -40,8 +40,15 @@ in the GNOME desktop when it is activated:
 --type bool \\
 --set /apps/gnome-screensaver/lock_enabled true"
 
-  describe "SCAP oval resource xmlfilecontent_test is not yet supported." do
-    skip "SCAP oval resource xmlfilecontent_test is not yet supported."
+  if package('GConf2').installed?
+    describe command("gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome-screensaver/lock_enabled") do
+      its('stdout.strip') { should eq 'true' }
+    end
+  else
+    impact 0.0
+    describe "Package GConf2 not installed" do
+      skip "Package GConf2 not installed, this control Not Applicable"
+    end
   end
 end
 

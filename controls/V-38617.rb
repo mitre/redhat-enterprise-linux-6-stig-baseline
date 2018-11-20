@@ -34,13 +34,20 @@ Counter (CTR) mode is also preferred over cipher-block chaining (CBC) mode. The
 following line in \"/etc/ssh/sshd_config\" demonstrates use of FIPS-approved
 ciphers:
 
-Ciphers
-aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc
+Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc,aes192-cbc,aes256-cbc
 
 The man page \"sshd_config(5)\" contains a list of supported ciphers."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe sshd_config do
+    its('Ciphers') { should_not be_nil }
+  end
+
+  ciphers = sshd_config.params['ciphers']
+  if !ciphers.nil?     
+    describe 'sshd_config Ciphers' do
+      subject { sshd_config.params['ciphers'].join(',').split(',') }
+      it { should all match %r{aes|3des} }
+    end
   end
 end
 

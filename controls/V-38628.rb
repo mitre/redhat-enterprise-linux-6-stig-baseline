@@ -41,8 +41,9 @@ The \"auditd\" service can be enabled with the following commands:
 # chkconfig auditd on
 # service auditd start"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe service('auditd') do
+    it { should be_enabled }
+    it { should be_running }
   end
 end
 

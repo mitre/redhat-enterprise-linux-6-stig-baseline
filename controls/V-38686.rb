@@ -39,8 +39,8 @@ interface to another, add or correct the following line in
 
 :FORWARD DROP [0:0]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("iptables -nvL | grep -i forward") do
+    its('stdout.strip') { should match %r{Chain FORWARD \(policy DROP} }
   end
 end
 

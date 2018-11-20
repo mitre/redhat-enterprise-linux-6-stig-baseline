@@ -34,8 +34,8 @@ If there is output, this is a finding."
 
 # service snmpd restart"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command("grep 'v1\\|v2c\\|com2sec' /etc/snmp/snmpd.conf | grep -v '^#'") do
+    its('stdout.strip') { should be_empty }
   end
 end
 

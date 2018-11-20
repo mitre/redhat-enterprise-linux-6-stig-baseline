@@ -64,8 +64,10 @@ To use RELP for log message delivery:
 
 *.* :omrelp:[loghost.example.com]"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe file('/etc/rsyslog.conf') do
+    its('content') {
+      should (match %r{^\s*\*\.\*\s+@[^@#]+}).or (match %r{^\s*\*\.\*\s+@@[^@#]+}). or (match %r{^\s*\*\.\*\s+:omrelp:[^@#]+})
+    }
   end
 end
 

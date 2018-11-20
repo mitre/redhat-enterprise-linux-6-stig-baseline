@@ -36,8 +36,8 @@ line to /etc/crontab:
 AIDE can be executed periodically through other means; this is merely one
 example."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe command('grep aide /etc/crontab /etc/cron.*/*') do
+    its('stdout.strip') { should_not be_empty }
   end
 end
 

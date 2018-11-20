@@ -38,7 +38,7 @@ installed:
 
 Verify that the McAfee HIPS module is active on the system:
 
-# ps -ef | grep -i “hipclient”
+# ps -ef | grep -i \"hipclient\"
 
 If the MFEhiplsm package is not installed, check for another intrusion
 detection system:

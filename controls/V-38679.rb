@@ -27,13 +27,13 @@ presents an unacceptable burden in many circumstances."
 For each interface [IFACE] on the system (e.g. eth0), verify that DHCP is not
 being used:
 
-# cat /etc/sysconfig/network-scripts/ifcfg-[IFACE] | grep -i “bootproto” | grep
-–v “#”
+# cat /etc/sysconfig/network-scripts/ifcfg-[IFACE] | grep -i \"bootproto\" | grep
+–v \"#\"
 
 BOOTPROTO=none
 
 If no output is returned this is a finding.
-If BOOTPROTO is not set to ”none”, this is a finding.
+If BOOTPROTO is not set to \"none\", this is a finding.
 "
   tag "fix": "For each interface [IFACE] on the system (e.g. eth0), edit
 \"/etc/sysconfig/network-scripts/ifcfg-[IFACE]\" and make the following
