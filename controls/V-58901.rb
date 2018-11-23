@@ -1,5 +1,5 @@
-control "V-58901" do
-  title "The sudo command must require authentication."
+control 'V-58901' do
+  title 'The sudo command must require authentication.'
   desc  "The \"sudo\" command allows authorized users to run programs
 (including shells) as other users, system users, and root. The \"/etc/sudoers\"
 file is used to configure authorized \"sudo\" users as well as the programs
@@ -8,13 +8,13 @@ file allow configured users to run programs without re-authenticating. Use of
 these configuration options makes it easier for one compromised account to be
 used to compromise other accounts."
   impact 0.5
-  tag "gtitle": "SRG-OS-000373"
-  tag "gid": "V-58901"
-  tag "rid": "SV-73331r2_rule"
-  tag "stig_id": "RHEL-06-000529"
-  tag "fix_id": "F-64285r1_fix"
-  tag "cci": ["CCI-002038"]
-  tag "nist": ["IA-11", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000373'
+  tag "gid": 'V-58901'
+  tag "rid": 'SV-73331r2_rule'
+  tag "stig_id": 'RHEL-06-000529'
+  tag "fix_id": 'F-64285r1_fix'
+  tag "cci": ['CCI-002038']
+  tag "nist": ['IA-11', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -53,4 +53,3 @@ options.
     its('stdout') { should be_empty }
   end
 end
-

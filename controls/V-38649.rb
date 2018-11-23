@@ -1,16 +1,16 @@
-control "V-38649" do
-  title "The system default umask for the csh shell must be 077."
+control 'V-38649' do
+  title 'The system default umask for the csh shell must be 077.'
   desc  "The umask value influences the permissions assigned to files when they
 are created. A misconfigured umask value could result in files with excessive
 permissions that can be read and/or written to by unauthorized users."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38649"
-  tag "rid": "SV-50450r1_rule"
-  tag "stig_id": "RHEL-06-000343"
-  tag "fix_id": "F-43598r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38649'
+  tag "rid": 'SV-50450r1_rule'
+  tag "stig_id": 'RHEL-06-000343'
+  tag "fix_id": 'F-43598r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -41,20 +41,19 @@ follows:
 umask 077"
 
   describe.one do
-    describe file("/etc/csh.cshrc") do
-      its("content") { should match(/^[\s]*umask[\s]+([^#\s]*)/) }
+    describe file('/etc/csh.cshrc') do
+      its('content') { should match(/^[\s]*umask[\s]+([^#\s]*)/) }
     end
-    file("/etc/csh.cshrc").content.to_s.scan(/^[\s]*umask[\s]+([^#\s]*)/).flatten.each do |entry|
+    file('/etc/csh.cshrc').content.to_s.scan(/^[\s]*umask[\s]+([^#\s]*)/).flatten.each do |entry|
       describe entry do
-        it { should eq "077" }
+        it { should eq '077' }
       end
     end
-    describe package("tcsh") do
+    describe package('tcsh') do
       it { should_not be_installed }
     end
-    describe file("/etc/csh.cshrc") do
+    describe file('/etc/csh.cshrc') do
       it { should_not exist }
     end
   end
 end
-

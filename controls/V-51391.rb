@@ -1,16 +1,16 @@
-control "V-51391" do
-  title "A file integrity baseline must be created."
+control 'V-51391' do
+  title 'A file integrity baseline must be created.'
   desc  "For AIDE to be effective, an initial database of \"known-good\"
 information about files must be captured and it should be able to be verified
 against the installed files. "
   impact 0.5
-  tag "gtitle": "SRG-OS-000232"
-  tag "gid": "V-51391"
-  tag "rid": "SV-65601r1_rule"
-  tag "stig_id": "RHEL-06-000018"
-  tag "fix_id": "F-56189r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000232'
+  tag "gid": 'V-51391'
+  tag "rid": 'SV-65601r1_rule'
+  tag "stig_id": 'RHEL-06-000018'
+  tag "fix_id": 'F-56189r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -54,30 +54,30 @@ If this check produces any unexpected output, investigate. "
   database = parse_config_file('/etc/aide.conf').params['database']
 
   if database.nil?
-    describe "aide.conf database variable" do
+    describe 'aide.conf database variable' do
       subject { nil }
       it { should_not be_nil }
     end
   else
     # find the constants which are used by the database variable
     defines = database.match('@@{([A-Z,a-z]+)}')
-    if defines.nil?
-      defines = []
-    else
-      defines = defines.captures
-    end
+    defines = if defines.nil?
+                []
+              else
+                defines.captures
+              end
 
     # lookup the values of the constants used by the database variable
     aide_conf_file = file('/etc/aide.conf')
     defines_map = defines.map do |d|
       define_match = aide_conf_file.content.match("^\\s*@@define\\s*#{d}\\s*(\\S*)\\s*$")
-      define_value = if define_match.nil? then nil else define_match.captures[0] end
+      define_value = define_match.nil? ? nil : define_match.captures[0]
       [d, define_value]
-    end.to_h.reject { |k,v| v.nil? }
+    end.to_h.reject { |_k, v| v.nil? }
 
     # substitute the constants names in the database variable with their values
-    defines_map.each { |k,v| database.gsub!("@@{#{k}}", v) }
-    database.gsub!(%r{^file:}, '')
+    defines_map.each { |k, v| database.gsub!("@@{#{k}}", v) }
+    database.gsub!(/^file:/, '')
 
     describe file(database) do
       it { should exist }
@@ -85,4 +85,3 @@ If this check produces any unexpected output, investigate. "
     end
   end
 end
-

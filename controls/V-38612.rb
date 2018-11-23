@@ -1,15 +1,15 @@
-control "V-38612" do
-  title "The SSH daemon must not allow host-based authentication."
+control 'V-38612' do
+  title 'The SSH daemon must not allow host-based authentication.'
   desc  "SSH trust relationships mean a compromise on one host can allow an
 attacker to move trivially to other hosts."
   impact 0.5
-  tag "gtitle": "SRG-OS-000106"
-  tag "gid": "V-38612"
-  tag "rid": "SV-50413r1_rule"
-  tag "stig_id": "RHEL-06-000236"
-  tag "fix_id": "F-43560r1_fix"
-  tag "cci": ["CCI-000766"]
-  tag "nist": ["IA-2 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000106'
+  tag "gid": 'V-38612'
+  tag "rid": 'SV-50413r1_rule'
+  tag "stig_id": 'RHEL-06-000236'
+  tag "fix_id": 'F-43560r1_fix'
+  tag "cci": ['CCI-000766']
+  tag "nist": ['IA-2 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -42,4 +42,3 @@ HostbasedAuthentication no"
     its('HostbasedAuthentication') { should (eq 'no').or be_nil }
   end
 end
-

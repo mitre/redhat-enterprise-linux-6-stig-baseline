@@ -1,16 +1,16 @@
-control "V-38476" do
+control 'V-38476' do
   title "Vendor-provided cryptographic certificates must be installed to verify
 the integrity of system software."
   desc  "The Red Hat GPG keys are necessary to cryptographically verify
 packages are from Red Hat. "
   impact 0.7
-  tag "gtitle": "SRG-OS-000090"
-  tag "gid": "V-38476"
-  tag "rid": "SV-50276r3_rule"
-  tag "stig_id": "RHEL-06-000008"
-  tag "fix_id": "F-43421r3_fix"
-  tag "cci": ["CCI-000352"]
-  tag "nist": ["CM-5 (3)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000090'
+  tag "gid": 'V-38476'
+  tag "rid": 'SV-50276r3_rule'
+  tag "stig_id": 'RHEL-06-000008'
+  tag "fix_id": 'F-43421r3_fix'
+  tag "cci": ['CCI-000352']
+  tag "nist": ['CM-5 (3)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -53,4 +53,3 @@ use the following command as the root user to import them into the keyring:
     end
   end
 end
-

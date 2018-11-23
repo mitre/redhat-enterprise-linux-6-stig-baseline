@@ -1,15 +1,15 @@
-control "V-38496" do
-  title "Default operating system accounts, other than root, must be locked."
+control 'V-38496' do
+  title 'Default operating system accounts, other than root, must be locked.'
   desc  "Disabling authentication for default system accounts makes it more
 difficult for attackers to make use of them to compromise a system."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38496"
-  tag "rid": "SV-50297r3_rule"
-  tag "stig_id": "RHEL-06-000029"
-  tag "fix_id": "F-43442r2_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38496'
+  tag "rid": 'SV-50297r3_rule'
+  tag "stig_id": 'RHEL-06-000029'
+  tag "fix_id": 'F-43442r2_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -41,7 +41,7 @@ Disable logon access to these accounts with the command:
   passwd_users = command('awk -F: \'$1 !~ /^root$/ && $2 !~ /^[!*]/ {print $1}\' /etc/shadow').stdout.strip.split("\n")
 
   if passwd_users.empty?
-    describe "Users with assigned password" do
+    describe 'Users with assigned password' do
       subject { passwd_users }
       it { should be_empty }
     end
@@ -53,4 +53,3 @@ Disable logon access to these accounts with the command:
     end
   end
 end
-

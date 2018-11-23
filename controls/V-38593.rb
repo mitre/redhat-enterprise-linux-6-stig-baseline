@@ -1,18 +1,18 @@
-control "V-38593" do
+control 'V-38593' do
   title "The Department of Defense (DoD) login banner must be displayed
 immediately prior to, or as part of, console login prompts."
   desc  "An appropriate warning message reinforces policy awareness during the
 logon process and facilitates possible legal action against attackers."
   impact 0.5
-  tag "gtitle": "SRG-OS-000228"
-  tag "gid": "V-38593"
-  tag "rid": "SV-50394r3_rule"
-  tag "stig_id": "RHEL-06-000073"
-  tag "fix_id": "F-43540r3_fix"
-  tag "cci": ["CCI-001384", "CCI-001385", "CCI-001386", "CCI-001387",
-"CCI-001388"]
-  tag "nist": ["AC-8 c 1", "AC-8 c 2", "AC-8 c 2", "AC-8 c 2", "AC-8 c 3",
-"Rev_4"]
+  tag "gtitle": 'SRG-OS-000228'
+  tag "gid": 'V-38593'
+  tag "rid": 'SV-50394r3_rule'
+  tag "stig_id": 'RHEL-06-000073'
+  tag "fix_id": 'F-43540r3_fix'
+  tag "cci": ['CCI-001384', 'CCI-001385', 'CCI-001386', 'CCI-001387',
+              'CCI-001388']
+  tag "nist": ['AC-8 c 1', 'AC-8 c 2', 'AC-8 c 2', 'AC-8 c 2', 'AC-8 c 3',
+               'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -64,11 +64,10 @@ limitations, the following text can be used:
 
 \"I've read & consent to terms in IS user agreem't.\""
 
-  banner_text = file('/etc/issue').content.gsub(%r{[\r\n\s]}, '')
+  banner_text = file('/etc/issue').content.gsub(/[\r\n\s]/, '')
 
-  describe "Banner text" do
+  describe 'Banner text' do
     subject { banner_text }
-    it { should eq attribute('banner_text').gsub(%r{[\r\n\s]}, '') }
+    it { should eq attribute('banner_text').gsub(/[\r\n\s]/, '') }
   end
 end
-

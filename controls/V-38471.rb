@@ -1,17 +1,17 @@
-control "V-38471" do
-  title "The system must forward audit records to the syslog service."
+control 'V-38471' do
+  title 'The system must forward audit records to the syslog service.'
   desc  "The auditd service does not include the ability to send audit records
 to a centralized server for management directly.  It does, however, include an
 audit event multiplexor plugin (audispd) to pass audit records to the local
 syslog server."
   impact 0.3
-  tag "gtitle": "SRG-OS-000043"
-  tag "gid": "V-38471"
-  tag "rid": "SV-50271r1_rule"
-  tag "stig_id": "RHEL-06-000509"
-  tag "fix_id": "F-43416r1_fix"
-  tag "cci": ["CCI-000136"]
-  tag "nist": ["AU-3 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000043'
+  tag "gid": 'V-38471'
+  tag "rid": 'SV-50271r1_rule'
+  tag "stig_id": 'RHEL-06-000509'
+  tag "fix_id": 'F-43416r1_fix'
+  tag "cci": ['CCI-000136']
+  tag "nist": ['AU-3 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -36,4 +36,3 @@ to \"yes\".  Restart the auditd process.
     its('active') { should eq 'yes' }
   end
 end
-

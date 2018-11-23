@@ -1,4 +1,4 @@
-control "V-38663" do
+control 'V-38663' do
   title "The system package management tool must verify permissions on all
 files and directories associated with the audit package."
   desc  "Permissions on audit binaries and configuration files that are too
@@ -6,13 +6,13 @@ generous could allow an unauthorized user to gain privileges that they should
 not have. The permissions set by the vendor should be maintained. Any
 deviations from this baseline should be investigated."
   impact 0.5
-  tag "gtitle": "SRG-OS-000256"
-  tag "gid": "V-38663"
-  tag "rid": "SV-50464r1_rule"
-  tag "stig_id": "RHEL-06-000278"
-  tag "fix_id": "F-43612r1_fix"
-  tag "cci": ["CCI-001493"]
-  tag "nist": ["AU-9", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000256'
+  tag "gid": 'V-38663'
+  tag "rid": 'SV-50464r1_rule'
+  tag "stig_id": 'RHEL-06-000278'
+  tag "fix_id": 'F-43612r1_fix'
+  tag "cci": ['CCI-001493']
+  tag "nist": ['AU-9', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -48,4 +48,3 @@ RPM database:
     its('stdout.strip') { should be_empty }
   end
 end
-

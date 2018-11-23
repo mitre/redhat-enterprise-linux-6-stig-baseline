@@ -1,4 +1,4 @@
-control "V-38664" do
+control 'V-38664' do
   title "The system package management tool must verify ownership on all files
 and directories associated with the audit package."
   desc  "Ownership of audit binaries and configuration files that is incorrect
@@ -6,13 +6,13 @@ could allow an unauthorized user to gain privileges that they should not have.
 The ownership set by the vendor should be maintained. Any deviations from this
 baseline should be investigated."
   impact 0.5
-  tag "gtitle": "SRG-OS-000257"
-  tag "gid": "V-38664"
-  tag "rid": "SV-50465r1_rule"
-  tag "stig_id": "RHEL-06-000279"
-  tag "fix_id": "F-43613r1_fix"
-  tag "cci": ["CCI-001494"]
-  tag "nist": ["AU-9", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000257'
+  tag "gid": 'V-38664'
+  tag "rid": 'SV-50465r1_rule'
+  tag "stig_id": 'RHEL-06-000279'
+  tag "fix_id": 'F-43613r1_fix'
+  tag "cci": ['CCI-001494']
+  tag "nist": ['AU-9', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -40,4 +40,3 @@ audit files with ownership different from what is expected by the RPM database:
     its('stdout.strip') { should be_empty }
   end
 end
-

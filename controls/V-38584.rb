@@ -1,16 +1,16 @@
-control "V-38584" do
+control 'V-38584' do
   title "The xinetd service must be uninstalled if no network services
 utilizing it are enabled."
   desc  "Removing the \"xinetd\" package decreases the risk of the xinetd
 service's accidental (or intentional) activation."
   impact 0.3
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38584"
-  tag "rid": "SV-50385r1_rule"
-  tag "stig_id": "RHEL-06-000204"
-  tag "fix_id": "F-43532r1_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38584'
+  tag "rid": 'SV-50385r1_rule'
+  tag "stig_id": 'RHEL-06-000204'
+  tag "fix_id": 'F-43532r1_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -35,8 +35,7 @@ command:
 
 # yum erase xinetd"
 
-  describe package("xinetd") do
+  describe package('xinetd') do
     it { should_not be_installed }
   end
 end
-

@@ -1,17 +1,17 @@
-control "V-38512" do
+control 'V-38512' do
   title "The operating system must prevent public IPv4 access into an
 organizations internal networks, except as appropriately mediated by managed
 interfaces employing boundary protection devices."
   desc  "The \"iptables\" service provides the system's host-based firewalling
 capability for IPv4 and ICMP."
   impact 0.5
-  tag "gtitle": "SRG-OS-000146"
-  tag "gid": "V-38512"
-  tag "rid": "SV-50313r2_rule"
-  tag "stig_id": "RHEL-06-000117"
-  tag "fix_id": "F-43459r2_fix"
-  tag "cci": ["CCI-001100"]
-  tag "nist": ["SC-7 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000146'
+  tag "gid": 'V-38512'
+  tag "rid": 'SV-50313r2_rule'
+  tag "stig_id": 'RHEL-06-000117'
+  tag "fix_id": 'F-43459r2_fix'
+  tag "cci": ['CCI-001100']
+  tag "nist": ['SC-7 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -46,4 +46,3 @@ commands:
     it { should be_running }
   end
 end
-

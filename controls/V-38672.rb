@@ -1,15 +1,15 @@
-control "V-38672" do
-  title "The netconsole service must be disabled unless required."
+control 'V-38672' do
+  title 'The netconsole service must be disabled unless required.'
   desc  "The \"netconsole\" service is not necessary unless there is a need to
 debug kernel panics, which is not common."
   impact 0.3
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38672"
-  tag "rid": "SV-50473r2_rule"
-  tag "stig_id": "RHEL-06-000289"
-  tag "fix_id": "F-43622r2_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38672'
+  tag "rid": 'SV-50473r2_rule'
+  tag "stig_id": 'RHEL-06-000289'
+  tag "fix_id": 'F-43622r2_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -52,26 +52,25 @@ with the following commands:
 # chkconfig netconsole off
 # service netconsole stop"
 
-  describe service("netconsole").runlevels(/0/) do
+  describe service('netconsole').runlevels(/0/) do
     it { should_not be_enabled }
   end
-  describe service("netconsole").runlevels(/1/) do
+  describe service('netconsole').runlevels(/1/) do
     it { should_not be_enabled }
   end
-  describe service("netconsole").runlevels(/2/) do
+  describe service('netconsole').runlevels(/2/) do
     it { should_not be_enabled }
   end
-  describe service("netconsole").runlevels(/3/) do
+  describe service('netconsole').runlevels(/3/) do
     it { should_not be_enabled }
   end
-  describe service("netconsole").runlevels(/4/) do
+  describe service('netconsole').runlevels(/4/) do
     it { should_not be_enabled }
   end
-  describe service("netconsole").runlevels(/5/) do
+  describe service('netconsole').runlevels(/5/) do
     it { should_not be_enabled }
   end
-  describe service("netconsole").runlevels(/6/) do
+  describe service('netconsole').runlevels(/6/) do
     it { should_not be_enabled }
   end
 end
-

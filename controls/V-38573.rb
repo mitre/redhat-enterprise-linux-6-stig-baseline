@@ -1,16 +1,16 @@
-control "V-38573" do
+control 'V-38573' do
   title "The system must disable accounts after three consecutive unsuccessful
 logon attempts."
   desc  "Locking out user accounts after a number of incorrect attempts
 prevents direct password guessing attacks."
   impact 0.5
-  tag "gtitle": "SRG-OS-000021"
-  tag "gid": "V-38573"
-  tag "rid": "SV-50374r4_rule"
-  tag "stig_id": "RHEL-06-000061"
-  tag "fix_id": "F-43521r8_fix"
-  tag "cci": ["CCI-000044"]
-  tag "nist": ["AC-7 a", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000021'
+  tag "gid": 'V-38573'
+  tag "rid": 'SV-50374r4_rule'
+  tag "stig_id": 'RHEL-06-000061'
+  tag "fix_id": 'F-43521r8_fix'
+  tag "cci": ['CCI-000044']
+  tag "nist": ['AC-7 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -53,21 +53,20 @@ Note that any updates made to \"/etc/pam.d/system-auth\" and
 \"/etc/pam.d/password-auth\" may be overwritten by the \"authconfig\" program.
 The \"authconfig\" program should not be used."
 
-  file("/etc/pam.d/system-auth").content.to_s.scan(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=([0-9]+).*$/).flatten.each do |entry|
+  file('/etc/pam.d/system-auth').content.to_s.scan(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=([0-9]+).*$/).flatten.each do |entry|
     describe entry do
       it { should cmp == 3 }
     end
   end
-  describe file("/etc/pam.d/system-auth") do
-    its("content") { should match(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=([0-9]+).*$/) }
+  describe file('/etc/pam.d/system-auth') do
+    its('content') { should match(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=([0-9]+).*$/) }
   end
-  file("/etc/pam.d/password-auth").content.to_s.scan(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=([0-9]+).*$/).flatten.each do |entry|
+  file('/etc/pam.d/password-auth').content.to_s.scan(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=([0-9]+).*$/).flatten.each do |entry|
     describe entry do
       it { should cmp == 3 }
     end
   end
-  describe file("/etc/pam.d/password-auth") do
-    its("content") { should match(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=([0-9]+).*$/) }
+  describe file('/etc/pam.d/password-auth') do
+    its('content') { should match(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=([0-9]+).*$/) }
   end
 end
-

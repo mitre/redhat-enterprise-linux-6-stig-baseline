@@ -1,16 +1,16 @@
-control "V-38688" do
+control 'V-38688' do
   title "A login banner must be displayed immediately prior to, or as part of,
 graphical desktop environment login prompts."
   desc  "An appropriate warning message reinforces policy awareness during the
 logon process and facilitates possible legal action against attackers."
   impact 0.5
-  tag "gtitle": "SRG-OS-000024"
-  tag "gid": "V-38688"
-  tag "rid": "SV-50489r3_rule"
-  tag "stig_id": "RHEL-06-000324"
-  tag "fix_id": "F-43637r2_fix"
-  tag "cci": ["CCI-000050"]
-  tag "nist": ["AC-8 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000024'
+  tag "gid": 'V-38688'
+  tag "rid": 'SV-50489r3_rule'
+  tag "stig_id": 'RHEL-06-000324'
+  tag "fix_id": 'F-43637r2_fix'
+  tag "cci": ['CCI-000050']
+  tag "nist": ['AC-8 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -44,14 +44,13 @@ To display a banner, this setting must be enabled and then banner text must
 also be set."
 
   if package('GConf2').installed?
-    describe command("gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_enable") do
+    describe command('gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_enable') do
       its('stdout.strip') { should eq 'true' }
     end
   else
     impact 0.0
-    describe "Package GConf2 not installed" do
-      skip "Package GConf2 not installed, this control Not Applicable"
+    describe 'Package GConf2 not installed' do
+      skip 'Package GConf2 not installed, this control Not Applicable'
     end
   end
 end
-

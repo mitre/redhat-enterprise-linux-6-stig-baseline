@@ -1,4 +1,4 @@
-control "V-38525" do
+control 'V-38525' do
   title "The audit system must be configured to audit all attempts to alter
 system time through stime."
   desc  "Arbitrary changes to the system time can be used to obfuscate
@@ -6,13 +6,13 @@ nefarious activities in log files, as well as to confuse network services that
 are highly dependent upon an accurate system time (such as sshd). All changes
 to the system time should be audited."
   impact 0.3
-  tag "gtitle": "SRG-OS-000062"
-  tag "gid": "V-38525"
-  tag "rid": "SV-50326r4_rule"
-  tag "stig_id": "RHEL-06-000169"
-  tag "fix_id": "F-43473r4_fix"
-  tag "cci": ["CCI-000169"]
-  tag "nist": ["AU-12 a", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000062'
+  tag "gid": 'V-38525'
+  tag "rid": 'SV-50326r4_rule'
+  tag "stig_id": 'RHEL-06-000169'
+  tag "fix_id": 'F-43473r4_fix'
+  tag "cci": ['CCI-000169']
+  tag "nist": ['AU-12 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -48,8 +48,7 @@ of multiple combined syscalls:
 -a always,exit -F arch=b64 -S adjtimex -S settimeofday -S clock_settime -k
 audit_time_rules"
 
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^-[Aa][\s]*(?:exit,always|always,exit)[\s]+-F[\s]+arch=b32.*(?:-S[\s]+|,)stime(?:[\s]+|,).*-k[\s]+[\S]+[\s]*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^-[Aa][\s]*(?:exit,always|always,exit)[\s]+-F[\s]+arch=b32.*(?:-S[\s]+|,)stime(?:[\s]+|,).*-k[\s]+[\S]+[\s]*$/) }
   end
 end
-

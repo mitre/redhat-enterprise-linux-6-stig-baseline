@@ -1,15 +1,15 @@
-control "V-38493" do
-  title "Audit log directories must have mode 0755 or less permissive."
+control 'V-38493' do
+  title 'Audit log directories must have mode 0755 or less permissive.'
   desc  "If users can delete audit logs, audit trails can be modified or
 destroyed."
   impact 0.5
-  tag "gtitle": "SRG-OS-000059"
-  tag "gid": "V-38493"
-  tag "rid": "SV-50294r1_rule"
-  tag "stig_id": "RHEL-06-000385"
-  tag "fix_id": "F-43440r1_fix"
-  tag "cci": ["CCI-000164"]
-  tag "nist": ["AU-9", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000059'
+  tag "gid": 'V-38493'
+  tag "rid": 'SV-50294r1_rule'
+  tag "stig_id": 'RHEL-06-000385'
+  tag "fix_id": 'F-43440r1_fix'
+  tag "cci": ['CCI-000164']
+  tag "nist": ['AU-9', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -39,4 +39,3 @@ command:
     it { should_not be_writable.by('others') }
   end
 end
-

@@ -1,17 +1,17 @@
-control "V-38702" do
-  title "The FTP daemon must be configured for logging or verbose mode."
+control 'V-38702' do
+  title 'The FTP daemon must be configured for logging or verbose mode.'
   desc  "To trace malicious activity facilitated by the FTP service, it must be
 configured to ensure that all commands sent to the ftp server are logged using
 the verbose vsftpd log format. The default vsftpd log file is
 /var/log/vsftpd.log."
   impact 0.3
-  tag "gtitle": "SRG-OS-000037"
-  tag "gid": "V-38702"
-  tag "rid": "SV-50503r1_rule"
-  tag "stig_id": "RHEL-06-000339"
-  tag "fix_id": "F-43651r1_fix"
-  tag "cci": ["CCI-000130"]
-  tag "nist": ["AU-3", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000037'
+  tag "gid": 'V-38702'
+  tag "rid": 'SV-50503r1_rule'
+  tag "stig_id": 'RHEL-06-000339'
+  tag "fix_id": 'F-43651r1_fix'
+  tag "cci": ['CCI-000130']
+  tag "nist": ['AU-3', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -54,4 +54,3 @@ log_ftp_protocol=YES"
     its('xferlog_enable') { should eq 'YES' }
   end
 end
-

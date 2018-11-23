@@ -1,4 +1,4 @@
-control "V-38452" do
+control 'V-38452' do
   title "The system package management tool must verify permissions on all
 files and directories associated with packages."
   desc  "Permissions on system binaries and configuration files that are too
@@ -6,13 +6,13 @@ generous could allow an unauthorized user to gain privileges that they should
 not have. The permissions set by the vendor should be maintained. Any
 deviations from this baseline should be investigated."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38452"
-  tag "rid": "SV-50252r2_rule"
-  tag "stig_id": "RHEL-06-000518"
-  tag "fix_id": "F-43398r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38452'
+  tag "rid": 'SV-50252r2_rule'
+  tag "stig_id": 'RHEL-06-000518'
+  tag "fix_id": 'F-43398r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -51,4 +51,3 @@ expected by the RPM database:
     its('stdout.strip') { should be_empty }
   end
 end
-

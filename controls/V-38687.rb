@@ -1,17 +1,17 @@
-control "V-38687" do
+control 'V-38687' do
   title "The system must provide VPN connectivity for communications over
 untrusted networks."
   desc  "Providing the ability for remote users or systems to initiate a secure
 VPN connection protects information when it is transmitted over a wide area
 network."
   impact 0.3
-  tag "gtitle": "SRG-OS-000160"
-  tag "gid": "V-38687"
-  tag "rid": "SV-50488r3_rule"
-  tag "stig_id": "RHEL-06-000321"
-  tag "fix_id": "F-43636r2_fix"
-  tag "cci": ["CCI-001130"]
-  tag "nist": ["SC-9", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000160'
+  tag "gid": 'V-38687'
+  tag "rid": 'SV-50488r3_rule'
+  tag "stig_id": 'RHEL-06-000321'
+  tag "fix_id": 'F-43636r2_fix'
+  tag "cci": ['CCI-001130']
+  tag "nist": ['SC-9', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -38,8 +38,7 @@ IKE, which permits the creation of secure tunnels over untrusted networks. The
 # yum install libreswan
 "
 
-  describe package("libreswan") do
+  describe package('libreswan') do
     it { should be_installed }
   end
 end
-

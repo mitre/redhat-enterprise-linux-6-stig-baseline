@@ -1,16 +1,16 @@
-control "V-38469" do
-  title "All system command files must have mode 755 or less permissive."
+control 'V-38469' do
+  title 'All system command files must have mode 755 or less permissive.'
   desc  "System binaries are executed by privileged users, as well as system
 services, and restrictive permissions are necessary to ensure execution of
 these programs cannot be co-opted."
   impact 0.5
-  tag "gtitle": "SRG-OS-000259"
-  tag "gid": "V-38469"
-  tag "rid": "SV-50269r3_rule"
-  tag "stig_id": "RHEL-06-000047"
-  tag "fix_id": "F-43414r1_fix"
-  tag "cci": ["CCI-001499"]
-  tag "nist": ["CM-5 (6)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000259'
+  tag "gid": 'V-38469'
+  tag "rid": 'SV-50269r3_rule'
+  tag "stig_id": 'RHEL-06-000047'
+  tag "fix_id": 'F-43414r1_fix'
+  tag "cci": ['CCI-001499']
+  tag "nist": ['CM-5 (6)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -54,11 +54,10 @@ world-writable, correct its permission with the following command:
 
 # chmod go-w [FILE]"
 
-  dirs = ["/bin", "/usr/bin", "/usr/local/bin", "/sbin", "/usr/sbin", "/usr/local/sbin"]
+  dirs = ['/bin', '/usr/bin', '/usr/local/bin', '/sbin', '/usr/sbin', '/usr/local/sbin']
   dirs.each do |d|
     describe command("find -L #{d} -perm /022 -type f") do
       its('stdout.strip') { should be_empty }
     end
   end
 end
-

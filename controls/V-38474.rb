@@ -1,16 +1,16 @@
-control "V-38474" do
-  title "The system must allow locking of graphical desktop sessions."
+control 'V-38474' do
+  title 'The system must allow locking of graphical desktop sessions.'
   desc  "The ability to lock graphical desktop sessions manually allows users
 to easily secure their accounts should they need to depart from their
 workstations temporarily."
   impact 0.3
-  tag "gtitle": "SRG-OS-000030"
-  tag "gid": "V-38474"
-  tag "rid": "SV-50274r2_rule"
-  tag "stig_id": "RHEL-06-000508"
-  tag "fix_id": "F-43420r1_fix"
-  tag "cci": ["CCI-000058"]
-  tag "nist": ["AC-11 a", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000030'
+  tag "gid": 'V-38474'
+  tag "rid": 'SV-50274r2_rule'
+  tag "stig_id": 'RHEL-06-000508'
+  tag "fix_id": 'F-43420r1_fix'
+  tag "cci": ['CCI-000058']
+  tag "nist": ['AC-11 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -43,14 +43,13 @@ Another keyboard sequence may be substituted for \"<Control><Alt>l\", which is
 the default for the Gnome desktop."
 
   if package('GConf2').installed?
-    describe command("gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome-screensaver/mode") do
+    describe command('gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome-screensaver/mode') do
       its('stdout.strip') { should_not eq '' }
     end
   else
     impact 0.0
-    describe "Package GConf2 not installed" do
-      skip "Package GConf2 not installed, this control Not Applicable"
+    describe 'Package GConf2 not installed' do
+      skip 'Package GConf2 not installed, this control Not Applicable'
     end
   end
 end
-

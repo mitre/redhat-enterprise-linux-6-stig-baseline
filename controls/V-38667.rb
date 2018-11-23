@@ -1,18 +1,18 @@
-control "V-38667" do
-  title "The system must have a host-based intrusion detection tool installed."
+control 'V-38667' do
+  title 'The system must have a host-based intrusion detection tool installed.'
   desc  "Adding host-based intrusion detection tools can provide the capability
 to automatically take actions in response to malicious behavior, which can
 provide additional agility in reacting to network threats. These tools also
 often include a reporting capability to provide network awareness of system,
 which may not otherwise exist in an organization's systems management regime."
   impact 0.5
-  tag "gtitle": "SRG-OS-000196"
-  tag "gid": "V-38667"
-  tag "rid": "SV-50468r3_rule"
-  tag "stig_id": "RHEL-06-000285"
-  tag "fix_id": "F-43616r3_fix"
-  tag "cci": ["CCI-001263"]
-  tag "nist": ["SI-4 (5)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000196'
+  tag "gid": 'V-38667'
+  tag "rid": 'SV-50468r3_rule'
+  tag "stig_id": 'RHEL-06-000285'
+  tag "fix_id": 'F-43616r3_fix'
+  tag "cci": ['CCI-001263']
+  tag "nist": ['SI-4 (5)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -66,8 +66,7 @@ supported intrusion detection system application and document its use with the
 Authorizing Official.
 "
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe 'Manual test' do
+    skip 'This control must be reviewed manually'
   end
 end
-

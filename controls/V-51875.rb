@@ -1,4 +1,4 @@
-control "V-51875" do
+control 'V-51875' do
   title "The operating system, upon successful logon/access, must display to
 the user the number of unsuccessful logon/access attempts since the last
 successful logon/access."
@@ -8,13 +8,13 @@ attempts that were made to login to their account allows the user to determine
 if any unauthorized activity has occurred and gives them an opportunity to
 notify administrators. "
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-51875"
-  tag "rid": "SV-66089r1_rule"
-  tag "stig_id": "RHEL-06-000372"
-  tag "fix_id": "F-56701r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-51875'
+  tag "rid": 'SV-66089r1_rule'
+  tag "stig_id": 'RHEL-06-000372'
+  tag "fix_id": 'F-56701r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -38,8 +38,7 @@ required pam_limits.so\":
 
 session required pam_lastlog.so showfailed"
 
-  describe file("/etc/pam.d/system-auth") do
-    its("content") { should match(/^\s*session\s+(required|requisite)?\s+pam_lastlog.so[\s\w\d\=]+showfailed/) }
+  describe file('/etc/pam.d/system-auth') do
+    its('content') { should match(/^\s*session\s+(required|requisite)?\s+pam_lastlog.so[\s\w\d\=]+showfailed/) }
   end
 end
-

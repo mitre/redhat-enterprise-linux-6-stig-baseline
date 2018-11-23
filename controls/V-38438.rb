@@ -1,17 +1,17 @@
-control "V-38438" do
-  title "Auditing must be enabled at boot by setting a kernel parameter."
+control 'V-38438' do
+  title 'Auditing must be enabled at boot by setting a kernel parameter.'
   desc  "Each process on the system carries an \"auditable\" flag which
 indicates whether its activities can be audited. Although \"auditd\" takes care
 of enabling this for all processes which launch after it does, adding the
 kernel argument ensures it is set for every process during boot."
   impact 0.3
-  tag "gtitle": "SRG-OS-000062"
-  tag "gid": "V-38438"
-  tag "rid": "SV-50238r4_rule"
-  tag "stig_id": "RHEL-06-000525"
-  tag "fix_id": "F-43382r4_fix"
-  tag "cci": ["CCI-000169"]
-  tag "nist": ["AU-12 a", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000062'
+  tag "gid": 'V-38438'
+  tag "rid": 'SV-50238r4_rule'
+  tag "stig_id": 'RHEL-06-000525'
+  tag "fix_id": 'F-43382r4_fix'
+  tag "cci": ['CCI-000169']
+  tag "nist": ['AU-12 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -42,12 +42,11 @@ audit=1
 UEFI systems may prepend \"/boot\" to the \"/vmlinuz-version\" argument."
 
   describe.one do
-    describe file("/boot/grub/grub.conf") do
-      its("content") { should match(/^\s*kernel\s(?:\/boot)?\/vmlinuz.*audit=1.*$/) }
+    describe file('/boot/grub/grub.conf') do
+      its('content') { should match(/^\s*kernel\s(?:\/boot)?\/vmlinuz.*audit=1.*$/) }
     end
-    describe file("/boot/efi/EFI/redhat/grub.conf") do
-      its("content") { should match(/^\s*kernel\s(?:\/boot)?\/vmlinuz.*audit=1.*$/) }
+    describe file('/boot/efi/EFI/redhat/grub.conf') do
+      its('content') { should match(/^\s*kernel\s(?:\/boot)?\/vmlinuz.*audit=1.*$/) }
     end
   end
 end
-

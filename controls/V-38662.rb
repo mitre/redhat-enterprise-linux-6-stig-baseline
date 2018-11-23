@@ -1,4 +1,4 @@
-control "V-38662" do
+control 'V-38662' do
   title "The operating system must employ cryptographic mechanisms to prevent
 unauthorized disclosure of data at rest unless otherwise protected by
 alternative physical measures."
@@ -6,13 +6,13 @@ alternative physical measures."
 systems such as laptops, places its data at risk of compromise. Encrypting this
 data mitigates the risk of its loss if the system is lost."
   impact 0.3
-  tag "gtitle": "SRG-OS-000230"
-  tag "gid": "V-38662"
-  tag "rid": "SV-50463r2_rule"
-  tag "stig_id": "RHEL-06-000277"
-  tag "fix_id": "F-43611r3_fix"
-  tag "cci": ["CCI-001200"]
-  tag "nist": ["SC-28 (1)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000230'
+  tag "gid": 'V-38662'
+  tag "rid": 'SV-50463r2_rule'
+  tag "stig_id": 'RHEL-06-000277'
+  tag "fix_id": 'F-43611r3_fix'
+  tag "cci": ['CCI-001200']
+  tag "nist": ['SC-28 (1)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -53,8 +53,7 @@ Red Hat Documentation web site:
 
 https://docs.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/6/html/Security_Guide/sect-Security_Guide-LUKS_Disk_Encryption.html"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe 'Manual test' do
+    skip 'This control must be reviewed manually'
   end
 end
-

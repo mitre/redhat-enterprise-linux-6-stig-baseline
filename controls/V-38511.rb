@@ -1,17 +1,17 @@
-control "V-38511" do
+control 'V-38511' do
   title "IP forwarding for IPv4 must not be enabled, unless the system is a
 router."
   desc  "IP forwarding permits the kernel to forward packets from one network
 interface to another. The ability to forward packets between two networks is
 only appropriate for systems acting as routers."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38511"
-  tag "rid": "SV-50312r2_rule"
-  tag "stig_id": "RHEL-06-000082"
-  tag "fix_id": "F-43458r2_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38511'
+  tag "rid": 'SV-50312r2_rule'
+  tag "stig_id": 'RHEL-06-000082'
+  tag "fix_id": 'F-43458r2_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -45,14 +45,13 @@ If this is not the system's default value, add the following line to
 
 net.ipv4.ip_forward = 0"
 
-  describe kernel_parameter("net.ipv4.ip_forward") do
-    its("value") { should_not be_nil }
+  describe kernel_parameter('net.ipv4.ip_forward') do
+    its('value') { should_not be_nil }
   end
-  describe kernel_parameter("net.ipv4.ip_forward") do
-    its("value") { should eq 0 }
+  describe kernel_parameter('net.ipv4.ip_forward') do
+    its('value') { should eq 0 }
   end
-  describe file("/etc/sysctl.conf") do
-    its("content") { should match(/^[\s]*net.ipv4.ip_forward[\s]*=[\s]*0[\s]*$/) }
+  describe file('/etc/sysctl.conf') do
+    its('content') { should match(/^[\s]*net.ipv4.ip_forward[\s]*=[\s]*0[\s]*$/) }
   end
 end
-

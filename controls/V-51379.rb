@@ -1,16 +1,16 @@
-control "V-51379" do
+control 'V-51379' do
   title "All device files must be monitored by the system Linux Security
 Module."
   desc  "If a device file carries the SELinux type \"unlabeled_t\", then
 SELinux cannot properly restrict access to the device file. "
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-51379"
-  tag "rid": "SV-65589r1_rule"
-  tag "stig_id": "RHEL-06-000025"
-  tag "fix_id": "F-56179r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-51379'
+  tag "rid": 'SV-65589r1_rule'
+  tag "stig_id": 'RHEL-06-000025'
+  tag "fix_id": 'F-56179r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -33,8 +33,7 @@ system resources, should be labeled with proper SELinux types. If any device
 files carry the SELinux type \"unlabeled_t\", investigate the cause and correct
 the file's context. "
 
-  describe command("ls -RZ /dev | grep unlabeled_t") do
+  describe command('ls -RZ /dev | grep unlabeled_t') do
     its('stdout.strip') { should be_empty }
   end
 end
-

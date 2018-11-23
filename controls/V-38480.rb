@@ -1,15 +1,15 @@
-control "V-38480" do
-  title "Users must be warned 7 days in advance of password expiration."
+control 'V-38480' do
+  title 'Users must be warned 7 days in advance of password expiration.'
   desc  "Setting the password warning age enables users to make the change at a
 practical time."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38480"
-  tag "rid": "SV-50280r1_rule"
-  tag "stig_id": "RHEL-06-000054"
-  tag "fix_id": "F-43425r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38480'
+  tag "rid": 'SV-50280r1_rule'
+  tag "stig_id": 'RHEL-06-000054'
+  tag "fix_id": 'F-43425r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -34,13 +34,12 @@ PASS_WARN_AGE [DAYS]
 
 The DoD requirement is 7."
 
-  describe file("/etc/login.defs") do
-    its("content") { should match(/^[\s]*PASS_WARN_AGE[\s]*(\d+)\s*$/) }
+  describe file('/etc/login.defs') do
+    its('content') { should match(/^[\s]*PASS_WARN_AGE[\s]*(\d+)\s*$/) }
   end
-  file("/etc/login.defs").content.to_s.scan(/^[\s]*PASS_WARN_AGE[\s]*(\d+)\s*$/).flatten.each do |entry|
+  file('/etc/login.defs').content.to_s.scan(/^[\s]*PASS_WARN_AGE[\s]*(\d+)\s*$/).flatten.each do |entry|
     describe entry do
       it { should cmp >= 7 }
     end
   end
 end
-

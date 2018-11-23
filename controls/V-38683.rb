@@ -1,14 +1,14 @@
-control "V-38683" do
-  title "All accounts on the system must have unique user or account names"
-  desc  "Unique usernames allow for accountability on the system."
+control 'V-38683' do
+  title 'All accounts on the system must have unique user or account names'
+  desc  'Unique usernames allow for accountability on the system.'
   impact 0.3
-  tag "gtitle": "SRG-OS-000121"
-  tag "gid": "V-38683"
-  tag "rid": "SV-50484r1_rule"
-  tag "stig_id": "RHEL-06-000296"
-  tag "fix_id": "F-43632r1_fix"
-  tag "cci": ["CCI-000804"]
-  tag "nist": ["IA-8", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000121'
+  tag "gid": 'V-38683'
+  tag "rid": 'SV-50484r1_rule'
+  tag "stig_id": 'RHEL-06-000296'
+  tag "fix_id": 'F-43632r1_fix'
+  tag "cci": ['CCI-000804']
+  tag "nist": ['IA-8', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -25,10 +25,9 @@ control "V-38683" do
 
 If there are no duplicate names, no line will be returned.
 If a line is returned, this is a finding."
-  tag "fix": "Change usernames, or delete accounts, so each has a unique name."
+  tag "fix": 'Change usernames, or delete accounts, so each has a unique name.'
 
-  describe command("pwck -rq") do
+  describe command('pwck -rq') do
     its('stdout.strip') { should be_empty }
   end
 end
-

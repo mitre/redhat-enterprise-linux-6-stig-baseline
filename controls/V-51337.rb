@@ -1,16 +1,16 @@
-control "V-51337" do
-  title "The system must use a Linux Security Module at boot time."
+control 'V-51337' do
+  title 'The system must use a Linux Security Module at boot time.'
   desc  "Disabling a major host protection feature, such as SELinux, at boot
 time prevents it from confining system services at boot time. Further, it
 increases the chances that it will remain off during system operation."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-51337"
-  tag "rid": "SV-65547r2_rule"
-  tag "stig_id": "RHEL-06-000017"
-  tag "fix_id": "F-56147r2_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-51337'
+  tag "rid": 'SV-65547r2_rule'
+  tag "stig_id": 'RHEL-06-000017'
+  tag "fix_id": 'F-56147r2_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -29,8 +29,7 @@ this is a finding."
 \"/boot/grub/grub.conf\". Remove any instances of \"selinux=0\" from the kernel
 arguments in that file to prevent SELinux from being disabled at boot. "
 
-  describe file("/boot/grub/grub.conf") do
-    its("content") { should_not match(/^[\s]*kernel[\s]+.*(selinux|enforcing)=0.*$/) }
+  describe file('/boot/grub/grub.conf') do
+    its('content') { should_not match(/^[\s]*kernel[\s]+.*(selinux|enforcing)=0.*$/) }
   end
 end
-

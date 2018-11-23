@@ -1,15 +1,15 @@
-control "V-38498" do
-  title "Audit log files must have mode 0640 or less permissive."
+control 'V-38498' do
+  title 'Audit log files must have mode 0640 or less permissive.'
   desc  "If users can write to audit logs, audit trails can be modified or
 destroyed."
   impact 0.5
-  tag "gtitle": "SRG-OS-000058"
-  tag "gid": "V-38498"
-  tag "rid": "SV-50299r1_rule"
-  tag "stig_id": "RHEL-06-000383"
-  tag "fix_id": "F-43445r1_fix"
-  tag "cci": ["CCI-000163"]
-  tag "nist": ["AU-9", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000058'
+  tag "gid": 'V-38498'
+  tag "rid": 'SV-50299r1_rule'
+  tag "stig_id": 'RHEL-06-000383'
+  tag "fix_id": 'F-43445r1_fix'
+  tag "cci": ['CCI-000163']
+  tag "nist": ['AU-9', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -32,8 +32,7 @@ command:
 
 # chmod 0640 [audit_file]"
 
-  describe command("find /var/log/audit -regex .\\*/\\^.\\*\\$ -perm -07137 -xdev") do
-    its("stdout") { should be_empty }
+  describe command('find /var/log/audit -regex .\\*/\\^.\\*\\$ -perm -07137 -xdev') do
+    its('stdout') { should be_empty }
   end
 end
-

@@ -1,17 +1,17 @@
-control "V-38467" do
+control 'V-38467' do
   title "The system must use a separate file system for the system audit data
 path."
   desc  "Placing \"/var/log/audit\" in its own partition enables better
 separation between audit files and other files, and helps ensure that auditing
 cannot be halted due to the partition running out of space."
   impact 0.3
-  tag "gtitle": "SRG-OS-000044"
-  tag "gid": "V-38467"
-  tag "rid": "SV-50267r1_rule"
-  tag "stig_id": "RHEL-06-000004"
-  tag "fix_id": "F-43412r1_fix"
-  tag "cci": ["CCI-000137"]
-  tag "nist": ["AU-4", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000044'
+  tag "gid": 'V-38467'
+  tag "rid": 'SV-50267r1_rule'
+  tag "stig_id": 'RHEL-06-000004'
+  tag "fix_id": 'F-43412r1_fix'
+  tag "cci": ['CCI-000137']
+  tag "nist": ['AU-4', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -35,8 +35,7 @@ that it has its own partition or logical volume at installation time, or
 migrate it later using LVM. Make absolutely certain that it is large enough to
 store all audit logs that will be created by the auditing daemon."
 
-  describe mount("/var/log/audit") do
+  describe mount('/var/log/audit') do
     it { should be_mounted }
   end
 end
-

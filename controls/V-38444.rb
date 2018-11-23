@@ -1,4 +1,4 @@
-control "V-38444" do
+control 'V-38444' do
   title "The systems local IPv6 firewall must implement a deny-all,
 allow-by-exception policy for inbound packets."
   desc  "In \"ip6tables\" the default policy is applied only after all the
@@ -6,13 +6,13 @@ applicable rules in the table are examined for a match. Setting the default
 policy to \"DROP\" implements proper design for a firewall, i.e., any packets
 which are not explicitly permitted should not be accepted."
   impact 0.5
-  tag "gtitle": "SRG-OS-000231"
-  tag "gid": "V-38444"
-  tag "rid": "SV-50244r2_rule"
-  tag "stig_id": "RHEL-06-000523"
-  tag "fix_id": "F-43389r3_fix"
-  tag "cci": ["CCI-000066"]
-  tag "nist": ["AC-17 e", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000231'
+  tag "gid": 'V-38444'
+  tag "rid": 'SV-50244r2_rule'
+  tag "stig_id": 'RHEL-06-000523'
+  tag "fix_id": 'F-43389r3_fix'
+  tag "cci": ['CCI-000066']
+  tag "nist": ['AC-17 e', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -42,8 +42,7 @@ Restart the IPv6 firewall:
 
 # service ip6tables restart"
 
-  describe command("ip6tables -nvL | grep -i input") do
-    its('stdout.strip') { should match %r{Chain INPUT \(policy DROP} }
+  describe command('ip6tables -nvL | grep -i input') do
+    its('stdout.strip') { should match /Chain INPUT \(policy DROP/ }
   end
 end
-

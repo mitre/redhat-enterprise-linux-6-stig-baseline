@@ -1,16 +1,16 @@
-control "V-38531" do
-  title "The operating system must automatically audit account creation."
+control 'V-38531' do
+  title 'The operating system must automatically audit account creation.'
   desc  "In addition to auditing new user and group accounts, these watches
 will alert the system administrator(s) to any modifications. Any unexpected
 users, groups, or modifications should be investigated for legitimacy."
   impact 0.3
-  tag "gtitle": "SRG-OS-000004"
-  tag "gid": "V-38531"
-  tag "rid": "SV-50332r2_rule"
-  tag "stig_id": "RHEL-06-000174"
-  tag "fix_id": "F-43480r1_fix"
-  tag "cci": ["CCI-000018"]
-  tag "nist": ["AC-2 (4)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000004'
+  tag "gid": 'V-38531'
+  tag "rid": 'SV-50332r2_rule'
+  tag "stig_id": 'RHEL-06-000174'
+  tag "fix_id": 'F-43480r1_fix'
+  tag "cci": ['CCI-000018']
+  tag "nist": ['AC-2 (4)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -42,20 +42,19 @@ capture events that modify account changes:
 -w /etc/shadow -p wa -k audit_account_changes
 -w /etc/security/opasswd -p wa -k audit_account_changes"
 
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^\-w\s+\/etc\/group\s+\-p\s+wa\s+\-k\s+\w+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^\-w\s+\/etc\/group\s+\-p\s+wa\s+\-k\s+\w+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^\-w\s+\/etc\/passwd\s+\-p\s+wa\s+\-k\s+\w+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^\-w\s+\/etc\/passwd\s+\-p\s+wa\s+\-k\s+\w+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^\-w\s+\/etc\/gshadow\s+\-p\s+wa\s+\-k\s+\w+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^\-w\s+\/etc\/gshadow\s+\-p\s+wa\s+\-k\s+\w+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^\-w\s+\/etc\/shadow\s+\-p\s+wa\s+\-k\s+\w+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^\-w\s+\/etc\/shadow\s+\-p\s+wa\s+\-k\s+\w+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^\-w\s+\/etc\/security\/opasswd\s+\-p\s+wa\s+\-k\s+\w+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^\-w\s+\/etc\/security\/opasswd\s+\-p\s+wa\s+\-k\s+\w+\s*$/) }
   end
 end
-

@@ -1,17 +1,17 @@
-control "V-38526" do
+control 'V-38526' do
   title "The system must not accept ICMPv4 secure redirect packets on any
 interface."
   desc  "Accepting \"secure\" ICMP redirects (from those gateways listed as
 default gateways) has few legitimate uses. It should be disabled unless it is
 absolutely required."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38526"
-  tag "rid": "SV-50327r2_rule"
-  tag "stig_id": "RHEL-06-000086"
-  tag "fix_id": "F-43474r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38526'
+  tag "rid": 'SV-50327r2_rule'
+  tag "stig_id": 'RHEL-06-000086'
+  tag "fix_id": 'F-43474r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -45,14 +45,13 @@ If this is not the system's default value, add the following line to
 
 net.ipv4.conf.all.secure_redirects = 0"
 
-  describe kernel_parameter("net.ipv4.conf.all.secure_redirects") do
-    its("value") { should_not be_nil }
+  describe kernel_parameter('net.ipv4.conf.all.secure_redirects') do
+    its('value') { should_not be_nil }
   end
-  describe kernel_parameter("net.ipv4.conf.all.secure_redirects") do
-    its("value") { should eq 0 }
+  describe kernel_parameter('net.ipv4.conf.all.secure_redirects') do
+    its('value') { should eq 0 }
   end
-  describe file("/etc/sysctl.conf") do
-    its("content") { should match(/^[\s]*net.ipv4.conf.all.secure_redirects[\s]*=[\s]*0[\s]*$/) }
+  describe file('/etc/sysctl.conf') do
+    its('content') { should match(/^[\s]*net.ipv4.conf.all.secure_redirects[\s]*=[\s]*0[\s]*$/) }
   end
 end
-

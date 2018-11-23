@@ -1,16 +1,16 @@
-control "V-38614" do
-  title "The SSH daemon must not allow authentication using an empty password."
+control 'V-38614' do
+  title 'The SSH daemon must not allow authentication using an empty password.'
   desc  "Configuring this setting for the SSH daemon provides additional
 assurance that remote login via SSH will require a password, even in the event
 of misconfiguration elsewhere."
   impact 0.7
-  tag "gtitle": "SRG-OS-000106"
-  tag "gid": "V-38614"
-  tag "rid": "SV-50415r1_rule"
-  tag "stig_id": "RHEL-06-000239"
-  tag "fix_id": "F-43562r1_fix"
-  tag "cci": ["CCI-000766"]
-  tag "nist": ["IA-2 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000106'
+  tag "gid": 'V-38614'
+  tag "rid": 'SV-50415r1_rule'
+  tag "stig_id": 'RHEL-06-000239'
+  tag "fix_id": 'F-43562r1_fix'
+  tag "cci": ['CCI-000766']
+  tag "nist": ['IA-2 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -42,4 +42,3 @@ passwords."
     its('PermitEmptyPasswords') { should (eq 'no').or be_nil }
   end
 end
-

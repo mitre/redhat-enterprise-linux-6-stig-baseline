@@ -1,16 +1,16 @@
-control "V-38599" do
+control 'V-38599' do
   title "The FTPS/FTP service on the system must be configured with the
 Department of Defense (DoD) login banner."
   desc  "This setting will cause the system greeting banner to be used for FTP
 connections as well."
   impact 0.5
-  tag "gtitle": "SRG-OS-000023"
-  tag "gid": "V-38599"
-  tag "rid": "SV-50400r2_rule"
-  tag "stig_id": "RHEL-06-000348"
-  tag "fix_id": "F-43564r3_fix"
-  tag "cci": ["CCI-000048"]
-  tag "nist": ["AC-8 a", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000023'
+  tag "gid": 'V-38599'
+  tag "rid": 'SV-50400r2_rule'
+  tag "stig_id": 'RHEL-06-000348'
+  tag "fix_id": 'F-43564r3_fix'
+  tag "cci": ['CCI-000048']
+  tag "nist": ['AC-8 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -52,9 +52,8 @@ Restart the vsftpd daemon.
     end
   else
     impact 0.0
-    describe "Package vsftpd not installed" do
-      skip "Package vsftpd not installed, this control Not Applicable"
+    describe 'Package vsftpd not installed' do
+      skip 'Package vsftpd not installed, this control Not Applicable'
     end
   end
 end
-

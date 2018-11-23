@@ -1,4 +1,4 @@
-control "V-38634" do
+control 'V-38634' do
   title "The system must rotate audit log files that reach the maximum file
 size."
   desc  "Automatically rotating logs (by setting this to \"rotate\") minimizes
@@ -7,13 +7,13 @@ overwhelmed with log data. However, for systems that must never discard log
 data, or which use external processes to transfer it and reclaim space,
 \"keep_logs\" can be employed."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38634"
-  tag "rid": "SV-50435r2_rule"
-  tag "stig_id": "RHEL-06-000161"
-  tag "fix_id": "F-43583r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38634'
+  tag "rid": 'SV-50435r2_rule'
+  tag "stig_id": 'RHEL-06-000161'
+  tag "fix_id": 'F-43583r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -57,7 +57,6 @@ Set the \"[ACTION]\" to \"rotate\" to ensure log rotation occurs. This is the
 default. The setting is case-insensitive."
 
   describe parse_config_file('/etc/audit/auditd.conf') do
-    its('max_log_file_action.downcase') { should be_in ['rotate', 'keep_logs'] }
+    its('max_log_file_action.downcase') { should be_in %w[rotate keep_logs] }
   end
 end
-

@@ -1,4 +1,4 @@
-control "V-38520" do
+control 'V-38520' do
   title "The operating system must back up audit records on an organization
 defined frequency onto a different system or media than the system being
 audited."
@@ -8,13 +8,13 @@ system is compromised and its local logs are suspect. Forwarding log messages
 to a remote loghost also provides system administrators with a centralized
 place to view the status of multiple hosts within the enterprise."
   impact 0.5
-  tag "gtitle": "SRG-OS-000215"
-  tag "gid": "V-38520"
-  tag "rid": "SV-50321r1_rule"
-  tag "stig_id": "RHEL-06-000136"
-  tag "fix_id": "F-43468r1_fix"
-  tag "cci": ["CCI-001348"]
-  tag "nist": ["AU-9 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000215'
+  tag "gid": 'V-38520'
+  tag "rid": 'SV-50321r1_rule'
+  tag "stig_id": 'RHEL-06-000136'
+  tag "fix_id": 'F-43468r1_fix'
+  tag "cci": ['CCI-001348']
+  tag "nist": ['AU-9 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -65,9 +65,8 @@ To use RELP for log message delivery:
 *.* :omrelp:[loghost.example.com]"
 
   describe file('/etc/rsyslog.conf') do
-    its('content') {
-      should (match %r{^\s*\*\.\*\s+@[^@#]+}).or (match %r{^\s*\*\.\*\s+@@[^@#]+}). or (match %r{^\s*\*\.\*\s+:omrelp:[^@#]+})
-    }
+    its('content') do
+      should (match /^\s*\*\.\*\s+@[^@#]+/).or (match /^\s*\*\.\*\s+@@[^@#]+/). or (match /^\s*\*\.\*\s+:omrelp:[^@#]+/)
+    end
   end
 end
-

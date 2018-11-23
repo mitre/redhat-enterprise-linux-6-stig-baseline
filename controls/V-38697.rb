@@ -1,5 +1,5 @@
-control "V-38697" do
-  title "The sticky bit must be set on all public directories."
+control 'V-38697' do
+  title 'The sticky bit must be set on all public directories.'
   desc  "Failing to set the sticky bit on public directories allows
 unauthorized users to delete files in the directory structure.
 
@@ -10,13 +10,13 @@ users for temporary file storage - such as /tmp - and for directories requiring
 global read/write access.
   "
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38697"
-  tag "rid": "SV-50498r2_rule"
-  tag "stig_id": "RHEL-06-000336"
-  tag "fix_id": "F-43646r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38697'
+  tag "rid": 'SV-50498r2_rule'
+  tag "stig_id": 'RHEL-06-000336'
+  tag "fix_id": 'F-43646r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -49,9 +49,8 @@ command:
 # chmod +t [DIR]"
 
   dirs = command(%(find / -xautofs -noleaf -wholename '/proc' -prune -o -wholename '/sys' -prune -o -wholename '/dev' -prune -o -wholename '/selinux' -prune -o -type d -perm -002 \\! -perm -1000 -print))
-  describe "World-writable directories lacking sticky bit" do
+  describe 'World-writable directories lacking sticky bit' do
     subject { dirs.stdout.strip.split("\n") }
     it { should be_empty }
   end
 end
-

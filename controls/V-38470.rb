@@ -1,16 +1,16 @@
-control "V-38470" do
+control 'V-38470' do
   title "The audit system must alert designated staff members when the audit
 storage volume approaches capacity."
   desc  "Notifying administrators of an impending disk space problem may allow
 them to take corrective action prior to any disruption."
   impact 0.5
-  tag "gtitle": "SRG-OS-000045"
-  tag "gid": "V-38470"
-  tag "rid": "SV-50270r2_rule"
-  tag "stig_id": "RHEL-06-000005"
-  tag "fix_id": "F-43415r2_fix"
-  tag "cci": ["CCI-000138"]
-  tag "nist": ["AU-4", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000045'
+  tag "gid": 'V-38470'
+  tag "rid": 'SV-50270r2_rule'
+  tag "stig_id": 'RHEL-06-000005'
+  tag "fix_id": 'F-43415r2_fix'
+  tag "cci": ['CCI-000138']
+  tag "nist": ['AU-4', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -59,13 +59,12 @@ administrator in a timely manner.
 RHEL-06-000521 ensures that the email generated through the operation
 \"space_left_action\" will be sent to an administrator."
 
-  describe file("/etc/audit/auditd.conf") do
-    its("content") { should match(/^[ ]*space_left_action[ ]+=[ ]+(\S+)[ ]*$/) }
+  describe file('/etc/audit/auditd.conf') do
+    its('content') { should match(/^[ ]*space_left_action[ ]+=[ ]+(\S+)[ ]*$/) }
   end
-  file("/etc/audit/auditd.conf").content.to_s.scan(/^[ ]*space_left_action[ ]+=[ ]+(\S+)[ ]*$/).flatten.each do |entry|
+  file('/etc/audit/auditd.conf').content.to_s.scan(/^[ ]*space_left_action[ ]+=[ ]+(\S+)[ ]*$/).flatten.each do |entry|
     describe entry do
-      it { should cmp "email" }
+      it { should cmp 'email' }
     end
   end
 end
-

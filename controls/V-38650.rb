@@ -1,17 +1,17 @@
-control "V-38650" do
-  title "The rdisc service must not be running."
+control 'V-38650' do
+  title 'The rdisc service must not be running.'
   desc  "General-purpose systems typically have their network and routing
 information configured statically by a system administrator. Workstations or
 some special-purpose systems often use DHCP (instead of IRDP) to retrieve
 dynamic network configuration information."
   impact 0.3
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38650"
-  tag "rid": "SV-50451r2_rule"
-  tag "stig_id": "RHEL-06-000268"
-  tag "fix_id": "F-43599r2_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38650'
+  tag "rid": 'SV-50451r2_rule'
+  tag "stig_id": 'RHEL-06-000268'
+  tag "fix_id": 'F-43599r2_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -54,18 +54,17 @@ The \"rdisc\" service can be disabled with the following commands:
 # service rdisc stop"
 
   describe.one do
-    describe package("iputils") do
+    describe package('iputils') do
       it { should_not be_installed }
     end
-    describe service("rdisc") do
-      its("runlevels(?-mix:0)") { should be_enabled }
-      its("runlevels(?-mix:1)") { should be_enabled }
-      its("runlevels(?-mix:2)") { should be_enabled }
-      its("runlevels(?-mix:3)") { should be_enabled }
-      its("runlevels(?-mix:4)") { should be_enabled }
-      its("runlevels(?-mix:5)") { should be_enabled }
-      its("runlevels(?-mix:6)") { should be_enabled }
+    describe service('rdisc') do
+      its('runlevels(?-mix:0)') { should be_enabled }
+      its('runlevels(?-mix:1)') { should be_enabled }
+      its('runlevels(?-mix:2)') { should be_enabled }
+      its('runlevels(?-mix:3)') { should be_enabled }
+      its('runlevels(?-mix:4)') { should be_enabled }
+      its('runlevels(?-mix:5)') { should be_enabled }
+      its('runlevels(?-mix:6)') { should be_enabled }
     end
   end
 end
-

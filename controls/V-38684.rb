@@ -1,4 +1,4 @@
-control "V-38684" do
+control 'V-38684' do
   title "The system must limit users to 10 simultaneous system logins, or a
 site-defined number, in accordance with operational requirements."
   desc  "Limiting simultaneous user logins can insulate the system from denial
@@ -6,13 +6,13 @@ of service problems caused by excessive logins. Automated login processes
 operating improperly or maliciously may result in an exceptional number of
 simultaneous login sessions."
   impact 0.3
-  tag "gtitle": "SRG-OS-000027"
-  tag "gid": "V-38684"
-  tag "rid": "SV-50485r2_rule"
-  tag "stig_id": "RHEL-06-000319"
-  tag "fix_id": "F-43633r1_fix"
-  tag "cci": ["CCI-000054"]
-  tag "nist": ["AC-10", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000027'
+  tag "gid": 'V-38684'
+  tag "rid": 'SV-50485r2_rule'
+  tag "stig_id": 'RHEL-06-000319'
+  tag "fix_id": 'F-43633r1_fix'
+  tag "cci": ['CCI-000054']
+  tag "nist": ['AC-10', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -47,4 +47,3 @@ A documented site-defined number may be substituted for 10 in the above."
     its('*') { should include ['hard', 'maxlogins', attribute('maxlogins').to_s] }
   end
 end
-

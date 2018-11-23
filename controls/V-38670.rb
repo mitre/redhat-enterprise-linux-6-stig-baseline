@@ -1,16 +1,16 @@
-control "V-38670" do
+control 'V-38670' do
   title "The operating system must detect unauthorized changes to software and
 information. "
   desc  "By default, AIDE does not install itself for periodic execution.
 Periodically running AIDE may reveal unexpected changes in installed files."
   impact 0.5
-  tag "gtitle": "SRG-OS-000202"
-  tag "gid": "V-38670"
-  tag "rid": "SV-50471r2_rule"
-  tag "stig_id": "RHEL-06-000306"
-  tag "fix_id": "F-43619r1_fix"
-  tag "cci": ["CCI-001297"]
-  tag "nist": ["SI-7", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000202'
+  tag "gid": 'V-38670'
+  tag "rid": 'SV-50471r2_rule'
+  tag "stig_id": 'RHEL-06-000306'
+  tag "fix_id": 'F-43619r1_fix'
+  tag "cci": ['CCI-001297']
+  tag "nist": ['SI-7', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -40,4 +40,3 @@ example."
     its('stdout.strip') { should_not be_empty }
   end
 end
-

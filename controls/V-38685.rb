@@ -1,16 +1,16 @@
-control "V-38685" do
-  title "Temporary accounts must be provisioned with an expiration date."
+control 'V-38685' do
+  title 'Temporary accounts must be provisioned with an expiration date.'
   desc  "When temporary accounts are created, there is a risk they may remain
 in place and active after the need for them no longer exists. Account
 expiration greatly reduces the risk of accounts being misused or hijacked."
   impact 0.3
-  tag "gtitle": "SRG-OS-000002"
-  tag "gid": "V-38685"
-  tag "rid": "SV-50486r1_rule"
-  tag "stig_id": "RHEL-06-000297"
-  tag "fix_id": "F-43634r1_fix"
-  tag "cci": ["CCI-000016"]
-  tag "nist": ["AC-2 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000002'
+  tag "gid": 'V-38685'
+  tag "rid": 'SV-50486r1_rule'
+  tag "stig_id": 'RHEL-06-000297'
+  tag "fix_id": 'F-43634r1_fix'
+  tag "cci": ['CCI-000016']
+  tag "nist": ['AC-2 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -41,15 +41,14 @@ substituting \"[USER]\" and \"[YYYY-MM-DD]\" appropriately:
   temporary_accounts = attribute('temporary_accounts')
 
   if temporary_accounts.empty?
-    describe "Temporary accounts" do
+    describe 'Temporary accounts' do
       it { should_be empty }
     end
   else
     temporary_accounts.each do |acct|
       describe command("chage -l #{acct} | grep 'Account expires'") do
-        its('stdout.strip') { should_not match %r{:\s*never} }
+        its('stdout.strip') { should_not match /:\s*never/ }
       end
     end
   end
 end
-

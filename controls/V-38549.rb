@@ -1,15 +1,15 @@
-control "V-38549" do
-  title "The system must employ a local IPv6 firewall."
+control 'V-38549' do
+  title 'The system must employ a local IPv6 firewall.'
   desc  "The \"ip6tables\" service provides the system's host-based firewalling
 capability for IPv6 and ICMPv6."
   impact 0.5
-  tag "gtitle": "SRG-OS-000152"
-  tag "gid": "V-38549"
-  tag "rid": "SV-50350r3_rule"
-  tag "stig_id": "RHEL-06-000103"
-  tag "fix_id": "F-43497r3_fix"
-  tag "cci": ["CCI-001118"]
-  tag "nist": ["SC-7 (12)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000152'
+  tag "gid": 'V-38549'
+  tag "rid": 'SV-50350r3_rule'
+  tag "stig_id": 'RHEL-06-000103'
+  tag "fix_id": 'F-43497r3_fix'
+  tag "cci": ['CCI-001118']
+  tag "nist": ['SC-7 (12)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -46,4 +46,3 @@ commands:
     it { should be_running }
   end
 end
-

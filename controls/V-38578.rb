@@ -1,17 +1,17 @@
-control "V-38578" do
+control 'V-38578' do
   title "The audit system must be configured to audit changes to the
 /etc/sudoers file."
   desc  "The actions taken by system administrators should be audited to keep a
 record of what was executed on the system, as well as, for accountability
 purposes."
   impact 0.3
-  tag "gtitle": "SRG-OS-000064"
-  tag "gid": "V-38578"
-  tag "rid": "SV-50379r2_rule"
-  tag "stig_id": "RHEL-06-000201"
-  tag "fix_id": "F-43526r1_fix"
-  tag "cci": ["CCI-000172"]
-  tag "nist": ["AU-12 c", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000064'
+  tag "gid": 'V-38578'
+  tag "rid": 'SV-50379r2_rule'
+  tag "stig_id": 'RHEL-06-000201'
+  tag "fix_id": 'F-43526r1_fix'
+  tag "cci": ['CCI-000172']
+  tag "nist": ['AU-12 c', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -38,8 +38,7 @@ actions for all users and root. Add the following to
 
 -w /etc/sudoers -p wa -k actions"
 
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^\-w\s+\/etc\/sudoers\s+\-p\s+wa\s+\-k\s+[-\w]+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^\-w\s+\/etc\/sudoers\s+\-p\s+wa\s+\-k\s+[-\w]+\s*$/) }
   end
 end
-

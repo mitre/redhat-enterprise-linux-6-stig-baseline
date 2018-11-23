@@ -1,15 +1,15 @@
-control "V-38548" do
-  title "The system must ignore ICMPv6 redirects by default."
+control 'V-38548' do
+  title 'The system must ignore ICMPv6 redirects by default.'
   desc  "An illicit ICMP redirect message could result in a man-in-the-middle
 attack."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38548"
-  tag "rid": "SV-50349r3_rule"
-  tag "stig_id": "RHEL-06-000099"
-  tag "fix_id": "F-43496r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38548'
+  tag "rid": 'SV-50349r3_rule'
+  tag "stig_id": 'RHEL-06-000099'
+  tag "fix_id": 'F-43496r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -45,11 +45,10 @@ If this is not the system's default value, add the following line to
 
 net.ipv6.conf.default.accept_redirects = 0"
 
-  describe kernel_parameter("net.ipv6.conf.default.accept_redirects") do
-    its("value") { should eq 0 }
+  describe kernel_parameter('net.ipv6.conf.default.accept_redirects') do
+    its('value') { should eq 0 }
   end
-  describe file("/etc/sysctl.conf") do
-    its("content") { should match(/^[\s]*net.ipv6.conf.default.accept_redirects[\s]*=[\s]*0[\s]*$/) }
+  describe file('/etc/sysctl.conf') do
+    its('content') { should match(/^[\s]*net.ipv6.conf.default.accept_redirects[\s]*=[\s]*0[\s]*$/) }
   end
 end
-

@@ -1,17 +1,17 @@
-control "V-38586" do
+control 'V-38586' do
   title "The system must require authentication upon booting into single-user
 and maintenance modes."
   desc  "This prevents attackers with physical access from trivially bypassing
 security on the machine and gaining root access. Such accesses are further
 prevented by configuring the bootloader password."
   impact 0.5
-  tag "gtitle": "SRG-OS-000080"
-  tag "gid": "V-38586"
-  tag "rid": "SV-50387r1_rule"
-  tag "stig_id": "RHEL-06-000069"
-  tag "fix_id": "F-43534r1_fix"
-  tag "cci": ["CCI-000213"]
-  tag "nist": ["AC-3", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000080'
+  tag "gid": 'V-38586'
+  tag "rid": 'SV-50387r1_rule'
+  tag "stig_id": 'RHEL-06-000069'
+  tag "fix_id": 'F-43534r1_fix'
+  tag "cci": ['CCI-000213']
+  tag "nist": ['AC-3', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -44,8 +44,7 @@ single-user mode, add or correct the following line in the file
 
 SINGLE=/sbin/sulogin"
 
-  describe file("/etc/sysconfig/init") do
-    its("content") { should match(/^SINGLE=\/sbin\/sulogin[\s]*/) }
+  describe file('/etc/sysconfig/init') do
+    its('content') { should match(/^SINGLE=\/sbin\/sulogin[\s]*/) }
   end
 end
-

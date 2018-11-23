@@ -1,5 +1,5 @@
-control "V-72817" do
-  title "Wireless network adapters must be disabled."
+control 'V-72817' do
+  title 'Wireless network adapters must be disabled.'
   desc  "The use of wireless networking can introduce many different attack
 vectors into the organization's network. Common attack vectors such as
 malicious association and ad hoc networks will allow an attacker to spoof a
@@ -8,13 +8,13 @@ malicious AP and enabling the attacker to monitor and record network traffic.
 These malicious APs can also serve to create a man-in-the-middle attack or be
 used to create a denial of service to valid network resources."
   impact 0.5
-  tag "gtitle": "RHEL-06-000293"
-  tag "gid": "V-72817"
-  tag "rid": "SV-87461r1_rule"
-  tag "stig_id": "RHEL-06-000293"
-  tag "fix_id": "F-79233r1_fix"
-  tag "cci": ["CCI-001443", "CCI-001444", "CCI-002418"]
-  tag "nist": ["AC-18 (1)", "AC-18 (1)", "SC-8", "Rev_4"]
+  tag "gtitle": 'RHEL-06-000293'
+  tag "gid": 'V-72817'
+  tag "rid": 'SV-87461r1_rule'
+  tag "stig_id": 'RHEL-06-000293'
+  tag "fix_id": 'F-79233r1_fix'
+  tag "cci": ['CCI-001443', 'CCI-001444', 'CCI-002418']
+  tag "nist": ['AC-18 (1)', 'AC-18 (1)', 'SC-8', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -59,12 +59,12 @@ the local Authorizing Official.
 If a wireless interface is configured and has not been documented and approved,
 this is a finding.
 "
-  tag "fix": "Configure the system to disable all wireless network interfaces."
+  tag "fix": 'Configure the system to disable all wireless network interfaces.'
 
   wlans = command('ls /sys/class/net').stdout.split.select { |e| e.start_with? 'wlan' }
 
   if wlans.empty?
-    describe "No wlan interfaces exist" do
+    describe 'No wlan interfaces exist' do
       subject { true }
       it { should eq true }
     end
@@ -76,4 +76,3 @@ this is a finding.
     end
   end
 end
-

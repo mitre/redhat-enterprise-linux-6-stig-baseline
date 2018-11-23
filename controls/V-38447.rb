@@ -1,17 +1,17 @@
-control "V-38447" do
+control 'V-38447' do
   title "The system package management tool must verify contents of all files
 associated with packages."
   desc  "The hash on important files like system executables should match the
 information given by the RPM database. Executables with erroneous hashes could
 be a sign of nefarious activity on the system."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38447"
-  tag "rid": "SV-50247r4_rule"
-  tag "stig_id": "RHEL-06-000519"
-  tag "fix_id": "F-43392r5_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38447'
+  tag "rid": 'SV-50247r4_rule'
+  tag "stig_id": 'RHEL-06-000519'
+  tag "fix_id": 'F-43392r5_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -50,9 +50,8 @@ OR
 yum reinstall [affected_package]
 "
 
-  # TODO check against an exception list attribute
+  # TODO: check against an exception list attribute
   describe command("rpm -Va | awk '$1 ~ /..5/ && $2 != \"c\"'") do
     its('stdout.strip') { should be_empty }
   end
 end
-

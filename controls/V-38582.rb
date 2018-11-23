@@ -1,4 +1,4 @@
-control "V-38582" do
+control 'V-38582' do
   title "The xinetd service must be disabled if no network services utilizing
 it are enabled."
   desc  "The xinetd service provides a dedicated listener service for some
@@ -6,13 +6,13 @@ programs, which is no longer necessary for commonly-used network services.
 Disabling it ensures that these uncommon services are not running, and also
 prevents attacks against xinetd itself."
   impact 0.5
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38582"
-  tag "rid": "SV-50383r2_rule"
-  tag "stig_id": "RHEL-06-000203"
-  tag "fix_id": "F-43530r2_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38582'
+  tag "rid": 'SV-50383r2_rule'
+  tag "stig_id": 'RHEL-06-000203'
+  tag "fix_id": 'F-43530r2_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -55,18 +55,17 @@ commands:
 # service xinetd stop"
 
   describe.one do
-    describe package("xinetd") do
+    describe package('xinetd') do
       it { should_not be_installed }
     end
-    describe service("xinetd") do
-      its("runlevels(?-mix:0)") { should be_enabled }
-      its("runlevels(?-mix:1)") { should be_enabled }
-      its("runlevels(?-mix:2)") { should be_enabled }
-      its("runlevels(?-mix:3)") { should be_enabled }
-      its("runlevels(?-mix:4)") { should be_enabled }
-      its("runlevels(?-mix:5)") { should be_enabled }
-      its("runlevels(?-mix:6)") { should be_enabled }
+    describe service('xinetd') do
+      its('runlevels(?-mix:0)') { should be_enabled }
+      its('runlevels(?-mix:1)') { should be_enabled }
+      its('runlevels(?-mix:2)') { should be_enabled }
+      its('runlevels(?-mix:3)') { should be_enabled }
+      its('runlevels(?-mix:4)') { should be_enabled }
+      its('runlevels(?-mix:5)') { should be_enabled }
+      its('runlevels(?-mix:6)') { should be_enabled }
     end
   end
 end
-

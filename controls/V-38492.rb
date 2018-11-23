@@ -1,16 +1,16 @@
-control "V-38492" do
+control 'V-38492' do
   title "The system must prevent the root account from logging in from virtual
 consoles."
   desc  "Preventing direct root login to virtual console devices helps ensure
 accountability for actions taken on the system using the root account. "
   impact 0.5
-  tag "gtitle": "SRG-OS-000109"
-  tag "gid": "V-38492"
-  tag "rid": "SV-50293r1_rule"
-  tag "stig_id": "RHEL-06-000027"
-  tag "fix_id": "F-43439r2_fix"
-  tag "cci": ["CCI-000770"]
-  tag "nist": ["IA-2 (5)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000109'
+  tag "gid": 'V-38492'
+  tag "rid": 'SV-50293r1_rule'
+  tag "stig_id": 'RHEL-06-000027'
+  tag "fix_id": 'F-43439r2_fix'
+  tag "cci": ['CCI-000770']
+  tag "nist": ['IA-2 (5)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -40,8 +40,7 @@ vc/4
 Note:  Virtual console entries are not limited to those listed above.  Any
 lines starting with \"vc/\" followed by numerals should be removed."
 
-  describe file("/etc/securetty") do
-    its("content") { should_not match(/^vc\/[0-9]+$/) }
+  describe file('/etc/securetty') do
+    its('content') { should_not match(/^vc\/[0-9]+$/) }
   end
 end
-

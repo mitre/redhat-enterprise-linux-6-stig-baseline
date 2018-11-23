@@ -1,15 +1,15 @@
-control "V-38653" do
-  title "The snmpd service must not use a default password."
+control 'V-38653' do
+  title 'The snmpd service must not use a default password.'
   desc  "Presence of the default SNMP password enables querying of different
 system aspects and could result in unauthorized knowledge of the system."
   impact 0.7
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38653"
-  tag "rid": "SV-50454r1_rule"
-  tag "stig_id": "RHEL-06-000341"
-  tag "fix_id": "F-43602r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38653'
+  tag "rid": 'SV-50454r1_rule'
+  tag "stig_id": 'RHEL-06-000341'
+  tag "fix_id": 'F-43602r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -36,4 +36,3 @@ If there is output, this is a finding."
     its('stdout.strip') { should be_empty }
   end
 end
-

@@ -1,4 +1,4 @@
-control "V-38484" do
+control 'V-38484' do
   title "The operating system, upon successful logon, must display to the user
 the date and time of the last logon or access via ssh."
   desc  "Users need to be aware of activity that occurs regarding their
@@ -10,13 +10,13 @@ has occurred and gives them an opportunity to notify administrators.
 and time.
   "
   impact 0.5
-  tag "gtitle": "SRG-OS-000025"
-  tag "gid": "V-38484"
-  tag "rid": "SV-50285r2_rule"
-  tag "stig_id": "RHEL-06-000507"
-  tag "fix_id": "F-43431r2_fix"
-  tag "cci": ["CCI-000052"]
-  tag "nist": ["AC-9", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000025'
+  tag "gid": 'V-38484'
+  tag "rid": 'SV-50285r2_rule'
+  tag "stig_id": 'RHEL-06-000507'
+  tag "fix_id": 'F-43431r2_fix'
+  tag "cci": ['CCI-000052']
+  tag "nist": ['AC-9', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -45,6 +45,5 @@ have the value explicitly documented."
 
   describe sshd_config do
     its('PrintLastLog') { should be_nil.or eq 'yes' }
-  end 
+  end
 end
-

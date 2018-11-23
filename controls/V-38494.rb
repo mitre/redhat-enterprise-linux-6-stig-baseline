@@ -1,16 +1,16 @@
-control "V-38494" do
+control 'V-38494' do
   title "The system must prevent the root account from logging in from serial
 consoles."
   desc  "Preventing direct root login to serial port interfaces helps ensure
 accountability for actions taken on the systems using the root account."
   impact 0.3
-  tag "gtitle": "SRG-OS-000109"
-  tag "gid": "V-38494"
-  tag "rid": "SV-50295r1_rule"
-  tag "stig_id": "RHEL-06-000028"
-  tag "fix_id": "F-43441r1_fix"
-  tag "cci": ["CCI-000770"]
-  tag "nist": ["IA-2 (5)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000109'
+  tag "gid": 'V-38494'
+  tag "rid": 'SV-50295r1_rule'
+  tag "stig_id": 'RHEL-06-000028'
+  tag "fix_id": 'F-43441r1_fix'
+  tag "cci": ['CCI-000770']
+  tag "nist": ['IA-2 (5)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -37,8 +37,7 @@ ttyS1
 Note:  Serial port entries are not limited to those listed above.  Any lines
 starting with \"ttyS\" followed by numerals should be removed"
 
-  describe file("/etc/securetty") do
-    its("content") { should_not match(/^ttyS[0-9]+$/) }
+  describe file('/etc/securetty') do
+    its('content') { should_not match(/^ttyS[0-9]+$/) }
   end
 end
-

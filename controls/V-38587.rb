@@ -1,5 +1,5 @@
-control "V-38587" do
-  title "The telnet-server package must not be installed."
+control 'V-38587' do
+  title 'The telnet-server package must not be installed.'
   desc  "Removing the \"telnet-server\" package decreases the risk of the
 unencrypted telnet service's accidental (or intentional) activation.
 
@@ -8,13 +8,13 @@ encrypted sessions, such as with Kerberos or the use of encrypted network
 tunnels, the risk of exposing sensitive information is mitigated.
   "
   impact 0.7
-  tag "gtitle": "SRG-OS-000095"
-  tag "gid": "V-38587"
-  tag "rid": "SV-50388r1_rule"
-  tag "stig_id": "RHEL-06-000206"
-  tag "fix_id": "F-43535r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000095'
+  tag "gid": 'V-38587'
+  tag "rid": 'SV-50388r1_rule'
+  tag "stig_id": 'RHEL-06-000206'
+  tag "fix_id": 'F-43535r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -37,8 +37,7 @@ following command:
 
 # yum erase telnet-server"
 
-  describe package("telnet-server") do
+  describe package('telnet-server') do
     it { should_not be_installed }
   end
 end
-

@@ -1,17 +1,17 @@
-control "V-38613" do
+control 'V-38613' do
   title "The system must not permit root logins using remote access programs
 such as ssh."
   desc  "Permitting direct root login reduces auditable information about who
 ran privileged commands on the system and also allows direct attack attempts on
 root's password."
   impact 0.5
-  tag "gtitle": "SRG-OS-000109"
-  tag "gid": "V-38613"
-  tag "rid": "SV-50414r1_rule"
-  tag "stig_id": "RHEL-06-000237"
-  tag "fix_id": "F-43561r1_fix"
-  tag "cci": ["CCI-000770"]
-  tag "nist": ["IA-2 (5)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000109'
+  tag "gid": 'V-38613'
+  tag "rid": 'SV-50414r1_rule'
+  tag "stig_id": 'RHEL-06-000237'
+  tag "fix_id": 'F-43561r1_fix'
+  tag "cci": ['CCI-000770']
+  tag "nist": ['IA-2 (5)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -39,4 +39,3 @@ PermitRootLogin no"
     its('PermitRootLogin') { should eq 'no' }
   end
 end
-

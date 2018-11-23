@@ -1,15 +1,15 @@
-control "V-38607" do
-  title "The SSH daemon must be configured to use only the SSHv2 protocol."
+control 'V-38607' do
+  title 'The SSH daemon must be configured to use only the SSHv2 protocol.'
   desc  "SSH protocol version 1 suffers from design flaws that result in
 security vulnerabilities and should not be used."
   impact 0.7
-  tag "gtitle": "SRG-OS-000112"
-  tag "gid": "V-38607"
-  tag "rid": "SV-50408r1_rule"
-  tag "stig_id": "RHEL-06-000227"
-  tag "fix_id": "F-43555r1_fix"
-  tag "cci": ["CCI-000774"]
-  tag "nist": ["IA-2 (8)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000112'
+  tag "gid": 'V-38607'
+  tag "rid": 'SV-50408r1_rule'
+  tag "stig_id": 'RHEL-06-000227'
+  tag "fix_id": 'F-43555r1_fix'
+  tag "cci": ['CCI-000774']
+  tag "nist": ['IA-2 (8)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -41,4 +41,3 @@ Protocol 2"
     its('Protocol') { should cmp 2 }
   end
 end
-

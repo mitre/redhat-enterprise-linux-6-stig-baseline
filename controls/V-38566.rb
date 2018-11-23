@@ -1,17 +1,17 @@
-control "V-38566" do
+control 'V-38566' do
   title "The audit system must be configured to audit failed attempts to access
 files and programs."
   desc  "Unsuccessful attempts to access files could be an indicator of
 malicious activity on a system. Auditing these events could serve as evidence
 of potential system compromise."
   impact 0.3
-  tag "gtitle": "SRG-OS-000064"
-  tag "gid": "V-38566"
-  tag "rid": "SV-50367r2_rule"
-  tag "stig_id": "RHEL-06-000197"
-  tag "fix_id": "F-43514r2_fix"
-  tag "cci": ["CCI-000172"]
-  tag "nist": ["AU-12 c", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000064'
+  tag "gid": 'V-38566'
+  tag "rid": 'SV-50367r2_rule'
+  tag "stig_id": 'RHEL-06-000197'
+  tag "fix_id": 'F-43514r2_fix'
+  tag "cci": ['CCI-000172']
+  tag "nist": ['AU-12 c', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -47,12 +47,11 @@ for your system:
 -a always,exit -F arch=ARCH -S creat -S open -S openat -S truncate \\
 -S ftruncate -F exit=-EPERM -F auid=0 -k access"
 
-  describe command("grep EACCES /etc/audit/audit.rules") do
+  describe command('grep EACCES /etc/audit/audit.rules') do
     its('stdout.strip') { should_not eq '' }
   end
 
-  describe command("grep EPERM /etc/audit/audit.rules") do
+  describe command('grep EPERM /etc/audit/audit.rules') do
     its('stdout.strip') { should_not eq '' }
   end
 end
-

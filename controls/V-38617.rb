@@ -1,16 +1,16 @@
-control "V-38617" do
+control 'V-38617' do
   title "The SSH daemon must be configured to use only FIPS 140-2 approved
 ciphers."
   desc  "Approved algorithms should impart some level of confidence in their
 implementation. These are also required for compliance."
   impact 0.5
-  tag "gtitle": "SRG-OS-000169"
-  tag "gid": "V-38617"
-  tag "rid": "SV-50418r1_rule"
-  tag "stig_id": "RHEL-06-000243"
-  tag "fix_id": "F-43566r1_fix"
-  tag "cci": ["CCI-001144"]
-  tag "nist": ["SC-13", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000169'
+  tag "gid": 'V-38617'
+  tag "rid": 'SV-50418r1_rule'
+  tag "stig_id": 'RHEL-06-000243'
+  tag "fix_id": 'F-43566r1_fix'
+  tag "cci": ['CCI-001144']
+  tag "nist": ['SC-13', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -43,11 +43,10 @@ The man page \"sshd_config(5)\" contains a list of supported ciphers."
   end
 
   ciphers = sshd_config.params['ciphers']
-  if !ciphers.nil?     
+  unless ciphers.nil?
     describe 'sshd_config Ciphers' do
       subject { sshd_config.params['ciphers'].join(',').split(',') }
-      it { should all match %r{aes|3des} }
+      it { should all match /aes|3des/ }
     end
   end
 end
-

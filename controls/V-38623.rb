@@ -1,17 +1,17 @@
-control "V-38623" do
+control 'V-38623' do
   title "All rsyslog-generated log files must have mode 0600 or less
 permissive."
   desc  "Log files can contain valuable information regarding system
 configuration. If the system log files are not protected, unauthorized users
 could change the logged data, eliminating their forensic value."
   impact 0.5
-  tag "gtitle": "SRG-OS-000206"
-  tag "gid": "V-38623"
-  tag "rid": "SV-50424r2_rule"
-  tag "stig_id": "RHEL-06-000135"
-  tag "fix_id": "F-43571r1_fix"
-  tag "cci": ["CCI-001314"]
-  tag "nist": ["SI-11 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000206'
+  tag "gid": 'V-38623'
+  tag "rid": 'SV-50424r2_rule'
+  tag "stig_id": 'RHEL-06-000135'
+  tag "fix_id": 'F-43571r1_fix'
+  tag "cci": ['CCI-001314']
+  tag "nist": ['SI-11 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -53,24 +53,25 @@ to correct this:
   # strip comments, empty lines, and lines which start with $ in order to get rules
   rules = file('/etc/rsyslog.conf').content.lines.map do |l|
     pound_index = l.index('#')
-    l = l.slice(0, pound_index) if !pound_index.nil?
+    l = l.slice(0, pound_index) unless pound_index.nil?
     l.strip
-  end.reject { |l| l.empty? or l.start_with? '$' }
+  end.reject { |l| l.empty? || l.start_with?('$') }
 
   paths = rules.map do |r|
-    filter, action = r.split(%r{\s+})
-    next if !(action.start_with? '-/' or action.start_with? '/')
+    _filter, action = r.split(/\s+/)
+    next unless action.start_with? '-/', '/'
+
     action.sub(%r{^-/}, '/')
-  end.reject { |path| path.nil? }
+  end.reject(&:nil?)
 
   if paths.empty?
-    describe "rsyslog log files" do
+    describe 'rsyslog log files' do
       subject { paths }
       it { should be_empty }
     end
   else
     paths.each do |path|
-      describe file(path) do 
+      describe file(path) do
         it { should_not be_executable }
         it { should_not be_readable.by('group') }
         it { should_not be_writable.by('group') }
@@ -80,4 +81,3 @@ to correct this:
     end
   end
 end
-

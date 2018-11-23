@@ -1,15 +1,15 @@
-control "V-38448" do
-  title "The /etc/gshadow file must be group-owned by root."
+control 'V-38448' do
+  title 'The /etc/gshadow file must be group-owned by root.'
   desc  "The \"/etc/gshadow\" file contains group password hashes. Protection
 of this file is critical for system security."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38448"
-  tag "rid": "SV-50248r1_rule"
-  tag "stig_id": "RHEL-06-000037"
-  tag "fix_id": "F-43393r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38448'
+  tag "rid": 'SV-50248r1_rule'
+  tag "stig_id": 'RHEL-06-000037'
+  tag "fix_id": 'F-43393r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -33,11 +33,10 @@ command:
 
 # chgrp root /etc/gshadow"
 
-  describe file("/etc/gshadow") do
+  describe file('/etc/gshadow') do
     it { should exist }
   end
-  describe file("/etc/gshadow") do
-    its("gid") { should cmp 0 }
+  describe file('/etc/gshadow') do
+    its('gid') { should cmp 0 }
   end
 end
-

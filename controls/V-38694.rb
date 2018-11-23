@@ -1,4 +1,4 @@
-control "V-38694" do
+control 'V-38694' do
   title "The operating system must manage information system identifiers for
 users and devices by disabling the user identifier after an organization
 defined time period of inactivity."
@@ -6,13 +6,13 @@ defined time period of inactivity."
 been responsibly removed are not available to attackers who may have
 compromised their credentials."
   impact 0.3
-  tag "gtitle": "SRG-OS-000118"
-  tag "gid": "V-38694"
-  tag "rid": "SV-50495r1_rule"
-  tag "stig_id": "RHEL-06-000335"
-  tag "fix_id": "F-43643r2_fix"
-  tag "cci": ["CCI-000795"]
-  tag "nist": ["IA-4 e", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000118'
+  tag "gid": 'V-38694'
+  tag "rid": 'SV-50495r1_rule'
+  tag "stig_id": 'RHEL-06-000335'
+  tag "fix_id": 'F-43643r2_fix'
+  tag "cci": ['CCI-000795']
+  tag "nist": ['IA-4 e', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -51,18 +51,17 @@ inactivity for users in the particular environment. Setting the timeout too low
 incurs support costs and also has the potential to impact availability of the
 system to legitimate users."
 
-  describe file("/etc/default/useradd") do
-    its("content") { should match(/^\s*INACTIVE\s*=\s*(\d+)\s*$/) }
+  describe file('/etc/default/useradd') do
+    its('content') { should match(/^\s*INACTIVE\s*=\s*(\d+)\s*$/) }
   end
-  file("/etc/default/useradd").content.to_s.scan(/^\s*INACTIVE\s*=\s*(\d+)\s*$/).flatten.each do |entry|
+  file('/etc/default/useradd').content.to_s.scan(/^\s*INACTIVE\s*=\s*(\d+)\s*$/).flatten.each do |entry|
     describe entry do
       it { should cmp <= 35 }
     end
   end
-  file("/etc/default/useradd").content.to_s.scan(/^\s*INACTIVE\s*=\s*(\d+)\s*$/).flatten.each do |entry|
+  file('/etc/default/useradd').content.to_s.scan(/^\s*INACTIVE\s*=\s*(\d+)\s*$/).flatten.each do |entry|
     describe entry do
       it { should cmp > -1 }
     end
   end
 end
-

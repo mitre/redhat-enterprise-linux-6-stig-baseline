@@ -1,15 +1,15 @@
-control "V-38489" do
-  title "A file integrity tool must be installed."
+control 'V-38489' do
+  title 'A file integrity tool must be installed.'
   desc  "The AIDE package must be installed if it is to be available for
 integrity checking."
   impact 0.5
-  tag "gtitle": "SRG-OS-000232"
-  tag "gid": "V-38489"
-  tag "rid": "SV-50290r1_rule"
-  tag "stig_id": "RHEL-06-000016"
-  tag "fix_id": "F-43436r1_fix"
-  tag "cci": ["CCI-001069"]
-  tag "nist": ["RA-5 (7)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000232'
+  tag "gid": 'V-38489'
+  tag "rid": 'SV-50290r1_rule'
+  tag "stig_id": 'RHEL-06-000016'
+  tag "fix_id": 'F-43436r1_fix'
+  tag "cci": ['CCI-001069']
+  tag "nist": ['RA-5 (7)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -33,8 +33,7 @@ If the package is not installed, this is a finding."
 
 # yum install aide"
 
-  describe package("aide") do
+  describe package('aide') do
     it { should be_installed }
   end
 end
-

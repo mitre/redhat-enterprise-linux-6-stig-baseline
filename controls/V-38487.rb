@@ -1,17 +1,17 @@
-control "V-38487" do
+control 'V-38487' do
   title "The system package management tool must cryptographically verify the
 authenticity of all software packages during installation."
   desc  "Ensuring all packages' cryptographic signatures are valid prior to
 installation ensures the provenance of the software and protects against
 malicious tampering."
   impact 0.3
-  tag "gtitle": "SRG-OS-000103"
-  tag "gid": "V-38487"
-  tag "rid": "SV-50288r1_rule"
-  tag "stig_id": "RHEL-06-000015"
-  tag "fix_id": "F-43433r1_fix"
-  tag "cci": ["CCI-000663"]
-  tag "nist": ["SA-7", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000103'
+  tag "gid": 'V-38487'
+  tag "rid": 'SV-50288r1_rule'
+  tag "stig_id": 'RHEL-06-000015'
+  tag "fix_id": 'F-43433r1_fix'
+  tag "cci": ['CCI-000663']
+  tag "nist": ['SA-7', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -38,10 +38,9 @@ remove any lines from files in \"/etc/yum.repos.d\" of the form:
 
 gpgcheck=0"
 
-  command("find /etc/yum.repos.d -type f -regex .\\*/.\\*").stdout.split.each do |entry|
+  command('find /etc/yum.repos.d -type f -regex .\\*/.\\*').stdout.split.each do |entry|
     describe file(entry) do
-      its("content") { should_not match(/^\s*gpgcheck\s*=\s*0\s*$/) }
+      its('content') { should_not match(/^\s*gpgcheck\s*=\s*0\s*$/) }
     end
   end
 end
-

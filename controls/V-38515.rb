@@ -1,16 +1,16 @@
-control "V-38515" do
+control 'V-38515' do
   title "The Stream Control Transmission Protocol (SCTP) must be disabled
 unless required."
   desc  "Disabling SCTP protects the system against exploitation of any flaws
 in its implementation."
   impact 0.5
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38515"
-  tag "rid": "SV-50316r5_rule"
-  tag "stig_id": "RHEL-06-000125"
-  tag "fix_id": "F-43462r3_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38515'
+  tag "rid": 'SV-50316r5_rule'
+  tag "stig_id": 'RHEL-06-000125'
+  tag "fix_id": 'F-43462r3_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -42,14 +42,13 @@ to a file in the directory \"/etc/modprobe.d\":
 install sctp /bin/true"
 
   describe.one do
-    command("find /etc/modprobe.d -type f -regex .\\*/\\^.\\*\\\\.conf\\$").stdout.split.each do |entry|
+    command('find /etc/modprobe.d -type f -regex .\\*/\\^.\\*\\\\.conf\\$').stdout.split.each do |entry|
       describe file(entry) do
-        its("content") { should match(/^\s*install\s+sctp\s+(\/bin\/true)\s*$/) }
+        its('content') { should match(/^\s*install\s+sctp\s+(\/bin\/true)\s*$/) }
       end
     end
-    describe file("/etc/modprobe.conf") do
-      its("content") { should match(/^\s*install\s+sctp\s+(\/bin\/true)\s*$/) }
+    describe file('/etc/modprobe.conf') do
+      its('content') { should match(/^\s*install\s+sctp\s+(\/bin\/true)\s*$/) }
     end
   end
 end
-

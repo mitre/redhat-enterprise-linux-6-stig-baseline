@@ -1,4 +1,4 @@
-control "V-38695" do
+control 'V-38695' do
   title "A file integrity tool must be used at least weekly to check for
 unauthorized file changes, particularly the addition of unauthorized system
 libraries or binaries, or for unauthorized modification to authorized system
@@ -6,13 +6,13 @@ libraries or binaries."
   desc  "By default, AIDE does not install itself for periodic execution.
 Periodically running AIDE may reveal unexpected changes in installed files."
   impact 0.5
-  tag "gtitle": "SRG-OS-000094"
-  tag "gid": "V-38695"
-  tag "rid": "SV-50496r2_rule"
-  tag "stig_id": "RHEL-06-000302"
-  tag "fix_id": "F-43644r1_fix"
-  tag "cci": ["CCI-000374"]
-  tag "nist": ["CM-6 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000094'
+  tag "gid": 'V-38695'
+  tag "rid": 'SV-50496r2_rule'
+  tag "stig_id": 'RHEL-06-000302'
+  tag "fix_id": 'F-43644r1_fix'
+  tag "cci": ['CCI-000374']
+  tag "nist": ['CM-6 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -42,4 +42,3 @@ example."
     its('stdout.strip') { should_not be_empty }
   end
 end
-

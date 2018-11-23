@@ -1,17 +1,17 @@
-control "V-38483" do
+control 'V-38483' do
   title "The system package management tool must cryptographically verify the
 authenticity of system software packages during installation."
   desc  "Ensuring the validity of packages' cryptographic signatures prior to
 installation ensures the provenance of the software and protects against
 malicious tampering."
   impact 0.5
-  tag "gtitle": "SRG-OS-000103"
-  tag "gid": "V-38483"
-  tag "rid": "SV-50283r1_rule"
-  tag "stig_id": "RHEL-06-000013"
-  tag "fix_id": "F-43429r1_fix"
-  tag "cci": ["CCI-000663"]
-  tag "nist": ["SA-7", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000103'
+  tag "gid": 'V-38483'
+  tag "rid": 'SV-50283r1_rule'
+  tag "stig_id": 'RHEL-06-000013'
+  tag "fix_id": 'F-43429r1_fix'
+  tag "cci": ['CCI-000663']
+  tag "nist": ['SA-7', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -41,8 +41,7 @@ line appears in \"/etc/yum.conf\" in the \"[main]\" section:
 
 gpgcheck=1"
 
-  describe file("/etc/yum.conf") do
-    its("content") { should match(/^\s*gpgcheck\s*=\s*1\s*$/) }
+  describe file('/etc/yum.conf') do
+    its('content') { should match(/^\s*gpgcheck\s*=\s*1\s*$/) }
   end
 end
-

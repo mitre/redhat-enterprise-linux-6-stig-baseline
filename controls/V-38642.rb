@@ -1,16 +1,16 @@
-control "V-38642" do
-  title "The system default umask for daemons must be 027 or 022."
+control 'V-38642' do
+  title 'The system default umask for daemons must be 027 or 022.'
   desc  "The umask influences the permissions assigned to files created by a
 process at run time. An unnecessarily permissive umask could result in files
 being created with insecure permissions."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38642"
-  tag "rid": "SV-50443r1_rule"
-  tag "stig_id": "RHEL-06-000346"
-  tag "fix_id": "F-43592r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38642'
+  tag "rid": 'SV-50443r1_rule'
+  tag "stig_id": 'RHEL-06-000346'
+  tag "fix_id": 'F-43592r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -39,13 +39,12 @@ Setting the umask to too restrictive a setting can cause serious errors at
 runtime. Many daemons on the system already individually restrict themselves to
 a umask of 077 in their own init scripts."
 
-  describe file("/etc/rc.d/init.d/functions") do
-    its("content") { should match(/^\s*umask\s+([^#\s]*)/) }
+  describe file('/etc/rc.d/init.d/functions') do
+    its('content') { should match(/^\s*umask\s+([^#\s]*)/) }
   end
-  file("/etc/rc.d/init.d/functions").content.to_s.scan(/^\s*umask\s+([^#\s]*)/).flatten.each do |entry|
+  file('/etc/rc.d/init.d/functions').content.to_s.scan(/^\s*umask\s+([^#\s]*)/).flatten.each do |entry|
     describe entry do
       it { should match(/^0?(022|027)$/) }
     end
   end
 end
-

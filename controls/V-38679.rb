@@ -1,17 +1,17 @@
-control "V-38679" do
-  title "The DHCP client must be disabled if not needed."
+control 'V-38679' do
+  title 'The DHCP client must be disabled if not needed.'
   desc  "DHCP relies on trusting the local network. If the local network is not
 trusted, then it should not be used. However, the automatic configuration
 provided by DHCP is commonly used and the alternative, manual configuration,
 presents an unacceptable burden in many circumstances."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38679"
-  tag "rid": "SV-50480r3_rule"
-  tag "stig_id": "RHEL-06-000292"
-  tag "fix_id": "F-43628r2_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38679'
+  tag "rid": 'SV-50480r3_rule'
+  tag "stig_id": 'RHEL-06-000292'
+  tag "fix_id": 'F-43628r2_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -51,10 +51,9 @@ NETMASK=[local LAN netmask]
 IPADDR=[assigned IP address]
 GATEWAY=[local LAN default gateway]"
 
-  command("find /etc/sysconfig/network-scripts -type f -regex .\\*/ifcfg-.\\*").stdout.split.each do |entry|
+  command('find /etc/sysconfig/network-scripts -type f -regex .\\*/ifcfg-.\\*').stdout.split.each do |entry|
     describe file(entry) do
-      its("content") { should match(/^[\s]*BOOTPROTO[\s]*=[\s"]*([^#"\s]*)/) }
+      its('content') { should match(/^[\s]*BOOTPROTO[\s]*=[\s"]*([^#"\s]*)/) }
     end
   end
 end
-

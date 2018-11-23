@@ -1,15 +1,15 @@
-control "V-38499" do
-  title "The /etc/passwd file must not contain password hashes."
+control 'V-38499' do
+  title 'The /etc/passwd file must not contain password hashes.'
   desc  "The hashes for all user account passwords should be stored in the file
 \"/etc/shadow\" and never in \"/etc/passwd\", which is readable by all users."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38499"
-  tag "rid": "SV-50300r1_rule"
-  tag "stig_id": "RHEL-06-000031"
-  tag "fix_id": "F-43446r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38499'
+  tag "rid": 'SV-50300r1_rule'
+  tag "stig_id": 'RHEL-06-000031'
+  tag "fix_id": 'F-43446r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -32,13 +32,12 @@ second field, instead of an \"x\"), the cause of this misconfiguration should
 be investigated. The account should have its password reset and the hash should
 be properly stored, or the account should be deleted entirely."
 
-  describe file("/etc/passwd") do
-    its("content") { should match(/^[^:]*:([^:]*):/) }
+  describe file('/etc/passwd') do
+    its('content') { should match(/^[^:]*:([^:]*):/) }
   end
-  file("/etc/passwd").content.to_s.scan(/^[^:]*:([^:]*):/).flatten.each do |entry|
+  file('/etc/passwd').content.to_s.scan(/^[^:]*:([^:]*):/).flatten.each do |entry|
     describe entry do
-      it { should eq "x" }
+      it { should eq 'x' }
     end
   end
 end
-

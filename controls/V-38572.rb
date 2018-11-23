@@ -1,4 +1,4 @@
-control "V-38572" do
+control 'V-38572' do
   title "The system must require at least eight characters be changed between
 the old and new passwords during a password change."
   desc  "Requiring a minimum number of different characters during password
@@ -6,13 +6,13 @@ changes ensures that newly changed passwords should not resemble previously
 compromised ones. Note that passwords which are changed on compromised systems
 will still be compromised, however."
   impact 0.3
-  tag "gtitle": "SRG-OS-000072"
-  tag "gid": "V-38572"
-  tag "rid": "SV-50373r3_rule"
-  tag "stig_id": "RHEL-06-000060"
-  tag "fix_id": "F-43520r4_fix"
-  tag "cci": ["CCI-000195"]
-  tag "nist": ["IA-5 (1) (b)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000072'
+  tag "gid": 'V-38572'
+  tag "rid": 'SV-50373r3_rule'
+  tag "stig_id": 'RHEL-06-000060'
+  tag "fix_id": 'F-43520r4_fix'
+  tag "cci": ['CCI-000195']
+  tag "nist": ['IA-5 (1) (b)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -42,40 +42,39 @@ substituting [NUM] appropriately. The DoD requirement is 8.
 "
 
   describe.one do
-    describe file("/etc/pam.d/system-auth") do
-      its("content") { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+difok=(\d+)[^\n\r]*$/) }
+    describe file('/etc/pam.d/system-auth') do
+      its('content') { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+difok=(\d+)[^\n\r]*$/) }
     end
-    file("/etc/pam.d/system-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+difok=(\d+)[^\n\r]*$/).flatten.each do |entry|
+    file('/etc/pam.d/system-auth').content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+difok=(\d+)[^\n\r]*$/).flatten.each do |entry|
       describe entry do
         it { should cmp >= 8 }
       end
     end
-    describe file("/etc/pam.d/system-auth") do
-      its("content") { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+difok=(\d+)\s+.*$/) }
+    describe file('/etc/pam.d/system-auth') do
+      its('content') { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+difok=(\d+)\s+.*$/) }
     end
-    file("/etc/pam.d/system-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+difok=(\d+)\s+.*$/).flatten.each do |entry|
+    file('/etc/pam.d/system-auth').content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+difok=(\d+)\s+.*$/).flatten.each do |entry|
       describe entry do
         it { should cmp >= 8 }
       end
     end
   end
   describe.one do
-    describe file("/etc/pam.d/password-auth") do
-      its("content") { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+difok=(\d+)[^\n\r]*$/) }
+    describe file('/etc/pam.d/password-auth') do
+      its('content') { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+difok=(\d+)[^\n\r]*$/) }
     end
-    file("/etc/pam.d/password-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+difok=(\d+)[^\n\r]*$/).flatten.each do |entry|
+    file('/etc/pam.d/password-auth').content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+difok=(\d+)[^\n\r]*$/).flatten.each do |entry|
       describe entry do
         it { should cmp >= 8 }
       end
     end
-    describe file("/etc/pam.d/password-auth") do
-      its("content") { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+difok=(\d+)\s+.*$/) }
+    describe file('/etc/pam.d/password-auth') do
+      its('content') { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+difok=(\d+)\s+.*$/) }
     end
-    file("/etc/pam.d/password-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+difok=(\d+)\s+.*$/).flatten.each do |entry|
+    file('/etc/pam.d/password-auth').content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+difok=(\d+)\s+.*$/).flatten.each do |entry|
       describe entry do
         it { should cmp >= 8 }
       end
     end
   end
 end
-

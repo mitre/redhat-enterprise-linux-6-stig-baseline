@@ -1,16 +1,16 @@
-control "V-38516" do
+control 'V-38516' do
   title "The Reliable Datagram Sockets (RDS) protocol must be disabled unless
 required."
   desc  "Disabling RDS protects the system against exploitation of any flaws in
 its implementation."
   impact 0.3
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38516"
-  tag "rid": "SV-50317r3_rule"
-  tag "stig_id": "RHEL-06-000126"
-  tag "fix_id": "F-43463r4_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38516'
+  tag "rid": 'SV-50317r3_rule'
+  tag "stig_id": 'RHEL-06-000126'
+  tag "fix_id": 'F-43463r4_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -41,14 +41,13 @@ in the directory \"/etc/modprobe.d\":
 install rds /bin/true"
 
   describe.one do
-    command("find /etc/modprobe.d -type f -regex .\\*/\\^.\\*\\\\.conf\\$").stdout.split.each do |entry|
+    command('find /etc/modprobe.d -type f -regex .\\*/\\^.\\*\\\\.conf\\$').stdout.split.each do |entry|
       describe file(entry) do
-        its("content") { should match(/^\s*install\s+rds\s+(\/bin\/true)\s*$/) }
+        its('content') { should match(/^\s*install\s+rds\s+(\/bin\/true)\s*$/) }
       end
     end
-    describe file("/etc/modprobe.conf") do
-      its("content") { should match(/^\s*install\s+rds\s+(\/bin\/true)\s*$/) }
+    describe file('/etc/modprobe.conf') do
+      its('content') { should match(/^\s*install\s+rds\s+(\/bin\/true)\s*$/) }
     end
   end
 end
-

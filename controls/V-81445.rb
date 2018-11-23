@@ -1,4 +1,4 @@
-control "V-81445" do
+control 'V-81445' do
   title "The Red Hat Enterprise Linux operating system must mount /dev/shm with
 the nodev option."
   desc  "The \"nodev\" mount option causes the system to not interpret
@@ -6,13 +6,13 @@ character or block special devices. Executing character or block special
 devices from untrusted file systems increases the opportunity for unprivileged
 users to attain unauthorized administrative access."
   impact 0.3
-  tag "gtitle": "SRG-OS-000368-GPOS-00154"
-  tag "gid": "V-81445"
-  tag "rid": "SV-96159r1_rule"
-  tag "stig_id": "RHEL-06-000530"
-  tag "fix_id": "F-88263r1_fix"
-  tag "cci": ["CCI-001764"]
-  tag "nist": ["CM-7 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000368-GPOS-00154'
+  tag "gid": 'V-81445'
+  tag "rid": 'SV-96159r1_rule'
+  tag "stig_id": 'RHEL-06-000530'
+  tag "fix_id": 'F-88263r1_fix'
+  tag "cci": ['CCI-001764']
+  tag "nist": ['CM-7 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -44,21 +44,20 @@ If no results are returned, this is a finding.
   tag "fix": "Configure the \"/etc/fstab\" to use the \"nodev\" option for all
 lines containing \"/dev/shm\"."
 
-  describe file("/etc/fstab") do
-    its("content") { should match(/^[^#\s]+[ \t]+\/dev\/shm[ \t]+[\w\d]+[ \t]+([\w,]+)\s*.*$/) }
+  describe file('/etc/fstab') do
+    its('content') { should match(/^[^#\s]+[ \t]+\/dev\/shm[ \t]+[\w\d]+[ \t]+([\w,]+)\s*.*$/) }
   end
-  file("/etc/fstab").content.to_s.scan(/^[^#\s]+[ \t]+\/dev\/shm[ \t]+[\w\d]+[ \t]+([\w,]+)\s*.*$/).flatten.each do |entry|
+  file('/etc/fstab').content.to_s.scan(/^[^#\s]+[ \t]+\/dev\/shm[ \t]+[\w\d]+[ \t]+([\w,]+)\s*.*$/).flatten.each do |entry|
     describe entry do
       it { should match(/^(?:nodev|[\w,]+,nodev)(?:$|,[\w,]+$)/) }
     end
   end
-  describe file("/etc/mtab") do
-    its("content") { should match(/^[^#\s]+[ \t]+\/dev\/shm[ \t]+[\w\d]+[ \t]+([\w,]+)\s*.*$/) }
+  describe file('/etc/mtab') do
+    its('content') { should match(/^[^#\s]+[ \t]+\/dev\/shm[ \t]+[\w\d]+[ \t]+([\w,]+)\s*.*$/) }
   end
-  file("/etc/mtab").content.to_s.scan(/^[^#\s]+[ \t]+\/dev\/shm[ \t]+[\w\d]+[ \t]+([\w,]+)\s*.*$/).flatten.each do |entry|
+  file('/etc/mtab').content.to_s.scan(/^[^#\s]+[ \t]+\/dev\/shm[ \t]+[\w\d]+[ \t]+([\w,]+)\s*.*$/).flatten.each do |entry|
     describe entry do
       it { should match(/^(?:nodev|[\w,]+,nodev)(?:$|,[\w,]+$)/) }
     end
   end
 end
-

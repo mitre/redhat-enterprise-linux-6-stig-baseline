@@ -1,16 +1,16 @@
-control "V-38455" do
-  title "The system must use a separate file system for /tmp."
+control 'V-38455' do
+  title 'The system must use a separate file system for /tmp.'
   desc  "The \"/tmp\" partition is used as temporary storage by many programs.
 Placing \"/tmp\" in its own partition enables the setting of more restrictive
 mount options, which can help protect programs which use it."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38455"
-  tag "rid": "SV-50255r1_rule"
-  tag "stig_id": "RHEL-06-000001"
-  tag "fix_id": "F-43387r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38455'
+  tag "rid": 'SV-50255r1_rule'
+  tag "stig_id": 'RHEL-06-000001'
+  tag "fix_id": 'F-43387r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -32,8 +32,7 @@ If no line is returned, this is a finding."
 temporary file storage. Ensure it has its own partition or logical volume at
 installation time, or migrate it using LVM."
 
-  describe mount("/tmp") do
+  describe mount('/tmp') do
     it { should be_mounted }
   end
 end
-

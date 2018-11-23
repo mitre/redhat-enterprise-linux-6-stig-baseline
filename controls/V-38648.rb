@@ -1,18 +1,18 @@
-control "V-38648" do
-  title "The qpidd service must not be running."
+control 'V-38648' do
+  title 'The qpidd service must not be running.'
   desc  "The qpidd service is automatically installed when the \"base\" package
 selection is selected during installation. The qpidd service listens for
 network connections which increases the attack surface of the system. If the
 system is not intended to receive AMQP traffic then the \"qpidd\" service is
 not needed and should be disabled or removed."
   impact 0.3
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38648"
-  tag "rid": "SV-50449r2_rule"
-  tag "stig_id": "RHEL-06-000267"
-  tag "fix_id": "F-43597r2_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38648'
+  tag "rid": 'SV-50449r2_rule'
+  tag "stig_id": 'RHEL-06-000267'
+  tag "fix_id": 'F-43597r2_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -55,18 +55,17 @@ commands:
 # service qpidd stop"
 
   describe.one do
-    describe package("qpid-cpp-server") do
+    describe package('qpid-cpp-server') do
       it { should_not be_installed }
     end
-    describe service("qpidd") do
-      its("runlevels(?-mix:0)") { should be_enabled }
-      its("runlevels(?-mix:1)") { should be_enabled }
-      its("runlevels(?-mix:2)") { should be_enabled }
-      its("runlevels(?-mix:3)") { should be_enabled }
-      its("runlevels(?-mix:4)") { should be_enabled }
-      its("runlevels(?-mix:5)") { should be_enabled }
-      its("runlevels(?-mix:6)") { should be_enabled }
+    describe service('qpidd') do
+      its('runlevels(?-mix:0)') { should be_enabled }
+      its('runlevels(?-mix:1)') { should be_enabled }
+      its('runlevels(?-mix:2)') { should be_enabled }
+      its('runlevels(?-mix:3)') { should be_enabled }
+      its('runlevels(?-mix:4)') { should be_enabled }
+      its('runlevels(?-mix:5)') { should be_enabled }
+      its('runlevels(?-mix:6)') { should be_enabled }
     end
   end
 end
-

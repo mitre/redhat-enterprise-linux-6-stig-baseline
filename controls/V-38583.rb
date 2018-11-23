@@ -1,16 +1,16 @@
-control "V-38583" do
+control 'V-38583' do
   title "The system boot loader configuration file(s) must have mode 0600 or
 less permissive."
   desc  "Proper permissions ensure that only the root user can modify important
 boot parameters."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38583"
-  tag "rid": "SV-50384r4_rule"
-  tag "stig_id": "RHEL-06-000067"
-  tag "fix_id": "F-43531r3_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38583'
+  tag "rid": 'SV-50384r4_rule'
+  tag "stig_id": 'RHEL-06-000067'
+  tag "fix_id": 'F-43531r3_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -51,65 +51,64 @@ Boot partitions based on VFAT, NTFS, or other non-standard configurations may
 require alternative measures.
 "
 
-  describe file("/boot/grub/grub.conf") do
+  describe file('/boot/grub/grub.conf') do
     it { should exist }
   end
-  describe file("/boot/grub/grub.conf") do
-    it { should_not be_executable.by "group" }
+  describe file('/boot/grub/grub.conf') do
+    it { should_not be_executable.by 'group' }
   end
-  describe file("/boot/grub/grub.conf") do
-    it { should_not be_readable.by "group" }
+  describe file('/boot/grub/grub.conf') do
+    it { should_not be_readable.by 'group' }
   end
-  describe file("/boot/grub/grub.conf") do
-    it { should_not be_writable.by "group" }
+  describe file('/boot/grub/grub.conf') do
+    it { should_not be_writable.by 'group' }
   end
-  describe file("/boot/grub/grub.conf") do
-    it { should_not be_executable.by "other" }
+  describe file('/boot/grub/grub.conf') do
+    it { should_not be_executable.by 'other' }
   end
-  describe file("/boot/grub/grub.conf") do
-    it { should_not be_readable.by "other" }
+  describe file('/boot/grub/grub.conf') do
+    it { should_not be_readable.by 'other' }
   end
-  describe file("/boot/grub/grub.conf") do
-    it { should_not be_writable.by "other" }
+  describe file('/boot/grub/grub.conf') do
+    it { should_not be_writable.by 'other' }
   end
-  describe file("/boot/grub/grub.conf") do
-    it { should_not be_executable.by "owner" }
+  describe file('/boot/grub/grub.conf') do
+    it { should_not be_executable.by 'owner' }
   end
-  describe file("/boot/grub/grub.conf") do
-    it { should be_readable.by "owner" }
+  describe file('/boot/grub/grub.conf') do
+    it { should be_readable.by 'owner' }
   end
-  describe file("/boot/grub/grub.conf") do
-    it { should be_writable.by "owner" }
+  describe file('/boot/grub/grub.conf') do
+    it { should be_writable.by 'owner' }
   end
-  describe file("/boot/efi/EFI/redhat/grub.conf") do
+  describe file('/boot/efi/EFI/redhat/grub.conf') do
     it { should exist }
   end
-  describe file("/boot/efi/EFI/redhat/grub.conf") do
-    it { should_not be_executable.by "group" }
+  describe file('/boot/efi/EFI/redhat/grub.conf') do
+    it { should_not be_executable.by 'group' }
   end
-  describe file("/boot/efi/EFI/redhat/grub.conf") do
-    it { should_not be_readable.by "group" }
+  describe file('/boot/efi/EFI/redhat/grub.conf') do
+    it { should_not be_readable.by 'group' }
   end
-  describe file("/boot/efi/EFI/redhat/grub.conf") do
-    it { should_not be_writable.by "group" }
+  describe file('/boot/efi/EFI/redhat/grub.conf') do
+    it { should_not be_writable.by 'group' }
   end
-  describe file("/boot/efi/EFI/redhat/grub.conf") do
-    it { should_not be_executable.by "other" }
+  describe file('/boot/efi/EFI/redhat/grub.conf') do
+    it { should_not be_executable.by 'other' }
   end
-  describe file("/boot/efi/EFI/redhat/grub.conf") do
-    it { should_not be_readable.by "other" }
+  describe file('/boot/efi/EFI/redhat/grub.conf') do
+    it { should_not be_readable.by 'other' }
   end
-  describe file("/boot/efi/EFI/redhat/grub.conf") do
-    it { should_not be_writable.by "other" }
+  describe file('/boot/efi/EFI/redhat/grub.conf') do
+    it { should_not be_writable.by 'other' }
   end
-  describe file("/boot/efi/EFI/redhat/grub.conf") do
-    it { should_not be_executable.by "owner" }
+  describe file('/boot/efi/EFI/redhat/grub.conf') do
+    it { should_not be_executable.by 'owner' }
   end
-  describe file("/boot/efi/EFI/redhat/grub.conf") do
-    it { should be_readable.by "owner" }
+  describe file('/boot/efi/EFI/redhat/grub.conf') do
+    it { should be_readable.by 'owner' }
   end
-  describe file("/boot/efi/EFI/redhat/grub.conf") do
-    it { should be_writable.by "owner" }
+  describe file('/boot/efi/EFI/redhat/grub.conf') do
+    it { should be_writable.by 'owner' }
   end
 end
-

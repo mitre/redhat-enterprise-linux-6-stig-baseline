@@ -1,16 +1,16 @@
-control "V-38640" do
-  title "The Automatic Bug Reporting Tool (abrtd) service must not be running."
+control 'V-38640' do
+  title 'The Automatic Bug Reporting Tool (abrtd) service must not be running.'
   desc  "Mishandling crash data could expose sensitive information about
 vulnerabilities in software executing on the local machine, as well as
 sensitive information from within a process's address space or registers."
   impact 0.3
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38640"
-  tag "rid": "SV-50441r2_rule"
-  tag "stig_id": "RHEL-06-000261"
-  tag "fix_id": "F-43589r2_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38640'
+  tag "rid": 'SV-50441r2_rule'
+  tag "stig_id": 'RHEL-06-000261'
+  tag "fix_id": 'F-43589r2_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -54,18 +54,17 @@ following commands:
 # service abrtd stop"
 
   describe.one do
-    describe package("abrt") do
+    describe package('abrt') do
       it { should_not be_installed }
     end
-    describe service("abrtd") do
-      its("runlevels(?-mix:0)") { should be_enabled }
-      its("runlevels(?-mix:1)") { should be_enabled }
-      its("runlevels(?-mix:2)") { should be_enabled }
-      its("runlevels(?-mix:3)") { should be_enabled }
-      its("runlevels(?-mix:4)") { should be_enabled }
-      its("runlevels(?-mix:5)") { should be_enabled }
-      its("runlevels(?-mix:6)") { should be_enabled }
+    describe service('abrtd') do
+      its('runlevels(?-mix:0)') { should be_enabled }
+      its('runlevels(?-mix:1)') { should be_enabled }
+      its('runlevels(?-mix:2)') { should be_enabled }
+      its('runlevels(?-mix:3)') { should be_enabled }
+      its('runlevels(?-mix:4)') { should be_enabled }
+      its('runlevels(?-mix:5)') { should be_enabled }
+      its('runlevels(?-mix:6)') { should be_enabled }
     end
   end
 end
-

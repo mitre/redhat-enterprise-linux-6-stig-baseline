@@ -1,16 +1,16 @@
-control "V-38622" do
-  title "Mail relaying must be restricted."
+control 'V-38622' do
+  title 'Mail relaying must be restricted.'
   desc  "This ensures \"postfix\" accepts mail messages (such as cron job
 reports) from the local system only, and not from the network, which protects
 it from network attack."
   impact 0.5
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38622"
-  tag "rid": "SV-50423r2_rule"
-  tag "stig_id": "RHEL-06-000249"
-  tag "fix_id": "F-43572r1_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38622'
+  tag "rid": 'SV-50423r2_rule'
+  tag "stig_id": 'RHEL-06-000249'
+  tag "fix_id": 'F-43572r1_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -36,8 +36,7 @@ following \"inet_interfaces\" line appears:
 
 inet_interfaces = localhost"
 
-  describe file("/etc/postfix/main.cf") do
-    its("content") { should match(/^[\s]*inet_interfaces[\s]*=[\s]*localhost[\s]*$/) }
+  describe file('/etc/postfix/main.cf') do
+    its('content') { should match(/^[\s]*inet_interfaces[\s]*=[\s]*localhost[\s]*$/) }
   end
 end
-

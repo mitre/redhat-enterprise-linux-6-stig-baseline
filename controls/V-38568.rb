@@ -1,4 +1,4 @@
-control "V-38568" do
+control 'V-38568' do
   title "The audit system must be configured to audit successful file system
 mounts."
   desc  "The unauthorized exportation of data to external media could result in
@@ -6,13 +6,13 @@ an information leak where classified information, Privacy Act information, and
 intellectual property could be lost. An audit trail should be created each time
 a filesystem is mounted to help identify and guard against information loss."
   impact 0.3
-  tag "gtitle": "SRG-OS-000064"
-  tag "gid": "V-38568"
-  tag "rid": "SV-50369r3_rule"
-  tag "stig_id": "RHEL-06-000199"
-  tag "fix_id": "F-43516r2_fix"
-  tag "cci": ["CCI-000172"]
-  tag "nist": ["AU-12 c", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000064'
+  tag "gid": 'V-38568'
+  tag "rid": 'SV-50369r3_rule'
+  tag "stig_id": 'RHEL-06-000199'
+  tag "fix_id": 'F-43516r2_fix'
+  tag "cci": ['CCI-000172']
+  tag "nist": ['AU-12 c', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -39,14 +39,12 @@ setting ARCH to either b32 or b64 as appropriate for your system:
 -a always,exit -F arch=ARCH -S mount -F auid>=500 -F auid!=4294967295 -k export
 -a always,exit -F arch=ARCH -S mount -F auid=0 -k export"
 
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s]+(?:always,exit|exit,always)\s+(-F\s+arch=b32\s+).*(?:,|-S\s+)mount(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:4294967295|-1)\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s]+(?:always,exit|exit,always)\s+(-F\s+arch=b32\s+).*(?:,|-S\s+)mount(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:4294967295|-1)\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s]+(?:always,exit|exit,always)\s+(-F\s+arch=b64\s+).*(?:,|-S\s+)mount(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:4294967295|-1)\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s]+(?:always,exit|exit,always)\s+(-F\s+arch=b64\s+).*(?:,|-S\s+)mount(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:4294967295|-1)\s+-k\s+\S+\s*$/) }
   end
   describe.one do
-    
   end
 end
-

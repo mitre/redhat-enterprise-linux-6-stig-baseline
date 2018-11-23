@@ -1,17 +1,17 @@
-control "V-38602" do
-  title "The rlogind service must not be running."
+control 'V-38602' do
+  title 'The rlogind service must not be running.'
   desc  "The rlogin service uses unencrypted network communications, which
 means that data from the login session, including passwords and all other
 information transmitted during the session, can be stolen by eavesdroppers on
 the network."
   impact 0.7
-  tag "gtitle": "SRG-OS-000248"
-  tag "gid": "V-38602"
-  tag "rid": "SV-50403r2_rule"
-  tag "stig_id": "RHEL-06-000218"
-  tag "fix_id": "F-43549r3_fix"
-  tag "cci": ["CCI-001436"]
-  tag "nist": ["AC-17 (8)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000248'
+  tag "gid": 'V-38602'
+  tag "rid": 'SV-50403r2_rule'
+  tag "stig_id": 'RHEL-06-000218'
+  tag "fix_id": 'F-43549r3_fix'
+  tag "cci": ['CCI-001436']
+  tag "nist": ['AC-17 (8)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -45,12 +45,11 @@ disabled. The \"rlogin\" service can be disabled with the following command:
 # chkconfig rlogin off"
 
   describe.one do
-    describe package("rsh-server") do
+    describe package('rsh-server') do
       it { should_not be_installed }
     end
-    describe file("/etc/xinetd.d/rlogin") do
-      its("content") { should match(/^\s*disable\s+=\s+yes\s*$/) }
+    describe file('/etc/xinetd.d/rlogin') do
+      its('content') { should match(/^\s*disable\s+=\s+yes\s*$/) }
     end
   end
 end
-

@@ -1,4 +1,4 @@
-control "V-38475" do
+control 'V-38475' do
   title "The system must require passwords to contain a minimum of 15
 characters."
   desc  "Requiring a minimum password length makes password cracking attacks
@@ -11,13 +11,13 @@ to migrate from a password-based authentication scheme to a stronger one based
 on PKI (public key infrastructure).
   "
   impact 0.5
-  tag "gtitle": "SRG-OS-000078"
-  tag "gid": "V-38475"
-  tag "rid": "SV-50275r3_rule"
-  tag "stig_id": "RHEL-06-000050"
-  tag "fix_id": "F-43419r3_fix"
-  tag "cci": ["CCI-000205"]
-  tag "nist": ["IA-5 (1) (a)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000078'
+  tag "gid": 'V-38475'
+  tag "rid": 'SV-50275r3_rule'
+  tag "stig_id": 'RHEL-06-000050'
+  tag "fix_id": 'F-43419r3_fix'
+  tag "cci": ['CCI-000205']
+  tag "nist": ['IA-5 (1) (a)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -52,13 +52,12 @@ The DoD requirement is \"15\". If a program consults \"/etc/login.defs\" and
 also another PAM module (such as \"pam_cracklib\") during a password change
 operation, then the most restrictive must be satisfied."
 
-  describe file("/etc/login.defs") do
-    its("content") { should match(/^PASS_MIN_LEN\s+(\d+)\s*$/) }
+  describe file('/etc/login.defs') do
+    its('content') { should match(/^PASS_MIN_LEN\s+(\d+)\s*$/) }
   end
-  file("/etc/login.defs").content.to_s.scan(/^PASS_MIN_LEN\s+(\d+)\s*$/).flatten.each do |entry|
+  file('/etc/login.defs').content.to_s.scan(/^PASS_MIN_LEN\s+(\d+)\s*$/).flatten.each do |entry|
     describe entry do
       it { should cmp >= 15 }
     end
   end
 end
-

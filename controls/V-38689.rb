@@ -1,19 +1,19 @@
-control "V-38689" do
+control 'V-38689' do
   title "The Department of Defense (DoD) login banner must be displayed
 immediately prior to, or as part of, graphical desktop environment login
 prompts."
   desc  "An appropriate warning message reinforces policy awareness during the
 logon process and facilitates possible legal action against attackers."
   impact 0.5
-  tag "gtitle": "SRG-OS-000228"
-  tag "gid": "V-38689"
-  tag "rid": "SV-50490r5_rule"
-  tag "stig_id": "RHEL-06-000326"
-  tag "fix_id": "F-43638r5_fix"
-  tag "cci": ["CCI-001384", "CCI-001385", "CCI-001386", "CCI-001387",
-"CCI-001388"]
-  tag "nist": ["AC-8 c 1", "AC-8 c 2", "AC-8 c 2", "AC-8 c 2", "AC-8 c 3",
-"Rev_4"]
+  tag "gtitle": 'SRG-OS-000228'
+  tag "gid": 'V-38689'
+  tag "rid": 'SV-50490r5_rule'
+  tag "stig_id": 'RHEL-06-000326'
+  tag "fix_id": 'F-43638r5_fix'
+  tag "cci": ['CCI-001384', 'CCI-001385', 'CCI-001386', 'CCI-001387',
+              'CCI-001388']
+  tag "nist": ['AC-8 c 1', 'AC-8 c 2', 'AC-8 c 2', 'AC-8 c 2', 'AC-8 c 3',
+               'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -104,16 +104,15 @@ end the string with \"\"\". This command writes directly to the file
 file can later be edited directly if necessary."
 
   if package('GConf2').installed?
-    banner_text = command("gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_text").stdout.strip.gsub(%r{[\r\n\s]}, '')
-    describe "gconf2 banner text" do
+    banner_text = command('gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_text').stdout.strip.gsub(/[\r\n\s]/, '')
+    describe 'gconf2 banner text' do
       subject { banner_text }
-      it { should eq attribute('banner_text').gsub(%r{[\r\n\s]}, '') }
+      it { should eq attribute('banner_text').gsub(/[\r\n\s]/, '') }
     end
   else
     impact 0.0
-    describe "Package GConf2 not installed" do
-      skip "Package GConf2 not installed, this control Not Applicable"
+    describe 'Package GConf2 not installed' do
+      skip 'Package GConf2 not installed, this control Not Applicable'
     end
   end
 end
-

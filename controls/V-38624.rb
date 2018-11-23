@@ -1,16 +1,16 @@
-control "V-38624" do
-  title "System logs must be rotated daily."
+control 'V-38624' do
+  title 'System logs must be rotated daily.'
   desc  "Log files that are not properly rotated run the risk of growing so
 large that they fill up the /var/log partition. Valuable logging information
 could be lost if the /var/log partition becomes full."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38624"
-  tag "rid": "SV-50425r1_rule"
-  tag "stig_id": "RHEL-06-000138"
-  tag "fix_id": "F-43573r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38624'
+  tag "rid": 'SV-50425r1_rule'
+  tag "stig_id": 'RHEL-06-000138'
+  tag "fix_id": 'F-43573r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -33,9 +33,8 @@ it is not installed and operating properly, by running the following command:
 
 # yum reinstall logrotate"
 
-  # TODO is this too specific?
-  describe bash("grep logrotate /var/log/cron*") do
-    its('stdout.strip') { should match %r{cron\.daily} }
+  # TODO: is this too specific?
+  describe bash('grep logrotate /var/log/cron*') do
+    its('stdout.strip') { should match /cron\.daily/ }
   end
 end
-

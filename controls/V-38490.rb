@@ -1,17 +1,17 @@
-control "V-38490" do
+control 'V-38490' do
   title "The operating system must enforce requirements for the connection of
 mobile devices to operating systems."
   desc  "USB storage devices such as thumb drives can be used to introduce
 unauthorized software and other vulnerabilities. Support for these devices
 should be disabled and the devices themselves should be tightly controlled."
   impact 0.5
-  tag "gtitle": "SRG-OS-000273"
-  tag "gid": "V-38490"
-  tag "rid": "SV-50291r6_rule"
-  tag "stig_id": "RHEL-06-000503"
-  tag "fix_id": "F-43437r3_fix"
-  tag "cci": ["CCI-000086"]
-  tag "nist": ["AC-19 d", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000273'
+  tag "gid": 'V-38490'
+  tag "rid": 'SV-50291r6_rule'
+  tag "stig_id": 'RHEL-06-000503'
+  tag "fix_id": 'F-43437r3_fix'
+  tag "cci": ['CCI-000086']
+  tag "nist": ['AC-19 d', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -47,14 +47,13 @@ module, but will not prevent an administrator (or another program) from using
 the \"insmod\" program to load the module manually."
 
   describe.one do
-    command("find /etc/modprobe.d -type f -regex .\\*/\\^.\\*\\\\.conf\\$").stdout.split.each do |entry|
+    command('find /etc/modprobe.d -type f -regex .\\*/\\^.\\*\\\\.conf\\$').stdout.split.each do |entry|
       describe file(entry) do
-        its("content") { should match(/^\s*install\s+usb-storage\s+(\/bin\/true)\s*$/) }
+        its('content') { should match(/^\s*install\s+usb-storage\s+(\/bin\/true)\s*$/) }
       end
     end
-    describe file("/etc/modprobe.conf") do
-      its("content") { should match(/^\s*install\s+usb-storage\s+(\/bin\/true)\s*$/) }
+    describe file('/etc/modprobe.conf') do
+      its('content') { should match(/^\s*install\s+usb-storage\s+(\/bin\/true)\s*$/) }
     end
   end
 end
-

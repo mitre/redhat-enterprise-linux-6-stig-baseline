@@ -1,16 +1,16 @@
-control "V-38693" do
+control 'V-38693' do
   title "The system must require passwords to contain no more than three
 consecutive repeating characters."
   desc  "Passwords with excessive repeating characters may be more vulnerable
 to password-guessing attacks."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38693"
-  tag "rid": "SV-50494r3_rule"
-  tag "stig_id": "RHEL-06-000299"
-  tag "fix_id": "F-43642r3_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38693'
+  tag "rid": 'SV-50494r3_rule'
+  tag "stig_id": 'RHEL-06-000299'
+  tag "fix_id": 'F-43642r3_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -40,7 +40,7 @@ after pam_cracklib.so to prevent a run of (3 + 1) or more identical characters.
 
 password required pam_cracklib.so maxrepeat=3 "
 
-  pam_files = ["/etc/pam.d/system-auth", "/etc/pam.d/password-auth"]
+  pam_files = ['/etc/pam.d/system-auth', '/etc/pam.d/password-auth']
   pam_files.each do |pam_file|
     lines = command("grep pam_cracklib #{pam_file}").stdout.strip.split("\n")
     describe "pam_cracklib lines in #{pam_file}" do
@@ -50,9 +50,8 @@ password required pam_cracklib.so maxrepeat=3 "
 
     lines.each do |l|
       describe l do
-        it { should match %r{\bmaxrepeat=([3-9]|[1-9][0-9]+)\b} }
+        it { should match /\bmaxrepeat=([3-9]|[1-9][0-9]+)\b/ }
       end
     end
   end
 end
-

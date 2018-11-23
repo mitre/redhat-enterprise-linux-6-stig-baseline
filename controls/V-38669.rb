@@ -1,15 +1,15 @@
-control "V-38669" do
-  title "The postfix service must be enabled for mail delivery."
+control 'V-38669' do
+  title 'The postfix service must be enabled for mail delivery.'
   desc  "Local mail delivery is essential to some system maintenance and
 notification tasks."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38669"
-  tag "rid": "SV-50470r1_rule"
-  tag "stig_id": "RHEL-06-000287"
-  tag "fix_id": "F-43618r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38669'
+  tag "rid": 'SV-50470r1_rule'
+  tag "stig_id": 'RHEL-06-000287'
+  tag "fix_id": 'F-43618r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -39,31 +39,30 @@ recommended to leave this service enabled for local mail delivery. The
 # chkconfig postfix on
 # service postfix start"
 
-  describe package("postfix") do
+  describe package('postfix') do
     it { should be_installed }
   end
   describe.one do
-    describe service("postfix").runlevels(/0/) do
+    describe service('postfix').runlevels(/0/) do
       it { should be_enabled }
     end
-    describe service("postfix").runlevels(/1/) do
+    describe service('postfix').runlevels(/1/) do
       it { should be_enabled }
     end
-    describe service("postfix").runlevels(/2/) do
+    describe service('postfix').runlevels(/2/) do
       it { should be_enabled }
     end
-    describe service("postfix").runlevels(/3/) do
+    describe service('postfix').runlevels(/3/) do
       it { should be_enabled }
     end
-    describe service("postfix").runlevels(/4/) do
+    describe service('postfix').runlevels(/4/) do
       it { should be_enabled }
     end
-    describe service("postfix").runlevels(/5/) do
+    describe service('postfix').runlevels(/5/) do
       it { should be_enabled }
     end
-    describe service("postfix").runlevels(/6/) do
+    describe service('postfix').runlevels(/6/) do
       it { should be_enabled }
     end
   end
 end
-

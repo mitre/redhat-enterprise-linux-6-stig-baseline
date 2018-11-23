@@ -1,4 +1,4 @@
-control "V-38437" do
+control 'V-38437' do
   title "Automated file system mounting tools must not be enabled unless
 needed."
   desc  "All filesystems that are required for the successful operation of the
@@ -14,13 +14,13 @@ if NFS is required, it is almost always possible to configure filesystem mounts
 statically by editing \"/etc/fstab\" rather than relying on the automounter.
   "
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38437"
-  tag "rid": "SV-50237r1_rule"
-  tag "stig_id": "RHEL-06-000526"
-  tag "fix_id": "F-43381r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38437'
+  tag "rid": 'SV-50237r1_rule'
+  tag "stig_id": 'RHEL-06-000526'
+  tag "fix_id": 'F-43381r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -54,26 +54,25 @@ Stop the service if it is already running:
 
 # service autofs stop"
 
-  describe service("autofs").runlevels(/0/) do
+  describe service('autofs').runlevels(/0/) do
     it { should_not be_enabled }
   end
-  describe service("autofs").runlevels(/1/) do
+  describe service('autofs').runlevels(/1/) do
     it { should_not be_enabled }
   end
-  describe service("autofs").runlevels(/2/) do
+  describe service('autofs').runlevels(/2/) do
     it { should_not be_enabled }
   end
-  describe service("autofs").runlevels(/3/) do
+  describe service('autofs').runlevels(/3/) do
     it { should_not be_enabled }
   end
-  describe service("autofs").runlevels(/4/) do
+  describe service('autofs').runlevels(/4/) do
     it { should_not be_enabled }
   end
-  describe service("autofs").runlevels(/5/) do
+  describe service('autofs').runlevels(/5/) do
     it { should_not be_enabled }
   end
-  describe service("autofs").runlevels(/6/) do
+  describe service('autofs').runlevels(/6/) do
     it { should_not be_enabled }
   end
 end
-

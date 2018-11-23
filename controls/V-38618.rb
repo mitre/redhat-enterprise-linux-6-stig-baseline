@@ -1,16 +1,16 @@
-control "V-38618" do
-  title "The avahi service must be disabled."
+control 'V-38618' do
+  title 'The avahi service must be disabled.'
   desc  "Because the Avahi daemon service keeps an open network port, it is
 subject to network attacks. Its functionality is convenient but is only
 appropriate if the local network can be trusted."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38618"
-  tag "rid": "SV-50419r2_rule"
-  tag "stig_id": "RHEL-06-000246"
-  tag "fix_id": "F-43567r2_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38618'
+  tag "rid": 'SV-50419r2_rule'
+  tag "stig_id": 'RHEL-06-000246'
+  tag "fix_id": 'F-43567r2_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -50,26 +50,25 @@ commands:
 # chkconfig avahi-daemon off
 # service avahi-daemon stop"
 
-  describe service("avahi-daemon").runlevels(/0/) do
+  describe service('avahi-daemon').runlevels(/0/) do
     it { should_not be_enabled }
   end
-  describe service("avahi-daemon").runlevels(/1/) do
+  describe service('avahi-daemon').runlevels(/1/) do
     it { should_not be_enabled }
   end
-  describe service("avahi-daemon").runlevels(/2/) do
+  describe service('avahi-daemon').runlevels(/2/) do
     it { should_not be_enabled }
   end
-  describe service("avahi-daemon").runlevels(/3/) do
+  describe service('avahi-daemon').runlevels(/3/) do
     it { should_not be_enabled }
   end
-  describe service("avahi-daemon").runlevels(/4/) do
+  describe service('avahi-daemon').runlevels(/4/) do
     it { should_not be_enabled }
   end
-  describe service("avahi-daemon").runlevels(/5/) do
+  describe service('avahi-daemon').runlevels(/5/) do
     it { should_not be_enabled }
   end
-  describe service("avahi-daemon").runlevels(/6/) do
+  describe service('avahi-daemon').runlevels(/6/) do
     it { should_not be_enabled }
   end
 end
-

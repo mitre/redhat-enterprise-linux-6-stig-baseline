@@ -1,16 +1,16 @@
-control "V-38675" do
-  title "Process core dumps must be disabled unless needed."
+control 'V-38675' do
+  title 'Process core dumps must be disabled unless needed.'
   desc  "A core dump includes a memory image taken at the time the operating
 system terminates an application. The memory image could contain sensitive data
 and is generally useful only for developers trying to debug problems."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38675"
-  tag "rid": "SV-50476r2_rule"
-  tag "stig_id": "RHEL-06-000308"
-  tag "fix_id": "F-43624r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38675'
+  tag "rid": 'SV-50476r2_rule'
+  tag "stig_id": 'RHEL-06-000308'
+  tag "fix_id": 'F-43624r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -37,7 +37,6 @@ If it is not, this is a finding. "
 * hard core 0"
 
   describe limits_conf do
-    its('*') { should include ['hard', 'core', '0'] }
+    its('*') { should include %w[hard core 0] }
   end
 end
-

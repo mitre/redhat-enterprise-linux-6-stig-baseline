@@ -1,16 +1,16 @@
-control "V-38460" do
-  title "The NFS server must not have the all_squash option enabled."
+control 'V-38460' do
+  title 'The NFS server must not have the all_squash option enabled.'
   desc  "The \"all_squash\" option maps all client requests to a single
 anonymous uid/gid on the NFS server, negating the ability to track file access
 by user ID."
   impact 0.3
-  tag "gtitle": "SRG-OS-000104"
-  tag "gid": "V-38460"
-  tag "rid": "SV-50260r1_rule"
-  tag "stig_id": "RHEL-06-000515"
-  tag "fix_id": "F-43405r1_fix"
-  tag "cci": ["CCI-000764"]
-  tag "nist": ["IA-2", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000104'
+  tag "gid": 'V-38460'
+  tag "rid": 'SV-50260r1_rule'
+  tag "stig_id": 'RHEL-06-000515'
+  tag "fix_id": 'F-43405r1_fix'
+  tag "cci": ['CCI-000764']
+  tag "nist": ['IA-2', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -39,8 +39,7 @@ If there is output, this is a finding."
 
 # service nfs restart"
 
-  describe command("grep all_squash /etc/exports") do
+  describe command('grep all_squash /etc/exports') do
     its('stdout.strip') { should be_empty }
   end
 end
-

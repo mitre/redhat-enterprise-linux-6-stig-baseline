@@ -1,4 +1,4 @@
-control "V-38597" do
+control 'V-38597' do
   title "The system must limit the ability of processes to have simultaneous
 write and execute access to memory."
   desc  "ExecShield uses the segmentation feature on all x86 systems to prevent
@@ -8,13 +8,13 @@ a per-process basis. When the kernel places a process's memory regions such as
 the stack and heap higher than this address, the hardware prevents execution in
 that address range."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38597"
-  tag "rid": "SV-50398r2_rule"
-  tag "stig_id": "RHEL-06-000079"
-  tag "fix_id": "F-43545r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38597'
+  tag "rid": 'SV-50398r2_rule'
+  tag "stig_id": 'RHEL-06-000079'
+  tag "fix_id": 'F-43545r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -53,4 +53,3 @@ kernel.exec-shield = 1"
     its('params') { should be >= { 'kernel.exec-shield' => '1' } }
   end
 end
-

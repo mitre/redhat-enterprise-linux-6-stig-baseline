@@ -1,15 +1,15 @@
-control "V-38590" do
-  title "The system must allow locking of the console screen in text mode."
+control 'V-38590' do
+  title 'The system must allow locking of the console screen in text mode.'
   desc  "Installing \"screen\" ensures a console locking capability is
 available for users who may need to suspend console logins."
   impact 0.3
-  tag "gtitle": "SRG-OS-000030"
-  tag "gid": "V-38590"
-  tag "rid": "SV-50391r1_rule"
-  tag "stig_id": "RHEL-06-000071"
-  tag "fix_id": "F-43538r1_fix"
-  tag "cci": ["CCI-000058"]
-  tag "nist": ["AC-11 a", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000030'
+  tag "gid": 'V-38590'
+  tag "rid": 'SV-50391r1_rule'
+  tag "stig_id": 'RHEL-06-000071'
+  tag "fix_id": 'F-43538r1_fix'
+  tag "cci": ['CCI-000058']
+  tag "nist": ['AC-11 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -40,8 +40,7 @@ The console can now be locked with the following key combination:
 
 ctrl+a x"
 
-  describe package("screen") do
+  describe package('screen') do
     it { should be_installed }
   end
 end
-

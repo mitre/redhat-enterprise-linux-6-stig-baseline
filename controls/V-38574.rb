@@ -1,16 +1,16 @@
-control "V-38574" do
+control 'V-38574' do
   title "The system must use a FIPS 140-2 approved cryptographic hashing
 algorithm for generating account password hashes (system-auth)."
   desc  "Using a stronger hashing algorithm makes password cracking attacks
 more difficult."
   impact 0.5
-  tag "gtitle": "SRG-OS-000120"
-  tag "gid": "V-38574"
-  tag "rid": "SV-50375r4_rule"
-  tag "stig_id": "RHEL-06-000062"
-  tag "fix_id": "F-43522r4_fix"
-  tag "cci": ["CCI-000803"]
-  tag "nist": ["IA-7", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000120'
+  tag "gid": 'V-38574'
+  tag "rid": 'SV-50375r4_rule'
+  tag "stig_id": 'RHEL-06-000062'
+  tag "fix_id": 'F-43522r4_fix'
+  tag "cci": ['CCI-000803']
+  tag "nist": ['IA-7', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -96,8 +96,7 @@ Note: Any updates made to \"/etc/pam.d/system-auth\" will be overwritten by the
     its('stdout.strip') { should_not be_empty }
   end
 
-  describe command("grep password /etc/pam.d/* | grep pam_unix.so") do
-    its('stdout.strip.lines') { should all match %r{\bsha512\b} }
+  describe command('grep password /etc/pam.d/* | grep pam_unix.so') do
+    its('stdout.strip.lines') { should all match /\bsha512\b/ }
   end
 end
-

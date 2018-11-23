@@ -1,15 +1,15 @@
-control "V-38535" do
-  title "The system must not respond to ICMPv4 sent to a broadcast address."
+control 'V-38535' do
+  title 'The system must not respond to ICMPv4 sent to a broadcast address.'
   desc  "Ignoring ICMP echo requests (pings) sent to broadcast or multicast
 addresses makes the system slightly more difficult to enumerate on the network."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38535"
-  tag "rid": "SV-50336r2_rule"
-  tag "stig_id": "RHEL-06-000092"
-  tag "fix_id": "F-43483r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38535'
+  tag "rid": 'SV-50336r2_rule'
+  tag "stig_id": 'RHEL-06-000092'
+  tag "fix_id": 'F-43483r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -43,14 +43,13 @@ If this is not the system's default value, add the following line to
 
 net.ipv4.icmp_echo_ignore_broadcasts = 1"
 
-  describe kernel_parameter("net.ipv4.icmp_echo_ignore_broadcasts") do
-    its("value") { should_not be_nil }
+  describe kernel_parameter('net.ipv4.icmp_echo_ignore_broadcasts') do
+    its('value') { should_not be_nil }
   end
-  describe kernel_parameter("net.ipv4.icmp_echo_ignore_broadcasts") do
-    its("value") { should eq 1 }
+  describe kernel_parameter('net.ipv4.icmp_echo_ignore_broadcasts') do
+    its('value') { should eq 1 }
   end
-  describe file("/etc/sysctl.conf") do
-    its("content") { should match(/^[\s]*net.ipv4.icmp_echo_ignore_broadcasts[\s]*=[\s]*1[\s]*$/) }
+  describe file('/etc/sysctl.conf') do
+    its('content') { should match(/^[\s]*net.ipv4.icmp_echo_ignore_broadcasts[\s]*=[\s]*1[\s]*$/) }
   end
 end
-

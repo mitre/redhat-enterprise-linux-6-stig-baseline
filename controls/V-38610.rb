@@ -1,15 +1,15 @@
-control "V-38610" do
-  title "The SSH daemon must set a timeout count on idle sessions."
+control 'V-38610' do
+  title 'The SSH daemon must set a timeout count on idle sessions.'
   desc  "This ensures a user login will be terminated as soon as the
 \"ClientAliveCountMax\" is reached."
   impact 0.3
-  tag "gtitle": "SRG-OS-000126"
-  tag "gid": "V-38610"
-  tag "rid": "SV-50411r1_rule"
-  tag "stig_id": "RHEL-06-000231"
-  tag "fix_id": "F-43558r1_fix"
-  tag "cci": ["CCI-000879"]
-  tag "nist": ["MA-4 e", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000126'
+  tag "gid": 'V-38610'
+  tag "rid": 'SV-50411r1_rule'
+  tag "stig_id": 'RHEL-06-000231'
+  tag "fix_id": 'F-43558r1_fix'
+  tag "cci": ['CCI-000879']
+  tag "nist": ['MA-4 e', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -40,4 +40,3 @@ ClientAliveCountMax 0"
     its('ClientAliveCountMax') { should cmp 0 }
   end
 end
-

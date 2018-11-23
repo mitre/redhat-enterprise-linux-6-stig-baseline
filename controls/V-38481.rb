@@ -1,15 +1,15 @@
-control "V-38481" do
-  title "System security patches and updates must be installed and up-to-date."
+control 'V-38481' do
+  title 'System security patches and updates must be installed and up-to-date.'
   desc  "Installing software updates is a fundamental mitigation against the
 exploitation of publicly-known vulnerabilities."
   impact 0.5
-  tag "gtitle": "SRG-OS-000191"
-  tag "gid": "V-38481"
-  tag "rid": "SV-50281r1_rule"
-  tag "stig_id": "RHEL-06-000011"
-  tag "fix_id": "F-43426r1_fix"
-  tag "cci": ["CCI-001233"]
-  tag "nist": ["SI-2 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000191'
+  tag "gid": 'V-38481'
+  tag "rid": 'SV-50281r1_rule'
+  tag "stig_id": 'RHEL-06-000011'
+  tag "fix_id": 'F-43426r1_fix'
+  tag "cci": ['CCI-001233']
+  tag "nist": ['SI-2 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -45,8 +45,7 @@ If the system is not configured to use one of these sources, updates (in the
 form of RPM packages) can be manually downloaded from the Red Hat Network and
 installed using \"rpm\"."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe 'Manual test' do
+    skip 'This control must be reviewed manually'
   end
 end
-

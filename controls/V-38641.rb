@@ -1,17 +1,17 @@
-control "V-38641" do
-  title "The atd service must be disabled."
+control 'V-38641' do
+  title 'The atd service must be disabled.'
   desc  "The \"atd\" service could be used by an unsophisticated insider to
 carry out activities outside of a normal login session, which could complicate
 accountability. Furthermore, the need to schedule tasks with \"at\" or
 \"batch\" is not common."
   impact 0.3
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38641"
-  tag "rid": "SV-50442r3_rule"
-  tag "stig_id": "RHEL-06-000262"
-  tag "fix_id": "F-43590r2_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38641'
+  tag "rid": 'SV-50442r3_rule'
+  tag "stig_id": 'RHEL-06-000262'
+  tag "fix_id": 'F-43590r2_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -58,18 +58,17 @@ commands:
 # service atd stop"
 
   describe.one do
-    describe package("at") do
+    describe package('at') do
       it { should_not be_installed }
     end
-    describe service("atd") do
-      its("runlevels(?-mix:0)") { should be_enabled }
-      its("runlevels(?-mix:1)") { should be_enabled }
-      its("runlevels(?-mix:2)") { should be_enabled }
-      its("runlevels(?-mix:3)") { should be_enabled }
-      its("runlevels(?-mix:4)") { should be_enabled }
-      its("runlevels(?-mix:5)") { should be_enabled }
-      its("runlevels(?-mix:6)") { should be_enabled }
+    describe service('atd') do
+      its('runlevels(?-mix:0)') { should be_enabled }
+      its('runlevels(?-mix:1)') { should be_enabled }
+      its('runlevels(?-mix:2)') { should be_enabled }
+      its('runlevels(?-mix:3)') { should be_enabled }
+      its('runlevels(?-mix:4)') { should be_enabled }
+      its('runlevels(?-mix:5)') { should be_enabled }
+      its('runlevels(?-mix:6)') { should be_enabled }
     end
   end
 end
-

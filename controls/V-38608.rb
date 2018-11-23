@@ -1,15 +1,15 @@
-control "V-38608" do
-  title "The SSH daemon must set a timeout interval on idle sessions."
+control 'V-38608' do
+  title 'The SSH daemon must set a timeout interval on idle sessions.'
   desc  "Causing idle users to be automatically logged out guards against
 compromises one system leading trivially to compromises on another."
   impact 0.3
-  tag "gtitle": "SRG-OS-000163"
-  tag "gid": "V-38608"
-  tag "rid": "SV-50409r1_rule"
-  tag "stig_id": "RHEL-06-000230"
-  tag "fix_id": "F-43556r1_fix"
-  tag "cci": ["CCI-001133"]
-  tag "nist": ["SC-10", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000163'
+  tag "gid": 'V-38608'
+  tag "rid": 'SV-50409r1_rule'
+  tag "stig_id": 'RHEL-06-000230'
+  tag "fix_id": 'F-43556r1_fix'
+  tag "cci": ['CCI-001133']
+  tag "nist": ['SC-10', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -49,4 +49,3 @@ SSH from correctly detecting that the user is idle."
     its('ClientAliveInterval') { should_not be_nil }
   end
 end
-

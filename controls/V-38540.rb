@@ -1,16 +1,16 @@
-control "V-38540" do
+control 'V-38540' do
   title "The audit system must be configured to audit modifications to the
 systems network configuration."
   desc  "The network environment should not be modified by anything other than
 administrator action. Any change to network parameters should be audited."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38540"
-  tag "rid": "SV-50341r4_rule"
-  tag "stig_id": "RHEL-06-000182"
-  tag "fix_id": "F-43488r2_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38540'
+  tag "rid": 'SV-50341r4_rule'
+  tag "stig_id": 'RHEL-06-000182'
+  tag "fix_id": 'F-43488r2_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -64,9 +64,9 @@ audit_network_modifications
 -w /etc/hosts -p wa -k audit_network_modifications
 -w /etc/sysconfig/network -p wa -k audit_network_modifications"
 
-  both_archs = command("ausyscall i386 sethostname").stdout.strip != command("ausyscall x86_64 sethostname").stdout.strip
+  both_archs = command('ausyscall i386 sethostname').stdout.strip != command('ausyscall x86_64 sethostname').stdout.strip
 
-  if os.arch == 'x86_64' or both_archs
+  if (os.arch == 'x86_64') || both_archs
     describe command("egrep -w '^[^\#]*sethostname' /etc/audit/audit.rules | grep 'arch=b64'") do
       its('stdout.strip') { should_not be_empty }
     end
@@ -76,7 +76,7 @@ audit_network_modifications
     end
   end
 
-  if os.arch != 'x86_64' or both_archs
+  if (os.arch != 'x86_64') || both_archs
     describe command("egrep -w '^[^\#]*sethostname' /etc/audit/audit.rules | grep 'arch=b32'") do
       its('stdout.strip') { should_not be_empty }
     end
@@ -102,4 +102,3 @@ audit_network_modifications
     its('stdout.strip') { should_not be_empty }
   end
 end
-

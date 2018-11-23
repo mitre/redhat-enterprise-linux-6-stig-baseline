@@ -1,15 +1,15 @@
-control "V-38611" do
-  title "The SSH daemon must ignore .rhosts files."
+control 'V-38611' do
+  title 'The SSH daemon must ignore .rhosts files.'
   desc  "SSH trust relationships mean a compromise on one host can allow an
 attacker to move trivially to other hosts."
   impact 0.5
-  tag "gtitle": "SRG-OS-000106"
-  tag "gid": "V-38611"
-  tag "rid": "SV-50412r1_rule"
-  tag "stig_id": "RHEL-06-000234"
-  tag "fix_id": "F-43559r1_fix"
-  tag "cci": ["CCI-000766"]
-  tag "nist": ["IA-2 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000106'
+  tag "gid": 'V-38611'
+  tag "rid": 'SV-50412r1_rule'
+  tag "stig_id": 'RHEL-06-000234'
+  tag "fix_id": 'F-43559r1_fix'
+  tag "cci": ['CCI-000766']
+  tag "nist": ['IA-2 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -41,4 +41,3 @@ IgnoreRhosts yes"
     its('IgnoreRhosts') { should (eq 'yes').or be_nil }
   end
 end
-

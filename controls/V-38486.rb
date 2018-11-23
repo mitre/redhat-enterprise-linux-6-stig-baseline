@@ -1,4 +1,4 @@
-control "V-38486" do
+control 'V-38486' do
   title "The operating system must conduct backups of system-level information
 contained in the information system per organization defined frequency to
 conduct backups that are consistent with recovery time and recovery point
@@ -9,13 +9,13 @@ information, operating system and application software, and licenses. Backups
 must be consistent with organizational recovery time and recovery point
 objectives."
   impact 0.5
-  tag "gtitle": "SRG-OS-000100"
-  tag "gid": "V-38486"
-  tag "rid": "SV-50287r1_rule"
-  tag "stig_id": "RHEL-06-000505"
-  tag "fix_id": "F-43434r1_fix"
-  tag "cci": ["CCI-000537"]
-  tag "nist": ["CP-9b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000100'
+  tag "gid": 'V-38486'
+  tag "rid": 'SV-50287r1_rule'
+  tag "stig_id": 'RHEL-06-000505'
+  tag "fix_id": 'F-43434r1_fix'
+  tag "cci": ['CCI-000537']
+  tag "nist": ['CP-9b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -37,8 +37,7 @@ such a process.  Commercial and open-source products are also available.
 Implement a process whereby OS data is backed up from the system in accordance
 with local policies."
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe 'Manual test' do
+    skip 'This control must be reviewed manually'
   end
 end
-

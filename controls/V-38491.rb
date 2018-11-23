@@ -1,15 +1,15 @@
-control "V-38491" do
-  title "There must be no .rhosts or hosts.equiv files on the system."
+control 'V-38491' do
+  title 'There must be no .rhosts or hosts.equiv files on the system.'
   desc  "Trust files are convenient, but when used in conjunction with the
 R-services, they can allow unauthenticated access to a system."
   impact 0.7
-  tag "gtitle": "SRG-OS-000248"
-  tag "gid": "V-38491"
-  tag "rid": "SV-50292r1_rule"
-  tag "stig_id": "RHEL-06-000019"
-  tag "fix_id": "F-43438r1_fix"
-  tag "cci": ["CCI-001436"]
-  tag "nist": ["AC-17 (8)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000248'
+  tag "gid": 'V-38491'
+  tag "rid": 'SV-50292r1_rule'
+  tag "stig_id": 'RHEL-06-000019'
+  tag "fix_id": 'F-43438r1_fix'
+  tag "cci": ['CCI-001436']
+  tag "nist": ['AC-17 (8)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -35,14 +35,13 @@ command to delete them from any location.
 
 $ rm ~/.rhosts"
 
-  describe file("/root/^\\.(r|s)hosts$") do
+  describe file('/root/^\\.(r|s)hosts$') do
     it { should_not exist }
   end
-  describe command("find /home -regex .\\*/\\^\\\\.\\(r\\|s\\)hosts\\$ -type f  -maxdepth 1") do
-    its("stdout") { should be_empty }
+  describe command('find /home -regex .\\*/\\^\\\\.\\(r\\|s\\)hosts\\$ -type f  -maxdepth 1') do
+    its('stdout') { should be_empty }
   end
-  describe file("/etc/^s?hosts\\.equiv$") do
+  describe file('/etc/^s?hosts\\.equiv$') do
     it { should_not exist }
   end
 end
-

@@ -1,17 +1,17 @@
-control "V-38621" do
+control 'V-38621' do
   title "The system clock must be synchronized to an authoritative DoD time
 source."
   desc  "Synchronizing with an NTP server makes it possible to collate system
 logs from multiple sources or correlate computer events with real time events.
 Using a trusted NTP server provided by your organization is recommended."
   impact 0.5
-  tag "gtitle": "SRG-OS-000056"
-  tag "gid": "V-38621"
-  tag "rid": "SV-50422r1_rule"
-  tag "stig_id": "RHEL-06-000248"
-  tag "fix_id": "F-43570r1_fix"
-  tag "cci": ["CCI-000160"]
-  tag "nist": ["AU-8 (1)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000056'
+  tag "gid": 'V-38621'
+  tag "rid": 'SV-50422r1_rule'
+  tag "stig_id": 'RHEL-06-000248'
+  tag "fix_id": 'F-43570r1_fix'
+  tag "cci": ['CCI-000160']
+  tag "nist": ['AU-8 (1)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -43,8 +43,7 @@ server [ntpserver]
 This instructs the NTP software to contact that remote server to obtain time
 data."
 
-  describe file("/etc/ntp.conf") do
-    its("content") { should match(/^[\s]*server[\s]+.+$/) }
+  describe file('/etc/ntp.conf') do
+    its('content') { should match(/^[\s]*server[\s]+.+$/) }
   end
 end
-

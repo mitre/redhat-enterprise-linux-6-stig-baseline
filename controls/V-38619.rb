@@ -1,16 +1,16 @@
-control "V-38619" do
-  title "There must be no .netrc files on the system."
+control 'V-38619' do
+  title 'There must be no .netrc files on the system.'
   desc  "Unencrypted passwords for remote FTP servers may be stored in
 \".netrc\" files. DoD policy requires passwords be encrypted in storage and not
 used in access scripts."
   impact 0.5
-  tag "gtitle": "SRG-OS-000073"
-  tag "gid": "V-38619"
-  tag "rid": "SV-50420r2_rule"
-  tag "stig_id": "RHEL-06-000347"
-  tag "fix_id": "F-43569r2_fix"
-  tag "cci": ["CCI-000196"]
-  tag "nist": ["IA-5 (1) (c)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000073'
+  tag "gid": 'V-38619'
+  tag "rid": 'SV-50420r2_rule'
+  tag "stig_id": 'RHEL-06-000347'
+  tag "fix_id": 'F-43569r2_fix'
+  tag "cci": ['CCI-000196']
+  tag "nist": ['IA-5 (1) (c)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -37,4 +37,3 @@ should be removed."
     its('stdout') { should be_empty }
   end
 end
-

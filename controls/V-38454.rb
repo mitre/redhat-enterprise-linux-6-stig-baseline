@@ -1,4 +1,4 @@
-control "V-38454" do
+control 'V-38454' do
   title "The system package management tool must verify ownership on all files
 and directories associated with packages."
   desc  "Ownership of system binaries and configuration files that is incorrect
@@ -6,13 +6,13 @@ could allow an unauthorized user to gain privileges that they should not have.
 The ownership set by the vendor should be maintained. Any deviations from this
 baseline should be investigated."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38454"
-  tag "rid": "SV-50254r2_rule"
-  tag "stig_id": "RHEL-06-000516"
-  tag "fix_id": "F-43400r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38454'
+  tag "rid": 'SV-50254r2_rule'
+  tag "stig_id": 'RHEL-06-000516'
+  tag "fix_id": 'F-43400r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -45,4 +45,3 @@ directories with ownership different from what is expected by the RPM database:
     its('stdout.strip') { should be_empty }
   end
 end
-

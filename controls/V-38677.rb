@@ -1,15 +1,15 @@
-control "V-38677" do
-  title "The NFS server must not have the insecure file locking option enabled."
+control 'V-38677' do
+  title 'The NFS server must not have the insecure file locking option enabled.'
   desc  "Allowing insecure file locking could allow for sensitive data to be
 viewed or edited by an unauthorized user."
   impact 0.7
-  tag "gtitle": "SRG-OS-000104"
-  tag "gid": "V-38677"
-  tag "rid": "SV-50478r1_rule"
-  tag "stig_id": "RHEL-06-000309"
-  tag "fix_id": "F-43626r1_fix"
-  tag "cci": ["CCI-000764"]
-  tag "nist": ["IA-2", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000104'
+  tag "gid": 'V-38677'
+  tag "rid": 'SV-50478r1_rule'
+  tag "stig_id": 'RHEL-06-000309'
+  tag "fix_id": 'F-43626r1_fix'
+  tag "cci": ['CCI-000764']
+  tag "nist": ['IA-2', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -37,8 +37,7 @@ export. This poses a security risk by potentially allowing the client access to
 data for which it does not have authorization. Remove any instances of the
 \"insecure_locks\" option from the file \"/etc/exports\"."
 
-  describe file("/etc/exports") do
-    its("content") { should_not match(/^[^#]*insecure_locks.*$/) }
+  describe file('/etc/exports') do
+    its('content') { should_not match(/^[^#]*insecure_locks.*$/) }
   end
 end
-

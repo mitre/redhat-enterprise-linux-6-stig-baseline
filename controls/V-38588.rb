@@ -1,15 +1,15 @@
-control "V-38588" do
-  title "The system must not permit interactive boot."
+control 'V-38588' do
+  title 'The system must not permit interactive boot.'
   desc  "Using interactive boot, the console user could disable auditing,
 firewalls, or other services, weakening system security."
   impact 0.5
-  tag "gtitle": "SRG-OS-000080"
-  tag "gid": "V-38588"
-  tag "rid": "SV-50389r1_rule"
-  tag "stig_id": "RHEL-06-000070"
-  tag "fix_id": "F-43536r1_fix"
-  tag "cci": ["CCI-000213"]
-  tag "nist": ["AC-3", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000080'
+  tag "gid": 'V-38588'
+  tag "rid": 'SV-50389r1_rule'
+  tag "stig_id": 'RHEL-06-000070'
+  tag "fix_id": 'F-43536r1_fix'
+  tag "cci": ['CCI-000213']
+  tag "nist": ['AC-3', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -40,8 +40,7 @@ The \"PROMPT\" option allows the console user to perform an interactive system
 startup, in which it is possible to select the set of services which are
 started on boot."
 
-  describe file("/etc/sysconfig/init") do
-    its("content") { should match(/^[\s]*PROMPT[\s]*=[\s]*no[\s]*$/) }
+  describe file('/etc/sysconfig/init') do
+    its('content') { should match(/^[\s]*PROMPT[\s]*=[\s]*no[\s]*$/) }
   end
 end
-

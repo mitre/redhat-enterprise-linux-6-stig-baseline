@@ -1,16 +1,16 @@
-control "V-38676" do
+control 'V-38676' do
   title "The xorg-x11-server-common (X Windows) package must not be installed,
 unless required."
   desc  "Unnecessary packages should not be installed to decrease the attack
 surface of the system."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38676"
-  tag "rid": "SV-50477r2_rule"
-  tag "stig_id": "RHEL-06-000291"
-  tag "fix_id": "F-43625r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38676'
+  tag "rid": 'SV-50477r2_rule'
+  tag "stig_id": 'RHEL-06-000291'
+  tag "fix_id": 'F-43625r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -38,8 +38,7 @@ command:
 
 # yum groupremove \"X Window System\""
 
-  describe package("xorg-x11-server-common") do
+  describe package('xorg-x11-server-common') do
     it { should_not be_installed }
   end
 end
-

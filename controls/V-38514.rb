@@ -1,16 +1,16 @@
-control "V-38514" do
+control 'V-38514' do
   title "The Datagram Congestion Control Protocol (DCCP) must be disabled
 unless required."
   desc  "Disabling DCCP protects the system against exploitation of any flaws
 in its implementation."
   impact 0.5
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38514"
-  tag "rid": "SV-50315r5_rule"
-  tag "stig_id": "RHEL-06-000124"
-  tag "fix_id": "F-43461r3_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38514'
+  tag "rid": 'SV-50315r5_rule'
+  tag "stig_id": 'RHEL-06-000124'
+  tag "fix_id": 'F-43461r3_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -42,14 +42,13 @@ being loaded, add the following line to a file in the directory
 install dccp /bin/true"
 
   describe.one do
-    command("find /etc/modprobe.d -type f -regex .\\*/\\^.\\*\\\\.conf\\$").stdout.split.each do |entry|
+    command('find /etc/modprobe.d -type f -regex .\\*/\\^.\\*\\\\.conf\\$').stdout.split.each do |entry|
       describe file(entry) do
-        its("content") { should match(/^\s*install\s+dccp\s+(\/bin\/true)\s*$/) }
+        its('content') { should match(/^\s*install\s+dccp\s+(\/bin\/true)\s*$/) }
       end
     end
-    describe file("/etc/modprobe.conf") do
-      its("content") { should match(/^\s*install\s+dccp\s+(\/bin\/true)\s*$/) }
+    describe file('/etc/modprobe.conf') do
+      its('content') { should match(/^\s*install\s+dccp\s+(\/bin\/true)\s*$/) }
     end
   end
 end
-

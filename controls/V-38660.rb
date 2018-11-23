@@ -1,17 +1,17 @@
-control "V-38660" do
-  title "The snmpd service must use only SNMP protocol version 3 or newer."
+control 'V-38660' do
+  title 'The snmpd service must use only SNMP protocol version 3 or newer.'
   desc  "Earlier versions of SNMP are considered insecure, as they potentially
 allow unauthorized access to detailed system management information.
 
   "
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38660"
-  tag "rid": "SV-50461r1_rule"
-  tag "stig_id": "RHEL-06-000340"
-  tag "fix_id": "F-43604r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38660'
+  tag "rid": 'SV-50461r1_rule'
+  tag "stig_id": 'RHEL-06-000340'
+  tag "fix_id": 'F-43604r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -38,4 +38,3 @@ If there is output, this is a finding."
     its('stdout.strip') { should be_empty }
   end
 end
-

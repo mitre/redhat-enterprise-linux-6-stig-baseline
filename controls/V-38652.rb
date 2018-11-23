@@ -1,15 +1,15 @@
-control "V-38652" do
-  title "Remote file systems must be mounted with the nodev option."
+control 'V-38652' do
+  title 'Remote file systems must be mounted with the nodev option.'
   desc  "Legitimate device files should only exist in the /dev directory. NFS
 mounts should not present device files to users."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38652"
-  tag "rid": "SV-50453r2_rule"
-  tag "stig_id": "RHEL-06-000269"
-  tag "fix_id": "F-43601r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38652'
+  tag "rid": 'SV-50453r2_rule'
+  tag "stig_id": 'RHEL-06-000269'
+  tag "fix_id": 'F-43601r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -35,4 +35,3 @@ for the line which controls mounting of any NFS mounts."
     its('stdout.strip.lines') { should all include 'nodev' }
   end
 end
-

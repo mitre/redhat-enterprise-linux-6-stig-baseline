@@ -1,16 +1,16 @@
-control "V-38571" do
+control 'V-38571' do
   title "The system must require passwords to contain at least one lower-case
 alphabetic character."
   desc  "Requiring a minimum number of lower-case characters makes password
 guessing attacks more difficult by ensuring a larger search space."
   impact 0.3
-  tag "gtitle": "SRG-OS-000070"
-  tag "gid": "V-38571"
-  tag "rid": "SV-50372r3_rule"
-  tag "stig_id": "RHEL-06-000059"
-  tag "fix_id": "F-43519r3_fix"
-  tag "cci": ["CCI-000193"]
-  tag "nist": ["IA-5 (1) (a)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000070'
+  tag "gid": 'V-38571'
+  tag "rid": 'SV-50372r3_rule'
+  tag "stig_id": 'RHEL-06-000059'
+  tag "fix_id": 'F-43519r3_fix'
+  tag "cci": ['CCI-000193']
+  tag "nist": ['IA-5 (1) (a)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -41,40 +41,39 @@ after pam_cracklib.so to require use of a lower-case character in passwords.
 "
 
   describe.one do
-    describe file("/etc/pam.d/system-auth") do
-      its("content") { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+lcredit=-(\d+)[^\n\r]*$/) }
+    describe file('/etc/pam.d/system-auth') do
+      its('content') { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+lcredit=-(\d+)[^\n\r]*$/) }
     end
-    file("/etc/pam.d/system-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+lcredit=-(\d+)[^\n\r]*$/).flatten.each do |entry|
+    file('/etc/pam.d/system-auth').content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+lcredit=-(\d+)[^\n\r]*$/).flatten.each do |entry|
       describe entry do
         it { should cmp >= 1 }
       end
     end
-    describe file("/etc/pam.d/system-auth") do
-      its("content") { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+lcredit=-(\d+)\s+.*$/) }
+    describe file('/etc/pam.d/system-auth') do
+      its('content') { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+lcredit=-(\d+)\s+.*$/) }
     end
-    file("/etc/pam.d/system-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+lcredit=-(\d+)\s+.*$/).flatten.each do |entry|
+    file('/etc/pam.d/system-auth').content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+lcredit=-(\d+)\s+.*$/).flatten.each do |entry|
       describe entry do
         it { should cmp >= 1 }
       end
     end
   end
   describe.one do
-    describe file("/etc/pam.d/password-auth") do
-      its("content") { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+lcredit=-(\d+)[^\n\r]*$/) }
+    describe file('/etc/pam.d/password-auth') do
+      its('content') { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+lcredit=-(\d+)[^\n\r]*$/) }
     end
-    file("/etc/pam.d/password-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+lcredit=-(\d+)[^\n\r]*$/).flatten.each do |entry|
+    file('/etc/pam.d/password-auth').content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+lcredit=-(\d+)[^\n\r]*$/).flatten.each do |entry|
       describe entry do
         it { should cmp >= 1 }
       end
     end
-    describe file("/etc/pam.d/password-auth") do
-      its("content") { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+lcredit=-(\d+)\s+.*$/) }
+    describe file('/etc/pam.d/password-auth') do
+      its('content') { should match(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+lcredit=-(\d+)\s+.*$/) }
     end
-    file("/etc/pam.d/password-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+lcredit=-(\d+)\s+.*$/).flatten.each do |entry|
+    file('/etc/pam.d/password-auth').content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+lcredit=-(\d+)\s+.*$/).flatten.each do |entry|
       describe entry do
         it { should cmp >= 1 }
       end
     end
   end
 end
-

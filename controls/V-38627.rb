@@ -1,15 +1,15 @@
-control "V-38627" do
-  title "The openldap-servers package must not be installed unless required."
+control 'V-38627' do
+  title 'The openldap-servers package must not be installed unless required.'
   desc  "Unnecessary packages should not be installed to decrease the attack
 surface of the system."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38627"
-  tag "rid": "SV-50428r2_rule"
-  tag "stig_id": "RHEL-06-000256"
-  tag "fix_id": "F-43577r2_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38627'
+  tag "rid": 'SV-50428r2_rule'
+  tag "stig_id": 'RHEL-06-000256'
+  tag "fix_id": 'F-43577r2_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -40,8 +40,7 @@ needed only by the OpenLDAP server, not by the clients which use LDAP for
 authentication. If the system is not intended for use as an LDAP Server it
 should be removed."
 
-  describe package("openldap-servers") do
+  describe package('openldap-servers') do
     it { should_not be_installed }
   end
 end
-

@@ -1,5 +1,5 @@
-control "V-38668" do
-  title "The x86 Ctrl-Alt-Delete key sequence must be disabled."
+control 'V-38668' do
+  title 'The x86 Ctrl-Alt-Delete key sequence must be disabled.'
   desc  "A locally logged-in user who presses Ctrl-Alt-Delete, when at the
 console, can reboot the system. If accidentally pressed, as could happen in the
 case of mixed OS environment, this can create the risk of short-term loss of
@@ -7,13 +7,13 @@ availability of systems due to unintentional reboot. In the GNOME graphical
 environment, risk of unintentional reboot from the Ctrl-Alt-Delete sequence is
 reduced because the user will be prompted before any action is taken."
   impact 0.7
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38668"
-  tag "rid": "SV-50469r4_rule"
-  tag "stig_id": "RHEL-06-000286"
-  tag "fix_id": "F-43617r3_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38668'
+  tag "rid": 'SV-50469r4_rule'
+  tag "stig_id": 'RHEL-06-000286'
+  tag "fix_id": 'F-43617r3_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -45,8 +45,7 @@ follows:
 
 exec /usr/bin/logger -p authpriv.notice \"Ctrl-Alt-Delete pressed\""
 
-  describe file("/etc/init/control-alt-delete.override") do
-    its("content") { should match(/^\s*exec \/usr\/bin\/logger -p authpriv\.notice "Ctrl-Alt-Delete pressed"\s*$/) }
+  describe file('/etc/init/control-alt-delete.override') do
+    its('content') { should match(/^\s*exec \/usr\/bin\/logger -p authpriv\.notice "Ctrl-Alt-Delete pressed"\s*$/) }
   end
 end
-

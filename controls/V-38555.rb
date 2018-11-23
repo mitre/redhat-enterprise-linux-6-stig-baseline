@@ -1,15 +1,15 @@
-control "V-38555" do
-  title "The system must employ a local IPv4 firewall."
+control 'V-38555' do
+  title 'The system must employ a local IPv4 firewall.'
   desc  "The \"iptables\" service provides the system's host-based firewalling
 capability for IPv4 and ICMP."
   impact 0.5
-  tag "gtitle": "SRG-OS-000152"
-  tag "gid": "V-38555"
-  tag "rid": "SV-50356r2_rule"
-  tag "stig_id": "RHEL-06-000113"
-  tag "fix_id": "F-43503r2_fix"
-  tag "cci": ["CCI-001118"]
-  tag "nist": ["SC-7 (12)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000152'
+  tag "gid": 'V-38555'
+  tag "rid": 'SV-50356r2_rule'
+  tag "stig_id": 'RHEL-06-000113'
+  tag "fix_id": 'F-43503r2_fix'
+  tag "cci": ['CCI-001118']
+  tag "nist": ['SC-7 (12)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -44,4 +44,3 @@ commands:
     it { should be_running }
   end
 end
-

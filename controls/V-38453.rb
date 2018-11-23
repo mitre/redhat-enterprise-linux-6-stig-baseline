@@ -1,4 +1,4 @@
-control "V-38453" do
+control 'V-38453' do
   title "The system package management tool must verify group-ownership on all
 files and directories associated with packages."
   desc  "Group-ownership of system binaries and configuration files that is
@@ -6,13 +6,13 @@ incorrect could allow an unauthorized user to gain privileges that they should
 not have. The group-ownership set by the vendor should be maintained. Any
 deviations from this baseline should be investigated."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38453"
-  tag "rid": "SV-50253r2_rule"
-  tag "stig_id": "RHEL-06-000517"
-  tag "fix_id": "F-43399r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38453'
+  tag "rid": 'SV-50253r2_rule'
+  tag "stig_id": 'RHEL-06-000517'
+  tag "fix_id": 'F-43399r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -42,9 +42,8 @@ database:
 # rpm -qf [file or directory name]
 # rpm --setugids [package]"
 
-  # TODO check against an exception list attribute
+  # TODO: check against an exception list attribute
   describe command("rpm -Va | grep '^......G'") do
     its('stdout.strip') { should eq '' }
   end
 end
-

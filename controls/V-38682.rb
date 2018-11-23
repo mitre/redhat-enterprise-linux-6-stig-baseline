@@ -1,16 +1,16 @@
-control "V-38682" do
-  title "The Bluetooth kernel module must be disabled."
+control 'V-38682' do
+  title 'The Bluetooth kernel module must be disabled.'
   desc  "If Bluetooth functionality must be disabled, preventing the kernel
 from loading the kernel module provides an additional safeguard against its
 activation."
   impact 0.5
-  tag "gtitle": "SRG-OS-000034"
-  tag "gid": "V-38682"
-  tag "rid": "SV-50483r5_rule"
-  tag "stig_id": "RHEL-06-000315"
-  tag "fix_id": "F-43631r3_fix"
-  tag "cci": ["CCI-000085"]
-  tag "nist": ["AC-19 c", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000034'
+  tag "gid": 'V-38682'
+  tag "rid": 'SV-50483r5_rule'
+  tag "stig_id": 'RHEL-06-000315'
+  tag "fix_id": 'F-43631r3_fix'
+  tag "cci": ['CCI-000085']
+  tag "nist": ['AC-19 c', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -53,12 +53,11 @@ module:
 install net-pf-31 /bin/true
 install bluetooth /bin/true"
 
-  describe command("grep -r bluetooth /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\" | grep -v \"#\"") do
+  describe command('grep -r bluetooth /etc/modprobe.conf /etc/modprobe.d | grep -i "/bin/true" | grep -v "#"') do
     its('stdout.strip') { should_not be_empty }
   end
 
-  describe command("grep -r net-pf-31 /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\" | grep -v \"#\"") do
+  describe command('grep -r net-pf-31 /etc/modprobe.conf /etc/modprobe.d | grep -i "/bin/true" | grep -v "#"') do
     its('stdout.strip') { should_not be_empty }
   end
 end
-

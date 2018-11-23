@@ -1,17 +1,17 @@
-control "V-38595" do
+control 'V-38595' do
   title "The system must be configured to require the use of a CAC, PIV
 compliant hardware token, or Alternate Logon Token (ALT) for authentication."
   desc  "Smart card login provides two-factor authentication stronger than that
 provided by a username/password combination. Smart cards leverage a PKI (public
 key infrastructure) in order to provide and verify credentials."
   impact 0.5
-  tag "gtitle": "SRG-OS-000105"
-  tag "gid": "V-38595"
-  tag "rid": "SV-50396r3_rule"
-  tag "stig_id": "RHEL-06-000349"
-  tag "fix_id": "F-43544r2_fix"
-  tag "cci": ["CCI-000765"]
-  tag "nist": ["IA-2 (1)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000105'
+  tag "gid": 'V-38595'
+  tag "rid": 'SV-50396r3_rule'
+  tag "stig_id": 'RHEL-06-000349'
+  tag "fix_id": 'F-43544r2_fix'
+  tag "cci": ['CCI-000765']
+  tag "nist": ['IA-2 (1)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -48,8 +48,7 @@ For guidance on enabling SSH to authenticate against a Common Access Card
 
 https://access.redhat.com/solutions/82273"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe 'Manual test' do
+    skip 'This control must be reviewed manually'
   end
 end
-

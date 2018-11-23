@@ -1,4 +1,4 @@
-control "V-38567" do
+control 'V-38567' do
   title "The audit system must be configured to audit all use of setuid and
 setgid programs."
   desc  "Privileged programs are subject to escalation-of-privilege attacks,
@@ -6,13 +6,13 @@ which attempt to subvert their normal role of providing some necessary but
 limited capability. As such, motivation exists to monitor these programs for
 unusual activity."
   impact 0.3
-  tag "gtitle": "SRG-OS-000020"
-  tag "gid": "V-38567"
-  tag "rid": "SV-50368r4_rule"
-  tag "stig_id": "RHEL-06-000198"
-  tag "fix_id": "F-43515r6_fix"
-  tag "cci": ["CCI-000040"]
-  tag "nist": ["AC-6 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000020'
+  tag "gid": 'V-38567'
+  tag "rid": 'SV-50368r4_rule'
+  tag "stig_id": 'RHEL-06-000198'
+  tag "fix_id": 'F-43515r6_fix'
+  tag "cci": ['CCI-000040']
+  tag "nist": ['AC-6 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -50,9 +50,9 @@ full path to each setuid / setgid program in the list:
 auid!=4294967295 -k privileged"
 
   files = command(%(find / -xautofs -noleaf -wholename '/proc' -prune -o -wholename '/sys' -prune -o -wholename '/dev' -prune -o -wholename '/selinux' -prune -o -type f -perm /6000 -print)).stdout.strip.split("\n")
-  
+
   if files.empty?
-    describe "setuid and setgid files" do
+    describe 'setuid and setgid files' do
       subject { files }
       it { should be_empty }
     end
@@ -64,4 +64,3 @@ auid!=4294967295 -k privileged"
     end
   end
 end
-

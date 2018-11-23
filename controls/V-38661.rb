@@ -1,17 +1,17 @@
-control "V-38661" do
+control 'V-38661' do
   title "The operating system must protect the confidentiality and integrity of
 data at rest. "
   desc  "The risk of a system's physical compromise, particularly mobile
 systems such as laptops, places its data at risk of compromise. Encrypting this
 data mitigates the risk of its loss if the system is lost."
   impact 0.3
-  tag "gtitle": "SRG-OS-000185"
-  tag "gid": "V-38661"
-  tag "rid": "SV-50462r2_rule"
-  tag "stig_id": "RHEL-06-000276"
-  tag "fix_id": "F-43610r3_fix"
-  tag "cci": ["CCI-001199"]
-  tag "nist": ["SC-28", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000185'
+  tag "gid": 'V-38661'
+  tag "rid": 'SV-50462r2_rule'
+  tag "stig_id": 'RHEL-06-000276'
+  tag "fix_id": 'F-43610r3_fix'
+  tag "cci": ['CCI-001199']
+  tag "nist": ['SC-28', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -52,8 +52,7 @@ Red Hat Documentation web site:
 
 https://docs.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/6/html/Security_Guide/sect-Security_Guide-LUKS_Disk_Encryption.html"
 
-  describe "Manual test" do
-    skip "This control must be reviewed manually"
+  describe 'Manual test' do
+    skip 'This control must be reviewed manually'
   end
 end
-

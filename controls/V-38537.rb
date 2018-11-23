@@ -1,15 +1,15 @@
-control "V-38537" do
-  title "The system must ignore ICMPv4 bogus error responses."
+control 'V-38537' do
+  title 'The system must ignore ICMPv4 bogus error responses.'
   desc  "Ignoring bogus ICMP error responses reduces log size, although some
 activity would not be logged."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38537"
-  tag "rid": "SV-50338r2_rule"
-  tag "stig_id": "RHEL-06-000093"
-  tag "fix_id": "F-43485r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38537'
+  tag "rid": 'SV-50338r2_rule'
+  tag "stig_id": 'RHEL-06-000093'
+  tag "fix_id": 'F-43485r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -44,14 +44,13 @@ If this is not the system's default value, add the following line to
 
 net.ipv4.icmp_ignore_bogus_error_responses = 1"
 
-  describe kernel_parameter("net.ipv4.icmp_ignore_bogus_error_responses") do
-    its("value") { should_not be_nil }
+  describe kernel_parameter('net.ipv4.icmp_ignore_bogus_error_responses') do
+    its('value') { should_not be_nil }
   end
-  describe kernel_parameter("net.ipv4.icmp_ignore_bogus_error_responses") do
-    its("value") { should eq 1 }
+  describe kernel_parameter('net.ipv4.icmp_ignore_bogus_error_responses') do
+    its('value') { should eq 1 }
   end
-  describe file("/etc/sysctl.conf") do
-    its("content") { should match(/^[\s]*net.ipv4.icmp_ignore_bogus_error_responses[\s]*=[\s]*1[\s]*$/) }
+  describe file('/etc/sysctl.conf') do
+    its('content') { should match(/^[\s]*net.ipv4.icmp_ignore_bogus_error_responses[\s]*=[\s]*1[\s]*$/) }
   end
 end
-

@@ -1,4 +1,4 @@
-control "V-38575" do
+control 'V-38575' do
   title "The audit system must be configured to audit user deletions of files
 and programs."
   desc  "Auditing file deletions will create an audit trail for files that are
@@ -6,13 +6,13 @@ removed from the system. The audit trail could aid in system troubleshooting,
 as well as detecting malicious processes that attempt to delete log files to
 conceal their presence."
   impact 0.3
-  tag "gtitle": "SRG-OS-000064"
-  tag "gid": "V-38575"
-  tag "rid": "SV-50376r4_rule"
-  tag "stig_id": "RHEL-06-000200"
-  tag "fix_id": "F-43523r4_fix"
-  tag "cci": ["CCI-000172"]
-  tag "nist": ["AU-12 c", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000064'
+  tag "gid": 'V-38575'
+  tag "rid": 'SV-50376r4_rule'
+  tag "stig_id": 'RHEL-06-000200'
+  tag "fix_id": 'F-43523r4_fix'
+  tag "cci": ['CCI-000172']
+  tag "nist": ['AU-12 c', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -67,38 +67,36 @@ renameat -F auid=0 -k delete
 
 "
 
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)rmdir(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:(?:-1)|(?:4294967295))\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)rmdir(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:(?:-1)|(?:4294967295))\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)unlink(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:(?:-1)|(?:4294967295))\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)unlink(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:(?:-1)|(?:4294967295))\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)unlinkat(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:(?:-1)|(?:4294967295))\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)unlinkat(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:(?:-1)|(?:4294967295))\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)rename(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:(?:-1)|(?:4294967295))\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)rename(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:(?:-1)|(?:4294967295))\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)renameat(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:(?:-1)|(?:4294967295))\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)renameat(?:,|\s+).*-F\s+auid>=500\s+-F\s+auid!=(?:(?:-1)|(?:4294967295))\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)rmdir(?:,|\s+).*-F\s+auid=0\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)rmdir(?:,|\s+).*-F\s+auid=0\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)unlink(?:,|\s+).*-F\s+auid=0\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)unlink(?:,|\s+).*-F\s+auid=0\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)unlinkat(?:,|\s+).*-F\s+auid=0\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)unlinkat(?:,|\s+).*-F\s+auid=0\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)rename(?:,|\s+).*-F\s+auid=0\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)rename(?:,|\s+).*-F\s+auid=0\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)renameat(?:,|\s+).*-F\s+auid=0\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)\s+(?:-F\s+arch=b32\s+).*(?:,|-S\s+)renameat(?:,|\s+).*-F\s+auid=0\s+-k\s+\S+\s*$/) }
   end
   describe.one do
-    
   end
 end
-

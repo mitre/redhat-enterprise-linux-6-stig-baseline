@@ -1,15 +1,15 @@
-control "V-38606" do
-  title "The tftp-server package must not be installed unless required."
+control 'V-38606' do
+  title 'The tftp-server package must not be installed unless required.'
   desc  "Removing the \"tftp-server\" package decreases the risk of the
 accidental (or intentional) activation of tftp services."
   impact 0.5
-  tag "gtitle": "SRG-OS-000095"
-  tag "gid": "V-38606"
-  tag "rid": "SV-50407r2_rule"
-  tag "stig_id": "RHEL-06-000222"
-  tag "fix_id": "F-43554r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000095'
+  tag "gid": 'V-38606'
+  tag "rid": 'SV-50407r2_rule'
+  tag "stig_id": 'RHEL-06-000222'
+  tag "fix_id": 'F-43554r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -32,8 +32,7 @@ command:
 
 # yum erase tftp-server"
 
-  describe package("tftp-server") do
+  describe package('tftp-server') do
     it { should_not be_installed }
   end
 end
-

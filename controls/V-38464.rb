@@ -1,16 +1,16 @@
-control "V-38464" do
+control 'V-38464' do
   title "The audit system must take appropriate action when there are disk
 errors on the audit storage volume."
   desc  "Taking appropriate action in case of disk errors will minimize the
 possibility of losing audit records."
   impact 0.5
-  tag "gtitle": "SRG-OS-000047"
-  tag "gid": "V-38464"
-  tag "rid": "SV-50264r1_rule"
-  tag "stig_id": "RHEL-06-000511"
-  tag "fix_id": "F-43410r1_fix"
-  tag "cci": ["CCI-000140"]
-  tag "nist": ["AU-5 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000047'
+  tag "gid": 'V-38464'
+  tag "rid": 'SV-50264r1_rule'
+  tag "stig_id": 'RHEL-06-000511'
+  tag "fix_id": 'F-43410r1_fix'
+  tag "cci": ['CCI-000140']
+  tag "nist": ['AU-5 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -51,7 +51,6 @@ Set this to \"syslog\", \"exec\", \"single\", or \"halt\"."
 
   describe parse_config_file('/etc/audit/auditd.conf') do
     its('disk_error_action') { should_not be_nil }
-    its('disk_error_action.downcase') { should_not be_in ['suspend', 'ignore'] }
+    its('disk_error_action.downcase') { should_not be_in %w[suspend ignore] }
   end
 end
-

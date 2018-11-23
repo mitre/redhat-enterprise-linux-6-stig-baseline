@@ -1,15 +1,15 @@
-control "V-38681" do
-  title "All GIDs referenced in /etc/passwd must be defined in /etc/group"
+control 'V-38681' do
+  title 'All GIDs referenced in /etc/passwd must be defined in /etc/group'
   desc  "Inconsistency in GIDs between /etc/passwd and /etc/group could lead to
 a user having unintended rights."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38681"
-  tag "rid": "SV-50482r2_rule"
-  tag "stig_id": "RHEL-06-000294"
-  tag "fix_id": "F-43630r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38681'
+  tag "rid": 'SV-50482r2_rule'
+  tag "stig_id": 'RHEL-06-000294'
+  tag "fix_id": 'F-43630r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -34,4 +34,3 @@ corresponding group."
     its('stdout.strip') { should be_empty }
   end
 end
-

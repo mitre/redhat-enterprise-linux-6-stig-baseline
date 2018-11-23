@@ -1,16 +1,16 @@
-control "V-38450" do
-  title "The /etc/passwd file must be owned by root."
+control 'V-38450' do
+  title 'The /etc/passwd file must be owned by root.'
   desc  "The \"/etc/passwd\" file contains information about the users that are
 configured on the system. Protection of this file is critical for system
 security."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38450"
-  tag "rid": "SV-50250r1_rule"
-  tag "stig_id": "RHEL-06-000039"
-  tag "fix_id": "F-43395r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38450'
+  tag "rid": 'SV-50250r1_rule'
+  tag "stig_id": 'RHEL-06-000039'
+  tag "fix_id": 'F-43395r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -32,11 +32,10 @@ If it does not, this is a finding."
 
 # chown root /etc/passwd"
 
-  describe file("/etc/passwd") do
+  describe file('/etc/passwd') do
     it { should exist }
   end
-  describe file("/etc/passwd") do
-    its("uid") { should cmp 0 }
+  describe file('/etc/passwd') do
+    its('uid') { should cmp 0 }
   end
 end
-

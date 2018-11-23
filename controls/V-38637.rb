@@ -1,17 +1,17 @@
-control "V-38637" do
+control 'V-38637' do
   title "The system package management tool must verify contents of all files
 associated with the audit package."
   desc  "The hash on important files like audit system executables should match
 the information given by the RPM database. Audit executables  with erroneous
 hashes could be a sign of nefarious activity on the system."
   impact 0.5
-  tag "gtitle": "SRG-OS-000278"
-  tag "gid": "V-38637"
-  tag "rid": "SV-50438r2_rule"
-  tag "stig_id": "RHEL-06-000281"
-  tag "fix_id": "F-43586r1_fix"
-  tag "cci": ["CCI-001496"]
-  tag "nist": ["AU-9 (3)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000278'
+  tag "gid": 'V-38637'
+  tag "rid": 'SV-50438r2_rule'
+  tag "stig_id": 'RHEL-06-000281'
+  tag "fix_id": 'F-43586r1_fix'
+  tag "cci": ['CCI-001496']
+  tag "nist": ['AU-9 (3)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -49,4 +49,3 @@ yum reinstall [affected_package]"
     its('stdout.strip') { should be_empty }
   end
 end
-

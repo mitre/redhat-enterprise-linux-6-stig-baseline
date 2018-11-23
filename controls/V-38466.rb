@@ -1,16 +1,16 @@
-control "V-38466" do
-  title "Library files must be owned by a system account."
+control 'V-38466' do
+  title 'Library files must be owned by a system account.'
   desc  "Files from shared library directories are loaded into the address
 space of processes (including privileged ones) or of the kernel itself at
 runtime. Proper ownership is necessary to protect the integrity of the system."
   impact 0.5
-  tag "gtitle": "SRG-OS-000259"
-  tag "gid": "V-38466"
-  tag "rid": "SV-50266r4_rule"
-  tag "stig_id": "RHEL-06-000046"
-  tag "fix_id": "F-43411r4_fix"
-  tag "cci": ["CCI-001499"]
-  tag "nist": ["CM-5 (6)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000259'
+  tag "gid": 'V-38466'
+  tag "rid": 'SV-50266r4_rule'
+  tag "stig_id": 'RHEL-06-000046'
+  tag "fix_id": 'F-43411r4_fix'
+  tag "cci": ['CCI-001499']
+  tag "nist": ['CM-5 (6)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -69,7 +69,7 @@ Or
 
 # chown root [FILE]"
 
-  libs = ["/lib", "/lib64", "/usr/lib", "/usr/lib64", "/usr/local/lib", "/usr/local/lib64"]
+  libs = ['/lib', '/lib64', '/usr/lib', '/usr/lib64', '/usr/local/lib', '/usr/local/lib64']
   libs.each do |l|
     files = command("find -L #{l} \\! -user root").stdout.strip.split("\n")
     if files.empty?
@@ -85,4 +85,3 @@ Or
     end
   end
 end
-

@@ -1,16 +1,16 @@
-control "V-38473" do
-  title "The system must use a separate file system for user home directories."
+control 'V-38473' do
+  title 'The system must use a separate file system for user home directories.'
   desc  "Ensuring that \"/home\" is mounted on its own partition enables the
 setting of more restrictive mount options, and also helps ensure that users
 cannot trivially fill partitions used for log or audit data storage."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38473"
-  tag "rid": "SV-50273r1_rule"
-  tag "stig_id": "RHEL-06-000007"
-  tag "fix_id": "F-43418r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38473'
+  tag "rid": 'SV-50273r1_rule'
+  tag "stig_id": 'RHEL-06-000007'
+  tag "fix_id": 'F-43418r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -34,8 +34,7 @@ using LVM). If \"/home\" will be mounted from another system such as an NFS
 server, then creating a separate partition is not necessary at installation
 time, and the mountpoint can instead be configured later."
 
-  describe mount("/home") do
+  describe mount('/home') do
     it { should be_mounted }
   end
 end
-

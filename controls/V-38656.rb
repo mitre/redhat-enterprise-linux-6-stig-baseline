@@ -1,16 +1,16 @@
-control "V-38656" do
+control 'V-38656' do
   title "The system must use SMB client signing for connecting to samba servers
 using smbclient."
   desc  "Packet signing can prevent man-in-the-middle attacks which modify SMB
 packets in transit."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38656"
-  tag "rid": "SV-50457r1_rule"
-  tag "stig_id": "RHEL-06-000272"
-  tag "fix_id": "F-43606r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38656'
+  tag "rid": 'SV-50457r1_rule'
+  tag "stig_id": 'RHEL-06-000272'
+  tag "fix_id": 'F-43606r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -42,12 +42,11 @@ Requiring samba clients such as \"smbclient\" to use packet signing ensures
 they can only communicate with servers that support packet signing."
 
   describe.one do
-    describe package("samba-common") do
+    describe package('samba-common') do
       it { should_not be_installed }
     end
-    describe file("/etc/samba/smb.conf") do
-      its("content") { should match(/^[\s]*client[\s]+signing[\s]*=[\s]*mandatory/) }
+    describe file('/etc/samba/smb.conf') do
+      its('content') { should match(/^[\s]*client[\s]+signing[\s]*=[\s]*mandatory/) }
     end
   end
 end
-

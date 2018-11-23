@@ -1,16 +1,16 @@
-control "V-38633" do
-  title "The system must set a maximum audit log file size."
+control 'V-38633' do
+  title 'The system must set a maximum audit log file size.'
   desc  "The total storage for audit log files must be large enough to retain
 log information over the period required. This is a function of the maximum log
 file size and the number of logs retained."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38633"
-  tag "rid": "SV-50434r1_rule"
-  tag "stig_id": "RHEL-06-000160"
-  tag "fix_id": "F-43582r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38633'
+  tag "rid": 'SV-50434r1_rule'
+  tag "stig_id": 'RHEL-06-000160'
+  tag "fix_id": 'F-43582r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -39,13 +39,12 @@ max_log_file = [STOREMB]
 Set the value to \"6\" (MB) or higher for general-purpose systems. Larger
 values, of course, support retention of even more audit data."
 
-  describe file("/etc/audit/auditd.conf") do
-    its("content") { should match(/^max_log_file\s*=\s*(\d+)\s*$/) }
+  describe file('/etc/audit/auditd.conf') do
+    its('content') { should match(/^max_log_file\s*=\s*(\d+)\s*$/) }
   end
-  file("/etc/audit/auditd.conf").content.to_s.scan(/^max_log_file\s*=\s*(\d+)\s*$/).flatten.each do |entry|
+  file('/etc/audit/auditd.conf').content.to_s.scan(/^max_log_file\s*=\s*(\d+)\s*$/).flatten.each do |entry|
     describe entry do
       it { should cmp >= 6 }
     end
   end
 end
-

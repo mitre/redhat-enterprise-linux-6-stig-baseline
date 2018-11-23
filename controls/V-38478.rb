@@ -1,4 +1,4 @@
-control "V-38478" do
+control 'V-38478' do
   title "The Red Hat Network Service (rhnsd) service must not be running,
 unless using RHN or an RHN Satellite."
   desc  "Although systems management and patching is extremely important to
@@ -6,13 +6,13 @@ system security, management by a system outside the enterprise enclave is not
 desirable for some environments. However, if the system is being managed by RHN
 or RHN Satellite Server the \"rhnsd\" daemon can remain on."
   impact 0.3
-  tag "gtitle": "SRG-OS-000096"
-  tag "gid": "V-38478"
-  tag "rid": "SV-50278r2_rule"
-  tag "stig_id": "RHEL-06-000009"
-  tag "fix_id": "F-43423r2_fix"
-  tag "cci": ["CCI-000382"]
-  tag "nist": ["CM-7 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000096'
+  tag "gid": 'V-38478'
+  tag "rid": 'SV-50278r2_rule'
+  tag "stig_id": 'RHEL-06-000009'
+  tag "fix_id": 'F-43423r2_fix'
+  tag "cci": ['CCI-000382']
+  tag "nist": ['CM-7 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -57,9 +57,8 @@ disabled with the following commands:
 # chkconfig rhnsd off
 # service rhnsd stop"
 
-  describe service("rhnsd") do
+  describe service('rhnsd') do
     it { should_not be_running }
     it { should_not be_enabled }
   end
 end
-

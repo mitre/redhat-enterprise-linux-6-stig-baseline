@@ -1,5 +1,5 @@
-control "V-38589" do
-  title "The telnet daemon must not be running."
+control 'V-38589' do
+  title 'The telnet daemon must not be running.'
   desc  "The telnet protocol uses unencrypted network communication, which
 means that data from the login session, including passwords and all other
 information transmitted during the session, can be stolen by eavesdroppers on
@@ -10,13 +10,13 @@ encrypted sessions, such as with Kerberos or the use of encrypted network
 tunnels, the risk of exposing sensitive information is mitigated.
   "
   impact 0.7
-  tag "gtitle": "SRG-OS-000129"
-  tag "gid": "V-38589"
-  tag "rid": "SV-50390r2_rule"
-  tag "stig_id": "RHEL-06-000211"
-  tag "fix_id": "F-43537r1_fix"
-  tag "cci": ["CCI-000888"]
-  tag "nist": ["MA-4 (6)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000129'
+  tag "gid": 'V-38589'
+  tag "rid": 'SV-50390r2_rule'
+  tag "stig_id": 'RHEL-06-000211'
+  tag "fix_id": 'F-43537r1_fix'
+  tag "cci": ['CCI-000888']
+  tag "nist": ['MA-4 (6)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -48,12 +48,11 @@ command:
 # chkconfig telnet off"
 
   describe.one do
-    describe package("telnet-server") do
+    describe package('telnet-server') do
       it { should_not be_installed }
     end
-    describe file("/etc/xinetd.d/telnet") do
-      its("content") { should match(/^\s*disable\s+=\s+yes\s*$/) }
+    describe file('/etc/xinetd.d/telnet') do
+      its('content') { should match(/^\s*disable\s+=\s+yes\s*$/) }
     end
   end
 end
-

@@ -1,15 +1,15 @@
-control "V-38609" do
-  title "The TFTP service must not be running."
+control 'V-38609' do
+  title 'The TFTP service must not be running.'
   desc  "Disabling the \"tftp\" service ensures the system is not acting as a
 tftp server, which does not provide encryption or authentication."
   impact 0.5
-  tag "gtitle": "SRG-OS-000248"
-  tag "gid": "V-38609"
-  tag "rid": "SV-50410r2_rule"
-  tag "stig_id": "RHEL-06-000223"
-  tag "fix_id": "F-43557r4_fix"
-  tag "cci": ["CCI-001436"]
-  tag "nist": ["AC-17 (8)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000248'
+  tag "gid": 'V-38609'
+  tag "rid": 'SV-50410r2_rule'
+  tag "stig_id": 'RHEL-06-000223'
+  tag "fix_id": 'F-43557r4_fix'
+  tag "cci": ['CCI-001436']
+  tag "nist": ['AC-17 (8)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -45,4 +45,3 @@ be disabled with the following command:
     it { should_not be_running }
   end
 end
-

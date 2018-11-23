@@ -1,4 +1,4 @@
-control "V-38580" do
+control 'V-38580' do
   title "The audit system must be configured to audit the loading and unloading
 of dynamic kernel modules."
   desc  "The addition/removal of kernel modules can be used to alter the
@@ -6,13 +6,13 @@ behavior of the kernel and potentially introduce malicious code into kernel
 space. It is important to have an audit trail of modules that have been
 introduced into the kernel."
   impact 0.5
-  tag "gtitle": "SRG-OS-000064"
-  tag "gid": "V-38580"
-  tag "rid": "SV-50381r2_rule"
-  tag "stig_id": "RHEL-06-000202"
-  tag "fix_id": "F-43528r2_fix"
-  tag "cci": ["CCI-000172"]
-  tag "nist": ["AU-12 c", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000064'
+  tag "gid": 'V-38580'
+  tag "rid": 'SV-50381r2_rule'
+  tag "stig_id": 'RHEL-06-000202'
+  tag "fix_id": 'F-43528r2_fix'
+  tag "cci": ['CCI-000172']
+  tag "nist": ['AU-12 c', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -56,23 +56,21 @@ or b64 as appropriate for your system:
 -w /sbin/modprobe -p x -k modules
 -a always,exit -F arch=[ARCH] -S init_module -S delete_module -k modules"
 
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^(?:-w\s+|-a\s+(?:always,exit|exit,always)\s+-F\s+path=)\/sbin\/insmod\s+-p\s+[rwa]*x[rwa]*\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^(?:-w\s+|-a\s+(?:always,exit|exit,always)\s+-F\s+path=)\/sbin\/insmod\s+-p\s+[rwa]*x[rwa]*\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^(?:-w\s+|-a\s+(?:always,exit|exit,always)\s+-F\s+path=)\/sbin\/rmmod\s+-p\s+[rwa]*x[rwa]*\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^(?:-w\s+|-a\s+(?:always,exit|exit,always)\s+-F\s+path=)\/sbin\/rmmod\s+-p\s+[rwa]*x[rwa]*\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^(?:-w\s+|-a\s+(?:always,exit|exit,always)\s+-F\s+path=)\/sbin\/modprobe\s+-p\s+[rwa]*x[rwa]*\s+-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^(?:-w\s+|-a\s+(?:always,exit|exit,always)\s+-F\s+path=)\/sbin\/modprobe\s+-p\s+[rwa]*x[rwa]*\s+-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)+(?:.*-F[\s]+arch=b32\s+).*(?:,|-S\s+)delete_module(?:,|\s+).*-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)+(?:.*-F[\s]+arch=b32\s+).*(?:,|-S\s+)delete_module(?:,|\s+).*-k\s+\S+\s*$/) }
   end
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^[\s]*-a[\s](?:always,exit|exit,always)(?:.*-F[\s]+arch=b32\s+).*(?:,|-S\s+)init_module(?:,|\s+).*-k\s+\S+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^[\s]*-a[\s](?:always,exit|exit,always)(?:.*-F[\s]+arch=b32\s+).*(?:,|-S\s+)init_module(?:,|\s+).*-k\s+\S+\s*$/) }
   end
   describe.one do
-    
   end
 end
-

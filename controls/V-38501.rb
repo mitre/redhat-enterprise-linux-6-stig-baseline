@@ -1,16 +1,16 @@
-control "V-38501" do
+control 'V-38501' do
   title "The system must disable accounts after excessive login failures within
 a 15-minute interval."
   desc  "Locking out user accounts after a number of incorrect attempts within
 a specific period of time prevents direct password guessing attacks."
   impact 0.5
-  tag "gtitle": "SRG-OS-000249"
-  tag "gid": "V-38501"
-  tag "rid": "SV-50302r4_rule"
-  tag "stig_id": "RHEL-06-000357"
-  tag "fix_id": "F-43448r6_fix"
-  tag "cci": ["CCI-001452"]
-  tag "nist": ["AC-7 a", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000249'
+  tag "gid": 'V-38501'
+  tag "rid": 'SV-50302r4_rule'
+  tag "stig_id": 'RHEL-06-000357'
+  tag "fix_id": 'F-43448r6_fix'
+  tag "cci": ['CCI-001452']
+  tag "nist": ['AC-7 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -56,21 +56,20 @@ Note that any updates made to \"/etc/pam.d/system-auth\" and
 \"/etc/pam.d/password-auth\" may be overwritten by the \"authconfig\" program.
 The \"authconfig\" program should not be used."
 
-  file("/etc/pam.d/system-auth").content.to_s.scan(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=(?:[0-9]+).*unlock_time=(?:[0-9]+).*fail_interval=([0-9]+).*$/).flatten.each do |entry|
+  file('/etc/pam.d/system-auth').content.to_s.scan(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=(?:[0-9]+).*unlock_time=(?:[0-9]+).*fail_interval=([0-9]+).*$/).flatten.each do |entry|
     describe entry do
       it { should cmp >= 900 }
     end
   end
-  describe file("/etc/pam.d/system-auth") do
-    its("content") { should match(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=(?:[0-9]+).*unlock_time=(?:[0-9]+).*fail_interval=([0-9]+).*$/) }
+  describe file('/etc/pam.d/system-auth') do
+    its('content') { should match(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=(?:[0-9]+).*unlock_time=(?:[0-9]+).*fail_interval=([0-9]+).*$/) }
   end
-  file("/etc/pam.d/password-auth").content.to_s.scan(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=(?:[0-9]+).*unlock_time=(?:[0-9]+).*fail_interval=([0-9]+).*$/).flatten.each do |entry|
+  file('/etc/pam.d/password-auth').content.to_s.scan(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=(?:[0-9]+).*unlock_time=(?:[0-9]+).*fail_interval=([0-9]+).*$/).flatten.each do |entry|
     describe entry do
       it { should cmp >= 900 }
     end
   end
-  describe file("/etc/pam.d/password-auth") do
-    its("content") { should match(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=(?:[0-9]+).*unlock_time=(?:[0-9]+).*fail_interval=([0-9]+).*$/) }
+  describe file('/etc/pam.d/password-auth') do
+    its('content') { should match(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*deny=(?:[0-9]+).*unlock_time=(?:[0-9]+).*fail_interval=([0-9]+).*$/) }
   end
 end
-

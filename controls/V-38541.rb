@@ -1,17 +1,17 @@
-control "V-38541" do
+control 'V-38541' do
   title "The audit system must be configured to audit modifications to the
 systems Mandatory Access Control (MAC) configuration (SELinux)."
   desc  "The system's mandatory access policy (SELinux) should not be
 arbitrarily changed by anything other than administrator action. All changes to
 MAC policy should be audited."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38541"
-  tag "rid": "SV-50342r2_rule"
-  tag "stig_id": "RHEL-06-000183"
-  tag "fix_id": "F-43489r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38541'
+  tag "rid": 'SV-50342r2_rule'
+  tag "stig_id": 'RHEL-06-000183'
+  tag "fix_id": 'F-43489r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -37,8 +37,7 @@ this is a finding."
 
 -w /etc/selinux/ -p wa -k MAC-policy"
 
-  describe file("/etc/audit/audit.rules") do
-    its("content") { should match(/^\-w\s+\/etc\/selinux\/\s+\-p\s+wa\s+\-k\s+[-\w]+\s*$/) }
+  describe file('/etc/audit/audit.rules') do
+    its('content') { should match(/^\-w\s+\/etc\/selinux\/\s+\-p\s+wa\s+\-k\s+[-\w]+\s*$/) }
   end
 end
-

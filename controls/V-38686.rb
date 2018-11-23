@@ -1,4 +1,4 @@
-control "V-38686" do
+control 'V-38686' do
   title "The systems local firewall must implement a deny-all,
 allow-by-exception policy for forwarded packets."
   desc  "In \"iptables\" the default policy is applied only after all the
@@ -6,13 +6,13 @@ applicable rules in the table are examined for a match. Setting the default
 policy to \"DROP\" implements proper design for a firewall, i.e., any packets
 which are not explicitly permitted should not be accepted."
   impact 0.5
-  tag "gtitle": "SRG-OS-000147"
-  tag "gid": "V-38686"
-  tag "rid": "SV-50487r2_rule"
-  tag "stig_id": "RHEL-06-000320"
-  tag "fix_id": "F-43635r1_fix"
-  tag "cci": ["CCI-001109"]
-  tag "nist": ["SC-7 (5)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000147'
+  tag "gid": 'V-38686'
+  tag "rid": 'SV-50487r2_rule'
+  tag "stig_id": 'RHEL-06-000320'
+  tag "fix_id": 'F-43635r1_fix'
+  tag "cci": ['CCI-001109']
+  tag "nist": ['SC-7 (5)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -39,8 +39,7 @@ interface to another, add or correct the following line in
 
 :FORWARD DROP [0:0]"
 
-  describe command("iptables -nvL | grep -i forward") do
-    its('stdout.strip') { should match %r{Chain FORWARD \(policy DROP} }
+  describe command('iptables -nvL | grep -i forward') do
+    its('stdout.strip') { should match /Chain FORWARD \(policy DROP/ }
   end
 end
-

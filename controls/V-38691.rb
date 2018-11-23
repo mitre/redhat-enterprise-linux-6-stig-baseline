@@ -1,17 +1,17 @@
-control "V-38691" do
-  title "The Bluetooth service must be disabled."
+control 'V-38691' do
+  title 'The Bluetooth service must be disabled.'
   desc  "Disabling the \"bluetooth\" service prevents the system from
 attempting connections to Bluetooth devices, which entails some security risk.
 Nevertheless, variation in this risk decision may be expected due to the
 utility of Bluetooth connectivity and its limited range."
   impact 0.5
-  tag "gtitle": "SRG-OS-000034"
-  tag "gid": "V-38691"
-  tag "rid": "SV-50492r2_rule"
-  tag "stig_id": "RHEL-06-000331"
-  tag "fix_id": "F-43640r1_fix"
-  tag "cci": ["CCI-000085"]
-  tag "nist": ["AC-19 c", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000034'
+  tag "gid": 'V-38691'
+  tag "rid": 'SV-50492r2_rule'
+  tag "stig_id": 'RHEL-06-000331'
+  tag "fix_id": 'F-43640r1_fix'
+  tag "cci": ['CCI-000085']
+  tag "nist": ['AC-19 c', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -44,26 +44,25 @@ command:
 
 # service bluetooth stop"
 
-  describe service("bluetooth").runlevels(/0/) do
+  describe service('bluetooth').runlevels(/0/) do
     it { should_not be_enabled }
   end
-  describe service("bluetooth").runlevels(/1/) do
+  describe service('bluetooth').runlevels(/1/) do
     it { should_not be_enabled }
   end
-  describe service("bluetooth").runlevels(/2/) do
+  describe service('bluetooth').runlevels(/2/) do
     it { should_not be_enabled }
   end
-  describe service("bluetooth").runlevels(/3/) do
+  describe service('bluetooth').runlevels(/3/) do
     it { should_not be_enabled }
   end
-  describe service("bluetooth").runlevels(/4/) do
+  describe service('bluetooth').runlevels(/4/) do
     it { should_not be_enabled }
   end
-  describe service("bluetooth").runlevels(/5/) do
+  describe service('bluetooth').runlevels(/5/) do
     it { should_not be_enabled }
   end
-  describe service("bluetooth").runlevels(/6/) do
+  describe service('bluetooth').runlevels(/6/) do
     it { should_not be_enabled }
   end
 end
-

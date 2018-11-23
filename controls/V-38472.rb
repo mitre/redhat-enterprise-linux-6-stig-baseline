@@ -1,16 +1,16 @@
-control "V-38472" do
-  title "All system command files must be owned by root."
+control 'V-38472' do
+  title 'All system command files must be owned by root.'
   desc  "System binaries are executed by privileged users as well as system
 services, and restrictive permissions are necessary to ensure that their
 execution of these programs cannot be co-opted."
   impact 0.5
-  tag "gtitle": "SRG-OS-000259"
-  tag "gid": "V-38472"
-  tag "rid": "SV-50272r1_rule"
-  tag "stig_id": "RHEL-06-000048"
-  tag "fix_id": "F-43417r1_fix"
-  tag "cci": ["CCI-001499"]
-  tag "nist": ["CM-5 (6)", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000259'
+  tag "gid": 'V-38472'
+  tag "rid": 'SV-50272r1_rule'
+  tag "stig_id": 'RHEL-06-000048'
+  tag "fix_id": 'F-43417r1_fix'
+  tag "cci": ['CCI-001499']
+  tag "nist": ['CM-5 (6)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -54,11 +54,10 @@ than root, correct its ownership with the following command:
 
 # chown root [FILE]"
 
-  dirs = ["/bin", "/usr/bin", "/usr/local/bin", "/sbin", "/usr/sbin", "/usr/local/sbin"]
+  dirs = ['/bin', '/usr/bin', '/usr/local/bin', '/sbin', '/usr/sbin', '/usr/local/sbin']
   dirs.each do |d|
     describe command("find -L #{d} \\! -user root") do
       its('stdout.strip') { should be_empty }
     end
   end
 end
-

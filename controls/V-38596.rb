@@ -1,5 +1,5 @@
-control "V-38596" do
-  title "The system must implement virtual address space randomization."
+control 'V-38596' do
+  title 'The system must implement virtual address space randomization.'
   desc  "Address space layout randomization (ASLR) makes it more difficult for
 an attacker to predict the location of attack code he or she has introduced
 into a process's address space during an attempt at exploitation. Additionally,
@@ -7,13 +7,13 @@ ASLR also makes it more difficult for an attacker to know the location of
 existing code in order to repurpose it using return oriented programming (ROP)
 techniques."
   impact 0.5
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38596"
-  tag "rid": "SV-50397r2_rule"
-  tag "stig_id": "RHEL-06-000078"
-  tag "fix_id": "F-43543r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38596'
+  tag "rid": 'SV-50397r2_rule'
+  tag "stig_id": 'RHEL-06-000078'
+  tag "fix_id": 'F-43543r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -46,7 +46,7 @@ If this is not the system's default value, add the following line to
 kernel.randomize_va_space = 2"
 
   describe command('sysctl -n kernel.randomize_va_space') do
-    its('stdout.strip') { should be_in ['1', '2'] }
+    its('stdout.strip') { should be_in %w[1 2] }
   end
 
   describe.one do
@@ -59,4 +59,3 @@ kernel.randomize_va_space = 2"
     end
   end
 end
-

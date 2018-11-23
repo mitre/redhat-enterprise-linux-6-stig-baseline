@@ -1,16 +1,16 @@
-control "V-38585" do
-  title "The system boot loader must require authentication."
+control 'V-38585' do
+  title 'The system boot loader must require authentication.'
   desc  "Password protection on the boot loader configuration ensures users
 with physical access cannot trivially alter important bootloader settings.
 These include which kernel to use, and whether to enter single-user mode."
   impact 0.5
-  tag "gtitle": "SRG-OS-000080"
-  tag "gid": "V-38585"
-  tag "rid": "SV-50386r4_rule"
-  tag "stig_id": "RHEL-06-000068"
-  tag "fix_id": "F-43533r3_fix"
-  tag "cci": ["CCI-000213"]
-  tag "nist": ["AC-3", "Rev_4"]
+  tag "gtitle": 'SRG-OS-000080'
+  tag "gid": 'V-38585'
+  tag "rid": 'SV-50386r4_rule'
+  tag "stig_id": 'RHEL-06-000068'
+  tag "fix_id": 'F-43533r3_fix'
+  tag "cci": ['CCI-000213']
+  tag "nist": ['AC-3', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -50,12 +50,11 @@ the header comments. (Use the output from \"grub-crypt\" as the value of
 password --encrypted [password-hash]"
 
   describe.one do
-    describe file("/boot/grub/grub.conf") do
-      its("content") { should match(/^\s*password\s+--encrypted\s+.*/) }
+    describe file('/boot/grub/grub.conf') do
+      its('content') { should match(/^\s*password\s+--encrypted\s+.*/) }
     end
-    describe file("/boot/efi/EFI/redhat/grub.conf") do
-      its("content") { should match(/^\s*password\s+--encrypted\s+.*/) }
+    describe file('/boot/efi/EFI/redhat/grub.conf') do
+      its('content') { should match(/^\s*password\s+--encrypted\s+.*/) }
     end
   end
 end
-

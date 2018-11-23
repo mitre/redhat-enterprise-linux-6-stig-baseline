@@ -1,16 +1,16 @@
-control "V-38647" do
-  title "The system default umask in /etc/profile must be 077."
+control 'V-38647' do
+  title 'The system default umask in /etc/profile must be 077.'
   desc  "The umask value influences the permissions assigned to files when they
 are created. A misconfigured umask value could result in files with excessive
 permissions that can be read and/or written to by unauthorized users."
   impact 0.3
-  tag "gtitle": "SRG-OS-999999"
-  tag "gid": "V-38647"
-  tag "rid": "SV-50448r1_rule"
-  tag "stig_id": "RHEL-06-000344"
-  tag "fix_id": "F-43596r1_fix"
-  tag "cci": ["CCI-000366"]
-  tag "nist": ["CM-6 b", "Rev_4"]
+  tag "gtitle": 'SRG-OS-999999'
+  tag "gid": 'V-38647'
+  tag "rid": 'SV-50448r1_rule'
+  tag "stig_id": 'RHEL-06-000344'
+  tag "fix_id": 'F-43596r1_fix'
+  tag "cci": ['CCI-000366']
+  tag "nist": ['CM-6 b', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -40,13 +40,12 @@ follows:
 
 umask 077"
 
-  describe file("/etc/profile") do
-    its("content") { should match(/^[\s]*umask[\s]+([^#\s]*)/) }
+  describe file('/etc/profile') do
+    its('content') { should match(/^[\s]*umask[\s]+([^#\s]*)/) }
   end
-  file("/etc/profile").content.to_s.scan(/^[\s]*umask[\s]+([^#\s]*)/).flatten.each do |entry|
+  file('/etc/profile').content.to_s.scan(/^[\s]*umask[\s]+([^#\s]*)/).flatten.each do |entry|
     describe entry do
-      it { should eq "077" }
+      it { should eq '077' }
     end
   end
 end
-
