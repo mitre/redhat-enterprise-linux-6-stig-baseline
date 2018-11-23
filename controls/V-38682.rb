@@ -53,12 +53,15 @@ module:
 install net-pf-31 /bin/true
 install bluetooth /bin/true"
 
-  describe command("grep -r bluetooth /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\" | grep -v \"#\"") do
-    its('stdout.strip') { should_not be_empty }
+  describe kernel_module('bluetooth') do
+    it { should_not be_loaded }
+    it { shold_not be_enabled }
+    it { should be_blacklisted }
   end
 
-  describe command("grep -r net-pf-31 /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\" | grep -v \"#\"") do
-    its('stdout.strip') { should_not be_empty }
+  describe kernel_module('net-pf-31') do
+    it { should_not be_loaded }
+    it { shold_not be_enabled }
+    it { should be_blacklisted }
   end
 end
-

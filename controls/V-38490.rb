@@ -46,15 +46,9 @@ This will prevent the \"modprobe\" program from loading the \"usb-storage\"
 module, but will not prevent an administrator (or another program) from using
 the \"insmod\" program to load the module manually."
 
-  describe.one do
-    command("find /etc/modprobe.d -type f -regex .\\*/\\^.\\*\\\\.conf\\$").stdout.split.each do |entry|
-      describe file(entry) do
-        its("content") { should match(/^\s*install\s+usb-storage\s+(\/bin\/true)\s*$/) }
-      end
-    end
-    describe file("/etc/modprobe.conf") do
-      its("content") { should match(/^\s*install\s+usb-storage\s+(\/bin\/true)\s*$/) }
-    end
+  describe kernel_module('usb-storage') do
+    it { should_not be_loaded }
+    it { shold_not be_enabled }
+    it { should be_blacklisted }
   end
 end
-
