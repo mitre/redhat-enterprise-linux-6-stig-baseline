@@ -3,7 +3,7 @@ control "V-38617" do
 ciphers."
   desc  "Approved algorithms should impart some level of confidence in their
 implementation. These are also required for compliance."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000169"
   tag "gid": "V-38617"
   tag "rid": "SV-50418r1_rule"
@@ -21,7 +21,7 @@ implementation. These are also required for compliance."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Only FIPS-approved ciphers should be used. To verify that only
+  desc 'check', "Only FIPS-approved ciphers should be used. To verify that only
 FIPS-approved ciphers are in use, run the following command:
 
 # grep Ciphers /etc/ssh/sshd_config
@@ -29,7 +29,7 @@ FIPS-approved ciphers are in use, run the following command:
 The output should contain only those ciphers which are FIPS-approved, namely,
 the AES and 3DES ciphers.
 If that is not the case, this is a finding."
-  tag "fix": "Limit the ciphers to those algorithms which are FIPS-approved.
+  desc 'fix', "Limit the ciphers to those algorithms which are FIPS-approved.
 Counter (CTR) mode is also preferred over cipher-block chaining (CBC) mode. The
 following line in \"/etc/ssh/sshd_config\" demonstrates use of FIPS-approved
 ciphers:

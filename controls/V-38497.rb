@@ -4,7 +4,7 @@ passwords."
   desc  "If an account has an empty password, anyone could log in and run
 commands with the privileges of that account. Accounts with empty passwords
 should never be used in operational environments."
-  impact 0.7
+  impact 'high'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38497"
   tag "rid": "SV-50298r3_rule"
@@ -22,7 +22,7 @@ should never be used in operational environments."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify that null passwords cannot be used, run the following
+  desc 'check', "To verify that null passwords cannot be used, run the following
 command:
 
 # grep nullok /etc/pam.d/system-auth /etc/pam.d/password-auth
@@ -30,7 +30,7 @@ command:
 If this produces any output, it may be possible to log into accounts with empty
 passwords.
 If NULL passwords can be used, this is a finding."
-  tag "fix": "If an account is configured for password authentication but does
+  desc 'fix', "If an account is configured for password authentication but does
 not have an assigned password, it may be possible to log onto the account
 without authentication. Remove any instances of the \"nullok\" option in
 \"/etc/pam.d/system-auth\" and \"/etc/pam.d/password-auth\" to prevent logons

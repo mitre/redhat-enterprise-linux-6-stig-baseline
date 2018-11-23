@@ -3,7 +3,7 @@ control "V-38476" do
 the integrity of system software."
   desc  "The Red Hat GPG keys are necessary to cryptographically verify
 packages are from Red Hat. "
-  impact 0.7
+  impact 'high'
   tag "gtitle": "SRG-OS-000090"
   tag "gid": "V-38476"
   tag "rid": "SV-50276r3_rule"
@@ -21,7 +21,7 @@ packages are from Red Hat. "
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To ensure that the GPG keys are installed, run:
+  desc 'check', "To ensure that the GPG keys are installed, run:
 
 $ rpm -q gpg-pubkey
 
@@ -31,7 +31,7 @@ gpg-pubkey-fd431d51-4ae0493b
 gpg-pubkey-2fa658e0-45700c69
 
 If the Red Hat GPG Keys are not installed, this is a finding."
-  tag "fix": "To ensure the system can cryptographically verify base software
+  desc 'fix', "To ensure the system can cryptographically verify base software
 packages come from Red Hat (and to connect to the Red Hat Network to receive
 them), the Red Hat GPG keys must be installed properly. To install the Red Hat
 GPG keys, run:

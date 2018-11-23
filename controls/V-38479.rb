@@ -5,7 +5,7 @@ periodically change their passwords. This could possibly decrease the utility
 of a stolen password. Requiring shorter password lifetimes increases the risk
 of users writing down the password in a convenient location subject to physical
 compromise."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000076"
   tag "gid": "V-38479"
   tag "rid": "SV-50279r1_rule"
@@ -23,13 +23,13 @@ compromise."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the maximum password age, run the command:
+  desc 'check', "To check the maximum password age, run the command:
 
 $ grep PASS_MAX_DAYS /etc/login.defs
 
 The DoD requirement is 60.
 If it is not set to the required value, this is a finding."
-  tag "fix": "To specify password maximum age for new accounts, edit the file
+  desc 'fix', "To specify password maximum age for new accounts, edit the file
 \"/etc/login.defs\" and add or correct the following line, replacing [DAYS]
 appropriately:
 

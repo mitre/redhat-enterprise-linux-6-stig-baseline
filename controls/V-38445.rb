@@ -2,7 +2,7 @@ control "V-38445" do
   title "Audit log files must be group-owned by root."
   desc  "If non-privileged users can write to audit logs, audit trails can be
 modified or destroyed."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000057"
   tag "gid": "V-38445"
   tag "rid": "SV-50245r2_rule"
@@ -20,14 +20,14 @@ modified or destroyed."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to check the group owner of the
+  desc 'check', "Run the following command to check the group owner of the
 system audit logs:
 
 grep \"^log_file\" /etc/audit/auditd.conf|sed s/^[^\\/]*//|xargs stat -c %G:%n
 
 Audit logs must be group-owned by root.
 If they are not, this is a finding."
-  tag "fix": "Change the group owner of the audit log files with the following
+  desc 'fix', "Change the group owner of the audit log files with the following
 command:
 
 # chgrp root [audit_file]"
@@ -36,4 +36,3 @@ command:
     its('stdout.lines') { should all match %{^root:} }
   end
 end
-

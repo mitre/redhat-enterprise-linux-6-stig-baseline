@@ -2,7 +2,7 @@ control "V-38606" do
   title "The tftp-server package must not be installed unless required."
   desc  "Removing the \"tftp-server\" package decreases the risk of the
 accidental (or intentional) activation of tftp services."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000095"
   tag "gid": "V-38606"
   tag "rid": "SV-50407r2_rule"
@@ -20,14 +20,14 @@ accidental (or intentional) activation of tftp services."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to determine if the \"tftp-server\"
+  desc 'check', "Run the following command to determine if the \"tftp-server\"
 package is installed:
 
 # rpm -q tftp-server
 
 
 If the package is installed, this is a finding."
-  tag "fix": "The \"tftp-server\" package can be removed with the following
+  desc 'fix', "The \"tftp-server\" package can be removed with the following
 command:
 
 # yum erase tftp-server"

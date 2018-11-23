@@ -3,7 +3,7 @@ control "V-38494" do
 consoles."
   desc  "Preventing direct root login to serial port interfaces helps ensure
 accountability for actions taken on the systems using the root account."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000109"
   tag "gid": "V-38494"
   tag "rid": "SV-50295r1_rule"
@@ -21,14 +21,14 @@ accountability for actions taken on the systems using the root account."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check for serial port entries which permit root login, run
+  desc 'check', "To check for serial port entries which permit root login, run
 the following command:
 
 # grep '^ttyS[0-9]' /etc/securetty
 
 If any output is returned, then root login over serial ports is permitted.
 If root login over serial ports is permitted, this is a finding."
-  tag "fix": "To restrict root logins on serial ports, ensure lines of this
+  desc 'fix', "To restrict root logins on serial ports, ensure lines of this
 form do not appear in \"/etc/securetty\":
 
 ttyS0

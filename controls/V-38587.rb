@@ -7,7 +7,7 @@ unencrypted telnet service's accidental (or intentional) activation.
 encrypted sessions, such as with Kerberos or the use of encrypted network
 tunnels, the risk of exposing sensitive information is mitigated.
   "
-  impact 0.7
+  impact 'high'
   tag "gtitle": "SRG-OS-000095"
   tag "gid": "V-38587"
   tag "rid": "SV-50388r1_rule"
@@ -25,14 +25,14 @@ tunnels, the risk of exposing sensitive information is mitigated.
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to determine if the \"telnet-server\"
+  desc 'check', "Run the following command to determine if the \"telnet-server\"
 package is installed:
 
 # rpm -q telnet-server
 
 
 If the package is installed, this is a finding."
-  tag "fix": "The \"telnet-server\" package can be uninstalled with the
+  desc 'fix', "The \"telnet-server\" package can be uninstalled with the
 following command:
 
 # yum erase telnet-server"

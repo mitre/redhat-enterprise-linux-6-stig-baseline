@@ -3,7 +3,7 @@ control "V-38460" do
   desc  "The \"all_squash\" option maps all client requests to a single
 anonymous uid/gid on the NFS server, negating the ability to track file access
 by user ID."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000104"
   tag "gid": "V-38460"
   tag "rid": "SV-50260r1_rule"
@@ -21,7 +21,7 @@ by user ID."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the NFS server is read-only, in support of unrestricted
+  desc 'check', "If the NFS server is read-only, in support of unrestricted
 access to organizational content, this is not applicable.
 
 The related \"root_squash\" option provides protection against remote
@@ -34,7 +34,7 @@ command:
 
 
 If there is output, this is a finding."
-  tag "fix": "Remove any instances of the \"all_squash\" option from the file
+  desc 'fix', "Remove any instances of the \"all_squash\" option from the file
 \"/etc/exports\".  Restart the NFS daemon for the changes to take effect.
 
 # service nfs restart"

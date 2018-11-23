@@ -2,7 +2,7 @@ control "V-38655" do
   title "The noexec option must be added to removable media partitions."
   desc  "Allowing users to execute binaries from removable media such as USB
 keys exposes the system to potential compromise."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000035"
   tag "gid": "V-38655"
   tag "rid": "SV-50456r1_rule"
@@ -20,14 +20,14 @@ keys exposes the system to potential compromise."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify that binaries cannot be directly executed from
+  desc 'check', "To verify that binaries cannot be directly executed from
 removable media, run the following command:
 
 # grep noexec /etc/fstab
 
 The output should show \"noexec\" in use.
 If it does not, this is a finding."
-  tag "fix": "The \"noexec\" mount option prevents the direct execution of
+  desc 'fix', "The \"noexec\" mount option prevents the direct execution of
 binaries on the mounted filesystem. Users should not be allowed to execute
 binaries that exist on partitions mounted from removable media (such as a USB
 key). The \"noexec\" option prevents code from being executed directly from the

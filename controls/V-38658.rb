@@ -3,7 +3,7 @@ control "V-38658" do
 iterations."
   desc  "Preventing reuse of previous passwords helps ensure that a compromised
 password is not reused by a user."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000077"
   tag "gid": "V-38658"
   tag "rid": "SV-50459r6_rule"
@@ -21,7 +21,7 @@ password is not reused by a user."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify the password reuse setting is compliant, run the
+  desc 'check', "To verify the password reuse setting is compliant, run the
 following command:
 
 # grep remember /etc/pam.d/system-auth /etc/pam.d/password-auth
@@ -29,7 +29,7 @@ following command:
 If the line is commented out, the line does not contain \"password required
 pam_pwhistory.so\" or \"password requisite pam_pwhistory.so\", or the value for
 \"remember\" is less than \"5\", this is a finding."
-  tag "fix": "Do not allow users to reuse recent passwords. This can be
+  desc 'fix', "Do not allow users to reuse recent passwords. This can be
 accomplished by using the \"remember\" option for the \"pam_pwhistory\" PAM
 module. In the file \"/etc/pam.d/system-auth\" and /etc/pam.d/password-auth,
 append \"remember=5\" to the lines that refer to the \"pam_pwhistory.so\"

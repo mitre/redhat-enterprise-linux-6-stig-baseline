@@ -2,7 +2,7 @@ control "V-38652" do
   title "Remote file systems must be mounted with the nodev option."
   desc  "Legitimate device files should only exist in the /dev directory. NFS
 mounts should not present device files to users."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38652"
   tag "rid": "SV-50453r2_rule"
@@ -20,7 +20,7 @@ mounts should not present device files to users."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify the \"nodev\" option is configured for all NFS
+  desc 'check', "To verify the \"nodev\" option is configured for all NFS
 mounts, run the following command:
 
 $ mount | grep \"nfs \"
@@ -28,7 +28,7 @@ $ mount | grep \"nfs \"
 All NFS mounts should show the \"nodev\" setting in parentheses, along with
 other mount options.
 If the setting does not show, this is a finding."
-  tag "fix": "Add the \"nodev\" option to the fourth column of \"/etc/fstab\"
+  desc 'fix', "Add the \"nodev\" option to the fourth column of \"/etc/fstab\"
 for the line which controls mounting of any NFS mounts."
 
   describe command('mount | grep \"nfs \"') do

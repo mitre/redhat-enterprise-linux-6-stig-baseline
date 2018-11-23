@@ -4,7 +4,7 @@ source."
   desc  "Synchronizing with an NTP server makes it possible to collate system
 logs from multiple sources or correlate computer events with real time events.
 Using a trusted NTP server provided by your organization is recommended."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000056"
   tag "gid": "V-38621"
   tag "rid": "SV-50422r1_rule"
@@ -22,7 +22,7 @@ Using a trusted NTP server provided by your organization is recommended."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "A remote NTP server should be configured for time
+  desc 'check', "A remote NTP server should be configured for time
 synchronization. To verify one is configured, open the following file.
 
 /etc/ntp.conf
@@ -34,7 +34,7 @@ server [ntpserver]
 
 
 If this is not the case, this is a finding."
-  tag "fix": "To specify a remote NTP server for time synchronization, edit the
+  desc 'fix', "To specify a remote NTP server for time synchronization, edit the
 file \"/etc/ntp.conf\". Add or correct the following lines, substituting the IP
 or hostname of a remote NTP server for ntpserver.
 

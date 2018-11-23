@@ -3,7 +3,7 @@ control "V-38469" do
   desc  "System binaries are executed by privileged users, as well as system
 services, and restrictive permissions are necessary to ensure execution of
 these programs cannot be co-opted."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000259"
   tag "gid": "V-38469"
   tag "rid": "SV-50269r3_rule"
@@ -21,7 +21,7 @@ these programs cannot be co-opted."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "System executables are stored in the following directories by
+  desc 'check', "System executables are stored in the following directories by
 default:
 
 /bin
@@ -39,7 +39,7 @@ $ find -L [DIR] -perm /022 -type f
 
 If any system executables are found to be group-writable or world-writable,
 this is a finding."
-  tag "fix": "System executables are stored in the following directories by
+  desc 'fix', "System executables are stored in the following directories by
 default:
 
 /bin

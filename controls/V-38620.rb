@@ -7,7 +7,7 @@ specified. This is important whether the system is configured to be a client
 other systems. Synchronizing time is essential for authentication services such
 as Kerberos, but it is also important for maintaining accurate logs and
 auditing possible security breaches."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000056"
   tag "gid": "V-38620"
   tag "rid": "SV-50421r1_rule"
@@ -25,7 +25,7 @@ auditing possible security breaches."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to determine the current status of
+  desc 'check', "Run the following command to determine the current status of
 the \"ntpd\" service:
 
 # service ntpd status
@@ -36,7 +36,7 @@ ntpd is running...
 
 
 If the service is not running, this is a finding."
-  tag "fix": "The \"ntpd\" service can be enabled with the following command:
+  desc 'fix', "The \"ntpd\" service can be enabled with the following command:
 
 # chkconfig ntpd on
 # service ntpd start"

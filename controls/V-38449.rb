@@ -2,7 +2,7 @@ control "V-38449" do
   title "The /etc/gshadow file must have mode 0000."
   desc  "The /etc/gshadow file contains group password hashes. Protection of
 this file is critical for system security."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38449"
   tag "rid": "SV-50249r1_rule"
@@ -20,14 +20,14 @@ this file is critical for system security."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the permissions of \"/etc/gshadow\", run the command:
+  desc 'check', "To check the permissions of \"/etc/gshadow\", run the command:
 
 $ ls -l /etc/gshadow
 
 If properly configured, the output should indicate the following permissions:
 \"----------\"
 If it does not, this is a finding."
-  tag "fix": "To properly set the permissions of \"/etc/gshadow\", run the
+  desc 'fix', "To properly set the permissions of \"/etc/gshadow\", run the
 command:
 
 # chmod 0000 /etc/gshadow"

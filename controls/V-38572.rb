@@ -5,7 +5,7 @@ the old and new passwords during a password change."
 changes ensures that newly changed passwords should not resemble previously
 compromised ones. Note that passwords which are changed on compromised systems
 will still be compromised, however."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000072"
   tag "gid": "V-38572"
   tag "rid": "SV-50373r3_rule"
@@ -23,7 +23,7 @@ will still be compromised, however."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check how many characters must differ during a password
+  desc 'check', "To check how many characters must differ during a password
 change, run the following command:
 
 $ grep pam_cracklib /etc/pam.d/system-auth /etc/pam.d/password-auth
@@ -33,7 +33,7 @@ The DoD requires eight characters differ during a password change. This would
 appear as \"difok=8\".
 
 If \"difok\" is not found or is set to a value less than \"8\", this is a finding."
-  tag "fix": "The pam_cracklib module's \"difok\" parameter controls
+  desc 'fix', "The pam_cracklib module's \"difok\" parameter controls
 requirements for usage of different characters during a password change.
 
 Edit /etc/pam.d/system-auth and /etc/pam.d/password-auth adding \"difok=[NUM]\"

@@ -3,7 +3,7 @@ control "V-38622" do
   desc  "This ensures \"postfix\" accepts mail messages (such as cron job
 reports) from the local system only, and not from the network, which protects
 it from network attack."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38622"
   tag "rid": "SV-50423r2_rule"
@@ -21,7 +21,7 @@ it from network attack."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the system is an authorized mail relay host, this is not
+  desc 'check', "If the system is an authorized mail relay host, this is not
 applicable.
 
 Run the following command to ensure postfix accepts mail messages from only the
@@ -31,7 +31,7 @@ $ grep inet_interfaces /etc/postfix/main.cf
 
 If properly configured, the output should show only \"localhost\".
 If it does not, this is a finding."
-  tag "fix": "Edit the file \"/etc/postfix/main.cf\" to ensure that only the
+  desc 'fix', "Edit the file \"/etc/postfix/main.cf\" to ensure that only the
 following \"inet_interfaces\" line appears:
 
 inet_interfaces = localhost"

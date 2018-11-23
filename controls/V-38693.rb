@@ -3,7 +3,7 @@ control "V-38693" do
 consecutive repeating characters."
   desc  "Passwords with excessive repeating characters may be more vulnerable
 to password-guessing attacks."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38693"
   tag "rid": "SV-50494r3_rule"
@@ -21,7 +21,7 @@ to password-guessing attacks."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the maximum value for consecutive repeating
+  desc 'check', "To check the maximum value for consecutive repeating
 characters, run the following command:
 
 $ grep pam_cracklib /etc/pam.d/system-auth /etc/pam.d/password-auth
@@ -30,7 +30,7 @@ Look for the value of the \"maxrepeat\" parameter.
 
 If \"maxrepeat\" is not found or is set to a value less than \"3\", this is a
 finding."
-  tag "fix": "The pam_cracklib module's \"maxrepeat\" parameter controls
+  desc 'fix', "The pam_cracklib module's \"maxrepeat\" parameter controls
 requirements for consecutive repeating characters. When set to a positive
 number, it will reject passwords which contain more than that number of
 consecutive characters.

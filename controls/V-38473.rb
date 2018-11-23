@@ -3,7 +3,7 @@ control "V-38473" do
   desc  "Ensuring that \"/home\" is mounted on its own partition enables the
 setting of more restrictive mount options, and also helps ensure that users
 cannot trivially fill partitions used for log or audit data storage."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38473"
   tag "rid": "SV-50273r1_rule"
@@ -21,14 +21,14 @@ cannot trivially fill partitions used for log or audit data storage."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to determine if \"/home\" is on its
+  desc 'check', "Run the following command to determine if \"/home\" is on its
 own partition or logical volume:
 
 $ mount | grep \"on /home \"
 
 If \"/home\" has its own partition or volume group, a line will be returned.
 If no line is returned, this is a finding."
-  tag "fix": "If user home directories will be stored locally, create a
+  desc 'fix', "If user home directories will be stored locally, create a
 separate partition for \"/home\" at installation time (or migrate it later
 using LVM). If \"/home\" will be mounted from another system such as an NFS
 server, then creating a separate partition is not necessary at installation

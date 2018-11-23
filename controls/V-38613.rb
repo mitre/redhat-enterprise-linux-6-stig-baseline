@@ -4,7 +4,7 @@ such as ssh."
   desc  "Permitting direct root login reduces auditable information about who
 ran privileged commands on the system and also allows direct attack attempts on
 root's password."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000109"
   tag "gid": "V-38613"
   tag "rid": "SV-50414r1_rule"
@@ -22,14 +22,14 @@ root's password."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine how the SSH daemon's \"PermitRootLogin\" option is
+  desc 'check', "To determine how the SSH daemon's \"PermitRootLogin\" option is
 set, run the following command:
 
 # grep -i PermitRootLogin /etc/ssh/sshd_config
 
 If a line indicating \"no\" is returned, then the required value is set.
 If the required value is not set, this is a finding."
-  tag "fix": "The root user should never be allowed to log in to a system
+  desc 'fix', "The root user should never be allowed to log in to a system
 directly over a network. To disable root login via SSH, add or correct the
 following line in \"/etc/ssh/sshd_config\":
 

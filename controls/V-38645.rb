@@ -3,7 +3,7 @@ control "V-38645" do
   desc  "The umask value influences the permissions assigned to files when they
 are created. A misconfigured umask value could result in files with excessive
 permissions that can be read and/or written to by unauthorized users."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38645"
   tag "rid": "SV-50446r1_rule"
@@ -21,7 +21,7 @@ permissions that can be read and/or written to by unauthorized users."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Verify the \"umask\" setting is configured correctly in the
+  desc 'check', "Verify the \"umask\" setting is configured correctly in the
 \"/etc/login.defs\" file by running the following command:
 
 # grep -i \"umask\" /etc/login.defs
@@ -34,7 +34,7 @@ UMASK 077
 
 If the above command returns no output, or if the umask is configured
 incorrectly, this is a finding."
-  tag "fix": "To ensure the default umask controlled by \"/etc/login.defs\" is
+  desc 'fix', "To ensure the default umask controlled by \"/etc/login.defs\" is
 set properly, add or correct the \"umask\" setting in \"/etc/login.defs\" to
 read as follows:
 

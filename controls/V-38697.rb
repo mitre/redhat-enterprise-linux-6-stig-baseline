@@ -9,7 +9,7 @@ The setting is normally reserved for directories used by the system, and by
 users for temporary file storage - such as /tmp - and for directories requiring
 global read/write access.
   "
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38697"
   tag "rid": "SV-50498r2_rule"
@@ -27,7 +27,7 @@ global read/write access.
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To find world-writable directories that lack the sticky bit,
+  desc 'check', "To find world-writable directories that lack the sticky bit,
 run the following command for each local partition [PART]:
 
 # find [PART] -xdev -type d -perm -002 \\! -perm -1000
@@ -35,7 +35,7 @@ run the following command for each local partition [PART]:
 
 If any world-writable directories are missing the sticky bit, this is a
 finding."
-  tag "fix": "When the so-called 'sticky bit' is set on a directory, only the
+  desc 'fix', "When the so-called 'sticky bit' is set on a directory, only the
 owner of a given file may remove that file from the directory. Without the
 sticky bit, any user with write access to a directory may remove any file in
 the directory. Setting the sticky bit prevents users from removing each other's

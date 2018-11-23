@@ -3,7 +3,7 @@ control "V-38618" do
   desc  "Because the Avahi daemon service keeps an open network port, it is
 subject to network attacks. Its functionality is convenient but is only
 appropriate if the local network can be trusted."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38618"
   tag "rid": "SV-50419r2_rule"
@@ -21,7 +21,7 @@ appropriate if the local network can be trusted."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check that the \"avahi-daemon\" service is disabled in
+  desc 'check', "To check that the \"avahi-daemon\" service is disabled in
 system boot configuration, run the following command:
 
 # chkconfig \"avahi-daemon\" --list
@@ -44,7 +44,7 @@ avahi-daemon is stopped
 
 
 If the service is running, this is a finding."
-  tag "fix": "The \"avahi-daemon\" service can be disabled with the following
+  desc 'fix', "The \"avahi-daemon\" service can be disabled with the following
 commands:
 
 # chkconfig avahi-daemon off

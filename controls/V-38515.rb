@@ -3,7 +3,7 @@ control "V-38515" do
 unless required."
   desc  "Disabling SCTP protects the system against exploitation of any flaws
 in its implementation."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38515"
   tag "rid": "SV-50316r5_rule"
@@ -21,7 +21,7 @@ in its implementation."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the system is configured to prevent the loading of the
+  desc 'check', "If the system is configured to prevent the loading of the
 \"sctp\" kernel module, it will contain lines inside any file in
 \"/etc/modprobe.d\" or the deprecated\"/etc/modprobe.conf\". These lines
 instruct the module loading system to run another program (such as
@@ -33,7 +33,7 @@ $ grep -r sctp /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\"| grep
 -v \"#\"
 
 If no line is returned, this is a finding."
-  tag "fix": "The Stream Control Transmission Protocol (SCTP) is a transport
+  desc 'fix', "The Stream Control Transmission Protocol (SCTP) is a transport
 layer protocol, designed to support the idea of message-oriented communication,
 with several streams of messages within one connection. To configure the system
 to prevent the \"sctp\" kernel module from being loaded, add the following line

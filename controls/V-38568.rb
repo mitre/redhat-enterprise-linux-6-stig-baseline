@@ -5,7 +5,7 @@ mounts."
 an information leak where classified information, Privacy Act information, and
 intellectual property could be lost. An audit trail should be created each time
 a filesystem is mounted to help identify and guard against information loss."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000064"
   tag "gid": "V-38568"
   tag "rid": "SV-50369r3_rule"
@@ -23,7 +23,7 @@ a filesystem is mounted to help identify and guard against information loss."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify that auditing is configured for all media exportation
+  desc 'check', "To verify that auditing is configured for all media exportation
 events, run the following command:
 
 $ sudo grep -w \"mount\" /etc/audit/audit.rules
@@ -32,7 +32,7 @@ If the system is configured to audit this activity, it will return several
 lines.
 
 If no line is returned, this is a finding. "
-  tag "fix": "At a minimum, the audit system should collect media exportation
+  desc 'fix', "At a minimum, the audit system should collect media exportation
 events for all users and root. Add the following to \"/etc/audit/audit.rules\",
 setting ARCH to either b32 or b64 as appropriate for your system:
 

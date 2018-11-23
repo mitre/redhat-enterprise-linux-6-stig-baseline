@@ -2,7 +2,7 @@ control "V-38674" do
   title "X Windows must not be enabled unless required."
   desc  "Unnecessary services should be disabled to decrease the attack surface
 of the system."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000248"
   tag "gid": "V-38674"
   tag "rid": "SV-50475r1_rule"
@@ -20,7 +20,7 @@ of the system."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify the default runlevel is 3, run the following command:
+  desc 'check', "To verify the default runlevel is 3, run the following command:
 
 # grep initdefault /etc/inittab
 
@@ -30,7 +30,7 @@ id:3:initdefault:
 
 
 If it does not, this is a finding."
-  tag "fix": "Setting the system's runlevel to 3 will prevent automatic startup
+  desc 'fix', "Setting the system's runlevel to 3 will prevent automatic startup
 of the X server. To do so, ensure the following line in \"/etc/inittab\"
 features a \"3\" as shown:
 

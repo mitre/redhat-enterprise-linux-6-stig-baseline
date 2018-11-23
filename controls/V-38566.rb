@@ -4,7 +4,7 @@ files and programs."
   desc  "Unsuccessful attempts to access files could be an indicator of
 malicious activity on a system. Auditing these events could serve as evidence
 of potential system compromise."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000064"
   tag "gid": "V-38566"
   tag "rid": "SV-50367r2_rule"
@@ -22,7 +22,7 @@ of potential system compromise."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify that the audit system collects unauthorized file
+  desc 'check', "To verify that the audit system collects unauthorized file
 accesses, run the following commands:
 
 # grep EACCES /etc/audit/audit.rules
@@ -33,7 +33,7 @@ accesses, run the following commands:
 
 
 If either command lacks output, this is a finding."
-  tag "fix": "At a minimum, the audit system should collect unauthorized file
+  desc 'fix', "At a minimum, the audit system should collect unauthorized file
 accesses for all users and root. Add the following to
 \"/etc/audit/audit.rules\", setting ARCH to either b32 or b64 as appropriate
 for your system:

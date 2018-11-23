@@ -3,7 +3,7 @@ control "V-38682" do
   desc  "If Bluetooth functionality must be disabled, preventing the kernel
 from loading the kernel module provides an additional safeguard against its
 activation."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000034"
   tag "gid": "V-38682"
   tag "rid": "SV-50483r5_rule"
@@ -21,7 +21,7 @@ activation."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the system is configured to prevent the loading of the
+  desc 'check', "If the system is configured to prevent the loading of the
 \"bluetooth\" kernel module, it will contain lines inside any file in
 \"/etc/modprobe.d\" or the deprecated\"/etc/modprobe.conf\". These lines
 instruct the module loading system to run another program (such as
@@ -45,7 +45,7 @@ $ grep -r net-pf-31 /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\" |
 grep -v \"#\"
 
 If no line is returned, this is a finding."
-  tag "fix": "The kernel's module loading system can be configured to prevent
+  desc 'fix', "The kernel's module loading system can be configured to prevent
 loading of the Bluetooth module. Add the following to the appropriate
 \"/etc/modprobe.d\" configuration file to prevent the loading of the Bluetooth
 module:
@@ -61,4 +61,3 @@ install bluetooth /bin/true"
     its('stdout.strip') { should_not be_empty }
   end
 end
-

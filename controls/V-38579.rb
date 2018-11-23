@@ -1,7 +1,7 @@
 control "V-38579" do
   title "The system boot loader configuration file(s) must be owned by root."
   desc  "Only root should be able to modify important boot parameters."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38579"
   tag "rid": "SV-50380r2_rule"
@@ -19,14 +19,14 @@ control "V-38579" do
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the ownership of \"/boot/grub/grub.conf\", run the
+  desc 'check', "To check the ownership of \"/boot/grub/grub.conf\", run the
 command:
 
 $ ls -lL /boot/grub/grub.conf
 
 If properly configured, the output should indicate that the owner is \"root\".
 If it does not, this is a finding."
-  tag "fix": "The file \"/boot/grub/grub.conf\" should be owned by the \"root\"
+  desc 'fix', "The file \"/boot/grub/grub.conf\" should be owned by the \"root\"
 user to prevent destruction or modification of the file. To properly set the
 owner of \"/boot/grub/grub.conf\", run the command:
 

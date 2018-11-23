@@ -3,7 +3,7 @@ control "V-38633" do
   desc  "The total storage for audit log files must be large enough to retain
 log information over the period required. This is a function of the maximum log
 file size and the number of logs retained."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38633"
   tag "rid": "SV-50434r1_rule"
@@ -21,7 +21,7 @@ file size and the number of logs retained."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Inspect \"/etc/audit/auditd.conf\" and locate the following
+  desc 'check', "Inspect \"/etc/audit/auditd.conf\" and locate the following
 line to determine how much data the system will retain in each audit log file:
 \"# grep max_log_file /etc/audit/auditd.conf\"
 
@@ -30,7 +30,7 @@ max_log_file = 6
 
 If the system audit data threshold hasn't been properly set up, this is a
 finding."
-  tag "fix": "Determine the amount of audit data (in megabytes) which should be
+  desc 'fix', "Determine the amount of audit data (in megabytes) which should be
 retained in each log file. Edit the file \"/etc/audit/auditd.conf\". Add or
 modify the following line, substituting the correct value for [STOREMB]:
 

@@ -3,7 +3,7 @@ control "V-38482" do
 character."
   desc  "Requiring digits makes password guessing attacks more difficult by
 ensuring a larger search space."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000071"
   tag "gid": "V-38482"
   tag "rid": "SV-50282r2_rule"
@@ -21,7 +21,7 @@ ensuring a larger search space."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check how many digits are required in a password, run the
+  desc 'check', "To check how many digits are required in a password, run the
 following command:
 
 $ grep pam_cracklib /etc/pam.d/system-auth /etc/pam.d/password-auth
@@ -32,7 +32,7 @@ would appear as \"dcredit=-1\".
 
 If \"dcredit\" is not found or not set to the required value, this is a finding.
 "
-  tag "fix": "The pam_cracklib module's \"dcredit\" parameter controls
+  desc 'fix', "The pam_cracklib module's \"dcredit\" parameter controls
 requirements for usage of digits in a password. When set to a negative number,
 any password will be required to contain that many digits. When set to a
 positive number, pam_cracklib will grant +1 additional length credit for each

@@ -3,7 +3,7 @@ control "V-38474" do
   desc  "The ability to lock graphical desktop sessions manually allows users
 to easily secure their accounts should they need to depart from their
 workstations temporarily."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000030"
   tag "gid": "V-38474"
   tag "rid": "SV-50274r2_rule"
@@ -21,7 +21,7 @@ workstations temporarily."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the GConf2 package is not installed, this is not applicable.
+  desc 'check', "If the GConf2 package is not installed, this is not applicable.
 
 Verify the keybindings for the Gnome screensaver:
 
@@ -30,7 +30,7 @@ xml:readwrite:/etc/gconf/gconf.xml.mandatory --get
 /apps/gnome_settings_daemon/keybindings/screensaver
 
 If no output is visible, this is a finding."
-  tag "fix": "Run the following command to set the Gnome desktop keybinding for
+  desc 'fix', "Run the following command to set the Gnome desktop keybinding for
 locking the screen:
 
 # gconftool-2
@@ -47,7 +47,7 @@ the default for the Gnome desktop."
       its('stdout.strip') { should_not eq '' }
     end
   else
-    impact 0.0
+    impact 'none'
     describe "Package GConf2 not installed" do
       skip "Package GConf2 not installed, this control Not Applicable"
     end

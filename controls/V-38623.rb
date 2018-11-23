@@ -4,7 +4,7 @@ permissive."
   desc  "Log files can contain valuable information regarding system
 configuration. If the system log files are not protected, unauthorized users
 could change the logged data, eliminating their forensic value."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000206"
   tag "gid": "V-38623"
   tag "rid": "SV-50424r2_rule"
@@ -22,7 +22,7 @@ could change the logged data, eliminating their forensic value."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The file permissions for all log files written by rsyslog
+  desc 'check', "The file permissions for all log files written by rsyslog
 should be set to 600, or more restrictive. These log files are determined by
 the second part of each Rule line in \"/etc/rsyslog.conf\" and typically all
 appear in \"/var/log\". For each log file [LOGFILE] referenced in
@@ -36,7 +36,7 @@ in /etc/rsyslog.conf may be created by other programs and may require exclusion
 from consideration.
 
 If the permissions are not correct, this is a finding."
-  tag "fix": "The file permissions for all log files written by rsyslog should
+  desc 'fix', "The file permissions for all log files written by rsyslog should
 be set to 600, or more restrictive. These log files are determined by the
 second part of each Rule line in \"/etc/rsyslog.conf\" and typically all appear
 in \"/var/log\". For each log file [LOGFILE] referenced in

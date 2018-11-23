@@ -2,7 +2,7 @@ control "V-38610" do
   title "The SSH daemon must set a timeout count on idle sessions."
   desc  "This ensures a user login will be terminated as soon as the
 \"ClientAliveCountMax\" is reached."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000126"
   tag "gid": "V-38610"
   tag "rid": "SV-50411r1_rule"
@@ -20,7 +20,7 @@ control "V-38610" do
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To ensure the SSH idle timeout will occur when the
+  desc 'check', "To ensure the SSH idle timeout will occur when the
 \"ClientAliveCountMax\" is set, run the following command:
 
 # grep ClientAliveCountMax /etc/ssh/sshd_config
@@ -31,7 +31,7 @@ ClientAliveCountMax 0
 
 
 If it is not, this is a finding."
-  tag "fix": "To ensure the SSH idle timeout occurs precisely when the
+  desc 'fix', "To ensure the SSH idle timeout occurs precisely when the
 \"ClientAliveCountMax\" is set, edit \"/etc/ssh/sshd_config\" as follows:
 
 ClientAliveCountMax 0"

@@ -4,7 +4,7 @@ control "V-38643" do
 system. In almost all circumstances, files can be configured using a
 combination of user and group permissions to support whatever legitimate access
 is needed without the risk caused by world-writable files."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38643"
   tag "rid": "SV-50444r3_rule"
@@ -22,14 +22,14 @@ is needed without the risk caused by world-writable files."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To find world-writable files, run the following command for
+  desc 'check', "To find world-writable files, run the following command for
 each local partition [PART], excluding special filesystems such as /selinux,
 /proc, or /sys:
 
 # find [PART] -xdev -type f -perm -002
 
 If there is output, this is a finding."
-  tag "fix": "It is generally a good idea to remove global (other) write access
+  desc 'fix', "It is generally a good idea to remove global (other) write access
 to a file when it is discovered. However, check with documentation for specific
 applications before making changes. Also, monitor for recurring world-writable
 files, as these may be symptoms of a misconfigured application or user account."

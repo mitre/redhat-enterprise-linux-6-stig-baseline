@@ -3,7 +3,7 @@ control "V-38581" do
 root."
   desc  "The \"root\" group is a highly-privileged group. Furthermore, the
 group-owner of this file should not have any access privileges anyway."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38581"
   tag "rid": "SV-50382r2_rule"
@@ -21,14 +21,14 @@ group-owner of this file should not have any access privileges anyway."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the group ownership of \"/boot/grub/grub.conf\", run
+  desc 'check', "To check the group ownership of \"/boot/grub/grub.conf\", run
 the command:
 
 $ ls -lL /boot/grub/grub.conf
 
 If properly configured, the output should indicate the group-owner is \"root\".
 If it does not, this is a finding."
-  tag "fix": "The file \"/boot/grub/grub.conf\" should be group-owned by the
+  desc 'fix', "The file \"/boot/grub/grub.conf\" should be group-owned by the
 \"root\" group to prevent destruction or modification of the file. To properly
 set the group owner of \"/boot/grub/grub.conf\", run the command:
 

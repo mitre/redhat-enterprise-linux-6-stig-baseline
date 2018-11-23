@@ -5,7 +5,7 @@ of dynamic kernel modules."
 behavior of the kernel and potentially introduce malicious code into kernel
 space. It is important to have an audit trail of modules that have been
 introduced into the kernel."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000064"
   tag "gid": "V-38580"
   tag "rid": "SV-50381r2_rule"
@@ -23,7 +23,7 @@ introduced into the kernel."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine if the system is configured to audit execution of
+  desc 'check', "To determine if the system is configured to audit execution of
 module management programs, run the following commands:
 
 $ sudo egrep -e \"(-w |-F path=)/sbin/insmod\" /etc/audit/audit.rules
@@ -47,7 +47,7 @@ $ sudo grep -w \"delete_module\" /etc/audit/audit.rules
 If the system is configured to audit this activity, it will return a line.
 
 If no line is returned for any of these commands, this is a finding. "
-  tag "fix": "Add the following to \"/etc/audit/audit.rules\" in order to
+  desc 'fix', "Add the following to \"/etc/audit/audit.rules\" in order to
 capture kernel module loading and unloading events, setting ARCH to either b32
 or b64 as appropriate for your system:
 

@@ -4,7 +4,7 @@ control "V-38660" do
 allow unauthorized access to detailed system management information.
 
   "
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38660"
   tag "rid": "SV-50461r1_rule"
@@ -22,14 +22,14 @@ allow unauthorized access to detailed system management information.
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To ensure only SNMPv3 or newer is used, run the following
+  desc 'check', "To ensure only SNMPv3 or newer is used, run the following
 command:
 
 # grep 'v1\\|v2c\\|com2sec' /etc/snmp/snmpd.conf | grep -v '^#'
 
 There should be no output.
 If there is output, this is a finding."
-  tag "fix": "Edit \"/etc/snmp/snmpd.conf\", removing any references to \"v1\",
+  desc 'fix', "Edit \"/etc/snmp/snmpd.conf\", removing any references to \"v1\",
 \"v2c\", or \"com2sec\". Upon doing that, restart the SNMP service:
 
 # service snmpd restart"

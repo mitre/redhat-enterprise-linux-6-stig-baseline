@@ -4,7 +4,7 @@ control "V-38691" do
 attempting connections to Bluetooth devices, which entails some security risk.
 Nevertheless, variation in this risk decision may be expected due to the
 utility of Bluetooth connectivity and its limited range."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000034"
   tag "gid": "V-38691"
   tag "rid": "SV-50492r2_rule"
@@ -22,7 +22,7 @@ utility of Bluetooth connectivity and its limited range."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check that the \"bluetooth\" service is disabled in system
+  desc 'check', "To check that the \"bluetooth\" service is disabled in system
 boot configuration, run the following command:
 
 # chkconfig \"bluetooth\" --list
@@ -35,7 +35,7 @@ or has been disabled at all runlevels, as shown in the example below:
 
 
 If the service is configured to run, this is a finding."
-  tag "fix": "The \"bluetooth\" service can be disabled with the following
+  desc 'fix', "The \"bluetooth\" service can be disabled with the following
 command:
 
 # chkconfig bluetooth off

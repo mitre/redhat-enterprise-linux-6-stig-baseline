@@ -5,7 +5,7 @@ files and directories associated with packages."
 incorrect could allow an unauthorized user to gain privileges that they should
 not have. The group-ownership set by the vendor should be maintained. Any
 deviations from this baseline should be investigated."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38453"
   tag "rid": "SV-50253r2_rule"
@@ -23,7 +23,7 @@ deviations from this baseline should be investigated."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The following command will list which files on the system have
+  desc 'check', "The following command will list which files on the system have
 group-ownership different from what is expected by the RPM database:
 
 # rpm -Va | grep '^......G'
@@ -34,7 +34,7 @@ and have been documented with the ISSO.
 
 If any output has not been documented with the ISSO, this is a finding.
 "
-  tag "fix": "The RPM package management system can restore group-ownership of
+  desc 'fix', "The RPM package management system can restore group-ownership of
 the package files and directories. The following command will update files and
 directories with group-ownership different from what is expected by the RPM
 database:

@@ -3,7 +3,7 @@ control "V-38540" do
 systems network configuration."
   desc  "The network environment should not be modified by anything other than
 administrator action. Any change to network parameters should be audited."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38540"
   tag "rid": "SV-50341r4_rule"
@@ -21,7 +21,7 @@ administrator action. Any change to network parameters should be audited."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If you are running x86_64 architecture, determine the values
+  desc 'check', "If you are running x86_64 architecture, determine the values
 for sethostname:
 $ uname -m; ausyscall i386 sethostname; ausyscall x86_64 sethostname
 \t
@@ -53,7 +53,7 @@ indicated for each).
 If the system is not configured to audit changes of the network configuration,
 this is a finding.
 "
-  tag "fix": "Add the following to \"/etc/audit/audit.rules\", setting ARCH to
+  desc 'fix', "Add the following to \"/etc/audit/audit.rules\", setting ARCH to
 either b32 or b64 as appropriate for your system:
 
 # audit_network_modifications

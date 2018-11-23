@@ -6,7 +6,7 @@ the nosuid option."
 for mounting any file system not containing approved \"setuid\" and \"setguid\"
 files. Executing files from untrusted file systems increases the opportunity
 for unprivileged users to attain unauthorized administrative access."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000368-GPOS-00154"
   tag "gid": "V-81447"
   tag "rid": "SV-96161r1_rule"
@@ -24,7 +24,7 @@ for unprivileged users to attain unauthorized administrative access."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Verify that the \"nosuid\" option is configured for /dev/shm.
+  desc 'check', "Verify that the \"nosuid\" option is configured for /dev/shm.
 
 Check that the operating system is configured to use the \"nosuid\" option for
 /dev/shm with the following command:
@@ -41,7 +41,7 @@ Verify \"/dev/shm\" is mounted with the \"nosuid\" option:
 # mount | grep \"/dev/shm\" | grep nosuid
 
 If no results are returned, this is a finding."
-  tag "fix": "Configure the \"/etc/fstab\" to use the \"nosuid\" option for all
+  desc 'fix', "Configure the \"/etc/fstab\" to use the \"nosuid\" option for all
 lines containing \"/dev/shm\"."
 
   describe file("/etc/fstab") do

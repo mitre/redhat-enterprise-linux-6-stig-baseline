@@ -3,7 +3,7 @@ control "V-38477" do
 hours."
   desc  "Setting the minimum password age protects against users cycling back
 to a favorite password after satisfying the password reuse requirement."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000075"
   tag "gid": "V-38477"
   tag "rid": "SV-50277r1_rule"
@@ -21,13 +21,13 @@ to a favorite password after satisfying the password reuse requirement."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the minimum password age, run the command:
+  desc 'check', "To check the minimum password age, run the command:
 
 $ grep PASS_MIN_DAYS /etc/login.defs
 
 The DoD requirement is 1.
 If it is not set to the required value, this is a finding."
-  tag "fix": "To specify password minimum age for new accounts, edit the file
+  desc 'fix', "To specify password minimum age for new accounts, edit the file
 \"/etc/login.defs\" and add or correct the following line, replacing [DAYS]
 appropriately:
 

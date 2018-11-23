@@ -4,7 +4,7 @@ control "V-38457" do
 the risk of its compromise is increased. The file contains the list of accounts
 on the system and associated information, and protection of this file is
 critical for system security."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38457"
   tag "rid": "SV-50257r1_rule"
@@ -22,14 +22,14 @@ critical for system security."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the permissions of \"/etc/passwd\", run the command:
+  desc 'check', "To check the permissions of \"/etc/passwd\", run the command:
 
 $ ls -l /etc/passwd
 
 If properly configured, the output should indicate the following permissions:
 \"-rw-r--r--\"
 If it does not, this is a finding."
-  tag "fix": "To properly set the permissions of \"/etc/passwd\", run the
+  desc 'fix', "To properly set the permissions of \"/etc/passwd\", run the
 command:
 
 # chmod 0644 /etc/passwd"

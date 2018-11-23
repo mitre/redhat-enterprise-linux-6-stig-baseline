@@ -3,7 +3,7 @@ control "V-38670" do
 information. "
   desc  "By default, AIDE does not install itself for periodic execution.
 Periodically running AIDE may reveal unexpected changes in installed files."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000202"
   tag "gid": "V-38670"
   tag "rid": "SV-50471r2_rule"
@@ -21,13 +21,13 @@ Periodically running AIDE may reveal unexpected changes in installed files."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine that periodic AIDE execution has been scheduled,
+  desc 'check', "To determine that periodic AIDE execution has been scheduled,
 run the following command:
 
 # grep aide /etc/crontab /etc/cron.*/*
 
 If there is no output, this is a finding."
-  tag "fix": "AIDE should be executed on a periodic basis to check for changes.
+  desc 'fix', "AIDE should be executed on a periodic basis to check for changes.
 To implement a daily execution of AIDE at 4:05am using cron, add the following
 line to /etc/crontab:
 

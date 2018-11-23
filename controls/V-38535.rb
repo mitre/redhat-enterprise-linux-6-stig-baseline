@@ -2,7 +2,7 @@ control "V-38535" do
   title "The system must not respond to ICMPv4 sent to a broadcast address."
   desc  "Ignoring ICMP echo requests (pings) sent to broadcast or multicast
 addresses makes the system slightly more difficult to enumerate on the network."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38535"
   tag "rid": "SV-50336r2_rule"
@@ -20,7 +20,7 @@ addresses makes the system slightly more difficult to enumerate on the network."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The status of the \"net.ipv4.icmp_echo_ignore_broadcasts\"
+  desc 'check', "The status of the \"net.ipv4.icmp_echo_ignore_broadcasts\"
 kernel parameter can be queried by running the following command:
 
 $ sysctl net.ipv4.icmp_echo_ignore_broadcasts
@@ -32,7 +32,7 @@ and verify it is not set improperly in \"/etc/sysctl.conf\".
 $ grep net.ipv4.icmp_echo_ignore_broadcasts /etc/sysctl.conf
 
 If the correct value is not returned, this is a finding. "
-  tag "fix": "To set the runtime status of the
+  desc 'fix', "To set the runtime status of the
 \"net.ipv4.icmp_echo_ignore_broadcasts\" kernel parameter, run the following
 command:
 

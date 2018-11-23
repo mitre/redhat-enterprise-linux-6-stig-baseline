@@ -3,7 +3,7 @@ control "V-38624" do
   desc  "Log files that are not properly rotated run the risk of growing so
 large that they fill up the /var/log partition. Valuable logging information
 could be lost if the /var/log partition becomes full."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38624"
   tag "rid": "SV-50425r1_rule"
@@ -21,14 +21,14 @@ could be lost if the /var/log partition becomes full."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following commands to determine the current status of
+  desc 'check', "Run the following commands to determine the current status of
 the \"logrotate\" service:
 
 # grep logrotate /var/log/cron*
 
 If the logrotate service is not run on a daily basis by cron, this is a
 finding."
-  tag "fix": "The \"logrotate\" service should be installed or reinstalled if
+  desc 'fix', "The \"logrotate\" service should be installed or reinstalled if
 it is not installed and operating properly, by running the following command:
 
 # yum reinstall logrotate"

@@ -2,7 +2,7 @@ control "V-38463" do
   title "The system must use a separate file system for /var/log."
   desc  "Placing \"/var/log\" in its own partition enables better separation
 between log files and other files in \"/var/\"."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38463"
   tag "rid": "SV-50263r1_rule"
@@ -20,14 +20,14 @@ between log files and other files in \"/var/\"."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to determine if \"/var/log\" is on
+  desc 'check', "Run the following command to determine if \"/var/log\" is on
 its own partition or logical volume:
 
 $ mount | grep \"on /var/log \"
 
 If \"/var/log\" has its own partition or volume group, a line will be returned.
 If no line is returned, this is a finding."
-  tag "fix": "System logs are stored in the \"/var/log\" directory. Ensure that
+  desc 'fix', "System logs are stored in the \"/var/log\" directory. Ensure that
 it has its own partition or logical volume at installation time, or migrate it
 using LVM."
 

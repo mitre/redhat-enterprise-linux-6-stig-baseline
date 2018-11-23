@@ -3,7 +3,7 @@ control "V-38571" do
 alphabetic character."
   desc  "Requiring a minimum number of lower-case characters makes password
 guessing attacks more difficult by ensuring a larger search space."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000070"
   tag "gid": "V-38571"
   tag "rid": "SV-50372r3_rule"
@@ -21,7 +21,7 @@ guessing attacks more difficult by ensuring a larger search space."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check how many lower-case characters are required in a
+  desc 'check', "To check how many lower-case characters are required in a
 password, run the following command:
 
 $ grep pam_cracklib /etc/pam.d/system-auth /etc/pam.d/password-auth
@@ -31,7 +31,7 @@ lower-case characters are required. The DoD requires at least one lower-case
 character in a password. This would appear as \"lcredit=-1\".
 
 If \"lcredit\" is not found or not set to the required value, this is a finding."
-  tag "fix": "The pam_cracklib module's \"lcredit=\" parameter controls
+  desc 'fix', "The pam_cracklib module's \"lcredit=\" parameter controls
 requirements for usage of lower-case letters in a password. When set to a
 negative number, any password will be required to contain that many lower-case
 characters.

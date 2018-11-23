@@ -4,7 +4,7 @@ immediately prior to, or as part of, graphical desktop environment login
 prompts."
   desc  "An appropriate warning message reinforces policy awareness during the
 logon process and facilitates possible legal action against attackers."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000228"
   tag "gid": "V-38689"
   tag "rid": "SV-50490r5_rule"
@@ -24,7 +24,7 @@ logon process and facilitates possible legal action against attackers."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the GConf2 package is not installed, this is not applicable.
+  desc 'check', "If the GConf2 package is not installed, this is not applicable.
 
 To ensure login warning banner text is properly set, run the following:
 
@@ -62,7 +62,7 @@ OR:
 
 If the DoD required banner text does not appear in the schema, this is a
 finding."
-  tag "fix": "To set the text shown by the GNOME Display Manager in the login
+  desc 'fix', "To set the text shown by the GNOME Display Manager in the login
 screen, run the following command:
 
 # gconftool-2
@@ -110,7 +110,7 @@ file can later be edited directly if necessary."
       it { should eq attribute('banner_text').gsub(%r{[\r\n\s]}, '') }
     end
   else
-    impact 0.0
+    impact 'none'
     describe "Package GConf2 not installed" do
       skip "Package GConf2 not installed, this control Not Applicable"
     end

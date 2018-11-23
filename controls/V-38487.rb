@@ -4,7 +4,7 @@ authenticity of all software packages during installation."
   desc  "Ensuring all packages' cryptographic signatures are valid prior to
 installation ensures the provenance of the software and protects against
 malicious tampering."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000103"
   tag "gid": "V-38487"
   tag "rid": "SV-50288r1_rule"
@@ -22,7 +22,7 @@ malicious tampering."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine whether \"yum\" has been configured to disable
+  desc 'check', "To determine whether \"yum\" has been configured to disable
 \"gpgcheck\" for any repos, inspect all files in \"/etc/yum.repos.d\" and
 ensure the following does not appear in any sections:
 
@@ -33,7 +33,7 @@ If GPG checking is disabled, this is a finding.
 
 If the \"yum\" system package management tool is not used to update the system,
 verify with the SA that installed packages are cryptographically signed."
-  tag "fix": "To ensure signature checking is not disabled for any repos,
+  desc 'fix', "To ensure signature checking is not disabled for any repos,
 remove any lines from files in \"/etc/yum.repos.d\" of the form:
 
 gpgcheck=0"

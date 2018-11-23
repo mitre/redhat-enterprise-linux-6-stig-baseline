@@ -3,7 +3,7 @@ control "V-38629" do
 than 15 minutes."
   desc  "Setting the idle delay controls when the screensaver will start, and
 can be combined with screen locking to prevent access from passersby."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000029"
   tag "gid": "V-38629"
   tag "rid": "SV-50430r3_rule"
@@ -21,7 +21,7 @@ can be combined with screen locking to prevent access from passersby."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the GConf2 package is not installed, this is not applicable.
+  desc 'check', "If the GConf2 package is not installed, this is not applicable.
 
 To check the current idle time-out value, run the following command:
 
@@ -32,7 +32,7 @@ xml:readwrite:/etc/gconf/gconf.xml.mandatory --get
 If properly configured, the output should be \"15\".
 
 If it is not, this is a finding."
-  tag "fix": "Run the following command to set the idle time-out value for
+  desc 'fix', "Run the following command to set the idle time-out value for
 inactivity in the GNOME desktop to 15 minutes:
 
 # gconftool-2 \\
@@ -46,7 +46,7 @@ inactivity in the GNOME desktop to 15 minutes:
       its('stdout.strip') { should cmp <= 15 }
     end
   else
-    impact 0.0
+    impact 'none'
     describe "Package GConf2 not installed" do
       skip "Package GConf2 not installed, this control Not Applicable"
     end

@@ -3,7 +3,7 @@ control "V-38676" do
 unless required."
   desc  "Unnecessary packages should not be installed to decrease the attack
 surface of the system."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38676"
   tag "rid": "SV-50477r2_rule"
@@ -21,7 +21,7 @@ surface of the system."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To ensure the X Windows package group is removed, run the
+  desc 'check', "To ensure the X Windows package group is removed, run the
 following command:
 
 $ rpm -qi xorg-x11-server-common
@@ -32,7 +32,7 @@ package xorg-x11-server-common is not installed
 
 
 If it is not, this is a finding."
-  tag "fix": "Removing all packages which constitute the X Window System
+  desc 'fix', "Removing all packages which constitute the X Window System
 ensures users or malicious software cannot start X. To do so, run the following
 command:
 

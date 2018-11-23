@@ -3,7 +3,7 @@ control "V-38464" do
 errors on the audit storage volume."
   desc  "Taking appropriate action in case of disk errors will minimize the
 possibility of losing audit records."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000047"
   tag "gid": "V-38464"
   tag "rid": "SV-50264r1_rule"
@@ -21,7 +21,7 @@ possibility of losing audit records."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Inspect \"/etc/audit/auditd.conf\" and locate the following
+  desc 'check', "Inspect \"/etc/audit/auditd.conf\" and locate the following
 line to determine if the system is configured to take appropriate action when
 disk errors occur:
 
@@ -31,7 +31,7 @@ disk_error_action = [ACTION]
 
 If the system is configured to \"suspend\" when disk errors occur or \"ignore\"
 them, this is a finding."
-  tag "fix": "Edit the file \"/etc/audit/auditd.conf\". Modify the following
+  desc 'fix', "Edit the file \"/etc/audit/auditd.conf\". Modify the following
 line, substituting [ACTION] appropriately:
 
 disk_error_action = [ACTION]

@@ -2,7 +2,7 @@ control "V-38529" do
   title "The system must not accept IPv4 source-routed packets by default."
   desc  "Accepting source-routed packets in the IPv4 protocol has few
 legitimate uses. It should be disabled unless it is absolutely required."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38529"
   tag "rid": "SV-50330r2_rule"
@@ -20,7 +20,7 @@ legitimate uses. It should be disabled unless it is absolutely required."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The status of the \"net.ipv4.conf.default.accept_source_route\"
+  desc 'check', "The status of the \"net.ipv4.conf.default.accept_source_route\"
 kernel parameter can be queried by running the following command:
 
 $ sysctl net.ipv4.conf.default.accept_source_route
@@ -32,7 +32,7 @@ and verify it is not set improperly in \"/etc/sysctl.conf\".
 $ grep net.ipv4.conf.default.accept_source_route /etc/sysctl.conf
 
 If the correct value is not returned, this is a finding. "
-  tag "fix": "To set the runtime status of the
+  desc 'fix', "To set the runtime status of the
 \"net.ipv4.conf.default.accept_source_route\" kernel parameter, run the
 following command:
 

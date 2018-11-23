@@ -4,7 +4,7 @@ compliant hardware token, or Alternate Logon Token (ALT) for authentication."
   desc  "Smart card login provides two-factor authentication stronger than that
 provided by a username/password combination. Smart cards leverage a PKI (public
 key infrastructure) in order to provide and verify credentials."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000105"
   tag "gid": "V-38595"
   tag "rid": "SV-50396r3_rule"
@@ -22,7 +22,7 @@ key infrastructure) in order to provide and verify credentials."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Interview the SA to determine if all accounts not exempted by
+  desc 'check', "Interview the SA to determine if all accounts not exempted by
 policy are using CAC authentication. For DoD systems, the following systems and
 accounts are exempt from using smart card (CAC) authentication:
 
@@ -39,7 +39,7 @@ system components from outside the protection boundary documented in the IATT.
 
 
 If non-exempt accounts are not using CAC authentication, this is a finding."
-  tag "fix": "To enable smart card authentication, consult the documentation at:
+  desc 'fix', "To enable smart card authentication, consult the documentation at:
 
 https://docs.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/enabling-smart-card-login.html
 

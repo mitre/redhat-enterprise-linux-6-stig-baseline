@@ -3,7 +3,7 @@ control "V-38468" do
 volume is full."
   desc  "Taking appropriate action in case of a filled audit storage volume
 will minimize the possibility of losing audit records."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000047"
   tag "gid": "V-38468"
   tag "rid": "SV-50268r1_rule"
@@ -21,7 +21,7 @@ will minimize the possibility of losing audit records."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Inspect \"/etc/audit/auditd.conf\" and locate the following
+  desc 'check', "Inspect \"/etc/audit/auditd.conf\" and locate the following
 line to determine if the system is configured to take appropriate action when
 the audit storage volume is full:
 
@@ -31,7 +31,7 @@ disk_full_action = [ACTION]
 
 If the system is configured to \"suspend\" when the volume is full or
 \"ignore\" that it is full, this is a finding."
-  tag "fix": "The \"auditd\" service can be configured to take an action when
+  desc 'fix', "The \"auditd\" service can be configured to take an action when
 disk space starts to run low. Edit the file \"/etc/audit/auditd.conf\". Modify
 the following line, substituting [ACTION] appropriately:
 

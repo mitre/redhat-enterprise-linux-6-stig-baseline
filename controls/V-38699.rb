@@ -3,7 +3,7 @@ control "V-38699" do
   desc  "Allowing a user account to own a world-writable directory is
 undesirable because it allows the owner of that directory to remove or replace
 any files that may be placed in the directory by other users."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38699"
   tag "rid": "SV-50500r2_rule"
@@ -21,7 +21,7 @@ any files that may be placed in the directory by other users."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The following command will discover and print world-writable
+  desc 'check', "The following command will discover and print world-writable
 directories that are not owned by a system account, given the assumption that
 only system accounts have a uid lower than 500. Run it once for each local
 partition [PART]:
@@ -30,7 +30,7 @@ partition [PART]:
 
 
 If there is output, this is a finding."
-  tag "fix": "All directories in local partitions which are world-writable
+  desc 'fix', "All directories in local partitions which are world-writable
 should be owned by root or another system account. If any world-writable
 directories are not owned by a system account, this should be investigated.
 Following this, the files should be deleted or assigned to an appropriate

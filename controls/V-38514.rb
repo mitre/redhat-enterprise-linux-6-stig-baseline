@@ -3,7 +3,7 @@ control "V-38514" do
 unless required."
   desc  "Disabling DCCP protects the system against exploitation of any flaws
 in its implementation."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38514"
   tag "rid": "SV-50315r5_rule"
@@ -21,7 +21,7 @@ in its implementation."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the system is configured to prevent the loading of the
+  desc 'check', "If the system is configured to prevent the loading of the
 \"dccp\" kernel module, it will contain lines inside any file in
 \"/etc/modprobe.d\" or the deprecated\"/etc/modprobe.conf\". These lines
 instruct the module loading system to run another program (such as
@@ -33,7 +33,7 @@ $ grep -r dccp /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\"| grep
 -v \"#\"
 
 If no line is returned, this is a finding."
-  tag "fix": "The Datagram Congestion Control Protocol (DCCP) is a relatively
+  desc 'fix', "The Datagram Congestion Control Protocol (DCCP) is a relatively
 new transport layer protocol, designed to support streaming media and
 telephony. To configure the system to prevent the \"dccp\" kernel module from
 being loaded, add the following line to a file in the directory

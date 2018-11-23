@@ -7,7 +7,7 @@ wireless access point (AP), allowing validated systems to connect to the
 malicious AP and enabling the attacker to monitor and record network traffic.
 These malicious APs can also serve to create a man-in-the-middle attack or be
 used to create a denial of service to valid network resources."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "RHEL-06-000293"
   tag "gid": "V-72817"
   tag "rid": "SV-87461r1_rule"
@@ -25,7 +25,7 @@ used to create a denial of service to valid network resources."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "This is N/A for systems that do not have wireless network
+  desc 'check', "This is N/A for systems that do not have wireless network
 adapters.
 
 Verify that there are no wireless interfaces configured on the system:
@@ -59,7 +59,7 @@ the local Authorizing Official.
 If a wireless interface is configured and has not been documented and approved,
 this is a finding.
 "
-  tag "fix": "Configure the system to disable all wireless network interfaces."
+  desc 'fix', "Configure the system to disable all wireless network interfaces."
 
   wlans = command('ls /sys/class/net').stdout.split.select { |e| e.start_with? 'wlan' }
 

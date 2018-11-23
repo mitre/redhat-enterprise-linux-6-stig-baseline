@@ -2,7 +2,7 @@ control "V-38489" do
   title "A file integrity tool must be installed."
   desc  "The AIDE package must be installed if it is to be available for
 integrity checking."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000232"
   tag "gid": "V-38489"
   tag "rid": "SV-50290r1_rule"
@@ -20,7 +20,7 @@ integrity checking."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If another file integrity tool is installed, this is not a
+  desc 'check', "If another file integrity tool is installed, this is not a
 finding.
 
 Run the following command to determine if the \"aide\" package is installed:
@@ -29,7 +29,7 @@ Run the following command to determine if the \"aide\" package is installed:
 
 
 If the package is not installed, this is a finding."
-  tag "fix": "Install the AIDE package with the command:
+  desc 'fix', "Install the AIDE package with the command:
 
 # yum install aide"
 

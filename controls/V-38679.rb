@@ -4,7 +4,7 @@ control "V-38679" do
 trusted, then it should not be used. However, the automatic configuration
 provided by DHCP is commonly used and the alternative, manual configuration,
 presents an unacceptable burden in many circumstances."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38679"
   tag "rid": "SV-50480r3_rule"
@@ -22,7 +22,7 @@ presents an unacceptable burden in many circumstances."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If DHCP is required by the organization, this is Not Applicable.
+  desc 'check', "If DHCP is required by the organization, this is Not Applicable.
 
 For each interface [IFACE] on the system (e.g. eth0), verify that DHCP is not
 being used:
@@ -35,7 +35,7 @@ BOOTPROTO=none
 If no output is returned this is a finding.
 If BOOTPROTO is not set to \"none\", this is a finding.
 "
-  tag "fix": "For each interface [IFACE] on the system (e.g. eth0), edit
+  desc 'fix', "For each interface [IFACE] on the system (e.g. eth0), edit
 \"/etc/sysconfig/network-scripts/ifcfg-[IFACE]\" and make the following
 changes.
 

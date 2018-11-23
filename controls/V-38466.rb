@@ -3,7 +3,7 @@ control "V-38466" do
   desc  "Files from shared library directories are loaded into the address
 space of processes (including privileged ones) or of the kernel itself at
 runtime. Proper ownership is necessary to protect the integrity of the system."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000259"
   tag "gid": "V-38466"
   tag "rid": "SV-50266r4_rule"
@@ -21,7 +21,7 @@ runtime. Proper ownership is necessary to protect the integrity of the system."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "System-wide shared library files, which are linked to
+  desc 'check', "System-wide shared library files, which are linked to
 executables during process load time or run time, are stored in the following
 directories by default:
 
@@ -47,7 +47,7 @@ done
 
 
 If the command returns any results, this is a finding."
-  tag "fix": "System-wide shared library files, which are linked to executables
+  desc 'fix', "System-wide shared library files, which are linked to executables
 during process load time or run time, are stored in the following directories
 by default:
 

@@ -5,7 +5,7 @@ it are enabled."
 programs, which is no longer necessary for commonly-used network services.
 Disabling it ensures that these uncommon services are not running, and also
 prevents attacks against xinetd itself."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38582"
   tag "rid": "SV-50383r2_rule"
@@ -23,7 +23,7 @@ prevents attacks against xinetd itself."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If network services are using the xinetd service, this is not
+  desc 'check', "If network services are using the xinetd service, this is not
 applicable.
 
 To check that the \"xinetd\" service is disabled in system boot configuration,
@@ -48,7 +48,7 @@ xinetd is stopped
 
 
 If the service is running, this is a finding."
-  tag "fix": "The \"xinetd\" service can be disabled with the following
+  desc 'fix', "The \"xinetd\" service can be disabled with the following
 commands:
 
 # chkconfig xinetd off

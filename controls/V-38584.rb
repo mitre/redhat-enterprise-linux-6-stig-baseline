@@ -3,7 +3,7 @@ control "V-38584" do
 utilizing it are enabled."
   desc  "Removing the \"xinetd\" package decreases the risk of the xinetd
 service's accidental (or intentional) activation."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38584"
   tag "rid": "SV-50385r1_rule"
@@ -21,7 +21,7 @@ service's accidental (or intentional) activation."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If network services are using the xinetd service, this is not
+  desc 'check', "If network services are using the xinetd service, this is not
 applicable.
 
 Run the following command to determine if the \"xinetd\" package is installed:
@@ -30,7 +30,7 @@ Run the following command to determine if the \"xinetd\" package is installed:
 
 
 If the package is installed, this is a finding."
-  tag "fix": "The \"xinetd\" package can be uninstalled with the following
+  desc 'fix', "The \"xinetd\" package can be uninstalled with the following
 command:
 
 # yum erase xinetd"

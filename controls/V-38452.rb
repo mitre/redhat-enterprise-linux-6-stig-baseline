@@ -5,7 +5,7 @@ files and directories associated with packages."
 generous could allow an unauthorized user to gain privileges that they should
 not have. The permissions set by the vendor should be maintained. Any
 deviations from this baseline should be investigated."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38452"
   tag "rid": "SV-50252r2_rule"
@@ -23,7 +23,7 @@ deviations from this baseline should be investigated."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The following command will list which files and directories on
+  desc 'check', "The following command will list which files and directories on
 the system have permissions different from what is expected by the RPM
 database:
 
@@ -40,7 +40,7 @@ permissions on the file or directory:
 
 If the existing permissions are more permissive than those expected by RPM,
 this is a finding."
-  tag "fix": "The RPM package management system can restore file access
+  desc 'fix', "The RPM package management system can restore file access
 permissions of package files and directories. The following command will update
 permissions on files and directories with permissions different from what is
 expected by the RPM database:

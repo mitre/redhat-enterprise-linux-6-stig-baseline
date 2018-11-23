@@ -3,7 +3,7 @@ control "V-38501" do
 a 15-minute interval."
   desc  "Locking out user accounts after a number of incorrect attempts within
 a specific period of time prevents direct password guessing attacks."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000249"
   tag "gid": "V-38501"
   tag "rid": "SV-50302r4_rule"
@@ -21,7 +21,7 @@ a specific period of time prevents direct password guessing attacks."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To ensure the failed password attempt policy is configured
+  desc 'check', "To ensure the failed password attempt policy is configured
 correctly, run the following command:
 
 $ grep pam_faillock /etc/pam.d/system-auth /etc/pam.d/password-auth
@@ -30,7 +30,7 @@ For each file, the output should show \"fail_interval=<interval-in-seconds>\"
 where \"interval-in-seconds\" is 900 (15 minutes) or greater. If the
 \"fail_interval\" parameter is not set, the default setting of 900 seconds is
 acceptable. If that is not the case, this is a finding. "
-  tag "fix": "Utilizing \"pam_faillock.so\", the \"fail_interval\" directive
+  desc 'fix', "Utilizing \"pam_faillock.so\", the \"fail_interval\" directive
 configures the system to lock out accounts after a number of incorrect logon
 attempts. Modify the content of both \"/etc/pam.d/system-auth\" and
 \"/etc/pam.d/password-auth\" as follows:

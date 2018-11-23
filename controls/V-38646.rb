@@ -4,7 +4,7 @@ control "V-38646" do
 environments but it can be disabled if it is not needed. Execution of tasks by
 privileged programs, on behalf of unprivileged ones, has traditionally been a
 source of privilege escalation security issues."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38646"
   tag "rid": "SV-50447r2_rule"
@@ -22,7 +22,7 @@ source of privilege escalation security issues."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check that the \"oddjobd\" service is disabled in system
+  desc 'check', "To check that the \"oddjobd\" service is disabled in system
 boot configuration, run the following command:
 
 # chkconfig \"oddjobd\" --list
@@ -44,7 +44,7 @@ oddjobd is stopped
 
 
 If the service is running, this is a finding."
-  tag "fix": "The \"oddjobd\" service exists to provide an interface and access
+  desc 'fix', "The \"oddjobd\" service exists to provide an interface and access
 control mechanism through which specified privileged tasks can run tasks for
 unprivileged client applications. Communication with \"oddjobd\" is through the
 system message bus. The \"oddjobd\" service can be disabled with the following

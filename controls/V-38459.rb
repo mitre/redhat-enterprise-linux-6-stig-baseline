@@ -3,7 +3,7 @@ control "V-38459" do
   desc  "The \"/etc/group\" file contains information regarding groups that are
 configured on the system. Protection of this file is important for system
 security."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38459"
   tag "rid": "SV-50259r1_rule"
@@ -21,7 +21,7 @@ security."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the group ownership of \"/etc/group\", run the
+  desc 'check', "To check the group ownership of \"/etc/group\", run the
 command:
 
 $ ls -l /etc/group
@@ -29,7 +29,7 @@ $ ls -l /etc/group
 If properly configured, the output should indicate the following group-owner.
 \"root\"
 If it does not, this is a finding."
-  tag "fix": "To properly set the group owner of \"/etc/group\", run the
+  desc 'fix', "To properly set the group owner of \"/etc/group\", run the
 command:
 
 # chgrp root /etc/group"

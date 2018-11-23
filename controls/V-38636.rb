@@ -4,7 +4,7 @@ log retention period."
   desc  "The total storage for audit log files must be large enough to retain
 log information over the period required. This is a function of the maximum log
 file size and the number of logs retained."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38636"
   tag "rid": "SV-50437r1_rule"
@@ -22,7 +22,7 @@ file size and the number of logs retained."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Inspect \"/etc/audit/auditd.conf\" and locate the following
+  desc 'check', "Inspect \"/etc/audit/auditd.conf\" and locate the following
 line to determine how many logs the system is configured to retain after
 rotation: \"# grep num_logs /etc/audit/auditd.conf\"
 
@@ -31,7 +31,7 @@ num_logs = 5
 
 If the overall system log file(s) retention hasn't been properly set up, this
 is a finding."
-  tag "fix": "Determine how many log files \"auditd\" should retain when it
+  desc 'fix', "Determine how many log files \"auditd\" should retain when it
 rotates logs. Edit the file \"/etc/audit/auditd.conf\". Add or modify the
 following line, substituting [NUMLOGS] with the correct value:
 

@@ -3,7 +3,7 @@ control "V-38492" do
 consoles."
   desc  "Preventing direct root login to virtual console devices helps ensure
 accountability for actions taken on the system using the root account. "
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000109"
   tag "gid": "V-38492"
   tag "rid": "SV-50293r1_rule"
@@ -21,7 +21,7 @@ accountability for actions taken on the system using the root account. "
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check for virtual console entries which permit root login,
+  desc 'check', "To check for virtual console entries which permit root login,
 run the following command:
 
 # grep '^vc/[0-9]' /etc/securetty
@@ -29,7 +29,7 @@ run the following command:
 If any output is returned, then root logins over virtual console devices is
 permitted.
 If root login over virtual console devices is permitted, this is a finding."
-  tag "fix": "To restrict root logins through the (deprecated) virtual console
+  desc 'fix', "To restrict root logins through the (deprecated) virtual console
 devices, ensure lines of this form do not appear in \"/etc/securetty\":
 
 vc/1

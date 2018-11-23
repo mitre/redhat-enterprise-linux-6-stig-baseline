@@ -5,7 +5,7 @@ system time through adjtimex."
 nefarious activities in log files, as well as to confuse network services that
 are highly dependent upon an accurate system time (such as sshd). All changes
 to the system time should be audited."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000062"
   tag "gid": "V-81441"
   tag "rid": "SV-96155r1_rule"
@@ -23,7 +23,7 @@ to the system time should be audited."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine if the system is configured to audit calls to the
+  desc 'check', "To determine if the system is configured to audit calls to the
 \"adjtimex\" system call, run the following command:
 
 $ sudo grep -w \"adjtimex\" /etc/audit/audit.rules
@@ -32,7 +32,7 @@ If the system is configured to audit this activity, it will return a line.
 
 If the system is not configured to audit time changes, this is a finding.
 "
-  tag "fix": "On a 32-bit system, add the following to
+  desc 'fix', "On a 32-bit system, add the following to
 \"/etc/audit/audit.rules\":
 
 # audit_time_rules

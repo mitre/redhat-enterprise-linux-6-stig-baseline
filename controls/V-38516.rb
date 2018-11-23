@@ -3,7 +3,7 @@ control "V-38516" do
 required."
   desc  "Disabling RDS protects the system against exploitation of any flaws in
 its implementation."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38516"
   tag "rid": "SV-50317r3_rule"
@@ -21,7 +21,7 @@ its implementation."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the system is configured to prevent the loading of the
+  desc 'check', "If the system is configured to prevent the loading of the
 \"rds\" kernel module, it will contain lines inside any file in
 \"/etc/modprobe.d\" or the deprecated \"/etc/modprobe.conf\". These lines
 instruct the module loading system to run another program (such as
@@ -32,7 +32,7 @@ search for such lines in all files in \"/etc/modprobe.d\" and the deprecated
 $ grep -r rds /etc/modprobe.conf /etc/modprobe.d
 
 If no line is returned, this is a finding."
-  tag "fix": "The Reliable Datagram Sockets (RDS) protocol is a transport layer
+  desc 'fix', "The Reliable Datagram Sockets (RDS) protocol is a transport layer
 protocol designed to provide reliable high-bandwidth, low-latency
 communications between nodes in a cluster. To configure the system to prevent
 the \"rds\" kernel module from being loaded, add the following line to a file

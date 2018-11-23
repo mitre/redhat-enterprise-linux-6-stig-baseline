@@ -4,7 +4,7 @@ untrusted networks."
   desc  "Providing the ability for remote users or systems to initiate a secure
 VPN connection protects information when it is transmitted over a wide area
 network."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000160"
   tag "gid": "V-38687"
   tag "rid": "SV-50488r3_rule"
@@ -22,7 +22,7 @@ network."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the system does not communicate over untrusted networks,
+  desc 'check', "If the system does not communicate over untrusted networks,
 this is not applicable.
 
 Run the following command to determine if the \"libreswan\" package is
@@ -31,7 +31,7 @@ installed:
 # rpm -q libreswan
 
 If the package is not installed, this is a finding."
-  tag "fix": "The \"libreswan\" package provides an implementation of IPsec and
+  desc 'fix', "The \"libreswan\" package provides an implementation of IPsec and
 IKE, which permits the creation of secure tunnels over untrusted networks. The
 \"libreswan\" package can be installed with the following command:
 

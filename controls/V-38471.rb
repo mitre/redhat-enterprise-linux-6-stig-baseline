@@ -4,7 +4,7 @@ control "V-38471" do
 to a centralized server for management directly.  It does, however, include an
 audit event multiplexor plugin (audispd) to pass audit records to the local
 syslog server."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000043"
   tag "gid": "V-38471"
   tag "rid": "SV-50271r1_rule"
@@ -22,12 +22,12 @@ syslog server."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Verify the audispd plugin is active:
+  desc 'check', "Verify the audispd plugin is active:
 
 # grep active /etc/audisp/plugins.d/syslog.conf
 
 If the \"active\" setting is missing or set to \"no\", this is a finding."
-  tag "fix": "Set the \"active\" line in \"/etc/audisp/plugins.d/syslog.conf\"
+  desc 'fix', "Set the \"active\" line in \"/etc/audisp/plugins.d/syslog.conf\"
 to \"yes\".  Restart the auditd process.
 
 # service auditd restart"

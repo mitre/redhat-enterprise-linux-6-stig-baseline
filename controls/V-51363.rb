@@ -5,7 +5,7 @@ limits on system services."
 confine potentially compromised processes to the security policy, which is
 designed to prevent them from causing damage to the system or further elevating
 their privileges. "
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-51363"
   tag "rid": "SV-65573r1_rule"
@@ -23,13 +23,13 @@ their privileges. "
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Check the file \"/etc/selinux/config\" and ensure the following
+  desc 'check', "Check the file \"/etc/selinux/config\" and ensure the following
 line appears:
 
 SELINUX=enforcing
 
 If SELINUX is not set to enforcing, this is a finding. "
-  tag "fix": "The SELinux state should be set to \"enforcing\" at system boot
+  desc 'fix', "The SELinux state should be set to \"enforcing\" at system boot
 time. In the file \"/etc/selinux/config\", add or correct the following line to
 configure the system to boot into enforcing mode:
 

@@ -2,7 +2,7 @@ control "V-38503" do
   title "The /etc/shadow file must be group-owned by root."
   desc  "The \"/etc/shadow\" file stores password hashes. Protection of this
 file is critical for system security."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38503"
   tag "rid": "SV-50304r1_rule"
@@ -20,7 +20,7 @@ file is critical for system security."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the group ownership of \"/etc/shadow\", run the
+  desc 'check', "To check the group ownership of \"/etc/shadow\", run the
 command:
 
 $ ls -l /etc/shadow
@@ -28,7 +28,7 @@ $ ls -l /etc/shadow
 If properly configured, the output should indicate the following group-owner.
 \"root\"
 If it does not, this is a finding."
-  tag "fix": "To properly set the group owner of \"/etc/shadow\", run the
+  desc 'fix', "To properly set the group owner of \"/etc/shadow\", run the
 command:
 
 # chgrp root /etc/shadow"

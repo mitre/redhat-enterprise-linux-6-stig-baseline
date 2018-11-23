@@ -4,7 +4,7 @@ associated with packages."
   desc  "The hash on important files like system executables should match the
 information given by the RPM database. Executables with erroneous hashes could
 be a sign of nefarious activity on the system."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38447"
   tag "rid": "SV-50247r4_rule"
@@ -22,7 +22,7 @@ be a sign of nefarious activity on the system."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The following command will list which files on the system have
+  desc 'check', "The following command will list which files on the system have
 file hashes different from what is expected by the RPM database:
 
 # rpm -Va | awk '$1 ~ /..5/ && $2 != \"c\"'
@@ -33,7 +33,7 @@ changes were due to STIG application and have been documented with the ISSO.
 If there are changes to system binaries and they are not documented with the
 ISSO, this is a finding.
 "
-  tag "fix": "The RPM package management system can check the hashes of
+  desc 'fix', "The RPM package management system can check the hashes of
 installed software packages, including many that are important to system
 security. Run the following command to list which files on the system have
 hashes that differ from what is expected by the RPM database:

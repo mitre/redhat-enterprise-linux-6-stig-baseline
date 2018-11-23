@@ -4,7 +4,7 @@ information in storage."
   desc  "The risk of a system's physical compromise, particularly mobile
 systems such as laptops, places its data at risk of compromise. Encrypting this
 data mitigates the risk of its loss if the system is lost."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000131"
   tag "gid": "V-38659"
   tag "rid": "SV-50460r2_rule"
@@ -22,10 +22,10 @@ data mitigates the risk of its loss if the system is lost."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Determine if encryption must be used to protect data on the
+  desc 'check', "Determine if encryption must be used to protect data on the
 system.
 If encryption must be used and is not employed, this is a finding."
-  tag "fix": "Red Hat Enterprise Linux 6 natively supports partition encryption
+  desc 'fix', "Red Hat Enterprise Linux 6 natively supports partition encryption
 through the Linux Unified Key Setup-on-disk-format (LUKS) technology. The
 easiest way to encrypt a partition is during installation time.
 

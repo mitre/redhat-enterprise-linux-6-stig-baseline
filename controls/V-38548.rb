@@ -2,7 +2,7 @@ control "V-38548" do
   title "The system must ignore ICMPv6 redirects by default."
   desc  "An illicit ICMP redirect message could result in a man-in-the-middle
 attack."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38548"
   tag "rid": "SV-50349r3_rule"
@@ -20,7 +20,7 @@ attack."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If IPv6 is disabled, this is not applicable.
+  desc 'check', "If IPv6 is disabled, this is not applicable.
 
 The status of the \"net.ipv6.conf.default.accept_redirects\" kernel parameter
 can be queried by running the following command:
@@ -34,7 +34,7 @@ and verify it is not set improperly in \"/etc/sysctl.conf\".
 $ grep net.ipv6.conf.default.accept_redirects /etc/sysctl.conf
 
 If the correct value is not returned, this is a finding. "
-  tag "fix": "To set the runtime status of the
+  desc 'fix', "To set the runtime status of the
 \"net.ipv6.conf.default.accept_redirects\" kernel parameter, run the following
 command:
 

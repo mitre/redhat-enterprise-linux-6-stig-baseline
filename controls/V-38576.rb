@@ -3,7 +3,7 @@ control "V-38576" do
 algorithm for generating account password hashes (login.defs)."
   desc  "Using a stronger hashing algorithm makes password cracking attacks
 more difficult."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000120"
   tag "gid": "V-38576"
   tag "rid": "SV-50377r1_rule"
@@ -21,14 +21,14 @@ more difficult."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Inspect \"/etc/login.defs\" and ensure the following line
+  desc 'check', "Inspect \"/etc/login.defs\" and ensure the following line
 appears:
 
 ENCRYPT_METHOD SHA512
 
 
 If it does not, this is a finding."
-  tag "fix": "In \"/etc/login.defs\", add or correct the following line to
+  desc 'fix', "In \"/etc/login.defs\", add or correct the following line to
 ensure the system will use SHA-512 as the hashing algorithm:
 
 ENCRYPT_METHOD SHA512"

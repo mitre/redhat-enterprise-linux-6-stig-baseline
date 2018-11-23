@@ -7,7 +7,7 @@ will be activated after the idle delay. Applications requiring continuous,
 real-time screen display (such as network management products) require the
 login session does not have administrator rights and the display station is
 located in a controlled-access area."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000029"
   tag "gid": "V-38630"
   tag "rid": "SV-50431r3_rule"
@@ -25,7 +25,7 @@ located in a controlled-access area."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the GConf2 package is not installed, this is not applicable.
+  desc 'check', "If the GConf2 package is not installed, this is not applicable.
 
 To check the screensaver mandatory use status, run the following command:
 
@@ -36,7 +36,7 @@ xml:readwrite:/etc/gconf/gconf.xml.mandatory --get
 If properly configured, the output should be \"true\".
 
 If it is not, this is a finding."
-  tag "fix": "Run the following command to activate the screensaver in the
+  desc 'fix', "Run the following command to activate the screensaver in the
 GNOME desktop after a period of inactivity:
 
 # gconftool-2 --direct \\
@@ -49,7 +49,7 @@ GNOME desktop after a period of inactivity:
       its('stdout.strip') { should eq 'true' }
     end
   else
-    impact 0.0
+    impact 'none'
     describe "Package GConf2 not installed" do
       skip "Package GConf2 not installed, this control Not Applicable"
     end

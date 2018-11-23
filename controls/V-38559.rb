@@ -5,7 +5,7 @@ control permission modifications using lremovexattr."
 attempting to gain access to information that would otherwise be disallowed.
 Auditing DAC modifications can facilitate the identification of patterns of
 abuse among both authorized and unauthorized users."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000064"
   tag "gid": "V-38559"
   tag "rid": "SV-50360r3_rule"
@@ -23,7 +23,7 @@ abuse among both authorized and unauthorized users."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine if the system is configured to audit calls to the
+  desc 'check', "To determine if the system is configured to audit calls to the
 \"lremovexattr\" system call, run the following command:
 
 $ sudo grep -w \"lremovexattr\" /etc/audit/audit.rules
@@ -32,7 +32,7 @@ If the system is configured to audit this activity, it will return several
 lines.
 
 If no line is returned, this is a finding. "
-  tag "fix": "At a minimum, the audit system should collect file permission
+  desc 'fix', "At a minimum, the audit system should collect file permission
 changes for all users and root. Add the following to
 \"/etc/audit/audit.rules\":
 

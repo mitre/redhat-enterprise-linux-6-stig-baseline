@@ -6,7 +6,7 @@ case of mixed OS environment, this can create the risk of short-term loss of
 availability of systems due to unintentional reboot. In the GNOME graphical
 environment, risk of unintentional reboot from the Ctrl-Alt-Delete sequence is
 reduced because the user will be prompted before any action is taken."
-  impact 0.7
+  impact 'high'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38668"
   tag "rid": "SV-50469r4_rule"
@@ -24,7 +24,7 @@ reduced because the user will be prompted before any action is taken."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To ensure the system is configured to log a message instead of
+  desc 'check', "To ensure the system is configured to log a message instead of
 rebooting the system when Ctrl-Alt-Delete is pressed, ensure the following line
 is in \"/etc/init/control-alt-delete.override\":
 
@@ -32,7 +32,7 @@ exec /usr/bin/logger -p authpriv.notice \"Ctrl-Alt-Delete pressed\"
 
 If the system is not configured to block the shutdown command when
 Ctrl-Alt-Delete is pressed, this is a finding. "
-  tag "fix": "By default, the system includes the following line in
+  desc 'fix', "By default, the system includes the following line in
 \"/etc/init/control-alt-delete.conf\" to reboot the system when the
 Ctrl-Alt-Delete key sequence is pressed:
 

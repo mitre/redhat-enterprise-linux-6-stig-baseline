@@ -3,7 +3,7 @@ control "V-38599" do
 Department of Defense (DoD) login banner."
   desc  "This setting will cause the system greeting banner to be used for FTP
 connections as well."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000023"
   tag "gid": "V-38599"
   tag "rid": "SV-50400r2_rule"
@@ -21,7 +21,7 @@ connections as well."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify this configuration, run the following command:
+  desc 'check', "To verify this configuration, run the following command:
 
 grep \"banner_file\" /etc/vsftpd/vsftpd.conf
 
@@ -33,7 +33,7 @@ banner_file=/etc/issue
 
 
 If it does not, this is a finding."
-  tag "fix": "Edit the vsftpd configuration file, which resides at
+  desc 'fix', "Edit the vsftpd configuration file, which resides at
 \"/etc/vsftpd/vsftpd.conf\" by default. Add or correct the following
 configuration options.
 
@@ -51,7 +51,7 @@ Restart the vsftpd daemon.
       its('banner_file') { should eq '/etc/issue' }
     end
   else
-    impact 0.0
+    impact 'none'
     describe "Package vsftpd not installed" do
       skip "Package vsftpd not installed, this control Not Applicable"
     end
