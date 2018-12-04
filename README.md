@@ -1,4 +1,4 @@
-# disa_stig_rhel6_baseline  
+# disa-rhel6-stig-baseline  
 
 An InSpec profile of the DISA RHEL6 STIG baseline
 
