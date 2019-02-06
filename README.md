@@ -11,7 +11,7 @@ Latest versions and installation options are available at the [InSpec](http://in
 
 ## Running This Profile
 
-    inspec exec https://github.com/mitre/red-hat-enterprise-linux-6-stig-baseline/archive/master.tar.gz -t ssh://<hostip> --user '<admin-account>' --password=<password> --reporter cli json:<filename>.json
+    inspec exec https://github.com/mitre/red-hat-enterprise-linux-6-stig-baseline/archive/master.tar.gz -t ssh://<hostip> --user '<privileged-account>' --password=<password> --reporter cli json:<filename>.json
 
 Runs this profile over __ssh__ to the host at IP address __hostip__ as a privileged user account (i.e., an account with administrative privileges), reporting results to both the command line interface (cli) and to a machine-readable JSON file. 
     
