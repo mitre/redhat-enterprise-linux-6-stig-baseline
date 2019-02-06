@@ -41,15 +41,9 @@ being loaded, add the following line to a file in the directory
 
 install dccp /bin/true"
 
-  describe.one do
-    command("find /etc/modprobe.d -type f -regex .\\*/\\^.\\*\\\\.conf\\$").stdout.split.each do |entry|
-      describe file(entry) do
-        its("content") { should match(/^\s*install\s+dccp\s+(\/bin\/true)\s*$/) }
-      end
-    end
-    describe file("/etc/modprobe.conf") do
-      its("content") { should match(/^\s*install\s+dccp\s+(\/bin\/true)\s*$/) }
-    end
+  describe kernel_module('dccp') do
+    it { should_not be_loaded }
+    it { shold_not be_enabled }
+    it { should be_blacklisted }
   end
 end
-

@@ -40,15 +40,9 @@ following line to a file in the directory \"/etc/modprobe.d\":
 
 install tipc /bin/true"
 
-  describe.one do
-    command("find /etc/modprobe.d -type f -regex .\\*/\\^.\\*\\\\.conf\\$").stdout.split.each do |entry|
-      describe file(entry) do
-        its("content") { should match(/^\s*install\s+tipc\s+(\/bin\/true)\s*$/) }
-      end
-    end
-    describe file("/etc/modprobe.conf") do
-      its("content") { should match(/^\s*install\s+tipc\s+(\/bin\/true)\s*$/) }
-    end
+  describe kernel_module('tipc') do
+    it { should_not be_loaded }
+    it { shold_not be_enabled }
+    it { should be_blacklisted }
   end
 end
-
