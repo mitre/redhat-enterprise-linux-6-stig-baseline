@@ -43,7 +43,7 @@ Restart the IPv6 firewall:
 # service ip6tables restart"
 
   describe command("ip6tables -nvL | grep -i input") do
-    its('stdout.strip') { should match %r{Chain INPUT \(policy DROP\) }
+    its('stdout.strip') { should match %r{Chain INPUT \(policy DROP\) } }
   end
 end
 
