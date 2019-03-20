@@ -3,7 +3,7 @@
 InSpec profile to validate the secure configuration of Red Hat Enterprise Linux 6, against [DISA](https://iase.disa.mil/stigs/)'s **Red Hat Enterprise Linux 6 Security Technical Implementation Guide (STIG) Version 1, Release 21**.
 
 ## Getting Started  
-It is intended and recommended that InSpec run this profile from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target remotely over __winrm__.
+It is intended and recommended that InSpec run this profile from a __"runner"__ host (such as a DevOps orchestration server, an administrative management system, or a developer's workstation/laptop) against the target remotely over __ssh__.
 
 __For the best security of the runner, always install on the runner the _latest version_ of InSpec and supporting Ruby language components.__ 
 
