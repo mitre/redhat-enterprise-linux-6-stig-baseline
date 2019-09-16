@@ -68,7 +68,7 @@ limitations, the following text can be used:
 
   describe "Banner text" do
     subject { banner_text }
-    it { should eq attribute('banner_text').gsub(%r{[\r\n\s]}, '') }
+    it { should eq input('banner_text').gsub(%r{[\r\n\s]}, '') }
   end
 end
 

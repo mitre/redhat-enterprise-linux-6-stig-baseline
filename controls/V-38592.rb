@@ -59,7 +59,7 @@ The \"authconfig\" program should not be used."
 
   file("/etc/pam.d/system-auth").content.to_s.scan(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*\s+unlock_time=([0-9]+).*$/).flatten.each do |entry|
     describe entry do
-      it { should cmp == 604800 }
+      it { should cmp >= input('pam_faillock_unlock_time') }
     end
   end
   describe file("/etc/pam.d/system-auth") do
@@ -67,7 +67,7 @@ The \"authconfig\" program should not be used."
   end
   file("/etc/pam.d/password-auth").content.to_s.scan(/^\s*auth\s+(?:(?:sufficient)|(?:\[default=die\]))\s+pam_faillock\.so\s+authfail.*\s+unlock_time=([0-9]+).*$/).flatten.each do |entry|
     describe entry do
-      it { should cmp == 604800 }
+      it { should cmp >= input('pam_faillock_unlock_time') }
     end
   end
   describe file("/etc/pam.d/password-auth") do

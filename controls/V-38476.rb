@@ -45,7 +45,7 @@ use the following command as the root user to import them into the keyring:
 
 # rpm --import /media/cdrom/RPM-GPG-KEY"
 
-  keys = attribute('package_signing_keys')
+  keys = input('package_signing_keys')
 
   describe command('rpm -q gpg-pubkey') do
     keys.each do |key|

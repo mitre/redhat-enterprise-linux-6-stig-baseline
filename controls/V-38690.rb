@@ -39,7 +39,7 @@ substituting \"[USER]\" and \"[YYYY-MM-DD]\" appropriately:
 
 \"[YYYY-MM-DD]\" indicates the documented expiration date for the account."
 
-  emergency_accounts = attribute('emergency_accounts')
+  emergency_accounts = input('emergency_accounts')
 
   if emergency_accounts.empty?
     describe "Emergency accounts" do
@@ -49,6 +49,12 @@ substituting \"[USER]\" and \"[YYYY-MM-DD]\" appropriately:
     emergency_accounts.each do |acct|
       describe command("chage -l #{acct} | grep 'Account expires'") do
         its('stdout.strip') { should_not match %r{:\s*never} }
+      end
+    end
+
+    emergency_accounts.each do |acct|
+      describe shadow.users(acct) do
+        its('max_days.first.to_i') { should cmp <= input('emergency_accounts_expiration_days') }
       end
     end
   end

@@ -6,16 +6,50 @@ copyright_email: you@example.com
 license: Apache-2.0
 summary: "The Red Hat Enterprise Linux 6 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil."
 version: 0.1.0
-attributes:
+
+inputs:
   - name: auditd_space_left
-    default: SET_ME
+    value: SET_ME
+
   - name: banner_text
-    default: SET_ME
+    value: SET_ME
+
+  - name: pam_faillock_fail_interval
+    value: 900
+
+  - name: pam_cracklib_difok
+    value: 8
+
+  - name: pam_faillock_deny
+    value: 3
+
+  - name: pam_faillock_unlock_time
+    value: 604800
+
+  - name: client_alive_interval
+    value: 900
+
+  - name: min_reuse_generations
+    description: The minimum number of generations before a password can be reused.
+    value: 6
+
+  - name: days_of_inactivity
+    description: 'The number of days of inactivity before an account is disabled.'
+    value: 35
+
   - name: max_logins
-    default: 10
+    value: 10
   - name: emergency_accounts
-    default: []
+    value: []
+
+  - name: emergency_accounts_expiration_days
+    value: 1
+
   - name: temporary_accounts
-    default: []
+    value: []
+
+  - name: temporary_accounts_expiration_days
+    value: 30
+
   - name: package_signing_keys
-    default: ['gpg-pubkey-fd431d51-4ae0493b', 'gpg-pubkey-2fa658e0-45700c69']
+    value: ['gpg-pubkey-fd431d51-4ae0493b', 'gpg-pubkey-2fa658e0-45700c69']

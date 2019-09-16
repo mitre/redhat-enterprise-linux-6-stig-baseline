@@ -47,7 +47,7 @@ substituting [NUM] appropriately. The DoD requirement is 8.
     end
     file("/etc/pam.d/system-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+difok=(\d+)[^\n\r]*$/).flatten.each do |entry|
       describe entry do
-        it { should cmp >= 8 }
+        it { should cmp >= input('pam_cracklib_difok') }
       end
     end
     describe file("/etc/pam.d/system-auth") do
@@ -55,7 +55,7 @@ substituting [NUM] appropriately. The DoD requirement is 8.
     end
     file("/etc/pam.d/system-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+difok=(\d+)\s+.*$/).flatten.each do |entry|
       describe entry do
-        it { should cmp >= 8 }
+        it { should cmp >= input('pam_cracklib_difok') }
       end
     end
   end
@@ -65,7 +65,7 @@ substituting [NUM] appropriately. The DoD requirement is 8.
     end
     file("/etc/pam.d/password-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))[\t ]+[^#\n\r]*\s+difok=(\d+)[^\n\r]*$/).flatten.each do |entry|
       describe entry do
-        it { should cmp >= 8 }
+        it { should cmp >= input('pam_cracklib_difok') }
       end
     end
     describe file("/etc/pam.d/password-auth") do
@@ -73,7 +73,7 @@ substituting [NUM] appropriately. The DoD requirement is 8.
     end
     file("/etc/pam.d/password-auth").content.to_s.scan(/^\s*password\s+(?:(?:required)|(?:requisite))\s+(?:(?:\/lib\/security\/\$ISA\/pam_cracklib\.so)|(?:pam_cracklib\.so))\s+difok=(\d+)\s+.*$/).flatten.each do |entry|
       describe entry do
-        it { should cmp >= 8 }
+        it { should cmp >= input('pam_cracklib_difok') }
       end
     end
   end
