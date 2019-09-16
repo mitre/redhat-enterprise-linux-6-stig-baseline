@@ -49,7 +49,7 @@ The DoD requirement is five passwords."
     end
     file("/etc/pam.d/system-auth").content.to_s.scan(/^\s*password\s+(?:(?:requisite)|(?:required))\s+pam_pwhistory\.so[\t ]+[^#\n\r]*\s+remember=(\d+)(?:(?:\s)|(?:$))/).flatten.each do |entry|
       describe entry do
-        it { should cmp >= 5 }
+        it { should cmp >= attribute('min_reuse_generations') }
       end
     end
     describe file("/etc/pam.d/system-auth") do
@@ -57,7 +57,7 @@ The DoD requirement is five passwords."
     end
     file("/etc/pam.d/system-auth").content.to_s.scan(/^\s*password\s+(?:(?:requisite)|(?:required))\s+pam_pwhistory\.so\s+remember=(\d+)(?:(?:\s)|(?:$))/).flatten.each do |entry|
       describe entry do
-        it { should cmp >= 5 }
+        it { should cmp >= attribute('min_reuse_generations') }
       end
     end
   end
@@ -67,7 +67,7 @@ The DoD requirement is five passwords."
     end
     file("/etc/pam.d/password-auth").content.to_s.scan(/^\s*password\s+(?:(?:requisite)|(?:required))\s+pam_pwhistory\.so[\t ]+[^#\n\r]*\s+remember=(\d+)(?:(?:\s)|(?:$))/).flatten.each do |entry|
       describe entry do
-        it { should cmp >= 5 }
+        it { should cmp >= attribute('min_reuse_generations') }
       end
     end
     describe file("/etc/pam.d/password-auth") do
@@ -75,7 +75,7 @@ The DoD requirement is five passwords."
     end
     file("/etc/pam.d/password-auth").content.to_s.scan(/^\s*password\s+(?:(?:requisite)|(?:required))\s+pam_pwhistory\.so\s+remember=(\d+)(?:(?:\s)|(?:$))/).flatten.each do |entry|
       describe entry do
-        it { should cmp >= 5 }
+        it { should cmp >= attribute('min_reuse_generations') }
       end
     end
   end

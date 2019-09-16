@@ -46,7 +46,9 @@ preempt any SSH setting made here. Keep in mind that some processes may stop
 SSH from correctly detecting that the user is idle."
 
   describe sshd_config do
-    its('ClientAliveInterval') { should_not be_nil }
+    its("ClientAliveInterval.to_i"){should cmp >= 1}
+    its("ClientAliveInterval.to_i"){should cmp <= attribute('client_alive_interval')}
+    its("ClientAliveInterval"){should_not eq nil}
   end
 end
 

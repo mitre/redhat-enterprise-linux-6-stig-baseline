@@ -51,6 +51,12 @@ substituting \"[USER]\" and \"[YYYY-MM-DD]\" appropriately:
         its('stdout.strip') { should_not match %r{:\s*never} }
       end
     end
+
+    emergency_accounts.each do |acct|
+      describe shadow.users(acct) do
+        its('max_days.first.to_i') { should cmp <= attribute('emergency_accounts_expiration_days') }
+      end
+    end
   end
 end
 

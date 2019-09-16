@@ -46,8 +46,8 @@ substituting \"[USER]\" and \"[YYYY-MM-DD]\" appropriately:
     end
   else
     temporary_accounts.each do |acct|
-      describe command("chage -l #{acct} | grep 'Account expires'") do
-        its('stdout.strip') { should_not match %r{:\s*never} }
+      describe shadow.users(acct) do
+        its('max_days.first.to_i') { should cmp <= attribute('temporary_accounts_expiration_days') }
       end
     end
   end

@@ -51,18 +51,10 @@ inactivity for users in the particular environment. Setting the timeout too low
 incurs support costs and also has the potential to impact availability of the
 system to legitimate users."
 
-  describe file("/etc/default/useradd") do
-    its("content") { should match(/^\s*INACTIVE\s*=\s*(\d+)\s*$/) }
-  end
-  file("/etc/default/useradd").content.to_s.scan(/^\s*INACTIVE\s*=\s*(\d+)\s*$/).flatten.each do |entry|
-    describe entry do
-      it { should cmp <= 35 }
-    end
-  end
-  file("/etc/default/useradd").content.to_s.scan(/^\s*INACTIVE\s*=\s*(\d+)\s*$/).flatten.each do |entry|
-    describe entry do
-      it { should cmp > -1 }
-    end
+  describe parse_config_file("/etc/default/useradd") do
+    its('INACTIVE') { should cmp <= attribute('days_of_inactivity') }
+    its('INACTIVE') { should cmp >= 0 }
   end
 end
+
 
