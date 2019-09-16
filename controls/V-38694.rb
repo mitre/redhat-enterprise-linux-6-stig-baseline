@@ -52,7 +52,7 @@ incurs support costs and also has the potential to impact availability of the
 system to legitimate users."
 
   describe parse_config_file("/etc/default/useradd") do
-    its('INACTIVE') { should cmp <= attribute('days_of_inactivity') }
+    its('INACTIVE') { should cmp <= input('days_of_inactivity') }
     its('INACTIVE') { should cmp >= 0 }
   end
 end

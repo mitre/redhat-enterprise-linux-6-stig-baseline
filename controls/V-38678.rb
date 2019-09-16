@@ -46,7 +46,7 @@ notified with enough time to respond to the situation causing the capacity
 issues.  This value must also be documented locally."
 
   describe parse_config_file('/etc/audit/auditd.conf') do
-    its('space_left') { should cmp attribute('auditd_space_left') }
+    its('space_left') { should cmp input('auditd_space_left') }
   end
 end
 

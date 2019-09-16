@@ -47,7 +47,7 @@ SSH from correctly detecting that the user is idle."
 
   describe sshd_config do
     its("ClientAliveInterval.to_i"){should cmp >= 1}
-    its("ClientAliveInterval.to_i"){should cmp <= attribute('client_alive_interval')}
+    its("ClientAliveInterval.to_i"){should cmp <= input('client_alive_interval')}
     its("ClientAliveInterval"){should_not eq nil}
   end
 end

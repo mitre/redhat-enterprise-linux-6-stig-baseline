@@ -44,7 +44,7 @@ user add the following line in \"/etc/security/limits.conf\":
 A documented site-defined number may be substituted for 10 in the above."
 
   describe limits_conf do
-    its('*') { should include ['hard', 'maxlogins', attribute('maxlogins').to_s] }
+    its('*') { should include ['hard', 'maxlogins', input('maxlogins').to_s] }
   end
 end
 

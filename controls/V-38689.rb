@@ -107,7 +107,7 @@ file can later be edited directly if necessary."
     banner_text = command("gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gdm/simple-greeter/banner_message_text").stdout.strip.gsub(%r{[\r\n\s]}, '')
     describe "gconf2 banner text" do
       subject { banner_text }
-      it { should eq attribute('banner_text').gsub(%r{[\r\n\s]}, '') }
+      it { should eq input('banner_text').gsub(%r{[\r\n\s]}, '') }
     end
   else
     impact 0.0
