@@ -3,7 +3,7 @@ control "V-38600" do
   desc  "Sending ICMP redirects permits the system to instruct other systems to
 update their routing information. The ability to send ICMP redirects is only
 appropriate for systems acting as routers."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38600"
   tag "rid": "SV-50401r2_rule"
@@ -21,7 +21,7 @@ appropriate for systems acting as routers."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The status of the \"net.ipv4.conf.default.send_redirects\"
+  desc 'check', "The status of the \"net.ipv4.conf.default.send_redirects\"
 kernel parameter can be queried by running the following command:
 
 $ sysctl net.ipv4.conf.default.send_redirects
@@ -33,7 +33,7 @@ and verify it is not set improperly in \"/etc/sysctl.conf\".
 $ grep net.ipv4.conf.default.send_redirects /etc/sysctl.conf
 
 If the correct value is not returned, this is a finding. "
-  tag "fix": "To set the runtime status of the
+  desc 'fix', "To set the runtime status of the
 \"net.ipv4.conf.default.send_redirects\" kernel parameter, run the following
 command:
 

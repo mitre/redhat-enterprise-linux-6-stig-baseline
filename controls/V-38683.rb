@@ -1,7 +1,7 @@
 control "V-38683" do
   title "All accounts on the system must have unique user or account names"
   desc  "Unique usernames allow for accountability on the system."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000121"
   tag "gid": "V-38683"
   tag "rid": "SV-50484r1_rule"
@@ -19,13 +19,13 @@ control "V-38683" do
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to check for duplicate account names:
+  desc 'check', "Run the following command to check for duplicate account names:
 
 # pwck -rq
 
 If there are no duplicate names, no line will be returned.
 If a line is returned, this is a finding."
-  tag "fix": "Change usernames, or delete accounts, so each has a unique name."
+  desc 'fix', "Change usernames, or delete accounts, so each has a unique name."
 
   describe command("pwck -rq") do
     its('stdout.strip') { should be_empty }

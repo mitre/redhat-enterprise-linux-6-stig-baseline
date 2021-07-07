@@ -3,7 +3,7 @@ control "V-38657" do
 using mount.cifs."
   desc  "Packet signing can prevent man-in-the-middle attacks which modify SMB
 packets in transit."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38657"
   tag "rid": "SV-50458r2_rule"
@@ -21,7 +21,7 @@ packets in transit."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If Samba is not in use, this is not applicable.
+  desc 'check', "If Samba is not in use, this is not applicable.
 
 To verify that Samba clients using mount.cifs must use packet signing, run the
 following command:
@@ -30,7 +30,7 @@ following command:
 
 The output should show either \"krb5i\" or \"ntlmv2i\" in use.
 If it does not, this is a finding."
-  tag "fix": "Require packet signing of clients who mount Samba shares using
+  desc 'fix', "Require packet signing of clients who mount Samba shares using
 the \"mount.cifs\" program (e.g., those who specify shares in \"/etc/fstab\").
 To do so, ensure signing options (either \"sec=krb5i\" or \"sec=ntlmv2i\") are
 used.
@@ -50,7 +50,7 @@ only communicate with servers who can support SMB packet signing."
   cifs_mounts = mounts.select { |mnt| mnt['type'] == 'cifs' }
 
   if cifs_mounts.empty?
-    impact 0.0
+    impact 'none'
     describe "Samba shares not in use" do
       skip "Samba shares not in use, this control Not Applicable"
     end

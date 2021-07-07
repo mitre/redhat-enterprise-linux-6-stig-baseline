@@ -5,7 +5,7 @@ control permission modifications using chmod."
 attempting to gain access to information that would otherwise be disallowed.
 Auditing DAC modifications can facilitate the identification of patterns of
 abuse among both authorized and unauthorized users."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000064"
   tag "gid": "V-38543"
   tag "rid": "SV-50344r3_rule"
@@ -23,7 +23,7 @@ abuse among both authorized and unauthorized users."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine if the system is configured to audit calls to the
+  desc 'check', "To determine if the system is configured to audit calls to the
 \"chmod\" system call, run the following command:
 
 $ sudo grep -w \"chmod\" /etc/audit/audit.rules
@@ -33,7 +33,7 @@ lines.
 
 If the system is not configured to audit permission changes, this is a finding.
 "
-  tag "fix": "At a minimum, the audit system should collect file permission
+  desc 'fix', "At a minimum, the audit system should collect file permission
 changes for all users and root. Add the following to
 \"/etc/audit/audit.rules\":
 

@@ -2,7 +2,7 @@ control "V-38604" do
   title "The ypbind service must not be running."
   desc  "Disabling the \"ypbind\" service ensures the system is not acting as a
 client in a NIS or NIS+ domain."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38604"
   tag "rid": "SV-50405r2_rule"
@@ -20,7 +20,7 @@ client in a NIS or NIS+ domain."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check that the \"ypbind\" service is disabled in system boot
+  desc 'check', "To check that the \"ypbind\" service is disabled in system boot
 configuration, run the following command:
 
 # chkconfig \"ypbind\" --list
@@ -42,7 +42,7 @@ ypbind is stopped
 
 
 If the service is running, this is a finding."
-  tag "fix": "The \"ypbind\" service, which allows the system to act as a
+  desc 'fix', "The \"ypbind\" service, which allows the system to act as a
 client in a NIS or NIS+ domain, should be disabled. The \"ypbind\" service can
 be disabled with the following commands:
 

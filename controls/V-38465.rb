@@ -4,7 +4,7 @@ control "V-38465" do
 space of processes (including privileged ones) or of the kernel itself at
 runtime. Restrictive permissions are necessary to protect the integrity of the
 system."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000259"
   tag "gid": "V-38465"
   tag "rid": "SV-50265r3_rule"
@@ -22,7 +22,7 @@ system."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "System-wide shared library files, which are linked to
+  desc 'check', "System-wide shared library files, which are linked to
 executables during process load time or run time, are stored in the following
 directories by default:
 
@@ -43,7 +43,7 @@ $ find -L [DIR] -perm /022 -type f
 
 If any of these files (excluding broken symlinks) are group-writable or
 world-writable, this is a finding."
-  tag "fix": "System-wide shared library files, which are linked to executables
+  desc 'fix', "System-wide shared library files, which are linked to executables
 during process load time or run time, are stored in the following directories
 by default:
 

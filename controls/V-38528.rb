@@ -4,7 +4,7 @@ control "V-38528" do
 as well as spoofed packets, source-routed packets, and redirects could be a
 sign of nefarious network activity. Logging these packets enables this activity
 to be detected."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38528"
   tag "rid": "SV-50329r2_rule"
@@ -22,7 +22,7 @@ to be detected."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The status of the \"net.ipv4.conf.all.log_martians\" kernel
+  desc 'check', "The status of the \"net.ipv4.conf.all.log_martians\" kernel
 parameter can be queried by running the following command:
 
 $ sysctl net.ipv4.conf.all.log_martians
@@ -34,7 +34,7 @@ and verify it is not set improperly in \"/etc/sysctl.conf\".
 $ grep net.ipv4.conf.all.log_martians /etc/sysctl.conf
 
 If the correct value is not returned, this is a finding. "
-  tag "fix": "To set the runtime status of the
+  desc 'fix', "To set the runtime status of the
 \"net.ipv4.conf.all.log_martians\" kernel parameter, run the following command:
 
 # sysctl -w net.ipv4.conf.all.log_martians=1

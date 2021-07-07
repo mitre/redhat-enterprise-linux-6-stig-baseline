@@ -3,7 +3,7 @@ control "V-38692" do
   desc  "Disabling inactive accounts ensures that accounts which may not have
 been responsibly removed are not available to attackers who may have
 compromised their credentials."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "GEN006660"
   tag "gid": "V-38692"
   tag "rid": "SV-50493r1_rule"
@@ -21,7 +21,7 @@ compromised their credentials."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify the \"INACTIVE\" setting, run the following command:
+  desc 'check', "To verify the \"INACTIVE\" setting, run the following command:
 
 grep \"INACTIVE\" /etc/default/useradd
 
@@ -32,7 +32,7 @@ appropriate integer as shown in the example below:
 INACTIVE=35
 
 If it does not, this is a finding."
-  tag "fix": "To specify the number of days after a password expires (which
+  desc 'fix', "To specify the number of days after a password expires (which
 signifies inactivity) until an account is permanently disabled, add or correct
 the following lines in \"/etc/default/useradd\", substituting \"[NUM_DAYS]\"
 appropriately:

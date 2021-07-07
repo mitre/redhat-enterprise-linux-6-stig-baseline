@@ -4,7 +4,7 @@ administrators."
   desc  "A number of system services utilize email messages sent to the root
 user to notify system administrators of active or impending issues.  These
 messages must be forwarded to at least one monitored email address."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38446"
   tag "rid": "SV-50246r2_rule"
@@ -22,7 +22,7 @@ messages must be forwarded to at least one monitored email address."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Find the list of alias maps used by the Postfix mail server:
+  desc 'check', "Find the list of alias maps used by the Postfix mail server:
 
 # postconf alias_maps
 
@@ -32,7 +32,7 @@ Query the Postfix alias maps for an alias for \"root\":
 
 If there are no aliases configured for root that forward to a monitored email
 address, this is a finding."
-  tag "fix": "Set up an alias for root that forwards to a monitored email
+  desc 'fix', "Set up an alias for root that forwards to a monitored email
 address:
 
 # echo \"root: <system.administrator>@mail.mil\" >> /etc/aliases

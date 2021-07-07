@@ -4,7 +4,7 @@ systems Mandatory Access Control (MAC) configuration (SELinux)."
   desc  "The system's mandatory access policy (SELinux) should not be
 arbitrarily changed by anything other than administrator action. All changes to
 MAC policy should be audited."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38541"
   tag "rid": "SV-50342r2_rule"
@@ -22,7 +22,7 @@ MAC policy should be audited."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine if the system is configured to audit changes to
+  desc 'check', "To determine if the system is configured to audit changes to
 its SELinux configuration files, run the following command:
 
 $ sudo grep -w \"/etc/selinux\" /etc/audit/audit.rules
@@ -33,7 +33,7 @@ watched).
 
 If the system is not configured to audit attempts to change the MAC policy,
 this is a finding."
-  tag "fix": "Add the following to \"/etc/audit/audit.rules\":
+  desc 'fix', "Add the following to \"/etc/audit/audit.rules\":
 
 -w /etc/selinux/ -p wa -k MAC-policy"
 

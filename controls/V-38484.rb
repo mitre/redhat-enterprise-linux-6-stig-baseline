@@ -9,7 +9,7 @@ has occurred and gives them an opportunity to notify administrators.
     At ssh login, a user must be presented with the last successful login date
 and time.
   "
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000025"
   tag "gid": "V-38484"
   tag "rid": "SV-50285r2_rule"
@@ -27,14 +27,14 @@ and time.
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Verify the value associated with the \"PrintLastLog\" keyword
+  desc 'check', "Verify the value associated with the \"PrintLastLog\" keyword
 in /etc/ssh/sshd_config:
 
 # grep -i \"^PrintLastLog\" /etc/ssh/sshd_config
 
 If the \"PrintLastLog\" keyword is not present, this is not a finding.  If the
 value is not set to \"yes\", this is a finding."
-  tag "fix": "Update the \"PrintLastLog\" keyword to \"yes\" in
+  desc 'fix', "Update the \"PrintLastLog\" keyword to \"yes\" in
 /etc/ssh/sshd_config:
 
 PrintLastLog yes

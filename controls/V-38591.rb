@@ -3,7 +3,7 @@ control "V-38591" do
   desc  "The \"rsh-server\" package provides several obsolete and insecure
 network services. Removing it decreases the risk of those services' accidental
 (or intentional) activation."
-  impact 0.7
+  impact 'high'
   tag "gtitle": "SRG-OS-000095"
   tag "gid": "V-38591"
   tag "rid": "SV-50392r1_rule"
@@ -21,14 +21,14 @@ network services. Removing it decreases the risk of those services' accidental
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to determine if the \"rsh-server\"
+  desc 'check', "Run the following command to determine if the \"rsh-server\"
 package is installed:
 
 # rpm -q rsh-server
 
 
 If the package is installed, this is a finding."
-  tag "fix": "The \"rsh-server\" package can be uninstalled with the following
+  desc 'fix', "The \"rsh-server\" package can be uninstalled with the following
 command:
 
 # yum erase rsh-server"

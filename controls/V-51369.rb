@@ -4,7 +4,7 @@ privileges of system services."
   desc  "Setting the SELinux policy to \"targeted\" or a more specialized
 policy ensures the system will confine processes that are likely to be targeted
 for exploitation, such as network or system services. "
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-51369"
   tag "rid": "SV-65579r1_rule"
@@ -22,13 +22,13 @@ for exploitation, such as network or system services. "
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Check the file \"/etc/selinux/config\" and ensure the following
+  desc 'check', "Check the file \"/etc/selinux/config\" and ensure the following
 line appears:
 
 SELINUXTYPE=targeted
 
 If it does not, this is a finding. "
-  tag "fix": "The SELinux \"targeted\" policy is appropriate for
+  desc 'fix', "The SELinux \"targeted\" policy is appropriate for
 general-purpose desktops and servers, as well as systems in many other roles.
 To configure the system to use this policy, add or correct the following line
 in \"/etc/selinux/config\":

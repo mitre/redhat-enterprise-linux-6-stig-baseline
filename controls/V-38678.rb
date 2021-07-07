@@ -4,7 +4,7 @@ storage volume reaches a documented percentage of maximum audit record storage
 capacity."
   desc  "Notifying administrators of an impending disk space problem may allow
 them to take corrective action prior to any disruption."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000048"
   tag "gid": "V-38678"
   tag "rid": "SV-50479r2_rule"
@@ -22,7 +22,7 @@ them to take corrective action prior to any disruption."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Inspect \"/etc/audit/auditd.conf\" and locate the following
+  desc 'check', "Inspect \"/etc/audit/auditd.conf\" and locate the following
 line to determine whether the system is configured to email the administrator
 when disk space is starting to run low:
 
@@ -34,7 +34,7 @@ space_left = [num_megabytes]
 If the \"num_megabytes\" value does not correspond to a documented value for
 remaining audit partition capacity or if there is no locally documented value
 for remaining audit partition capacity, this is a finding."
-  tag "fix": "The \"auditd\" service can be configured to take an action when
+  desc 'fix', "The \"auditd\" service can be configured to take an action when
 disk space starts to run low. Edit the file \"/etc/audit/auditd.conf\". Modify
 the following line, substituting [num_megabytes] appropriately:
 

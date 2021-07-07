@@ -2,7 +2,7 @@ control "V-38605" do
   title "The cron service must be running."
   desc  "Due to its usage for maintenance and security-supporting tasks,
 enabling the cron daemon is essential."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38605"
   tag "rid": "SV-50406r2_rule"
@@ -20,7 +20,7 @@ enabling the cron daemon is essential."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to determine the current status of
+  desc 'check', "Run the following command to determine the current status of
 the \"crond\" service:
 
 # service crond status
@@ -31,7 +31,7 @@ crond is running...
 
 
 If the service is not running, this is a finding."
-  tag "fix": "The \"crond\" service is used to execute commands at
+  desc 'fix', "The \"crond\" service is used to execute commands at
 preconfigured times. It is required by almost all systems to perform necessary
 maintenance tasks, such as notifying root of system activity. The \"crond\"
 service can be enabled with the following commands:

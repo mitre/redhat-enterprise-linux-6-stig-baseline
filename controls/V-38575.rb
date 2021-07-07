@@ -5,7 +5,7 @@ and programs."
 removed from the system. The audit trail could aid in system troubleshooting,
 as well as detecting malicious processes that attempt to delete log files to
 conceal their presence."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000064"
   tag "gid": "V-38575"
   tag "rid": "SV-50376r4_rule"
@@ -23,7 +23,7 @@ conceal their presence."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine if the system is configured to audit calls to the
+  desc 'check', "To determine if the system is configured to audit calls to the
 \"rmdir\" system call, run the following command:
 
 $ sudo grep -w \"rmdir\" /etc/audit/audit.rules
@@ -55,7 +55,7 @@ $ sudo grep -w \"renameat\" /etc/audit/audit.rules
 If the system is configured to audit this activity, it will return a line.
 
 If no line is returned, this is a finding. "
-  tag "fix": "At a minimum, the audit system should collect file deletion
+  desc 'fix', "At a minimum, the audit system should collect file deletion
 events for all users and root. Add the following (or equivalent) to
 \"/etc/audit/audit.rules\", setting ARCH to either b32 or b64 as appropriate
 for your system:

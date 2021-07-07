@@ -8,7 +8,7 @@ assurance and availability. System-level information includes system-state
 information, operating system and application software, and licenses. Backups
 must be consistent with organizational recovery time and recovery point
 objectives."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000100"
   tag "gid": "V-38486"
   tag "rid": "SV-50287r1_rule"
@@ -26,11 +26,11 @@ objectives."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Ask an administrator if a process exists to back up OS data
+  desc 'check', "Ask an administrator if a process exists to back up OS data
 from the system, including configuration data.
 
 If such a process does not exist, this is a finding."
-  tag "fix": "Procedures to back up OS data from the system must be established
+  desc 'fix', "Procedures to back up OS data from the system must be established
 and executed. The Red Hat operating system provides utilities for automating
 such a process.  Commercial and open-source products are also available.
 

@@ -3,7 +3,7 @@ control "V-38654" do
   desc  "NFS mounts should not present suid binaries to users. Only
 vendor-supplied suid executables should be installed to their default location
 on the local filesystem."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38654"
   tag "rid": "SV-50455r2_rule"
@@ -21,7 +21,7 @@ on the local filesystem."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify the \"nosuid\" option is configured for all NFS
+  desc 'check', "To verify the \"nosuid\" option is configured for all NFS
 mounts, run the following command:
 
 $ mount | grep nfs
@@ -29,7 +29,7 @@ $ mount | grep nfs
 All NFS mounts should show the \"nosuid\" setting in parentheses, along with
 other mount options.
 If the setting does not show, this is a finding."
-  tag "fix": "Add the \"nosuid\" option to the fourth column of \"/etc/fstab\"
+  desc 'fix', "Add the \"nosuid\" option to the fourth column of \"/etc/fstab\"
 for the line which controls mounting of any NFS mounts."
 
   describe command('mount | grep nfs') do

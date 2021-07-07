@@ -3,7 +3,7 @@ control "V-38638" do
   desc  "Enabling the activation of the screen lock after an idle period
 ensures password entry will be required in order to access the system,
 preventing access by passersby."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000029"
   tag "gid": "V-38638"
   tag "rid": "SV-50439r3_rule"
@@ -21,7 +21,7 @@ preventing access by passersby."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the GConf2 package is not installed, this is not applicable.
+  desc 'check', "If the GConf2 package is not installed, this is not applicable.
 
 To check the status of the idle screen lock activation, run the following
 command:
@@ -32,7 +32,7 @@ xml:readwrite:/etc/gconf/gconf.xml.mandatory --get
 
 If properly configured, the output should be \"true\".
 If it is not, this is a finding."
-  tag "fix": "Run the following command to activate locking of the screensaver
+  desc 'fix', "Run the following command to activate locking of the screensaver
 in the GNOME desktop when it is activated:
 
 # gconftool-2 --direct \\
@@ -45,7 +45,7 @@ in the GNOME desktop when it is activated:
       its('stdout.strip') { should eq 'true' }
     end
   else
-    impact 0.0
+    impact 'none'
     describe "Package GConf2 not installed" do
       skip "Package GConf2 not installed, this control Not Applicable"
     end

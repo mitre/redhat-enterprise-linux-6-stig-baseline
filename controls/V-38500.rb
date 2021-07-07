@@ -5,7 +5,7 @@ with a UID of 0 afford more opportunity for potential intruders to guess a
 password for a privileged account. Proper configuration of sudo is recommended
 to afford multiple system administrators access to root privileges in an
 accountable manner."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38500"
   tag "rid": "SV-50301r2_rule"
@@ -23,14 +23,14 @@ accountable manner."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To list all password file entries for accounts with UID 0, run
+  desc 'check', "To list all password file entries for accounts with UID 0, run
 the following command:
 
 # awk -F: '($3 == 0) {print}' /etc/passwd
 
 This should print only one line, for the user root.
 If any account other than root has a UID of 0, this is a finding."
-  tag "fix": "If any account other than root has a UID of 0, this
+  desc 'fix', "If any account other than root has a UID of 0, this
 misconfiguration should be investigated and the accounts other than root should
 be removed or have their UID changed."
 

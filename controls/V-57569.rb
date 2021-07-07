@@ -3,7 +3,7 @@ control "V-57569" do
   desc  "Allowing users to execute binaries from world-writable directories
 such as \"/tmp\" should never be necessary in normal operation and can expose
 the system to potential compromise."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-57569"
   tag "rid": "SV-71919r1_rule"
@@ -21,7 +21,7 @@ the system to potential compromise."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify that binaries cannot be directly executed from the
+  desc 'check', "To verify that binaries cannot be directly executed from the
 /tmp directory, run the following command:
 
 $ grep '\\s/tmp' /etc/fstab
@@ -29,7 +29,7 @@ $ grep '\\s/tmp' /etc/fstab
 The resulting output will show whether the /tmp partition has the \"noexec\"
 flag set. If the /tmp partition does not have the noexec flag set, this is a
 finding."
-  tag "fix": "The \"noexec\" mount option can be used to prevent binaries from
+  desc 'fix', "The \"noexec\" mount option can be used to prevent binaries from
 being executed out of \"/tmp\". Add the \"noexec\" option to the fourth column
 of \"/etc/fstab\" for the line which controls mounting of \"/tmp\"."
   

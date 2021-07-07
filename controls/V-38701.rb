@@ -4,7 +4,7 @@ to a single directory on the host file system."
   desc  "Using the \"-s\" option causes the TFTP service to only serve files
 from the given directory. Serving files from an intentionally specified
 directory reduces the risk of sharing files which should remain private."
-  impact 0.7
+  impact 'high'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38701"
   tag "rid": "SV-50502r1_rule"
@@ -22,7 +22,7 @@ directory reduces the risk of sharing files which should remain private."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Verify \"tftp\" is configured by with the \"-s\" option by
+  desc 'check', "Verify \"tftp\" is configured by with the \"-s\" option by
 running the following command:
 
 grep \"server_args\" /etc/xinetd.d/tftp
@@ -34,7 +34,7 @@ The output should indicate the \"server_args\" variable is configured with the
 server_args = -s /var/lib/tftpboot
 
 If it does not, this is a finding."
-  tag "fix": "If running the \"tftp\" service is necessary, it should be
+  desc 'fix', "If running the \"tftp\" service is necessary, it should be
 configured to change its root directory at startup. To do so, ensure
 \"/etc/xinetd.d/tftp\" includes \"-s\" as a command line argument, as shown in
 the following example (which is also the default):

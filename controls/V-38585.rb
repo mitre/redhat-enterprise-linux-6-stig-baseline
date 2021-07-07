@@ -3,7 +3,7 @@ control "V-38585" do
   desc  "Password protection on the boot loader configuration ensures users
 with physical access cannot trivially alter important bootloader settings.
 These include which kernel to use, and whether to enter single-user mode."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000080"
   tag "gid": "V-38585"
   tag "rid": "SV-50386r4_rule"
@@ -21,7 +21,7 @@ These include which kernel to use, and whether to enter single-user mode."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify the boot loader password has been set and encrypted,
+  desc 'check', "To verify the boot loader password has been set and encrypted,
 run the following command:
 
 # grep password /boot/grub/grub.conf
@@ -36,7 +36,7 @@ If the system uses UEFI verify the boot loader password has been set and
 encrypted:
 
 # grep password /boot/efi/EFI/redhat/grub.conf"
-  tag "fix": "The grub boot loader should have password protection enabled to
+  desc 'fix', "The grub boot loader should have password protection enabled to
 protect boot-time settings. To do so, select a password and then generate a
 hash from it by running the following command:
 

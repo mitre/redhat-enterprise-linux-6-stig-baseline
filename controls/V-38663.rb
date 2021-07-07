@@ -5,7 +5,7 @@ files and directories associated with the audit package."
 generous could allow an unauthorized user to gain privileges that they should
 not have. The permissions set by the vendor should be maintained. Any
 deviations from this baseline should be investigated."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000256"
   tag "gid": "V-38663"
   tag "rid": "SV-50464r1_rule"
@@ -23,7 +23,7 @@ deviations from this baseline should be investigated."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The following command will list which audit files on the system
+  desc 'check', "The following command will list which audit files on the system
 have permissions different from what is expected by the RPM database:
 
 # rpm -V audit | grep '^.M'
@@ -37,7 +37,7 @@ RPM-expected permissions with the permissions on the file or directory:
 
 If the existing permissions are more permissive than those expected by RPM,
 this is a finding."
-  tag "fix": "The RPM package management system can restore file access
+  desc 'fix', "The RPM package management system can restore file access
 permissions of the audit package files and directories. The following command
 will update audit files with permissions different from what is expected by the
 RPM database:

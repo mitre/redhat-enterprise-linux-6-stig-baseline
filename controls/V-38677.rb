@@ -2,7 +2,7 @@ control "V-38677" do
   title "The NFS server must not have the insecure file locking option enabled."
   desc  "Allowing insecure file locking could allow for sensitive data to be
 viewed or edited by an unauthorized user."
-  impact 0.7
+  impact 'high'
   tag "gtitle": "SRG-OS-000104"
   tag "gid": "V-38677"
   tag "rid": "SV-50478r1_rule"
@@ -20,14 +20,14 @@ viewed or edited by an unauthorized user."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify insecure file locking has been disabled, run the
+  desc 'check', "To verify insecure file locking has been disabled, run the
 following command:
 
 # grep insecure_locks /etc/exports
 
 
 If there is output, this is a finding."
-  tag "fix": "By default the NFS server requires secure file-lock requests,
+  desc 'fix', "By default the NFS server requires secure file-lock requests,
 which require credentials from the client in order to lock a file. Most NFS
 clients send credentials with file lock requests, however, there are a few
 clients that do not send credentials when requesting a file-lock, allowing the

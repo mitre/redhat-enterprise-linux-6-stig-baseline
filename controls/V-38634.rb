@@ -6,7 +6,7 @@ the chances of the system unexpectedly running out of disk space by being
 overwhelmed with log data. However, for systems that must never discard log
 data, or which use external processes to transfer it and reclaim space,
 \"keep_logs\" can be employed."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38634"
   tag "rid": "SV-50435r2_rule"
@@ -24,7 +24,7 @@ data, or which use external processes to transfer it and reclaim space,
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Inspect \"/etc/audit/auditd.conf\" and locate the following
+  desc 'check', "Inspect \"/etc/audit/auditd.conf\" and locate the following
 line to determine if the system is configured to rotate logs when they reach
 their maximum size:
 
@@ -37,7 +37,7 @@ audit data does not overwhelm local audit storage, this is not a finding.
 
 If the system has not been properly set up to rotate audit logs, this is a
 finding."
-  tag "fix": "The default action to take when the logs reach their maximum size
+  desc 'fix', "The default action to take when the logs reach their maximum size
 is to rotate the log files, discarding the oldest one. To configure the action
 taken by \"auditd\", add or correct the line in \"/etc/audit/auditd.conf\":
 

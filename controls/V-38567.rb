@@ -5,7 +5,7 @@ setgid programs."
 which attempt to subvert their normal role of providing some necessary but
 limited capability. As such, motivation exists to monitor these programs for
 unusual activity."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000020"
   tag "gid": "V-38567"
   tag "rid": "SV-50368r4_rule"
@@ -23,7 +23,7 @@ unusual activity."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify that auditing of privileged command use is
+  desc 'check', "To verify that auditing of privileged command use is
 configured, run the following command once for each local partition [PART] to
 find relevant setuid / setgid programs:
 
@@ -36,7 +36,7 @@ $ sudo grep path /etc/audit/audit.rules
 
 It should be the case that all relevant setuid / setgid programs have a line in
 the audit rules. If that is not the case, this is a finding. "
-  tag "fix": "At a minimum, the audit system should collect the execution of
+  desc 'fix', "At a minimum, the audit system should collect the execution of
 privileged commands for all users and root. To find the relevant setuid /
 setgid programs, run the following command for each local partition [PART]:
 

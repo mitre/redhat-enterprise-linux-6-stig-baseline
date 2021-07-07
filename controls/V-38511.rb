@@ -4,7 +4,7 @@ router."
   desc  "IP forwarding permits the kernel to forward packets from one network
 interface to another. The ability to forward packets between two networks is
 only appropriate for systems acting as routers."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38511"
   tag "rid": "SV-50312r2_rule"
@@ -22,7 +22,7 @@ only appropriate for systems acting as routers."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The status of the \"net.ipv4.ip_forward\" kernel parameter can
+  desc 'check', "The status of the \"net.ipv4.ip_forward\" kernel parameter can
 be queried by running the following command:
 
 $ sysctl net.ipv4.ip_forward
@@ -35,7 +35,7 @@ $ grep net.ipv4.ip_forward /etc/sysctl.conf
 
 The ability to forward packets is only appropriate for routers. If the correct
 value is not returned, this is a finding. "
-  tag "fix": "To set the runtime status of the \"net.ipv4.ip_forward\" kernel
+  desc 'fix', "To set the runtime status of the \"net.ipv4.ip_forward\" kernel
 parameter, run the following command:
 
 # sysctl -w net.ipv4.ip_forward=0

@@ -4,7 +4,7 @@ and maintenance modes."
   desc  "This prevents attackers with physical access from trivially bypassing
 security on the machine and gaining root access. Such accesses are further
 prevented by configuring the bootloader password."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000080"
   tag "gid": "V-38586"
   tag "rid": "SV-50387r1_rule"
@@ -22,7 +22,7 @@ prevented by configuring the bootloader password."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check if authentication is required for single-user mode,
+  desc 'check', "To check if authentication is required for single-user mode,
 run the following command:
 
 $ grep SINGLE /etc/sysconfig/init
@@ -33,7 +33,7 @@ SINGLE=/sbin/sulogin
 
 
 If the output is different, this is a finding."
-  tag "fix": "Single-user mode is intended as a system recovery method,
+  desc 'fix', "Single-user mode is intended as a system recovery method,
 providing a single user root access to the system by providing a boot option at
 startup. By default, no authentication is performed if single-user mode is
 selected.

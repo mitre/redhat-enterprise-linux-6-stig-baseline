@@ -5,7 +5,7 @@ and stores password hashes. Protection of this file is critical for system
 security. Failure to give ownership of this file to root provides the
 designated owner with access to sensitive information which could weaken the
 system security posture."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38504"
   tag "rid": "SV-50305r1_rule"
@@ -23,14 +23,14 @@ system security posture."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the permissions of \"/etc/shadow\", run the command:
+  desc 'check', "To check the permissions of \"/etc/shadow\", run the command:
 
 $ ls -l /etc/shadow
 
 If properly configured, the output should indicate the following permissions:
 \"----------\"
 If it does not, this is a finding."
-  tag "fix": "To properly set the permissions of \"/etc/shadow\", run the
+  desc 'fix', "To properly set the permissions of \"/etc/shadow\", run the
 command:
 
 # chmod 0000 /etc/shadow"

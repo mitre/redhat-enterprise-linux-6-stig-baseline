@@ -3,7 +3,7 @@ control "V-38461" do
   desc  "The \"/etc/group\" file contains information regarding groups that are
 configured on the system. Protection of this file is important for system
 security."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38461"
   tag "rid": "SV-50261r1_rule"
@@ -21,14 +21,14 @@ security."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the permissions of \"/etc/group\", run the command:
+  desc 'check', "To check the permissions of \"/etc/group\", run the command:
 
 $ ls -l /etc/group
 
 If properly configured, the output should indicate the following permissions:
 \"-rw-r--r--\"
 If it does not, this is a finding."
-  tag "fix": "To properly set the permissions of \"/etc/group\", run the
+  desc 'fix', "To properly set the permissions of \"/etc/group\", run the
 command:
 
 # chmod 644 /etc/group"

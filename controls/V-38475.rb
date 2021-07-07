@@ -10,7 +10,7 @@ problems, support costs, or counterproductive behavior that may result.
 to migrate from a password-based authentication scheme to a stronger one based
 on PKI (public key infrastructure).
   "
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000078"
   tag "gid": "V-38475"
   tag "rid": "SV-50275r3_rule"
@@ -28,7 +28,7 @@ on PKI (public key infrastructure).
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the minimum password length, run the command:
+  desc 'check', "To check the minimum password length, run the command:
 
 $ grep PASS_MIN_LEN /etc/login.defs
 
@@ -43,7 +43,7 @@ If no results are returned, this is not a finding.
 If any results are returned and are not set to \"15\" or greater, this is a
 finding.
 "
-  tag "fix": "To specify password length requirements for new accounts, edit
+  desc 'fix', "To specify password length requirements for new accounts, edit
 the file \"/etc/login.defs\" and add or correct the following lines:
 
 PASS_MIN_LEN 15

@@ -4,7 +4,7 @@ control "V-38602" do
 means that data from the login session, including passwords and all other
 information transmitted during the session, can be stolen by eavesdroppers on
 the network."
-  impact 0.7
+  impact 'high'
   tag "gtitle": "SRG-OS-000248"
   tag "gid": "V-38602"
   tag "rid": "SV-50403r2_rule"
@@ -22,7 +22,7 @@ the network."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "
+  desc 'check', "
 To check that the \"rlogin\" service is disabled in system boot configuration,
 run the following command:
 
@@ -38,7 +38,7 @@ error reading information on service rlogin: No such file or directory
 
 
 If the service is running, this is a finding."
-  tag "fix": "The \"rlogin\" service, which is available with the
+  desc 'fix', "The \"rlogin\" service, which is available with the
 \"rsh-server\" package and runs as a service through xinetd, should be
 disabled. The \"rlogin\" service can be disabled with the following command:
 

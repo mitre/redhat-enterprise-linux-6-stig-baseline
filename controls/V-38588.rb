@@ -2,7 +2,7 @@ control "V-38588" do
   title "The system must not permit interactive boot."
   desc  "Using interactive boot, the console user could disable auditing,
 firewalls, or other services, weakening system security."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000080"
   tag "gid": "V-38588"
   tag "rid": "SV-50389r1_rule"
@@ -20,7 +20,7 @@ firewalls, or other services, weakening system security."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check whether interactive boot is disabled, run the
+  desc 'check', "To check whether interactive boot is disabled, run the
 following command:
 
 $ grep PROMPT /etc/sysconfig/init
@@ -31,7 +31,7 @@ PROMPT=no
 
 
 If it does not, this is a finding."
-  tag "fix": "To disable the ability for users to perform interactive startups,
+  desc 'fix', "To disable the ability for users to perform interactive startups,
 edit the file \"/etc/sysconfig/init\". Add or correct the line:
 
 PROMPT=no

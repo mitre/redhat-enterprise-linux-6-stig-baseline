@@ -3,7 +3,7 @@ control "V-43150" do
   desc  "Leaving the user list enabled is a security risk since it allows
 anyone with physical access to the system to quickly enumerate known user
 accounts without logging in."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-43150"
   tag "rid": "SV-55880r2_rule"
@@ -21,7 +21,7 @@ accounts without logging in."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the GConf2 package is not installed, this is not applicable.
+  desc 'check', "If the GConf2 package is not installed, this is not applicable.
 
 To ensure the user list is disabled, run the following command:
 
@@ -30,7 +30,7 @@ $ gconftool-2 --direct \\
 --get /apps/gdm/simple-greeter/disable_user_list
 
 The output should be \"true\". If it is not, this is a finding. "
-  tag "fix": "In the default graphical environment, users logging directly into
+  desc 'fix', "In the default graphical environment, users logging directly into
 the system are greeted with a login screen that displays all known users. This
 functionality should be disabled.
 
@@ -45,7 +45,7 @@ $ sudo gconftool-2 --direct \
       its('stdout.strip') { should eq 'true' }
     end
   else
-    impact 0.0
+    impact 'none'
     describe "Package GConf2 not installed" do
       skip "Package GConf2 not installed, this control Not Applicable"
     end

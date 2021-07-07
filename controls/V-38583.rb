@@ -3,7 +3,7 @@ control "V-38583" do
 less permissive."
   desc  "Proper permissions ensure that only the root user can modify important
 boot parameters."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38583"
   tag "rid": "SV-50384r4_rule"
@@ -21,7 +21,7 @@ boot parameters."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the permissions of \"/boot/grub/grub.conf\", run the
+  desc 'check', "To check the permissions of \"/boot/grub/grub.conf\", run the
 command:
 
 $ sudo ls -lL /boot/grub/grub.conf
@@ -35,7 +35,7 @@ If properly configured, the output should indicate the following permissions:
 \"-rw-------\"
 
 If it does not, this is a finding."
-  tag "fix": "File permissions for \"/boot/grub/grub.conf\" and
+  desc 'fix', "File permissions for \"/boot/grub/grub.conf\" and
 \"/boot/efi/EFI/redhat/grub.conf\" should be set to 600, which is the default.
 
 To properly set the permissions of \"/boot/grub/grub.conf\", run the command:

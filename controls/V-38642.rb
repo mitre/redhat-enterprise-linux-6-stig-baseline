@@ -3,7 +3,7 @@ control "V-38642" do
   desc  "The umask influences the permissions assigned to files created by a
 process at run time. An unnecessarily permissive umask could result in files
 being created with insecure permissions."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38642"
   tag "rid": "SV-50443r1_rule"
@@ -21,13 +21,13 @@ being created with insecure permissions."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the value of the \"umask\", run the following command:
+  desc 'check', "To check the value of the \"umask\", run the following command:
 
 $ grep umask /etc/init.d/functions
 
 The output should show either \"022\" or \"027\".
 If it does not, this is a finding."
-  tag "fix": "The file \"/etc/init.d/functions\" includes initialization
+  desc 'fix', "The file \"/etc/init.d/functions\" includes initialization
 parameters for most or all daemons started at boot time. The default umask of
 022 prevents creation of group- or world-writable files. To set the default
 umask for daemons, edit the following line, inserting 022 or 027 for [UMASK]

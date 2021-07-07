@@ -3,7 +3,7 @@ control "V-38451" do
   desc  "The \"/etc/passwd\" file contains information about the users that are
 configured on the system. Protection of this file is critical for system
 security."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38451"
   tag "rid": "SV-50251r1_rule"
@@ -21,7 +21,7 @@ security."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the group ownership of \"/etc/passwd\", run the
+  desc 'check', "To check the group ownership of \"/etc/passwd\", run the
 command:
 
 $ ls -l /etc/passwd
@@ -29,7 +29,7 @@ $ ls -l /etc/passwd
 If properly configured, the output should indicate the following group-owner.
 \"root\"
 If it does not, this is a finding."
-  tag "fix": "To properly set the group owner of \"/etc/passwd\", run the
+  desc 'fix', "To properly set the group owner of \"/etc/passwd\", run the
 command:
 
 # chgrp root /etc/passwd"

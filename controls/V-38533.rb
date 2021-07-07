@@ -2,7 +2,7 @@ control "V-38533" do
   title "The system must ignore ICMPv4 redirect messages by default."
   desc  "This feature of the IPv4 protocol has few legitimate uses. It should
 be disabled unless it is absolutely required."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38533"
   tag "rid": "SV-50334r3_rule"
@@ -20,7 +20,7 @@ be disabled unless it is absolutely required."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The status of the \"net.ipv4.conf.default.accept_redirects\"
+  desc 'check', "The status of the \"net.ipv4.conf.default.accept_redirects\"
 kernel parameter can be queried by running the following command:
 
 $ sysctl net.ipv4.conf.default.accept_redirects
@@ -32,7 +32,7 @@ and verify it is not set improperly in \"/etc/sysctl.conf\".
 $ grep net.ipv4.conf.default.accept_redirects /etc/sysctl.conf
 
 If the correct value is not returned, this is a finding. "
-  tag "fix": "To set the runtime status of the
+  desc 'fix', "To set the runtime status of the
 \"net.ipv4.conf.default.accept_redirects\" kernel parameter, run the following
 command:
 

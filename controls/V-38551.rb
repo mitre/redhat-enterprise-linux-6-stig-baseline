@@ -4,7 +4,7 @@ systems only through managed IPv6 interfaces consisting of boundary protection
 devices arranged in accordance with an organizational security architecture."
   desc  "The \"ip6tables\" service provides the system's host-based firewalling
 capability for IPv6 and ICMPv6."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000145"
   tag "gid": "V-38551"
   tag "rid": "SV-50352r3_rule"
@@ -22,7 +22,7 @@ capability for IPv6 and ICMPv6."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the system is a cross-domain system, this is not applicable.
+  desc 'check', "If the system is a cross-domain system, this is not applicable.
 
 If IPV6 is disabled, this is not applicable.
 
@@ -37,7 +37,7 @@ ip6tables: Firewall is not running.
 
 
 If the service is not running, this is a finding."
-  tag "fix": "The \"ip6tables\" service can be enabled with the following
+  desc 'fix', "The \"ip6tables\" service can be enabled with the following
 commands:
 
 # chkconfig ip6tables on

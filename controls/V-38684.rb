@@ -5,7 +5,7 @@ site-defined number, in accordance with operational requirements."
 of service problems caused by excessive logins. Automated login processes
 operating improperly or maliciously may result in an exceptional number of
 simultaneous login sessions."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000027"
   tag "gid": "V-38684"
   tag "rid": "SV-50485r2_rule"
@@ -23,7 +23,7 @@ simultaneous login sessions."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to ensure the \"maxlogins\" value is
+  desc 'check', "Run the following command to ensure the \"maxlogins\" value is
 configured for all users on the system:
 
 $ grep \"maxlogins\" /etc/security/limits.conf /etc/security/limits.d/*.conf
@@ -33,7 +33,7 @@ You should receive output similar to the following:
 * hard maxlogins 10
 
 If it is not similar, this is a finding. "
-  tag "fix": "Limiting the number of allowed users and sessions per user can
+  desc 'fix', "Limiting the number of allowed users and sessions per user can
 limit risks related to denial of service attacks. This addresses concurrent
 sessions for a single account and does not address concurrent sessions by a
 single user via multiple accounts. To set the number of concurrent sessions per

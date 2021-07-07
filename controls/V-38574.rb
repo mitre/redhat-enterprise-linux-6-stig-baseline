@@ -3,7 +3,7 @@ control "V-38574" do
 algorithm for generating account password hashes (system-auth)."
   desc  "Using a stronger hashing algorithm makes password cracking attacks
 more difficult."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000120"
   tag "gid": "V-38574"
   tag "rid": "SV-50375r4_rule"
@@ -21,7 +21,7 @@ more difficult."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Inspect the \"password\" section of \"/etc/pam.d/system-auth\",
+  desc 'check', "Inspect the \"password\" section of \"/etc/pam.d/system-auth\",
 \"/etc/pam.d/system-auth-ac\", \"/etc/pam.d/password-auth\",
 \"/etc/pam.d/password-auth-ac\" and other files in \"/etc/pam.d\" to identify
 the number of occurrences where the \"pam_unix.so\" module is used in the
@@ -72,7 +72,7 @@ finding.
 If any of the identified \"pam_unix.so\" modules do not use the \"sha512\"
 variable, this is a finding.
 "
-  tag "fix": "In \"/etc/pam.d/system-auth\", \"/etc/pam.d/system-auth-ac\",
+  desc 'fix', "In \"/etc/pam.d/system-auth\", \"/etc/pam.d/system-auth-ac\",
 \"/etc/pam.d/password-auth\", and \"/etc/pam.d/password-auth-ac\", among
 potentially other files, the \"password\" section of the files controls which
 PAM modules execute during a password change. Set the \"pam_unix.so\" module in

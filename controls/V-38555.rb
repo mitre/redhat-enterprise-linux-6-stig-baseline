@@ -2,7 +2,7 @@ control "V-38555" do
   title "The system must employ a local IPv4 firewall."
   desc  "The \"iptables\" service provides the system's host-based firewalling
 capability for IPv4 and ICMP."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000152"
   tag "gid": "V-38555"
   tag "rid": "SV-50356r2_rule"
@@ -20,7 +20,7 @@ capability for IPv4 and ICMP."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the system is a cross-domain system, this is not applicable.
+  desc 'check', "If the system is a cross-domain system, this is not applicable.
 
 Run the following command to determine the current status of the \"iptables\"
 service:
@@ -33,7 +33,7 @@ iptables: Firewall is not running.
 
 
 If the service is not running, this is a finding."
-  tag "fix": "The \"iptables\" service can be enabled with the following
+  desc 'fix', "The \"iptables\" service can be enabled with the following
 commands:
 
 # chkconfig iptables on

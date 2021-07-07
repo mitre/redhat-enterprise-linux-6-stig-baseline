@@ -4,7 +4,7 @@ associated with the audit package."
   desc  "The hash on important files like audit system executables should match
 the information given by the RPM database. Audit executables  with erroneous
 hashes could be a sign of nefarious activity on the system."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000278"
   tag "gid": "V-38637"
   tag "rid": "SV-50438r2_rule"
@@ -22,14 +22,14 @@ hashes could be a sign of nefarious activity on the system."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The following command will list which audit files on the system
+  desc 'check', "The following command will list which audit files on the system
 have file hashes different from what is expected by the RPM database.
 
 # rpm -V audit | awk '$1 ~ /..5/ && $2 != \"c\"'
 
 
 If there is output, this is a finding."
-  tag "fix": "The RPM package management system can check the hashes of audit
+  desc 'fix', "The RPM package management system can check the hashes of audit
 system package files. Run the following command to list which audit files on
 the system have hashes that differ from what is expected by the RPM database:
 

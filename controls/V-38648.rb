@@ -5,7 +5,7 @@ selection is selected during installation. The qpidd service listens for
 network connections which increases the attack surface of the system. If the
 system is not intended to receive AMQP traffic then the \"qpidd\" service is
 not needed and should be disabled or removed."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38648"
   tag "rid": "SV-50449r2_rule"
@@ -23,7 +23,7 @@ not needed and should be disabled or removed."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check that the \"qpidd\" service is disabled in system boot
+  desc 'check', "To check that the \"qpidd\" service is disabled in system boot
 configuration, run the following command:
 
 # chkconfig \"qpidd\" --list
@@ -45,7 +45,7 @@ qpidd is stopped
 
 
 If the service is running, this is a finding."
-  tag "fix": "The \"qpidd\" service provides high speed, secure, guaranteed
+  desc 'fix', "The \"qpidd\" service provides high speed, secure, guaranteed
 delivery services. It is an implementation of the Advanced Message Queuing
 Protocol. By default the qpidd service will bind to port 5672 and listen for
 connection attempts. The \"qpidd\" service can be disabled with the following

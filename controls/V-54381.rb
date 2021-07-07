@@ -4,7 +4,7 @@ available audit storage volume becomes dangerously low."
   desc  "Administrators should be made aware of an inability to record audit
 records. If a separate partition or logical volume of adequate size is used,
 running low on space for audit records should never occur. "
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-54381"
   tag "rid": "SV-68627r3_rule"
@@ -22,7 +22,7 @@ running low on space for audit records should never occur. "
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Inspect \"/etc/audit/auditd.conf\" and locate the following
+  desc 'check', "Inspect \"/etc/audit/auditd.conf\" and locate the following
 line to determine if the system is configured to either suspend, switch to
 single-user mode, or halt when disk space has run low:
 
@@ -30,7 +30,7 @@ admin_space_left_action = single
 
 If the system is not configured to switch to single-user mode, suspend, or halt
 for corrective action, this is a finding. "
-  tag "fix": "The \"auditd\" service can be configured to take an action when
+  desc 'fix', "The \"auditd\" service can be configured to take an action when
 disk space is running low but prior to running out of space completely. Edit
 the file \"/etc/audit/auditd.conf\". Add or modify the following line,
 substituting [ACTION] appropriately:

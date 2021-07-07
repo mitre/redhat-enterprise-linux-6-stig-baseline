@@ -2,7 +2,7 @@ control "V-38608" do
   title "The SSH daemon must set a timeout interval on idle sessions."
   desc  "Causing idle users to be automatically logged out guards against
 compromises one system leading trivially to compromises on another."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000163"
   tag "gid": "V-38608"
   tag "rid": "SV-50409r1_rule"
@@ -20,7 +20,7 @@ compromises one system leading trivially to compromises on another."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to see what the timeout interval is:
+  desc 'check', "Run the following command to see what the timeout interval is:
 
 # grep ClientAliveInterval /etc/ssh/sshd_config
 
@@ -30,7 +30,7 @@ ClientAliveInterval 900
 
 
 If it is not, this is a finding."
-  tag "fix": "SSH allows administrators to set an idle timeout interval. After
+  desc 'fix', "SSH allows administrators to set an idle timeout interval. After
 this interval has passed, the idle user will be automatically logged out.
 
 To set an idle timeout interval, edit the following line in

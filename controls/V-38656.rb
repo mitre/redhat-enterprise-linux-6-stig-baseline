@@ -3,7 +3,7 @@ control "V-38656" do
 using smbclient."
   desc  "Packet signing can prevent man-in-the-middle attacks which modify SMB
 packets in transit."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38656"
   tag "rid": "SV-50457r1_rule"
@@ -21,7 +21,7 @@ packets in transit."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify that Samba clients running smbclient must use packet
+  desc 'check', "To verify that Samba clients running smbclient must use packet
 signing, run the following command:
 
 # grep signing /etc/samba/smb.conf
@@ -32,7 +32,7 @@ client signing = mandatory
 
 
 If it is not, this is a finding."
-  tag "fix": "To require samba clients running \"smbclient\" to use packet
+  desc 'fix', "To require samba clients running \"smbclient\" to use packet
 signing, add the following to the \"[global]\" section of the Samba
 configuration file in \"/etc/samba/smb.conf\":
 

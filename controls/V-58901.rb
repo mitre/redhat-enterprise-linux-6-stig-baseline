@@ -7,7 +7,7 @@ they are allowed to run. Some configuration options in the \"/etc/sudoers\"
 file allow configured users to run programs without re-authenticating. Use of
 these configuration options makes it easier for one compromised account to be
 used to compromise other accounts."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000373"
   tag "gid": "V-58901"
   tag "rid": "SV-73331r2_rule"
@@ -25,7 +25,7 @@ used to compromise other accounts."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If passwords are not being used for authentication, this is Not
+  desc 'check', "If passwords are not being used for authentication, this is Not
 Applicable.
 
 Verify neither the \"NOPASSWD\" option nor the \"!authenticate\" option is
@@ -38,7 +38,7 @@ configuration data from locations other than the defaults enumerated here.
 
 If the \"NOPASSWD\" or \"!authenticate\" options are configured for use in
 \"/etc/sudoers\" or associated files, this is a finding."
-  tag "fix": "Update the \"/etc/sudoers\" or other sudo configuration files to
+  desc 'fix', "Update the \"/etc/sudoers\" or other sudo configuration files to
 remove or comment out lines utilizing the \"NOPASSWD\" and \"!authenticate\"
 options.
 

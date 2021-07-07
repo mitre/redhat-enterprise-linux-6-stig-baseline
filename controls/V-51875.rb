@@ -7,7 +7,7 @@ account. Providing users with information regarding the number of unsuccessful
 attempts that were made to login to their account allows the user to determine
 if any unauthorized activity has occurred and gives them an opportunity to
 notify administrators. "
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-51875"
   tag "rid": "SV-66089r1_rule"
@@ -25,14 +25,14 @@ notify administrators. "
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To ensure that last logon/access notification is configured
+  desc 'check', "To ensure that last logon/access notification is configured
 correctly, run the following command:
 
 # grep pam_lastlog.so /etc/pam.d/system-auth
 
 The output should show output \"showfailed\". If that is not the case, this is
 a finding. "
-  tag "fix": "To configure the system to notify users of last logon/access
+  desc 'fix', "To configure the system to notify users of last logon/access
 using \"pam_lastlog\", add the following line immediately after \"session
 required pam_limits.so\":
 

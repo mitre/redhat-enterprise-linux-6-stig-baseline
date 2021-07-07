@@ -6,7 +6,7 @@ into a process's address space during an attempt at exploitation. Additionally,
 ASLR also makes it more difficult for an attacker to know the location of
 existing code in order to repurpose it using return oriented programming (ROP)
 techniques."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38596"
   tag "rid": "SV-50397r2_rule"
@@ -24,7 +24,7 @@ techniques."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The status of the \"kernel.randomize_va_space\" kernel
+  desc 'check', "The status of the \"kernel.randomize_va_space\" kernel
 parameter can be queried by running the following commands:
 
 $ sysctl kernel.randomize_va_space
@@ -35,7 +35,7 @@ The output of the command should indicate a value of at least \"1\" (preferably
 been adjusted at runtime, and verify it is not set improperly in
 \"/etc/sysctl.conf\".
 If the correct value is not returned, this is a finding."
-  tag "fix": "To set the runtime status of the \"kernel.randomize_va_space\"
+  desc 'fix', "To set the runtime status of the \"kernel.randomize_va_space\"
 kernel parameter, run the following command:
 
 # sysctl -w kernel.randomize_va_space=2

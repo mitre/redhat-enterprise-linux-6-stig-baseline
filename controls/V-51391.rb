@@ -3,7 +3,7 @@ control "V-51391" do
   desc  "For AIDE to be effective, an initial database of \"known-good\"
 information about files must be captured and it should be able to be verified
 against the installed files. "
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000232"
   tag "gid": "V-51391"
   tag "rid": "SV-65601r1_rule"
@@ -21,7 +21,7 @@ against the installed files. "
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To find the location of the AIDE database file, run the
+  desc 'check', "To find the location of the AIDE database file, run the
 following command:
 
 # grep DBDIR /etc/aide.conf
@@ -32,7 +32,7 @@ existence of the AIDE database file:
 # ls -l [DBDIR]/[database_file_name]
 
 If there is no database file, this is a finding. "
-  tag "fix": "Run the following command to generate a new database:
+  desc 'fix', "Run the following command to generate a new database:
 
 # /usr/sbin/aide --init
 

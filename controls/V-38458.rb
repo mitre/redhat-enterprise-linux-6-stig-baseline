@@ -3,7 +3,7 @@ control "V-38458" do
   desc  "The \"/etc/group\" file contains information regarding groups that are
 configured on the system. Protection of this file is important for system
 security."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38458"
   tag "rid": "SV-50258r1_rule"
@@ -21,14 +21,14 @@ security."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the ownership of \"/etc/group\", run the command:
+  desc 'check', "To check the ownership of \"/etc/group\", run the command:
 
 $ ls -l /etc/group
 
 If properly configured, the output should indicate the following owner:
 \"root\"
 If it does not, this is a finding."
-  tag "fix": "To properly set the owner of \"/etc/group\", run the command:
+  desc 'fix', "To properly set the owner of \"/etc/group\", run the command:
 
 # chown root /etc/group"
 

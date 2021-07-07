@@ -4,7 +4,7 @@ interface."
   desc  "Accepting \"secure\" ICMP redirects (from those gateways listed as
 default gateways) has few legitimate uses. It should be disabled unless it is
 absolutely required."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38526"
   tag "rid": "SV-50327r2_rule"
@@ -22,7 +22,7 @@ absolutely required."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The status of the \"net.ipv4.conf.all.secure_redirects\" kernel
+  desc 'check', "The status of the \"net.ipv4.conf.all.secure_redirects\" kernel
 parameter can be queried by running the following command:
 
 $ sysctl net.ipv4.conf.all.secure_redirects
@@ -34,7 +34,7 @@ and verify it is not set improperly in \"/etc/sysctl.conf\".
 $ grep net.ipv4.conf.all.secure_redirects /etc/sysctl.conf
 
 If the correct value is not returned, this is a finding."
-  tag "fix": "To set the runtime status of the
+  desc 'fix', "To set the runtime status of the
 \"net.ipv4.conf.all.secure_redirects\" kernel parameter, run the following
 command:
 

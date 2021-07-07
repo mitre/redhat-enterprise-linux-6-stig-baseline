@@ -2,7 +2,7 @@ control "V-38480" do
   title "Users must be warned 7 days in advance of password expiration."
   desc  "Setting the password warning age enables users to make the change at a
 practical time."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38480"
   tag "rid": "SV-50280r1_rule"
@@ -20,13 +20,13 @@ practical time."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the password warning age, run the command:
+  desc 'check', "To check the password warning age, run the command:
 
 $ grep PASS_WARN_AGE /etc/login.defs
 
 The DoD requirement is 7.
 If it is not set to the required value, this is a finding."
-  tag "fix": "To specify how many days prior to password expiration that a
+  desc 'fix', "To specify how many days prior to password expiration that a
 warning will be issued to users, edit the file \"/etc/login.defs\" and add or
 correct the following line, replacing [DAYS] appropriately:
 

@@ -2,7 +2,7 @@ control "V-38672" do
   title "The netconsole service must be disabled unless required."
   desc  "The \"netconsole\" service is not necessary unless there is a need to
 debug kernel panics, which is not common."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38672"
   tag "rid": "SV-50473r2_rule"
@@ -20,7 +20,7 @@ debug kernel panics, which is not common."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check that the \"netconsole\" service is disabled in system
+  desc 'check', "To check that the \"netconsole\" service is disabled in system
 boot configuration, run the following command:
 
 # chkconfig \"netconsole\" --list
@@ -43,7 +43,7 @@ netconsole is stopped
 
 
 If the service is running, this is a finding."
-  tag "fix": "The \"netconsole\" service is responsible for loading the
+  desc 'fix', "The \"netconsole\" service is responsible for loading the
 netconsole kernel module, which logs kernel printk messages over UDP to a
 syslog server. This allows debugging of problems where disk logging fails and
 serial consoles are impractical. The \"netconsole\" service can be disabled

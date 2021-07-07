@@ -9,7 +9,7 @@ the network. The telnet protocol is also subject to man-in-the-middle attacks.
 encrypted sessions, such as with Kerberos or the use of encrypted network
 tunnels, the risk of exposing sensitive information is mitigated.
   "
-  impact 0.7
+  impact 'high'
   tag "gtitle": "SRG-OS-000129"
   tag "gid": "V-38589"
   tag "rid": "SV-50390r2_rule"
@@ -27,7 +27,7 @@ tunnels, the risk of exposing sensitive information is mitigated.
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check that the \"telnet\" service is disabled in system boot
+  desc 'check', "To check that the \"telnet\" service is disabled in system boot
 configuration, run the following command:
 
 # chkconfig \"telnet\" --list
@@ -42,7 +42,7 @@ error reading information on service telnet: No such file or directory
 
 
 If the service is running, this is a finding."
-  tag "fix": "The \"telnet\" service can be disabled with the following
+  desc 'fix', "The \"telnet\" service can be disabled with the following
 command:
 
 # chkconfig telnet off"

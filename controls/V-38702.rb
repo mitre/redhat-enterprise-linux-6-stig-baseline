@@ -4,7 +4,7 @@ control "V-38702" do
 configured to ensure that all commands sent to the ftp server are logged using
 the verbose vsftpd log format. The default vsftpd log file is
 /var/log/vsftpd.log."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000037"
   tag "gid": "V-38702"
   tag "rid": "SV-50503r1_rule"
@@ -22,7 +22,7 @@ the verbose vsftpd log format. The default vsftpd log file is
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Find if logging is applied to the ftp daemon.
+  desc 'check', "Find if logging is applied to the ftp daemon.
 
 Procedures:
 
@@ -43,7 +43,7 @@ file, then the default config file (/etc/vsftpd/vsftpd.conf) is used.
 
 
 If xferlog_enable is missing, or is not set to yes, this is a finding."
-  tag "fix": "Add or correct the following configuration options within the
+  desc 'fix', "Add or correct the following configuration options within the
 \"vsftpd\" configuration file, located at \"/etc/vsftpd/vsftpd.conf\".
 
 xferlog_enable=YES

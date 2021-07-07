@@ -3,7 +3,7 @@ control "V-38594" do
   desc  "The rsh service uses unencrypted network communications, which means
 that data from the login session, including passwords and all other information
 transmitted during the session, can be stolen by eavesdroppers on the network."
-  impact 0.7
+  impact 'high'
   tag "gtitle": "SRG-OS-000033"
   tag "gid": "V-38594"
   tag "rid": "SV-50395r2_rule"
@@ -21,7 +21,7 @@ transmitted during the session, can be stolen by eavesdroppers on the network."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check that the \"rsh\" service is disabled in system boot
+  desc 'check', "To check that the \"rsh\" service is disabled in system boot
 configuration, run the following command:
 
 # chkconfig \"rsh\" --list
@@ -36,7 +36,7 @@ error reading information on service rsh: No such file or directory
 
 
 If the service is running, this is a finding."
-  tag "fix": "The \"rsh\" service, which is available with the \"rsh-server\"
+  desc 'fix', "The \"rsh\" service, which is available with the \"rsh-server\"
 package and runs as a service through xinetd, should be disabled. The \"rsh\"
 service can be disabled with the following command:
 

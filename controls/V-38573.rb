@@ -3,7 +3,7 @@ control "V-38573" do
 logon attempts."
   desc  "Locking out user accounts after a number of incorrect attempts
 prevents direct password guessing attacks."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000021"
   tag "gid": "V-38573"
   tag "rid": "SV-50374r4_rule"
@@ -21,14 +21,14 @@ prevents direct password guessing attacks."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To ensure the failed password attempt policy is configured
+  desc 'check', "To ensure the failed password attempt policy is configured
 correctly, run the following command:
 
 # grep pam_faillock /etc/pam.d/system-auth /etc/pam.d/password-auth
 
 The output should show \"deny=3\" for both files.
 If that is not the case, this is a finding."
-  tag "fix": "To configure the system to lock out accounts after a number of
+  desc 'fix', "To configure the system to lock out accounts after a number of
 incorrect logon attempts using \"pam_faillock.so\", modify the content of both
 \"/etc/pam.d/system-auth\" and \"/etc/pam.d/password-auth\" as follows:
 

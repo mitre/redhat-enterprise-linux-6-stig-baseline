@@ -3,7 +3,7 @@ control "V-38470" do
 storage volume approaches capacity."
   desc  "Notifying administrators of an impending disk space problem may allow
 them to take corrective action prior to any disruption."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000045"
   tag "gid": "V-38470"
   tag "rid": "SV-50270r2_rule"
@@ -21,7 +21,7 @@ them to take corrective action prior to any disruption."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Inspect \"/etc/audit/auditd.conf\" and locate the following
+  desc 'check', "Inspect \"/etc/audit/auditd.conf\" and locate the following
 line to determine if the system is configured to email the administrator when
 disk space is starting to run low:
 
@@ -33,7 +33,7 @@ If the system is not configured to send an email to the system administrator
 when disk space is starting to run low, this is a finding.  The \"syslog\"
 option is acceptable when it can be demonstrated that the local log management
 infrastructure notifies an appropriate administrator in a timely manner."
-  tag "fix": "The \"auditd\" service can be configured to take an action when
+  desc 'fix', "The \"auditd\" service can be configured to take an action when
 disk space starts to run low. Edit the file \"/etc/audit/auditd.conf\". Modify
 the following line, substituting [ACTION] appropriately:
 

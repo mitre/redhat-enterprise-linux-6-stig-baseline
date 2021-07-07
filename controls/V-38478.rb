@@ -5,7 +5,7 @@ unless using RHN or an RHN Satellite."
 system security, management by a system outside the enterprise enclave is not
 desirable for some environments. However, if the system is being managed by RHN
 or RHN Satellite Server the \"rhnsd\" daemon can remain on."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38478"
   tag "rid": "SV-50278r2_rule"
@@ -23,7 +23,7 @@ or RHN Satellite Server the \"rhnsd\" daemon can remain on."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the system uses RHN or an RHN Satellite, this is not
+  desc 'check', "If the system uses RHN or an RHN Satellite, this is not
 applicable.
 
 To check that the \"rhnsd\" service is disabled in system boot configuration,
@@ -48,7 +48,7 @@ rhnsd is stopped
 
 
 If the service is running, this is a finding."
-  tag "fix": "The Red Hat Network service automatically queries Red Hat Network
+  desc 'fix', "The Red Hat Network service automatically queries Red Hat Network
 servers to determine whether there are any actions that should be executed,
 such as package updates. This only occurs if the system was registered to an
 RHN server or satellite and managed as such. The \"rhnsd\" service can be

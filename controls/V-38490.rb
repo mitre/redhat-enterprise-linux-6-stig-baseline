@@ -4,7 +4,7 @@ mobile devices to operating systems."
   desc  "USB storage devices such as thumb drives can be used to introduce
 unauthorized software and other vulnerabilities. Support for these devices
 should be disabled and the devices themselves should be tightly controlled."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000273"
   tag "gid": "V-38490"
   tag "rid": "SV-50291r6_rule"
@@ -22,7 +22,7 @@ should be disabled and the devices themselves should be tightly controlled."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the system is configured to prevent the loading of the
+  desc 'check', "If the system is configured to prevent the loading of the
 \"usb-storage\" kernel module, it will contain lines inside any file in
 \"/etc/modprobe.d\" or the deprecated\"/etc/modprobe.conf\". These lines
 instruct the module loading system to run another program (such as
@@ -34,7 +34,7 @@ $ grep -r usb-storage /etc/modprobe.conf /etc/modprobe.d | grep -i \"/bin/true\"
 | grep -v \"#\"
 
 If no line is returned, this is a finding."
-  tag "fix": "To prevent USB storage devices from being used, configure the
+  desc 'fix', "To prevent USB storage devices from being used, configure the
 kernel module loading system to prevent automatic loading of the USB storage
 driver. To configure the system to prevent the \"usb-storage\" kernel module
 from being loaded, add the following line to a file in the directory

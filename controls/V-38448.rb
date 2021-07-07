@@ -2,7 +2,7 @@ control "V-38448" do
   title "The /etc/gshadow file must be group-owned by root."
   desc  "The \"/etc/gshadow\" file contains group password hashes. Protection
 of this file is critical for system security."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38448"
   tag "rid": "SV-50248r1_rule"
@@ -20,7 +20,7 @@ of this file is critical for system security."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the group ownership of \"/etc/gshadow\", run the
+  desc 'check', "To check the group ownership of \"/etc/gshadow\", run the
 command:
 
 $ ls -l /etc/gshadow
@@ -28,7 +28,7 @@ $ ls -l /etc/gshadow
 If properly configured, the output should indicate the following group-owner.
 \"root\"
 If it does not, this is a finding."
-  tag "fix": "To properly set the group owner of \"/etc/gshadow\", run the
+  desc 'fix', "To properly set the group owner of \"/etc/gshadow\", run the
 command:
 
 # chgrp root /etc/gshadow"

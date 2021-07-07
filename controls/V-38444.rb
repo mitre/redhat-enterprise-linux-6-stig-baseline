@@ -5,7 +5,7 @@ allow-by-exception policy for inbound packets."
 applicable rules in the table are examined for a match. Setting the default
 policy to \"DROP\" implements proper design for a firewall, i.e., any packets
 which are not explicitly permitted should not be accepted."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000231"
   tag "gid": "V-38444"
   tag "rid": "SV-50244r2_rule"
@@ -23,7 +23,7 @@ which are not explicitly permitted should not be accepted."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If IPv6 is disabled, this is not applicable.
+  desc 'check', "If IPv6 is disabled, this is not applicable.
 
 Inspect the file \"/etc/sysconfig/ip6tables\" to determine the default policy
 for the INPUT chain. It should be set to DROP:
@@ -32,7 +32,7 @@ for the INPUT chain. It should be set to DROP:
 
 If the default policy for the INPUT chain is not set to DROP, this is a
 finding. "
-  tag "fix": "To set the default policy to DROP (instead of ACCEPT) for the
+  desc 'fix', "To set the default policy to DROP (instead of ACCEPT) for the
 built-in INPUT chain which processes incoming packets, add or correct the
 following line in \"/etc/sysconfig/ip6tables\":
 
@@ -46,4 +46,3 @@ Restart the IPv6 firewall:
     its('stdout.strip') { should match %r{Chain INPUT \(policy DROP\) } }
   end
 end
-

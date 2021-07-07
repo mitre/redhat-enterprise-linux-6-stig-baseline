@@ -7,7 +7,7 @@ systems. This data can be used as an additional log source in the event a
 system is compromised and its local logs are suspect. Forwarding log messages
 to a remote loghost also provides system administrators with a centralized
 place to view the status of multiple hosts within the enterprise."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000215"
   tag "gid": "V-38520"
   tag "rid": "SV-50321r1_rule"
@@ -25,7 +25,7 @@ place to view the status of multiple hosts within the enterprise."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To ensure logs are sent to a remote host, examine the file
+  desc 'check', "To ensure logs are sent to a remote host, examine the file
 \"/etc/rsyslog.conf\". If using UDP, a line similar to the following should be
 present:
 
@@ -41,7 +41,7 @@ If using RELP, a line similar to the following should be present:
 
 
 If none of these are present, this is a finding."
-  tag "fix": "To configure rsyslog to send logs to a remote log server, open
+  desc 'fix', "To configure rsyslog to send logs to a remote log server, open
 \"/etc/rsyslog.conf\" and read and understand the last section of the file,
 which describes the multiple directives necessary to activate remote logging.
 Along with these other directives, the system can be configured to forward its

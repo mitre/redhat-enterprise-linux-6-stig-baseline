@@ -3,7 +3,7 @@ control "V-38639" do
 desktop environment session lock."
   desc  "Setting the screensaver mode to blank-only conceals the contents of
 the display from passersby."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000031"
   tag "gid": "V-38639"
   tag "rid": "SV-50440r3_rule"
@@ -21,7 +21,7 @@ the display from passersby."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the GConf2 package is not installed, this is not applicable.
+  desc 'check', "If the GConf2 package is not installed, this is not applicable.
 
 To ensure the screensaver is configured to be blank, run the following command:
 
@@ -30,7 +30,7 @@ xml:readwrite:/etc/gconf/gconf.xml.mandatory --get /apps/gnome-screensaver/mode
 
 If properly configured, the output should be \"blank-only\".
 If it is not, this is a finding."
-  tag "fix": "Run the following command to set the screensaver mode in the
+  desc 'fix', "Run the following command to set the screensaver mode in the
 GNOME desktop to a blank screen:
 
 # gconftool-2 \\
@@ -44,7 +44,7 @@ GNOME desktop to a blank screen:
       its('stdout.strip') { should eq 'blank-only' }
     end
   else
-    impact 0.0
+    impact 'none'
     describe "Package GConf2 not installed" do
       skip "Package GConf2 not installed, this control Not Applicable"
     end

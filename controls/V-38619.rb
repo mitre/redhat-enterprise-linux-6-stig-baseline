@@ -3,7 +3,7 @@ control "V-38619" do
   desc  "Unencrypted passwords for remote FTP servers may be stored in
 \".netrc\" files. DoD policy requires passwords be encrypted in storage and not
 used in access scripts."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000073"
   tag "gid": "V-38619"
   tag "rid": "SV-50420r2_rule"
@@ -21,13 +21,13 @@ used in access scripts."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check the system for the existence of any \".netrc\" files,
+  desc 'check', "To check the system for the existence of any \".netrc\" files,
 run the following command:
 
 $ sudo find /root /home -xdev -name .netrc
 
 If any .netrc files exist, this is a finding."
-  tag "fix": "The \".netrc\" files contain logon information used to auto-logon
+  desc 'fix', "The \".netrc\" files contain logon information used to auto-logon
 into FTP servers and reside in the user's home directory. These files may
 contain unencrypted passwords to remote FTP servers making them susceptible to
 access by unauthorized users and should not be used. Any \".netrc\" files

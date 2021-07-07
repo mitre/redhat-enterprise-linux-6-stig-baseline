@@ -4,7 +4,7 @@ actions."
   desc  "In addition to auditing new user and group accounts, these watches
 will alert the system administrator(s) to any modifications. Any unexpected
 users, groups, or modifications should be investigated for legitimacy."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000240"
   tag "gid": "V-38536"
   tag "rid": "SV-50337r2_rule"
@@ -22,7 +22,7 @@ users, groups, or modifications should be investigated for legitimacy."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine if the system is configured to audit account
+  desc 'check', "To determine if the system is configured to audit account
 changes, run the following command:
 
 $sudo egrep -w
@@ -33,7 +33,7 @@ If the system is configured to watch for account changes, lines should be
 returned for each file specified (and with \"-p wa\" for each).
 
 If the system is not configured to audit account changes, this is a finding."
-  tag "fix": "Add the following to \"/etc/audit/audit.rules\", in order to
+  desc 'fix', "Add the following to \"/etc/audit/audit.rules\", in order to
 capture events that modify account changes:
 
 # audit_account_changes

@@ -5,7 +5,7 @@ system time through /etc/localtime."
 nefarious activities in log files, as well as to confuse network services that
 are highly dependent upon an accurate system time (such as sshd). All changes
 to the system time should be audited."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000062"
   tag "gid": "V-38530"
   tag "rid": "SV-50331r2_rule"
@@ -23,7 +23,7 @@ to the system time should be audited."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine if the system is configured to audit attempts to
+  desc 'check', "To determine if the system is configured to audit attempts to
 alter time via the /etc/localtime file, run the following command:
 
 $ sudo grep -w \"/etc/localtime\" /etc/audit/audit.rules
@@ -31,7 +31,7 @@ $ sudo grep -w \"/etc/localtime\" /etc/audit/audit.rules
 If the system is configured to audit this activity, it will return a line.
 
 If the system is not configured to audit time changes, this is a finding."
-  tag "fix": "Add the following to \"/etc/audit/audit.rules\":
+  desc 'fix', "Add the following to \"/etc/audit/audit.rules\":
 
 -w /etc/localtime -p wa -k audit_time_rules
 

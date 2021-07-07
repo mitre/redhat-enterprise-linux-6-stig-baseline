@@ -2,7 +2,7 @@ control "V-38493" do
   title "Audit log directories must have mode 0755 or less permissive."
   desc  "If users can delete audit logs, audit trails can be modified or
 destroyed."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000059"
   tag "gid": "V-38493"
   tag "rid": "SV-50294r1_rule"
@@ -20,14 +20,14 @@ destroyed."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to check the mode of the system audit
+  desc 'check', "Run the following command to check the mode of the system audit
 directories:
 
 grep \"^log_file\" /etc/audit/auditd.conf|sed 's/^[^/]*//; s/[^/]*$//'|xargs stat -c %a:%n
 
 Audit directories must be mode 0755 or less permissive.
 If any are more permissive, this is a finding."
-  tag "fix": "Change the mode of the audit log directories with the following
+  desc 'fix', "Change the mode of the audit log directories with the following
 command:
 
 # chmod go-w [audit_directory]"

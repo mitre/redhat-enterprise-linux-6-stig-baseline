@@ -3,7 +3,7 @@ control "V-38640" do
   desc  "Mishandling crash data could expose sensitive information about
 vulnerabilities in software executing on the local machine, as well as
 sensitive information from within a process's address space or registers."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38640"
   tag "rid": "SV-50441r2_rule"
@@ -21,7 +21,7 @@ sensitive information from within a process's address space or registers."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check that the \"abrtd\" service is disabled in system boot
+  desc 'check', "To check that the \"abrtd\" service is disabled in system boot
 configuration, run the following command:
 
 # chkconfig \"abrtd\" --list
@@ -43,7 +43,7 @@ abrtd is stopped
 
 
 If the service is running, this is a finding."
-  tag "fix": "The Automatic Bug Reporting Tool (\"abrtd\") daemon collects and
+  desc 'fix', "The Automatic Bug Reporting Tool (\"abrtd\") daemon collects and
 reports crash data when an application crash is detected. Using a variety of
 plugins, abrtd can email crash reports to system administrators, log crash
 reports to files, or forward crash reports to a centralized issue tracking

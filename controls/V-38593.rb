@@ -3,7 +3,7 @@ control "V-38593" do
 immediately prior to, or as part of, console login prompts."
   desc  "An appropriate warning message reinforces policy awareness during the
 logon process and facilitates possible legal action against attackers."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000228"
   tag "gid": "V-38593"
   tag "rid": "SV-50394r3_rule"
@@ -23,7 +23,7 @@ logon process and facilitates possible legal action against attackers."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check if the system login banner is compliant, run the
+  desc 'check', "To check if the system login banner is compliant, run the
 following command:
 
 $ cat /etc/issue
@@ -34,7 +34,7 @@ limitations that prevent the display of the full DoD logon banner.
 
 If the required DoD logon banner is not displayed, this is a finding.
 "
-  tag "fix": "To configure the system login banner:
+  desc 'fix', "To configure the system login banner:
 
 Edit \"/etc/issue\". Replace the default text with a message compliant with the
 local site policy or a legal disclaimer. The DoD required text is either:

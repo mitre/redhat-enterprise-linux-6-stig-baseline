@@ -3,7 +3,7 @@ control "V-38577" do
 algorithm for generating account password hashes (libuser.conf)."
   desc  "Using a stronger hashing algorithm makes password cracking attacks
 more difficult."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000120"
   tag "gid": "V-38577"
   tag "rid": "SV-50378r1_rule"
@@ -21,14 +21,14 @@ more difficult."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Inspect \"/etc/libuser.conf\" and ensure the following line
+  desc 'check', "Inspect \"/etc/libuser.conf\" and ensure the following line
 appears in the \"[default]\" section:
 
 crypt_style = sha512
 
 
 If it does not, this is a finding."
-  tag "fix": "In \"/etc/libuser.conf\", add or correct the following line in
+  desc 'fix', "In \"/etc/libuser.conf\", add or correct the following line in
 its \"[defaults]\" section to ensure the system will use the SHA-512 algorithm
 for password hashing:
 

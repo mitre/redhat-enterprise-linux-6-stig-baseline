@@ -2,7 +2,7 @@ control "V-38590" do
   title "The system must allow locking of the console screen in text mode."
   desc  "Installing \"screen\" ensures a console locking capability is
 available for users who may need to suspend console logins."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000030"
   tag "gid": "V-38590"
   tag "rid": "SV-50391r1_rule"
@@ -20,14 +20,14 @@ available for users who may need to suspend console logins."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to determine if the \"screen\"
+  desc 'check', "Run the following command to determine if the \"screen\"
 package is installed:
 
 # rpm -q screen
 
 
 If the package is not installed, this is a finding."
-  tag "fix": "To enable console screen locking when in text mode, install the
+  desc 'fix', "To enable console screen locking when in text mode, install the
 \"screen\" package:
 
 # yum install screen

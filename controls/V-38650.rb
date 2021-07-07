@@ -4,7 +4,7 @@ control "V-38650" do
 information configured statically by a system administrator. Workstations or
 some special-purpose systems often use DHCP (instead of IRDP) to retrieve
 dynamic network configuration information."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000096"
   tag "gid": "V-38650"
   tag "rid": "SV-50451r2_rule"
@@ -22,7 +22,7 @@ dynamic network configuration information."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To check that the \"rdisc\" service is disabled in system boot
+  desc 'check', "To check that the \"rdisc\" service is disabled in system boot
 configuration, run the following command:
 
 # chkconfig \"rdisc\" --list
@@ -44,7 +44,7 @@ rdisc is stopped
 
 
 If the service is running, this is a finding."
-  tag "fix": "The \"rdisc\" service implements the client side of the ICMP
+  desc 'fix', "The \"rdisc\" service implements the client side of the ICMP
 Internet Router Discovery Protocol (IRDP), which allows discovery of routers on
 the local subnet. If a router is discovered then the local routing table is
 updated with a corresponding default route. By default this daemon is disabled.

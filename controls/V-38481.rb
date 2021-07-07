@@ -2,7 +2,7 @@ control "V-38481" do
   title "System security patches and updates must be installed and up-to-date."
   desc  "Installing software updates is a fundamental mitigation against the
 exploitation of publicly-known vulnerabilities."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000191"
   tag "gid": "V-38481"
   tag "rid": "SV-50281r1_rule"
@@ -20,7 +20,7 @@ exploitation of publicly-known vulnerabilities."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "If the system is joined to the Red Hat Network, a Red Hat
+  desc 'check', "If the system is joined to the Red Hat Network, a Red Hat
 Satellite Server, or a yum server which provides updates, invoking the
 following command will indicate if updates are available:
 
@@ -35,7 +35,7 @@ Compare this to Red Hat Security Advisories (RHSA) listed at
 https://access.redhat.com/security/updates/active/ to determine whether the
 system is missing applicable security and bugfix  updates.
 If updates are not installed, this is a finding."
-  tag "fix": "If the system is joined to the Red Hat Network, a Red Hat
+  desc 'fix', "If the system is joined to the Red Hat Network, a Red Hat
 Satellite Server, or a yum server, run the following command to install
 updates:
 

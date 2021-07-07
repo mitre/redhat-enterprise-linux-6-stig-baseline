@@ -13,7 +13,7 @@ not common, so autofs can almost always be disabled if NFS is not in use. Even
 if NFS is required, it is almost always possible to configure filesystem mounts
 statically by editing \"/etc/fstab\" rather than relying on the automounter.
   "
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38437"
   tag "rid": "SV-50237r1_rule"
@@ -31,7 +31,7 @@ statically by editing \"/etc/fstab\" rather than relying on the automounter.
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify the \"autofs\" service is disabled, run the following
+  desc 'check', "To verify the \"autofs\" service is disabled, run the following
 command:
 
 chkconfig --list autofs
@@ -45,7 +45,7 @@ Verify the \"autofs\" service is not running:
 # service autofs status
 
 If the autofs service is enabled or running, this is a finding."
-  tag "fix": "If the \"autofs\" service is not needed to dynamically mount NFS
+  desc 'fix', "If the \"autofs\" service is not needed to dynamically mount NFS
 filesystems or removable media, disable the service for all runlevels:
 
 # chkconfig --level 0123456 autofs off
@@ -76,4 +76,3 @@ Stop the service if it is already running:
     it { should_not be_enabled }
   end
 end
-

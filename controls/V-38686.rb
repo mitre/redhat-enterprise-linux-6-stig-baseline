@@ -5,7 +5,7 @@ allow-by-exception policy for forwarded packets."
 applicable rules in the table are examined for a match. Setting the default
 policy to \"DROP\" implements proper design for a firewall, i.e., any packets
 which are not explicitly permitted should not be accepted."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000147"
   tag "gid": "V-38686"
   tag "rid": "SV-50487r2_rule"
@@ -23,7 +23,7 @@ which are not explicitly permitted should not be accepted."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Run the following command to ensure the default \"FORWARD\"
+  desc 'check', "Run the following command to ensure the default \"FORWARD\"
 policy is \"DROP\":
 
 # iptables -nvL | grep -i forward
@@ -32,7 +32,7 @@ Chain FORWARD (policy DROP 0 packets, 0 bytes)
 
 If the default policy for the FORWARD chain is not set to DROP, this is a
 finding."
-  tag "fix": "To set the default policy to DROP (instead of ACCEPT) for the
+  desc 'fix', "To set the default policy to DROP (instead of ACCEPT) for the
 built-in FORWARD chain which processes packets that will be forwarded from one
 interface to another, add or correct the following line in
 \"/etc/sysconfig/iptables\":

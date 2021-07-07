@@ -6,7 +6,7 @@ files. This option must be used for mounting any file system not containing
 approved binary files as they may be incompatible. Executing files from
 untrusted file systems increases the opportunity for unprivileged users to
 attain unauthorized administrative access."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-000368-GPOS-00154"
   tag "gid": "V-81449"
   tag "rid": "SV-96163r1_rule"
@@ -24,7 +24,7 @@ attain unauthorized administrative access."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "Verify that the \"noexec\" option is configured for /dev/shm.
+  desc 'check', "Verify that the \"noexec\" option is configured for /dev/shm.
 
 Check that the operating system is configured to use the \"noexec\" option for
 /dev/shm with the following command:
@@ -42,7 +42,7 @@ Verify \"/dev/shm\" is mounted with the \"noexec\" option:
 
 If no results are returned, this is a finding.
 "
-  tag "fix": "Configure the \"/etc/fstab\" to use the \"noexec\" option for all
+  desc 'fix', "Configure the \"/etc/fstab\" to use the \"noexec\" option for all
 lines containing \"/dev/shm\"."
 
   describe file("/etc/fstab") do

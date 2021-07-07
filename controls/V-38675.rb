@@ -3,7 +3,7 @@ control "V-38675" do
   desc  "A core dump includes a memory image taken at the time the operating
 system terminates an application. The memory image could contain sensitive data
 and is generally useful only for developers trying to debug problems."
-  impact 0.3
+  impact 'low'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38675"
   tag "rid": "SV-50476r2_rule"
@@ -21,7 +21,7 @@ and is generally useful only for developers trying to debug problems."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To verify that core dumps are disabled for all users, run the
+  desc 'check', "To verify that core dumps are disabled for all users, run the
 following command:
 
 $ grep core /etc/security/limits.conf /etc/security/limits.d/*.conf
@@ -31,7 +31,7 @@ The output should be:
 * hard core 0
 
 If it is not, this is a finding. "
-  tag "fix": "To disable core dumps for all users, add the following line to
+  desc 'fix', "To disable core dumps for all users, add the following line to
 \"/etc/security/limits.conf\":
 
 * hard core 0"

@@ -5,7 +5,7 @@ login banner."
 process and facilitates possible legal action against attackers. Alternatively,
 systems whose ownership should not be obvious should ensure usage of a banner
 that does not provide easy attribution."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000023"
   tag "gid": "V-38615"
   tag "rid": "SV-50416r1_rule"
@@ -23,14 +23,14 @@ that does not provide easy attribution."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine how the SSH daemon's \"Banner\" option is set, run
+  desc 'check', "To determine how the SSH daemon's \"Banner\" option is set, run
 the following command:
 
 # grep -i Banner /etc/ssh/sshd_config
 
 If a line indicating /etc/issue is returned, then the required value is set.
 If the required value is not set, this is a finding."
-  tag "fix": "To enable the warning banner and ensure it is consistent across
+  desc 'fix', "To enable the warning banner and ensure it is consistent across
 the system, add or correct the following line in \"/etc/ssh/sshd_config\":
 
 Banner /etc/issue

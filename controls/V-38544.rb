@@ -5,7 +5,7 @@ when possible by default."
 that should not have been able to be received on the interface they were
 received on. It should not be used on systems which are routers for complicated
 networks, but is helpful for end hosts and routers serving small networks."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-999999"
   tag "gid": "V-38544"
   tag "rid": "SV-50345r2_rule"
@@ -23,7 +23,7 @@ networks, but is helpful for end hosts and routers serving small networks."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "The status of the \"net.ipv4.conf.default.rp_filter\" kernel
+  desc 'check', "The status of the \"net.ipv4.conf.default.rp_filter\" kernel
 parameter can be queried by running the following command:
 
 $ sysctl net.ipv4.conf.default.rp_filter
@@ -35,7 +35,7 @@ and verify it is not set improperly in \"/etc/sysctl.conf\".
 $ grep net.ipv4.conf.default.rp_filter /etc/sysctl.conf
 
 If the correct value is not returned, this is a finding. "
-  tag "fix": "To set the runtime status of the
+  desc 'fix', "To set the runtime status of the
 \"net.ipv4.conf.default.rp_filter\" kernel parameter, run the following
 command:
 

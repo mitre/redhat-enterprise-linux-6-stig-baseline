@@ -5,7 +5,7 @@ locked by excessive failed login attempts."
 prevents direct password guessing attacks. Ensuring that an administrator is
 involved in unlocking locked accounts draws appropriate attention to such
 situations."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000022"
   tag "gid": "V-38592"
   tag "rid": "SV-50393r4_rule"
@@ -23,7 +23,7 @@ situations."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To ensure the failed password attempt policy is configured
+  desc 'check', "To ensure the failed password attempt policy is configured
 correctly, run the following command:
 
 # grep pam_faillock /etc/pam.d/system-auth /etc/pam.d/password-auth
@@ -31,7 +31,7 @@ correctly, run the following command:
 The output should show \"unlock_time=<some-large-number>\"; the largest
 acceptable value is 604800 seconds (one week).
 If that is not the case, this is a finding."
-  tag "fix": "To configure the system to lock out accounts after a number of
+  desc 'fix', "To configure the system to lock out accounts after a number of
 incorrect logon attempts and require an administrator to unlock the account
 using \"pam_faillock.so\", modify the content of both
 \"/etc/pam.d/system-auth\" and \"/etc/pam.d/password-auth\" as follows:

@@ -2,7 +2,7 @@ control "V-38611" do
   title "The SSH daemon must ignore .rhosts files."
   desc  "SSH trust relationships mean a compromise on one host can allow an
 attacker to move trivially to other hosts."
-  impact 0.5
+  impact 'medium'
   tag "gtitle": "SRG-OS-000106"
   tag "gid": "V-38611"
   tag "rid": "SV-50412r1_rule"
@@ -20,7 +20,7 @@ attacker to move trivially to other hosts."
   tag "mitigation_controls": nil
   tag "responsibility": nil
   tag "ia_controls": nil
-  tag "check": "To determine how the SSH daemon's \"IgnoreRhosts\" option is
+  desc 'check', "To determine how the SSH daemon's \"IgnoreRhosts\" option is
 set, run the following command:
 
 # grep -i IgnoreRhosts /etc/ssh/sshd_config
@@ -28,7 +28,7 @@ set, run the following command:
 If no line, a commented line, or a line indicating the value \"yes\" is
 returned, then the required value is set.
 If the required value is not set, this is a finding."
-  tag "fix": "SSH can emulate the behavior of the obsolete rsh command in
+  desc 'fix', "SSH can emulate the behavior of the obsolete rsh command in
 allowing users to enable insecure access to their accounts via \".rhosts\"
 files.
 
